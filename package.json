@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": false,
   "description": "vuepress-theme-nine",
-  "main": "layouts/Layout.vue",
+  "main": "lib/index.js",
   "scripts": {
     "release": "release-it"
   },

@@ -1,7 +1,10 @@
 {
   "name": "vuepress-theme-nine",
   "version": "1.0.12",
-  "author": "NineSwordsMonster",
+  "author": {
+    "name": "NineSwordsMonster",
+    "email": "wangjia_1919@163.com"
+  },
   "license": "MIT",
   "private": false,
   "description": "vuepress-theme-nine",
@@ -14,6 +17,10 @@
     "vuepress-theme",
     "vuepress-theme-nine"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:NineSwordsMonster/vuepress-theme-nine.git"
+  },
   "dependencies": {
     "iview": "^3.2.1"
   },

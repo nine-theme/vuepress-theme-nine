@@ -1,10 +1,12 @@
 <template>
-
+    <div class="theme-container">
+        <Content/>
+    </div>
 </template>
 
 <script>
   export default {
-    name: "404"
+    name: "Layout"
   }
 </script>
 

@@ -1,13 +1,17 @@
 <template>
-
+    <div class="main">
+        <Content/>
+    </div>
 </template>
 
 <script>
   export default {
-    name: "404"
+    name: 'NineMainLayout'
   }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+    .main {
+        background: #d5f3ff;
+    }
 </style>

@@ -14,8 +14,17 @@
     "vuepress-theme",
     "vuepress-theme-nine"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NineSwordsMonster/vuepress-theme-nine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NineSwordsMonster/vuepress-theme-nine/issues"
+  },
   "dependencies": {
-    "iview": "^3.2.2"
+    "iview": "^3.2.2",
+    "geopattern": "^1.2.3",
+    "moment": "^2.22.1"
   },
   "devDependencies": {
     "@vuepress/plugin-active-header-links": "^1.0.0-alpha.40",

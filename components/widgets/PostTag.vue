@@ -53,7 +53,7 @@
     padding $paddingUnit * 2 $paddingUnit * 3
     color lighten($grayTextColor, 10%)
     background-color #eee
-    transition all 0.2s ease-out
+    transition color 0.2s ease-out
     &:hover
       cursor pointer
       color $accentColor
@@ -61,6 +61,8 @@
       display inline-block
       height 100%
       font-size $fontSize
+      margin-left $paddingUnit
+    &:not(:first-of-type)
       margin-left $paddingUnit
 
 </style>

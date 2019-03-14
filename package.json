@@ -22,8 +22,15 @@
     "url": "https://github.com/NineSwordsMonster/vuepress-theme-nine/issues"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-brands": "^5.0.13",
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/vue-fontawesome": "^0.0.23",
+    "date-fns": "^1.29.0",
     "iview": "^3.2.2",
     "geopattern": "^1.2.3",
+    "vue": "^2.5.16",
     "moment": "^2.22.1"
   },
   "devDependencies": {

@@ -30,20 +30,20 @@
 </template>
 
 <script>
-  import IconInfo from '@theme/components/widgets/IconInfo'
+import IconInfo from '@theme/components/widgets/IconInfo'
 
-  export default {
-    name: 'PostsListItem',
-    components: {
-      IconInfo
-    },
-    props: {
-      post: {
-        type: Object,
-        required: false,
-      }
+export default {
+  name: 'PostsListItem',
+  components: {
+    IconInfo
+  },
+  props: {
+    post: {
+      type: Object,
+      required: false
     }
   }
+}
 </script>
 
 <style lang="stylus" scoped>
@@ -67,4 +67,3 @@
         .post-title
           color $accentColor
 </style>
-

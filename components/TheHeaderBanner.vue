@@ -15,9 +15,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'TheHeaderBanner'
-  }
+export default {
+  name: 'TheHeaderBanner'
+}
 </script>
 
 <style lang="stylus" scoped>
@@ -41,4 +41,3 @@
           transform scale(1.2)
 
 </style>
-

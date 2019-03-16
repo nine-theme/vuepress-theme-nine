@@ -68,48 +68,48 @@
 </template>
 
 <script>
-  import IconInfo from '@theme/components/widgets/IconInfo'
-  import SnsIcon from '@theme/components/widgets/SnsIcon'
-  import GeoPattern from 'geopattern'
+import IconInfo from '@theme/components/widgets/IconInfo'
+import SnsIcon from '@theme/components/widgets/SnsIcon'
+import GeoPattern from 'geopattern'
 
-  export default {
-    name: 'InfoCard',
-    components: {
-      IconInfo,
-      SnsIcon
+export default {
+  name: 'InfoCard',
+  components: {
+    IconInfo,
+    SnsIcon
+  },
+  computed: {
+    info () {
+      return this.$site.themeConfig.personalInfo || {}
     },
-    computed: {
-      info () {
-        return this.$site.themeConfig.personalInfo || {}
-      },
-      nickname () {
-        return this.info.nickname || 'Unknown'
-      },
-      description () {
-        return this.info.description || null
-      },
-      location () {
-        return this.info.location || null
-      },
-      email () {
-        return this.info.email || null
-      },
-      organization () {
-        return this.info.organization || null
-      },
-      avator () {
-        return this.info.avator || '/assets/img/avator_unknown.jpg'
-      },
-      sns () {
-        return this.info.sns || {}
-      },
-      headerStyle () {
-        return {
-          'background-image': !this.$ssrContext ? GeoPattern.generate(this.nickname, { color: '#eee' }).toDataUrl() : null
-        }
+    nickname () {
+      return this.info.nickname || 'Unknown'
+    },
+    description () {
+      return this.info.description || null
+    },
+    location () {
+      return this.info.location || null
+    },
+    email () {
+      return this.info.email || null
+    },
+    organization () {
+      return this.info.organization || null
+    },
+    avator () {
+      return this.info.avator || '/assets/img/avator_unknown.jpg'
+    },
+    sns () {
+      return this.info.sns || {}
+    },
+    headerStyle () {
+      return {
+        'background-image': !this.$ssrContext ? GeoPattern.generate(this.nickname, { color: '#eee' }).toDataUrl() : null
       }
     }
   }
+}
 </script>
 
 <style lang="stylus" scoped>
@@ -156,4 +156,3 @@
       padding 1rem
 
 </style>
-

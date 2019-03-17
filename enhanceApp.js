@@ -1,16 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import format from 'date-fns/format'
+import compareDesc from 'date-fns/compare_desc'
 
 const dataMixin = {
   computed: {
     $posts () {
       const pages = this.$site.pages
-      const pageFilter = p => {
-        return p.frontmatter.layout === 'post'
-      }
-      const pageSort = (p1, p2) => {
-        return p1.frontmatter.date < p2.frontmatter.date
-      }
+      const pageFilter = p => p.frontmatter.layout === 'post'
+      const pageSort = (p1, p2) => compareDesc(p1.frontmatter.date, p2.frontmatter.date)
       const pageMap = p => {
         p.createdAt = format(p.frontmatter.date, 'YYYY-MM-DD')
         p.updatedAt = p.lastUpdated ? format(p.lastUpdated, 'YYYY-MM-DD') : null
@@ -49,13 +46,13 @@ export default ({ Vue, options }) => {
     functional: true,
     props: FontAwesomeIcon.props,
     render (h, context) {
-      if (context.parent._isMounted) {
-        return h(FontAwesomeIcon, context)
-      } else {
-        context.parent.$once('hook:mounted', () => {
-          context.parent.$forceUpdate()
-        })
-      }
+      // if (context.parent._isMounted) {
+      return h(FontAwesomeIcon, context)
+      // } else {
+      //   context.parent.$once('hook:mounted', () => {
+      //     context.parent.$forceUpdate()
+      //   })
+      // }
     },
   })
 }

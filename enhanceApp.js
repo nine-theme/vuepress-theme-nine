@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import format from 'date-fns/format'
 import compareDesc from 'date-fns/compare_desc'
@@ -46,13 +47,13 @@ export default ({ Vue, options }) => {
     functional: true,
     props: FontAwesomeIcon.props,
     render (h, context) {
-      // if (context.parent._isMounted) {
-      return h(FontAwesomeIcon, context)
-      // } else {
-      //   context.parent.$once('hook:mounted', () => {
-      //     context.parent.$forceUpdate()
-      //   })
-      // }
+      if (context.parent._isMounted) {
+        return h(FontAwesomeIcon, context)
+      } else {
+        context.parent.$once('hook:mounted', () => {
+          context.parent.$forceUpdate()
+        })
+      }
     },
   })
 }

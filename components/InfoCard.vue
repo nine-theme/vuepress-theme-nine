@@ -1,50 +1,57 @@
 <template>
   <div class="info-card">
     <div
-            class="info-card-header"
-            :style="headerStyle">
+      class="info-card-header"
+      :style="headerStyle"
+    >
       <img
-              class="info-avator"
-              :src="avator"
-              :alt="nickname"/>
+        class="info-avator"
+        :src="avator"
+        :alt="nickname"
+      >
     </div>
 
     <div class="info-card-body">
-      <section class="info-nickname">{{ nickname }}</section>
+      <section class="info-nickname">
+        {{ nickname }}
+      </section>
 
       <section
-              v-if="description"
-              class="info-desc"
-              v-html="description">
-      </section>
+        v-if="description"
+        class="info-desc"
+        v-html="description"
+      />
 
       <section class="info-contact">
         <section>
           <IconInfo
-                  v-if="location"
-                  class="info-location"
-                  type="location"
-                  :text="location"
-                  fixed-width/>
+            v-if="location"
+            class="info-location"
+            type="location"
+            :text="location"
+            fixed-width
+          />
         </section>
 
         <section>
           <IconInfo
-                  v-if="organization"
-                  class="info-organization"
-                  type="organization"
-                  :text="organization"
-                  fixed-width/>
+            v-if="organization"
+            class="info-organization"
+            type="organization"
+            :text="organization"
+            fixed-width
+          />
         </section>
 
         <section>
           <IconInfo
-                  v-if="email"
-                  class="info-email"
-                  type="email"
-                  :href="`mailto:${email}`"
-                  :text="email"
-                  fixed-width/>
+            v-if="email"
+            class="info-email"
+            type="email"
+            :href="`mailto:${email}`"
+            :text="email"
+            fixed-width
+          />
         </section>
       </section>
     </div>
@@ -52,15 +59,17 @@
     <div class="info-card-footer">
       <section class="info-sns clearfix">
         <a
-                v-for="(item, name) of sns"
-                :key="name"
-                :href="item.link"
-                class="sns-link"
-                target="_blank">
-          <SnsIcon
-                  :name="name"
-                  :account="item.account"
-                  size="lg"/>
+          v-for="(item, name) of sns"
+          :key="name"
+          :href="item.link"
+          class="sns-link"
+          target="_blank"
+        >
+          <IconSns
+            :name="name"
+            :account="item.account"
+            size="lg"
+          />
         </a>
       </section>
     </div>
@@ -69,46 +78,56 @@
 
 <script>
 import IconInfo from '@theme/components/widgets/IconInfo'
-import SnsIcon from '@theme/components/widgets/SnsIcon'
+import IconSns from '@theme/components/widgets/IconSns'
 import GeoPattern from 'geopattern'
 
 export default {
   name: 'InfoCard',
+
   components: {
     IconInfo,
-    SnsIcon
+    IconSns,
   },
+
   computed: {
     info () {
       return this.$site.themeConfig.personalInfo || {}
     },
+
     nickname () {
       return this.info.nickname || 'Unknown'
     },
+
     description () {
       return this.info.description || null
     },
+
     location () {
       return this.info.location || null
     },
+
     email () {
       return this.info.email || null
     },
+
     organization () {
       return this.info.organization || null
     },
+
     avator () {
       return this.info.avator || '/assets/img/avator_unknown.jpg'
     },
+
     sns () {
       return this.info.sns || {}
     },
+
     headerStyle () {
       return {
-        'background-image': !this.$ssrContext ? GeoPattern.generate(this.nickname, { color: '#eee' }).toDataUrl() : null
+        'background-image': !this.$ssrContext ? GeoPattern.generate(this.nickname, { color: '#eee' }).toDataUrl() : null,
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

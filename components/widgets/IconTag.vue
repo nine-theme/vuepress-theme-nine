@@ -1,43 +1,49 @@
 <template>
   <span
-          class="post-tag"
-          :title="name">
+    class="post-tag"
+    :title="name"
+  >
     <FontAwesomeIcon
-            class="post-tag-icon"
-            :icon="icon"
-            :size="size"
-            :fixed-width="fixedWidth"
-            v-bind="$attrs"/>
+      class="post-tag-icon"
+      :icon="icon"
+      :size="size"
+      :fixed-width="fixedWidth"
+      v-bind="$attrs"
+    />
 
-      <span class="post-tag-name">{{ name }}</span>
+    <span class="post-tag-name">{{ name }}</span>
   </span>
 </template>
 
 <script>
-  import faTag from '@fortawesome/fontawesome-free-solid/faTag'
+import { faTag } from '@fortawesome/free-solid-svg-icons'
 
-  export default {
-    name: 'PostTag',
-    props: {
-      name: {
-        type: String,
-        required: true
-      },
-      size: {
-        type: String,
-        default: '1x'
-      },
-      fixedWidth: {
-        type: Boolean,
-        default: true
-      }
+export default {
+  name: 'IconTag',
+
+  props: {
+    name: {
+      type: String,
+      required: true,
     },
-    computed: {
-      icon () {
-        return faTag
-      }
-    }
-  }
+
+    size: {
+      type: String,
+      default: '1x',
+    },
+
+    fixedWidth: {
+      type: Boolean,
+      default: true,
+    },
+  },
+
+  computed: {
+    icon () {
+      return faTag
+    },
+  },
+}
 </script>
 
 <style lang="stylus">

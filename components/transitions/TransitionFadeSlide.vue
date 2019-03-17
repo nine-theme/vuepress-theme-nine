@@ -4,67 +4,75 @@
     :name="name"
     :mode="mode"
     :appear="appear"
-    :tag="tag">
-    <slot/>
+    :tag="tag"
+  >
+    <slot />
   </component>
 </template>
 
 <script>
 export default {
   name: 'TransitionFadeSlide',
+
   props: {
     appear: {
       type: Boolean,
-      default: true
+      default: true,
     },
+
     direction: {
       type: String,
-      default: 'y'
+      default: 'y',
     },
+
     group: {
       type: Boolean,
-      default: false
+      default: false,
     },
+
     mode: {
       type: String,
-      default: 'out-in'
+      default: 'out-in',
     },
+
     tag: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
+
   computed: {
     name () {
       return `fade-slide-${this.direction}`
     },
+
     component () {
       return this.group ? 'transition-group' : 'transition'
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="stylus">
-.fade-slide-y-enter-active
-  transition: all .3s ease
+  .fade-slide-y-enter-active
+    transition: all .3s ease
 
-.fade-slide-y-leave-active
-  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0)
+  .fade-slide-y-leave-active
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0)
 
-.fade-slide-y-enter
-.fade-slide-y-leave-to
-  transform: translateY(10px)
-  opacity: 0
+  .fade-slide-y-enter
+  .fade-slide-y-leave-to
+    transform: translateY(10px)
+    opacity: 0
 
-.fade-slide-x-enter-active
-  transition: all .3s ease
+  .fade-slide-x-enter-active
+    transition: all .3s ease
 
-.fade-slide-x-leave-active
-  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0)
+  .fade-slide-x-leave-active
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0)
 
-.fade-slide-x-enter
-.fade-slide-x-leave-to
-  transform: translateX(10px)
-  opacity: 0
+  .fade-slide-x-enter
+  .fade-slide-x-leave-to
+    transform: translateX(10px)
+    opacity: 0
 </style>

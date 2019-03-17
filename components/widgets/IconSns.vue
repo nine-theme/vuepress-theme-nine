@@ -1,101 +1,115 @@
 <template>
   <span
     class="sns-icon"
-    :title="title">
+    :title="title"
+  >
     <FontAwesomeIcon
       v-if="icon"
       :icon="icon"
       :size="size"
       :fixed-width="fixedWidth"
-      v-bind="$attrs"/>
+      v-bind="$attrs"
+    />
   </span>
 </template>
 
 <script>
-import faGithub from '@fortawesome/fontawesome-free-brands/faGithub'
-import faFacebook from '@fortawesome/fontawesome-free-brands/faFacebook'
-import faTwitter from '@fortawesome/fontawesome-free-brands/faTwitter'
-import faLinkedin from '@fortawesome/fontawesome-free-brands/faLinkedin'
-import faWeibo from '@fortawesome/fontawesome-free-brands/faWeibo'
+import {
+  faGithub,
+  faFacebook,
+  faTwitter,
+  faLinkedin,
+  faWeibo,
+  faZhihu,
+} from '@fortawesome/free-brands-svg-icons'
 
 const nameMap = {
   'github': {
     title: 'GitHub',
-    icon: faGithub
+    icon: faGithub,
   },
   'facebook': {
     title: 'Facebook',
-    icon: faFacebook
+    icon: faFacebook,
   },
   'twitter': {
     title: 'Twitter',
-    icon: faTwitter
+    icon: faTwitter,
   },
   'linkedin': {
     title: 'LinkedIn',
-    icon: faLinkedin
+    icon: faLinkedin,
   },
   'weibo': {
     title: 'WeiBo',
-    icon: faWeibo
+    icon: faWeibo,
   },
   'zhihu': {
     title: 'ZhiHu',
-    icon: null
+    icon: faZhihu,
   },
   'douban': {
     title: 'DouBan',
-    icon: null
-  }
+    icon: null,
+  },
 }
 
 export default {
-  name: 'SnsIcon',
+  name: 'IconSns',
+
   props: {
     // Account of SNS
     account: {
       type: String,
-      required: false
+      required: false,
+      default: '',
     },
+
     // Name of SNS
     name: {
       type: String,
-      required: true
+      required: true,
     },
+
     // Size of FontAwesome
     size: {
       type: String,
       required: false,
-      default: 'lg'
+      default: 'lg',
     },
+
     // Fixed Width or not of FontAwesome
     fixedWidth: {
       type: Boolean,
       required: false,
-      default: true
-    }
+      default: true,
+    },
   },
+
   computed: {
+
     data () {
       return nameMap[this.name]
     },
+
     title () {
       return `${this.data.title}: ${this.account}`
     },
+
     icon () {
       return this.data.icon || false
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="stylus">
-@import '~@theme/styles/variables.styl'
+  @import '~@theme/styles/variables.styl'
 
-.sns-link
-  .sns-icon
-    color $grayTextColor
-    transition all 0.5s ease-out
-    &:hover
-      color $accentColor
+  .sns-link
+    .sns-icon
+      color $grayTextColor
+      transition all 0.5s ease-out
+      &:hover
+        color $accentColor
 </style>

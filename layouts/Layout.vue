@@ -1,11 +1,11 @@
 <template>
-    <div id="app">
-        <TheHeader/>
+  <div id="app">
+    <TheHeader />
 
-        <TheMain :layout="$layout"/>
+    <TheMain :layout="$layout" />
 
-        <TheFooter/>
-    </div>
+    <TheFooter />
+  </div>
 </template>
 
 <script>
@@ -13,17 +13,18 @@ import nprogressMixin from '@theme/mixins/nprogress'
 import TheHeader from '@theme/components/TheHeader'
 import TheMain from '@theme/components/TheMain'
 import TheFooter from '@theme/components/TheFooter'
+
 export default {
   name: 'Layout',
 
   components: {
     TheHeader,
     TheMain,
-    TheFooter
+    TheFooter,
   },
 
   mixins: [
-    nprogressMixin
+    nprogressMixin,
   ],
 
   computed: {
@@ -36,9 +37,9 @@ export default {
     $title () {
       const isHome = this.$layout === 'home'
       return isHome ? this.$siteTitle : this.$page.frontmatter.title + ' | ' + this.$siteTitle
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style lang="stylus" src="@theme/styles/theme.styl"></style>
+<style lang="stylus" src="@theme/styles/theme.styl"/>

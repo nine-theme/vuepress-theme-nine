@@ -1,7 +1,7 @@
 <template>
   <div class="tags-select">
     <label
-      v-for="tag in $tags"
+      v-for="tag in Object.keys($tags)"
       :key="tag"
       class="tag-checkbox"
     >
@@ -18,27 +18,27 @@
 </template>
 
 <script>
-import IconTag from '@theme/components/widgets/IconTag'
+  import IconTag from '@theme/components/widgets/IconTag'
 
-export default {
-  name: 'PostsTagsSelect',
+  export default {
+    name: 'PostsTagsSelect',
 
-  components: {
-    IconTag,
-  },
-
-  data () {
-    return {
-      selectedTags: [],
-    }
-  },
-
-  watch: {
-    selectedTags (val) {
-      this.$emit('input', val)
+    components: {
+      IconTag,
     },
-  },
-}
+
+    data () {
+      return {
+        selectedTags: [],
+      }
+    },
+
+    watch: {
+      selectedTags (val) {
+        this.$emit('input', val)
+      },
+    },
+  }
 </script>
 
 <style lang="stylus" scoped>

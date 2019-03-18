@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = () => ({
-  name: 'theme-meteorlxy',
+  name: 'theme-nine',
 
   enhanceAppFiles: [
     path.resolve(__dirname, 'enhanceApp.js'),

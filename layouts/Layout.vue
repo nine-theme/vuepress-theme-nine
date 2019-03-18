@@ -1,45 +1,44 @@
 <template>
   <div id="app">
-    <TheHeader />
+    <TheHeader>
+      <slot name="header" />
+    </TheHeader>
 
-    <TheMain :layout="$layout" />
+    <TheMain>
+      <slot name="main" />
+    </TheMain>
 
     <TheFooter />
   </div>
 </template>
 
 <script>
-import nprogressMixin from '@theme/mixins/nprogress'
-import TheHeader from '@theme/components/TheHeader'
-import TheMain from '@theme/components/TheMain'
-import TheFooter from '@theme/components/TheFooter'
+  import TheHeader from '@theme/components/TheHeader'
+  import TheMain from '@theme/components/TheMain'
+  import TheFooter from '@theme/components/TheFooter'
 
-export default {
-  name: 'Layout',
+  export default {
+    name: 'Layout',
 
-  components: {
-    TheHeader,
-    TheMain,
-    TheFooter,
-  },
-
-  mixins: [
-    nprogressMixin,
-  ],
-
-  computed: {
-    $layout () {
-      const defaultLayout = 'post'
-      const layout = this.$page.frontmatter.layout || defaultLayout
-      return layout.toLowerCase()
+    components: {
+      TheHeader,
+      TheMain,
+      TheFooter,
     },
 
-    $title () {
-      const isHome = this.$layout === 'home'
-      return isHome ? this.$siteTitle : this.$page.frontmatter.title + ' | ' + this.$siteTitle
+    computed: {
+      $layout () {
+        const defaultLayout = 'post'
+        const layout = this.$page.frontmatter.layout || defaultLayout
+        return layout.toLowerCase()
+      },
+
+      $title () {
+        const isHome = this.$layout === 'home'
+        return isHome ? this.$siteTitle : this.$page.frontmatter.title + ' | ' + this.$siteTitle
+      },
     },
-  },
-}
+  }
 </script>
 
-<style lang="stylus" src="@theme/styles/theme.styl"/>
+<style lang="stylus" src="@theme/styles"/>

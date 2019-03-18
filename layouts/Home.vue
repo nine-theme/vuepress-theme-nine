@@ -1,17 +1,24 @@
 <template>
-  <div class="home">
-    <PostsList class="main-div" />
-  </div>
+  <Layout>
+    <div
+      slot="main"
+      class="home"
+    >
+      <PostsList class="main-div" />
+    </div>
+  </Layout>
 </template>
 
 <script>
-import PostsList from '@theme/components/PostsList'
+  import Layout from '@theme/layouts/Layout'
+  import PostsList from '@theme/components/PostsList'
 
-export default {
-  name: 'Home',
+  export default {
+    name: 'Home',
 
-  components: {
-    PostsList,
-  },
-}
+    components: {
+      Layout,
+      PostsList,
+    },
+  }
 </script>

@@ -36,6 +36,14 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/', exact: true },
       { text: 'Posts', link: '/posts/', exact: false },
+      { text: 'More Pages', link: '/more-pages/', exact: false },
     ],
+
+    comments: {
+      owner: 'NineSwordsMonster',
+      repo: 'vuepress-theme-nine',
+      clientId: '',
+      clientSecret: '',
+    },
   },
 }

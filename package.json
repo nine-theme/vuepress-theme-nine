@@ -7,7 +7,10 @@
   "description": "vuepress-theme-nine",
   "main": "lib/index.js",
   "scripts": {
-    "release": "release-it"
+    "release": "release-it",
+    "dev": "vuepress dev docs --temp .temp",
+    "build": "vuepress build docs --dest docs-dist",
+    "lint": "eslint --fix --ext .js,.vue ."
   },
   "keywords": [
     "vuepress",

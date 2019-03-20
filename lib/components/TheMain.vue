@@ -7,7 +7,10 @@
     >
       <main class="main">
         <TransitionFadeSlide>
-          <component :is="layout" />
+          <component
+            :is="layout"
+            :key="$page.path"
+          />
         </TransitionFadeSlide>
       </main>
 
@@ -19,12 +22,16 @@
 </template>
 
 <script>
-import TransitionFadeSlide from './transitions/TransitionFadeSlide.vue'
+import TransitionFadeSlide from './TransitionFadeSlide.vue'
 import InfoCard from './InfoCard.vue'
 import Home from './layouts/Home.vue'
 import Posts from './layouts/Posts.vue'
 import Post from './layouts/Post.vue'
 import Page from './layouts/Page.vue'
+import Tags from './layouts/Tags.vue'
+import Categories from './layouts/Categories.vue'
+import Tag from './layouts/Tag.vue'
+import Category from './layouts/Category.vue'
 
 export default {
   name: 'TheMain',
@@ -37,6 +44,10 @@ export default {
     Posts,
     Post,
     Page,
+    Tags,
+    Categories,
+    Tag,
+    Category,
     /* eslint-enable vue/no-unused-components */
   },
 
@@ -70,7 +81,7 @@ export default {
 .container
   position relative
   margin 1rem auto
-  @media (max-width: $MQMobile - 1)
+  @media (max-width $MQMobile - 1)
     margin 0.5rem auto
   &:not(.show-aside)
     .main
@@ -83,7 +94,7 @@ export default {
         width 75%
       .aside
         width 25%
-    @media (max-width: $MQWide - 1px) and (min-width: $MQMobile)
+    @media (max-width $MQWide - 1px) and (min-width $MQMobile)
       .main
         width 70%
       .aside
@@ -94,7 +105,7 @@ export default {
       .aside
         float left
         padding-left 1rem
-    @media (max-width: $MQMobile - 1)
+    @media (max-width $MQMobile - 1)
       .main
         width 100%
       .aside

@@ -9,8 +9,8 @@
       >
 
       <IconTag
-        icon="folder-open"
-        name="all"
+        icon="category"
+        :name="$themeConfig.lang.allCategories"
       />
     </label>
 
@@ -27,7 +27,7 @@
       >
 
       <IconTag
-        icon="folder-open"
+        icon="category"
         :name="category"
       />
     </label>
@@ -38,7 +38,7 @@
 import IconTag from './IconTag.vue'
 
 export default {
-  name: 'PostsCategoriesSelect',
+  name: 'PostsFilterCategories',
 
   components: {
     IconTag,
@@ -58,7 +58,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 @require '~@theme/styles/variables'
 
 .tag-checkbox

@@ -1,7 +1,7 @@
 <template>
   <div class="categories">
     <div class="main-div">
-      <h2>文章分类 | Categories</h2>
+      <h2>{{ $themeConfig.lang.categories }}</h2>
 
       <RouterLink
         v-for="cate in $categories.list"
@@ -9,7 +9,7 @@
         :to="cate.path"
       >
         <IconTag
-          icon="folder-open"
+          icon="category"
           :name="cate.name"
         />
       </RouterLink>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import IconTag from '../IconTag.vue'
+import IconTag from '../components/IconTag.vue'
 
 export default {
   name: 'Categories',

@@ -16,6 +16,11 @@
 
       <aside class="aside">
         <InfoCard class="main-div" />
+
+        <PostNavCard
+          v-if="$page.type === 'post'"
+          class="main-div"
+        />
       </aside>
     </div>
   </TransitionFadeSlide>
@@ -23,15 +28,8 @@
 
 <script>
 import TransitionFadeSlide from './TransitionFadeSlide.vue'
+import PostNavCard from './PostNavCard.vue'
 import InfoCard from './InfoCard.vue'
-import Home from './layouts/Home.vue'
-import Posts from './layouts/Posts.vue'
-import Post from './layouts/Post.vue'
-import Page from './layouts/Page.vue'
-import Tags from './layouts/Tags.vue'
-import Categories from './layouts/Categories.vue'
-import Tag from './layouts/Tag.vue'
-import Category from './layouts/Category.vue'
 
 export default {
   name: 'TheMain',
@@ -39,26 +37,23 @@ export default {
   components: {
     TransitionFadeSlide,
     InfoCard,
-    /* eslint-disable vue/no-unused-components */
-    Home,
-    Posts,
-    Post,
-    Page,
-    Tags,
-    Categories,
-    Tag,
-    Category,
-    /* eslint-enable vue/no-unused-components */
-  },
-
-  props: {
-    layout: {
-      type: String,
-      required: true,
-    },
+    PostNavCard,
   },
 
   computed: {
+    layout () {
+      const layout = this.$page.frontmatter.layout
+      if (layout && (this.$vuepress.getLayoutAsyncComponent(layout) || this.$vuepress.getVueComponent(layout))) {
+        return layout
+      }
+
+      if (!this.$page.path) {
+        return 'NotFound'
+      }
+
+      return 'Home'
+    },
+
     showAside () {
       if (this.$page.frontmatter.hasOwnProperty('aside')) {
         return this.$page.frontmatter.aside
@@ -81,7 +76,9 @@ export default {
 .container
   position relative
   margin 1rem auto
-  @media (max-width $MQMobile - 1)
+  .aside
+    position relative
+  @media (max-width $MQMobile - 1px)
     margin 0.5rem auto
   &:not(.show-aside)
     .main
@@ -105,7 +102,7 @@ export default {
       .aside
         float left
         padding-left 1rem
-    @media (max-width $MQMobile - 1)
+    @media (max-width $MQMobile - 1px)
       .main
         width 100%
       .aside

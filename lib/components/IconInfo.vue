@@ -1,36 +1,10 @@
-<template>
-  <Component
-    :is="is"
-    :href="href"
-    :title="title"
-  >
-    <Icon
-      class="info-icon"
-      :name="icon"
-      :size="size"
-      :title="title"
-    />
-
-    <span class="info-text">
-      <slot />
-    </span>
-  </Component>
-</template>
-
 <script>
 import Icon from './Icon.vue'
-const typeIconMap = {
-  'category': 'folder-open',
-  'date': 'calendar',
-  'email': 'mail',
-  'location': 'location',
-  'organization': 'team',
-  'tag': 'tag',
-  'tags': 'tags',
-}
 
 export default {
   name: 'IconInfo',
+
+  functional: true,
 
   components: {
     Icon,
@@ -58,18 +32,28 @@ export default {
     type: {
       type: String,
       required: true,
-      validator: val => Object.keys(typeIconMap).includes(val),
     },
   },
 
-  computed: {
-    icon () {
-      return typeIconMap[this.type]
-    },
+  render (h, { props: { href, size, title, type }, children }) {
+    const Component = href ? 'a' : 'span'
+    return (
+      <Component
+        href={href}
+        title={title}
+      >
+        <Icon
+          class="info-icon"
+          name={type}
+          size={size}
+          title={title}
+        />
 
-    is () {
-      return this.href ? 'a' : 'span'
-    },
+        <span class="info-text">
+          { children }
+        </span>
+      </Component>
+    )
   },
 }
 </script>

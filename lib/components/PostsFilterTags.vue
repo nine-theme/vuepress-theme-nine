@@ -24,7 +24,7 @@
 import IconTag from './IconTag.vue'
 
 export default {
-  name: 'PostsTagsSelect',
+  name: 'PostsFilterTags',
 
   components: {
     IconTag,
@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 @require '~@theme/styles/variables'
 
 .tag-checkbox

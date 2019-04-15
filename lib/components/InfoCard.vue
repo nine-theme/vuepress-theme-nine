@@ -56,7 +56,10 @@
       </section>
     </div>
 
-    <div class="info-card-footer">
+    <div
+      v-if="sns"
+      class="info-card-footer"
+    >
       <section class="info-sns clearfix">
         <a
           v-for="(item, name) of sns"
@@ -91,7 +94,7 @@ export default {
 
   computed: {
     info () {
-      return this.$site.themeConfig.personalInfo || {}
+      return this.$themeConfig.personalInfo || {}
     },
 
     nickname () {
@@ -119,7 +122,7 @@ export default {
     },
 
     sns () {
-      return this.info.sns || {}
+      return this.info.sns || null
     },
 
     headerStyle () {

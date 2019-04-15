@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <PostsList class="main-div" />
+    <PostsList />
   </div>
 </template>
 
 <script>
-import PostsList from '../PostsList.vue'
+import PostsList from '../components/PostsList.vue'
 
 export default {
   name: 'Home',

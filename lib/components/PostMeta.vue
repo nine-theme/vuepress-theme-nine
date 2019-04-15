@@ -1,15 +1,18 @@
 <template>
   <section class="post-meta main-div">
     <section class="post-date clearfix">
-      <span class="create-date">
-        发布时间：{{ $page.createdAt }}
+      <span
+        v-if="$page.createdAt"
+        class="create-date"
+      >
+        {{ `${$themeConfig.lang.createdAt} : ${$page.createdAt}` }}
       </span>
 
       <span
         v-if="$page.updatedAt"
         class="update-date"
       >
-        最后修改：{{ $page.updatedAt }}
+        {{ `${$themeConfig.lang.updatedAt} : ${$page.updatedAt}` }}
       </span>
     </section>
 
@@ -19,7 +22,7 @@
         :to="prevPost.path"
         class="post-link"
       >
-        上一篇：{{ prevPost.title }}
+        {{ `${$themeConfig.lang.prevPost} : ${prevPost.title}` }}
       </RouterLink>
 
       <RouterLink
@@ -27,7 +30,7 @@
         :to="nextPost.path"
         class="post-link"
       >
-        下一篇：{{ nextPost.title }}
+        {{ `${$themeConfig.lang.nextPost} : ${nextPost.title}` }}
       </RouterLink>
     </section>
   </section>

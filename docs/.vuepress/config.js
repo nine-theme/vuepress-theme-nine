@@ -15,7 +15,7 @@ module.exports = {
       location: 'sz',
       organization: '',
 
-      avator: 'https://www.meteorlxy.cn/assets/img/avator.jpg',
+      avator: 'https://www.Nine.cn/assets/img/avator.jpg',
 
       sns: {
         github: {

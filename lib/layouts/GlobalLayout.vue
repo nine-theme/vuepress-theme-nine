@@ -1,5 +1,5 @@
 <template>
-  <div id="vuepress-theme-meteorlxy">
+  <div id="vuepress-theme-Nine">
     <TheHeader />
 
     <TheMain />
@@ -14,7 +14,7 @@ import TheMain from '../components/TheMain.vue'
 import TheFooter from '../components/TheFooter.vue'
 
 export default {
-  name: 'ThemeMeteorlxy',
+  name: 'ThemeNine',
 
   components: {
     TheHeader,

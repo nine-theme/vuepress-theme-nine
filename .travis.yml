@@ -1,5 +1,7 @@
 language: node_js
 node_js:
+  - "10"
+  - "9"
   - "8"
 
 os: osx
@@ -9,12 +11,17 @@ branches:
     - master
 
 before_install:
+  - npm install -g codecov
   - npm install -g vuepress
 
 install:
   - npm install
 #  - npm run build
 #  - npm publish
+
+script:
+  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+  - codecov
 
 before_deploy:
   - npm run build

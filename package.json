@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NineSwordsMonster/vuepress-theme-nine.git"
+    "url": "git@github.com:NineSwordsMonster/vuepress-theme-nine.git"
   },
   "bugs": {
     "url": "https://github.com/NineSwordsMonster/vuepress-theme-nine/issues"
@@ -25,7 +25,8 @@
     "dev": "vuepress dev docs --temp .temp",
     "build": "vuepress build docs --dest docs-dist",
     "lint": "eslint --fix --ext .js,.vue .",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1 && git add CHANGELOG.md"
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1 && git add CHANGELOG.md",
+    "test": "istanbul cover ./lib && codecov -F istanbul_mocha"
   },
   "husky": {
     "hooks": {
@@ -40,10 +41,6 @@
   },
   "peerDependencies": {
     "vuepress": "1.0.0-alpha.44"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:NineSwordsMonster/vuepress-theme-nine.git"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.10",
@@ -79,6 +76,7 @@
     "vuepress-plugin-zooming": "^1.0.0"
   },
   "devDependencies": {
+    "codecov": "^3.3.0",
     "conventional-changelog-cli": "^2.0.12",
     "eslint": "^5.10.0",
     "eslint-config-standard": "^12.0.0",
@@ -88,10 +86,12 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^5.0.0",
     "husky": "^1.3.0",
+    "istanbul": "^0.4.5",
     "iview-loader": "^1.2.2",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "lint-staged": "8.1.5",
+    "mocha": "^6.1.4",
     "vuepress": "1.0.0-alpha.44"
   }
 }

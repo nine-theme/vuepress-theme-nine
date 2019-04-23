@@ -1,7 +1,10 @@
 {
   "name": "vuepress-theme-nine",
   "version": "1.0.1-beta.1",
-  "author": "NineSwordsMonster",
+  "author": {
+    "name": "NineSwordsMonster",
+    "email": "wangjia_1919@163.com"
+  },
   "license": "MIT",
   "private": false,
   "description": "vuepress-theme-nine",
@@ -37,6 +40,10 @@
   },
   "peerDependencies": {
     "vuepress": "1.0.0-alpha.44"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:NineSwordsMonster/vuepress-theme-nine.git"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.10",

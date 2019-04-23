@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "8"
+
+os: osx
+
+before_install:
+  - npm install -g vuepress
+
+install:
+  - npm install
+  - npm run build
+  - npm publish
+
+branches:
+  only:
+    - master

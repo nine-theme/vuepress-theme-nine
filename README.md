@@ -2,6 +2,6 @@
 
 ## Installation
 ```sh
-npm install vuepress-theme-ninne@next
+npm install vuepress-theme-nine@next
 ```
 

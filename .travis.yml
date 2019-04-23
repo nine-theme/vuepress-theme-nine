@@ -4,21 +4,26 @@ node_js:
 
 os: osx
 
+branches:
+  only:
+    - master
+
 before_install:
   - npm install -g vuepress
 
 install:
   - npm install
-  - npm run build
+#  - npm run build
 #  - npm publish
 
-branches:
-  only:
-    - master
+before_deploy:
+  - npm run build
 
 deploy:
   provider: npm
   email: "wangjia_1919@163.com"
+  skip_cleanup: true
   api_key: ${NPM_TOKEN}
   on:
     branch: master
+  tag: latest

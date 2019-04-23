@@ -1,4 +1,4 @@
-# vuepress-theme-nine
+# vuepress-theme-nine [![Build Status](https://travis-ci.org/NineSwordsMonster/vuepress-theme-nine.svg?branch=master)](https://travis-ci.org/NineSwordsMonster/vuepress-theme-nine)
 
 ## Installation
 ```

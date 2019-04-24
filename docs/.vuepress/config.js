@@ -54,7 +54,7 @@ module.exports = {
       location: 'Su Zhou City, China',
       organization: '',
 
-      avatar: '',
+      avatar: '/img/default_avatar.jpg',
 
       sns: {
         github: {

@@ -13,7 +13,6 @@
   <a href="https://www.npmjs.com/package/vuepress-theme-nine">
     <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/NineSwordsMonster/vuepress-theme-nine/master.svg">
   </a>
-  
   <a href="https://www.npmjs.com/package/vuepress-theme-nine">
     <img alt="License" src="https://img.shields.io/npm/l/vuepress-theme-nine.svg">
   </a> 

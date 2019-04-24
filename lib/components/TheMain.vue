@@ -5,15 +5,6 @@
       :class="containerClass"
       :key="showAside"
     >
-      <main class="main">
-        <TransitionFadeSlide>
-          <component
-            :is="layout"
-            :key="$page.path"
-          />
-        </TransitionFadeSlide>
-      </main>
-
       <aside class="aside">
         <InfoCard class="main-div" />
 
@@ -22,6 +13,14 @@
           class="main-div"
         />
       </aside>
+      <main class="main">
+        <TransitionFadeSlide>
+          <component
+            :is="layout"
+            :key="$page.path"
+          />
+        </TransitionFadeSlide>
+      </main>
     </div>
   </TransitionFadeSlide>
 </template>
@@ -101,7 +100,7 @@ export default {
         float left
       .aside
         float left
-        padding-left 1rem
+        padding-right 1rem
     @media (max-width $MQMobile - 1px)
       .main
         width 100%

@@ -843,7 +843,7 @@
     source-map "~0.6.1"
     vue-template-es2015-compiler "^1.9.0"
 
-"@vuepress/core@^1.0.0-alpha.44":
+"@vuepress/core@^1.0.0-alpha.47":
   version "1.0.0-alpha.47"
   resolved "https://registry.yarnpkg.com/@vuepress/core/-/core-1.0.0-alpha.47.tgz#b1965c0f0c0961aaf110d04525f08ac9a91545af"
   integrity sha512-4nD1fhQIK58W5hMzP2yT6rz8CNjwHWLI6ctRhNCFk4gnIDdwnRgfvkHSnN/fkNg4czZh9Gm7nOfL2sL7JurD6g==
@@ -915,17 +915,17 @@
   dependencies:
     lodash.throttle "^4.1.1"
 
-"@vuepress/plugin-back-to-top@1.0.0-alpha.44":
-  version "1.0.0-alpha.44"
-  resolved "https://registry.yarnpkg.com/@vuepress/plugin-back-to-top/-/plugin-back-to-top-1.0.0-alpha.44.tgz#e480c23283118a8c90c3291ad1acbae593cf333c"
-  integrity sha512-h2jbvWEDwphoQQ6dq+dvEcFc4gbXFSuUgA7yqfQkqTdtxLnEOkFV5CXoUKhMMJyPR4PqBO6Z4n361BYpSvTwuQ==
+"@vuepress/plugin-back-to-top@1.0.0-alpha.47":
+  version "1.0.0-alpha.47"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-back-to-top/-/plugin-back-to-top-1.0.0-alpha.47.tgz#138262700c22c80878a36e6837bfe03a4e514580"
+  integrity sha512-02wOpaIzJqwDMMd5+22f48iOC7iz3NgAX42VOJjFvQmrFzcBMm/HMzXG0nLF0Q23Idcbs1b5Vf4UPPCgiHDZWQ==
   dependencies:
     lodash.debounce "^4.0.8"
 
-"@vuepress/plugin-google-analytics@1.0.0-alpha.44":
-  version "1.0.0-alpha.44"
-  resolved "https://registry.yarnpkg.com/@vuepress/plugin-google-analytics/-/plugin-google-analytics-1.0.0-alpha.44.tgz#5fa4edc341cffc634804c6f72db076fd0bffc3c0"
-  integrity sha512-oBFXHlO5I3M0jGg/Ob8WsVY1g+4Xcm6AT70m89/RB3GjHhPHMDF0bRCyoLOzLzVnWUEqOH/0HbDDK0MnGFGB8w==
+"@vuepress/plugin-google-analytics@1.0.0-alpha.47":
+  version "1.0.0-alpha.47"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-google-analytics/-/plugin-google-analytics-1.0.0-alpha.47.tgz#48af1cda1bd9f1a9f5c3506c398a1c364db6647f"
+  integrity sha512-QuJoudT8EGo14oQsNrFpV9sKYNAkHH31Jv5R8/7JSEBcG9NKgpIUAaCkb2+/Ytwot2Oh/cd7MQsZvHQeXWuTBQ==
 
 "@vuepress/plugin-last-updated@^1.0.0-alpha.47":
   version "1.0.0-alpha.47"
@@ -968,7 +968,7 @@
     semver "^5.5.0"
     upath "^1.1.0"
 
-"@vuepress/theme-default@^1.0.0-alpha.44":
+"@vuepress/theme-default@^1.0.0-alpha.47":
   version "1.0.0-alpha.47"
   resolved "https://registry.yarnpkg.com/@vuepress/theme-default/-/theme-default-1.0.0-alpha.47.tgz#9eb8708c7319eb5b9a982fa17f0244c6da574a20"
   integrity sha512-/9Pw3vD0JEwXznmUwq5aYk1Npi14AloxkNcr6CyM1MXAmtZOG0Bbq2h9Sr5lpQLCPgrfOVuobqol4X0QeHokSw==
@@ -9162,13 +9162,13 @@ vuepress-plugin-zooming@^1.0.0:
   dependencies:
     zooming "^2.1.1"
 
-vuepress@1.0.0-alpha.44:
-  version "1.0.0-alpha.44"
-  resolved "https://registry.yarnpkg.com/vuepress/-/vuepress-1.0.0-alpha.44.tgz#044048047651f7e8890d48886e97f2ad5eb5ddea"
-  integrity sha512-m6tYdmQbqZQ2frqyPa/OwFoRRv+SY0nkv6dai+74+Vy4IAnPmY7/otrlvmWVNpPh6X4pT2HvNh08YetfUnWX7g==
+vuepress@^1.0.0-alpha.47:
+  version "1.0.0-alpha.47"
+  resolved "https://registry.yarnpkg.com/vuepress/-/vuepress-1.0.0-alpha.47.tgz#b6f06a5569aaf0b4016f9eb1da5fd4e01f295d45"
+  integrity sha512-AxvDNsT1Cj7ZrVSR4pKtCDD4DYQOTMWtUkBcRDAuSzBIJfjOjdrW6FY/G27SrKHA7cKhVXzxBiHYmXysIpfPjw==
   dependencies:
-    "@vuepress/core" "^1.0.0-alpha.44"
-    "@vuepress/theme-default" "^1.0.0-alpha.44"
+    "@vuepress/core" "^1.0.0-alpha.47"
+    "@vuepress/theme-default" "^1.0.0-alpha.47"
     cac "^6.3.9"
 
 watchpack@^1.5.0:

@@ -6,7 +6,7 @@
     >
       <img
         class="info-avatar"
-        :src="avatar"
+        :src="$withBase(avatar)"
         :alt="nickname"
       >
     </div>

@@ -27,6 +27,15 @@
       >
         Vuepress
       </a>
+
+      using
+      <a
+        href="https://github.com/NineSwordsMonster/vuepress-theme-nineg"
+        target="_blank"
+      >
+        nine
+      </a>
+      theme
     </p>
   </footer>
 </template>

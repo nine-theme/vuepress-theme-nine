@@ -15,7 +15,7 @@ module.exports = {
 
   plugins: [
     ['@vuepress/google-analytics', {
-      'ga': 'UA-118953951-1',
+      'ga': '*',
     }],
   ],
 
@@ -43,7 +43,7 @@ module.exports = {
   theme: path.resolve(__dirname, '../../lib'),
 
   themeConfig: {
-    lang: require(path.resolve(__dirname, '../../lib/langs/en-US')),
+    lang: require(path.resolve(__dirname, '../../lib/langs/zh-CN')),
     // lang: require(path.resolve(__dirname, '../../lib/langs/zh-CN')),
     // lang: require(path.resolve(__dirname, '../../lib/langs/pt-BR')),
 

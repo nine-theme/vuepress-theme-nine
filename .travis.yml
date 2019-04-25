@@ -25,4 +25,4 @@ deploy:
   api_key: ${NPM_TOKEN}
   on:
     branch: master
-  tag: latest
+  tag: next

@@ -16,10 +16,12 @@
   <a href="https://www.npmjs.com/package/vuepress-theme-nine">
     <img alt="License" src="https://img.shields.io/npm/l/vuepress-theme-nine.svg">
   </a> 
+ 
 </p>
 
 ## Installation
 ```sh
-npm install vuepress-theme-nine@next
+yarn add vuepress@next
+yarn add vuepress-theme-nine@next
 ```
 

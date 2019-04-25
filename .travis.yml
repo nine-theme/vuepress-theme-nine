@@ -10,7 +10,7 @@ before_install:
   - npm install -g vuepress
 
 install:
-  - rm -rm node_modules
+  - rm -rf node_modules
   - npm install
 
 before_deploy:

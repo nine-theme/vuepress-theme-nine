@@ -18,7 +18,7 @@
       </a>
     </p>
 
-    <p>
+    <p class="power-info">
       <span>Powered by </span>
 
       <a
@@ -27,8 +27,7 @@
       >
         Vuepress
       </a>
-
-      using
+      Using
       <a
         href="https://github.com/NineSwordsMonster/vuepress-theme-nineg"
         target="_blank"
@@ -63,7 +62,9 @@ export default {
 
 .footer
   color $grayTextColor
-  padding-bottom 1.5rem
+  padding 1.5rem 0
   text-align center
   border-top 1px solid $borderColor
+  .power-info
+      font-size small
 </style>

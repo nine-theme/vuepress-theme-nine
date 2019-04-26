@@ -30,6 +30,7 @@
             'show': showNavLinks,
           }"
         >
+          <SearchBox v-if="searchBox" />
           <template v-for="nav of $themeConfig.nav">
             <RouterLink
               v-if="!isExternal(nav.link)"
@@ -67,18 +68,21 @@
 <script>
 import throttle from 'lodash.throttle'
 import Icon from './Icon.vue'
+import SearchBox from '@SearchBox'
 
 export default {
   name: 'TheHeaderNavbar',
 
   components: {
     Icon,
+    SearchBox,
   },
 
   data () {
     return {
       fixed: false,
       showNavLinks: false,
+      filterSearch: '',
     }
   },
 
@@ -87,6 +91,9 @@ export default {
       return {
         'fixed': this.fixed,
       }
+    },
+    searchBox () {
+      return this.$themeConfig.headerSearch || false
     },
   },
 

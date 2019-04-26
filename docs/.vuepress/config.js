@@ -54,7 +54,11 @@ module.exports = {
       location: 'Su Zhou City, China',
       organization: '',
 
-      avatar: '/img/default_avatar.jpg',
+      avatar: '/assets/images/default_avatar.jpeg',
+      geoBg: {
+        enable: true,
+        color: '#abc',
+      },
 
       sns: {
         github: {
@@ -67,13 +71,16 @@ module.exports = {
     header: {
       background: {
         // url: '/assets/img/bg.jpg',
-        useGeo: true,
+        useGeo: {
+          enable: true,
+          color: '#ccc',
+        },
       },
       showTitle: true,
     },
 
     lastUpdated: true,
-
+    headerSearch: true,
     nav: [
       { text: 'Home', link: '/', exact: true },
       { text: 'Posts', link: '/posts/', exact: false },

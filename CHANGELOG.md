@@ -1,6 +1,10 @@
 ## [1.0.2-beta.1](https://github.com/NineSwordsMonster/vuepress-theme-nine/compare/v1.0.1...v1.0.2-beta.1) (2019-04-26)
-
-
+- 增加标题栏搜索
+- 修改页脚信息
+- 修改用户信息
+- 修改用户信息背景图
+- 增加部分官方插件
+- 增加头像滚动
 
 ## 1.0.1 (2019-04-25)
 - 增加iview 支持

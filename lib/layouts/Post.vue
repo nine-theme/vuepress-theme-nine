@@ -57,7 +57,7 @@ export default {
         typeof this.$themeConfig.comments.platform === 'undefined' ||
         this.$themeConfig.comments.platform === 'github'
       )) {
-        const labels = (this.$themeConfig.comments && this.$themeConfig.comments.labels) || ['Vssue']
+        const labels = (this.$themeConfig.comments && this.$themeConfig.comments.labels) || ['Nine Commit']
         return {
           labels: labels.concat(this.vssueTitle.replace(/,/g, '')),
         }

@@ -83,7 +83,24 @@
 import IconInfo from './IconInfo.vue'
 import IconSns from './IconSns.vue'
 import GeoPattern from 'geopattern'
-
+const generators = [
+  'octogons',
+  'overlappingCircles',
+  'plusSigns',
+  'xes',
+  'sineWaves',
+  'hexagons',
+  'overlappingRings',
+  'plaid',
+  'triangles',
+  'squares',
+  'concentricCircles',
+  'diamonds',
+  'tessellation',
+  'nestedSquares',
+  'mosaicSquares',
+  'chevrons',
+]
 export default {
   name: 'InfoCard',
 
@@ -91,8 +108,16 @@ export default {
     IconInfo,
     IconSns,
   },
+  methods: {
+    randomArr (arr) {
+      return arr[Math.floor(Math.random() * arr.length)]
+    },
+  },
 
   computed: {
+    geoColor () {
+      return this.info.geoBg.color || undefined
+    },
     info () {
       return this.$themeConfig.personalInfo || {}
     },
@@ -127,7 +152,15 @@ export default {
 
     headerStyle () {
       return {
-        'background-image': !this.$ssrContext ? GeoPattern.generate(this.nickname, { color: '#eee' }).toDataUrl() : null,
+        'background-image': !this.$ssrContext
+          ? this.geoColor ? GeoPattern.generate(this.nickname, {
+            color: this.geoColor,
+            generator: this.randomArr(generators),
+          }).toDataUrl()
+            : GeoPattern.generate(this.nickname, {
+              generator: this.randomArr(generators),
+            }).toDataUrl()
+          : null,
       }
     },
   },
@@ -140,6 +173,16 @@ export default {
 $headerBgHeight = 150px
 $avatarHeight = 120px
 
+@-webkit-keyframes animal
+  0%
+    transform: translateY($headerBgHeight - $avatarHeight * 0.5) rotate(0deg)
+    -ms-transform: rotate(0deg)
+    -webkit-transform: translateY($headerBgHeight - $avatarHeight * 0.5) rotate(0deg)
+  100%
+    transform: translateY($headerBgHeight - $avatarHeight * 0.5) rotate(-360deg)
+    -ms-transform: rotate(-360deg)
+    -webkit-transform: translateY($headerBgHeight - $avatarHeight * 0.5) rotate(-360deg)
+
 .info-card
   padding 0
   a
@@ -148,6 +191,7 @@ $avatarHeight = 120px
   .info-card-header
     height $headerBgHeight
     margin-bottom $avatarHeight * 0.5
+
     .info-avatar
       display block
       width $avatarHeight
@@ -157,6 +201,11 @@ $avatarHeight = 120px
       border-radius 50%
       box-shadow: 0 0 2px alpha(black, 0.2)
       transform translateY($headerBgHeight - $avatarHeight * 0.5)
+      &:hover
+        -webkit-animation: animal 2s infinite cubic-bezier(0.36, 0.71, 0.38, 0.73) ;
+        -webkit-transform-origin: center center;
+        -ms-transform-origin: center center;
+        transform-origin: center center;
   .info-card-body
     cursor default
     padding 1rem
@@ -173,6 +222,7 @@ $avatarHeight = 120px
       color $grayTextColor
       word-break break-all
       line-height 160%
+      text-align: start;
       .icon
         fill $grayTextColor
   .info-card-footer

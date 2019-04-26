@@ -28,16 +28,16 @@ const generators = [
   'overlappingCircles',
   'plusSigns',
   'xes',
-  // 'sineWaves',
+  'sineWaves',
   'hexagons',
   'overlappingRings',
-  // 'plaid',
+  'plaid',
   'triangles',
-  // 'squares',
+  'squares',
   'concentricCircles',
   'diamonds',
   'tessellation',
-  // 'nestedSquares',
+  'nestedSquares',
   'mosaicSquares',
   'chevrons',
 ]
@@ -100,11 +100,15 @@ export default {
     // in computed, geopattern will always be computed
     // in methods, geopattern won't be called with useGeo = false
     gpImg () {
-      return this.backgroundConfig.useGeo !== false
-        ? GeoPattern.generate(this.gpString(), {
-          // color: '#9fe0f6',
-          generator: this.randomArr(generators),
-        }).toDataUrl()
+      return this.backgroundConfig.useGeo.enable !== false
+        ? this.backgroundConfig.useGeo.color
+          ? GeoPattern.generate(this.gpString(), {
+            color: this.backgroundConfig.useGeo.color,
+            generator: this.randomArr(generators),
+          }).toDataUrl()
+          : GeoPattern.generate(this.gpString(), {
+            generator: this.randomArr(generators),
+          }).toDataUrl()
         : null
     },
 

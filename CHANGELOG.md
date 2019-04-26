@@ -1,5 +1,5 @@
 ## [1.0.2](https://github.com/NineSwordsMonster/vuepress-theme-nine/compare/v1.0.2-beta.1...v1.0.2) (2019-04-26)
-
+- fix document can not found error
 
 
 ## [1.0.2-beta.1](https://github.com/NineSwordsMonster/vuepress-theme-nine/compare/v1.0.1...v1.0.2-beta.1) (2019-04-26)

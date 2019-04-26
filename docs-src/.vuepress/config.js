@@ -4,7 +4,7 @@ module.exports = {
   title: 'vuepress-theme-nine',
 
   description: 'nine\'s homepage',
-
+  base: '/vuepress-theme-nine/',
   locales: {
     '/': {
       lang: 'zh-CN',
@@ -13,9 +13,10 @@ module.exports = {
 
   evergreen: true,
 
+  ga: 'UA-118953951-1',
   plugins: [
     ['@vuepress/google-analytics', {
-      'ga': '*',
+      'ga': 'UA-118953951-1',
     }],
   ],
 

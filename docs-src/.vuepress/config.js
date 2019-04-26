@@ -54,7 +54,7 @@ module.exports = {
       location: 'Su Zhou City, China',
       organization: '',
 
-      avatar: '/assets/images/default_avatar.jpeg',
+      avatar: '/img/default_avatar.jpeg',
       geoBg: {
         enable: true,
         color: '#abc',

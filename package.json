@@ -22,8 +22,8 @@
     "url": "https://github.com/NineSwordsMonster/vuepress-theme-nine/issues"
   },
   "scripts": {
-    "dev": "vuepress dev docs --temp .temp",
-    "build": "vuepress build docs --dest docs-dist",
+    "dev": "vuepress dev docs-src --temp .temp",
+    "build": "vuepress build docs-src --dest docs",
     "lint": "eslint --fix --ext .js,.vue .",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1 && git add CHANGELOG.md"
   },

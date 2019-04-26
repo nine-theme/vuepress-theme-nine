@@ -175,13 +175,13 @@ $avatarHeight = 120px
 
 @-webkit-keyframes animal
   0%
-    transform: translateY($headerBgHeight - $avatarHeight * 0.5) rotate(0deg)
-    -ms-transform: rotate(0deg)
+    -ms-transform: translateY($headerBgHeight - $avatarHeight * 0.5) rotate(0deg)
     -webkit-transform: translateY($headerBgHeight - $avatarHeight * 0.5) rotate(0deg)
+    transform: translateY($headerBgHeight - $avatarHeight * 0.5) rotate(0deg)
   100%
-    transform: translateY($headerBgHeight - $avatarHeight * 0.5) rotate(-360deg)
-    -ms-transform: rotate(-360deg)
+    -ms-transform: translateY($headerBgHeight - $avatarHeight * 0.5) rotate(-360deg)
     -webkit-transform: translateY($headerBgHeight - $avatarHeight * 0.5) rotate(-360deg)
+    transform: translateY($headerBgHeight - $avatarHeight * 0.5) rotate(-360deg)
 
 .info-card
   padding 0

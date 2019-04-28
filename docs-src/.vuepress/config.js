@@ -82,7 +82,9 @@ module.exports = {
       { text: 'Changelog', link: 'https://github.com/NineSwordsMonster/vuepress-theme-nine/blob/master/CHANGELOG.md' },
       { text: 'Github', link: 'https://github.com/NineSwordsMonster/vuepress-theme-nine' },
     ],
-
+    comments: {
+      enable: false,
+    },
     pagination: {
       perPage: 5,
     },

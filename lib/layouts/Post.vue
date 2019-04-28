@@ -43,7 +43,8 @@ export default {
     },
 
     vssue () {
-      return this.$themeConfig.comments !== false && this.$frontmatter['vssue'] !== false && (this.vssueTitle || this.vssueId)
+      return (this.$themeConfig.comments && this.$themeConfig.comments.enable !== false) &&
+        this.$frontmatter['vssue'] !== false && (this.vssueTitle || this.vssueId)
     },
 
     vssueTitle () {

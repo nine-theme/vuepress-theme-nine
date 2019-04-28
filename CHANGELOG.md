@@ -1,3 +1,12 @@
+## [1.0.4-beta.1](https://github.com/NineSwordsMonster/vuepress-theme-nine/compare/v1.0.3-beta.1...v1.0.4-beta.1) (2019-04-28)
+
+
+### Bug Fixes
+
+* 背景色丢失 ([d4725dc](https://github.com/NineSwordsMonster/vuepress-theme-nine/commit/d4725dc))
+
+
+
 ## [1.0.3](https://github.com/NineSwordsMonster/vuepress-theme-nine/compare/v1.0.2-beta.1...v1.0.3) (2019-04-28)
 
 

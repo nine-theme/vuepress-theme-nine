@@ -27,12 +27,14 @@
 
 <script>
 import PostMeta from '../components/PostMeta.vue'
+import Content from '@vuepress/core/lib/client/components/Content.js'
 
 export default {
   name: 'Post',
 
   components: {
     PostMeta,
+    Content,
   },
 
   computed: {

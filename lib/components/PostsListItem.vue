@@ -101,8 +101,10 @@ export default {
   .post-title
     color $textColor
     transition all 0.2s
+    margin 1rem 0
   .post-info-list
     color $lightTextColor
+    margin 1rem 0
     .post-info-item
       cursor default
       &:not(:first-child)
@@ -116,6 +118,7 @@ export default {
     color $grayTextColor
     text-align justify
     padding 0
+    margin 1rem 0
   .post-link
     &:hover
       text-decoration none

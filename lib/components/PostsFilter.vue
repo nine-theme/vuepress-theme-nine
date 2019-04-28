@@ -153,4 +153,10 @@ export default {
 .filter-tags
   a
     color $textColor
+.filter-categories,
+.filter-tags,
+.filter-search
+  margin 1rem 0
+  h3
+    margin 0 0 1rem
 </style>

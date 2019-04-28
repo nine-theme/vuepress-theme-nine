@@ -13,13 +13,6 @@ module.exports = {
 
   evergreen: true,
 
-  ga: 'UA-118953951-1',
-  plugins: [
-    ['@vuepress/google-analytics', {
-      'ga': 'UA-118953951-1',
-    }],
-  ],
-
   chainWebpack: (config, isServer) => {
     if (isServer === false) {
       config.optimization.splitChunks({
@@ -89,14 +82,6 @@ module.exports = {
       { text: 'Changelog', link: 'https://github.com/NineSwordsMonster/vuepress-theme-nine/blob/master/CHANGELOG.md' },
       { text: 'Github', link: 'https://github.com/NineSwordsMonster/vuepress-theme-nine' },
     ],
-
-    comments: {
-      owner: 'NineSwardsMonster',
-      repo: 'gitment-comments',
-      clientId: '6df5e3f1c9df36da16f8',
-      clientSecret: 'b1e8d8bf0f60f1cffd7aedfed12e2383553028ea',
-      autoCreateIssue: false,
-    },
 
     pagination: {
       perPage: 5,

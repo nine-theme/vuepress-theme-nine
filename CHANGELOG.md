@@ -1,3 +1,7 @@
+## [1.0.5](https://github.com/NineSwordsMonster/vuepress-theme-nine/compare/v1.0.5-beta.2...v1.0.5) (2019-04-29)
+
+
+
 ## [1.0.5-beta.2](https://github.com/NineSwordsMonster/vuepress-theme-nine/compare/v1.0.5-beta.1...v1.0.5-beta.2) (2019-04-29)
 
 

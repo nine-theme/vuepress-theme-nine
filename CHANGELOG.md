@@ -1,13 +1,5 @@
 ## [1.0.5-beta.1](https://github.com/NineSwordsMonster/vuepress-theme-nine/compare/v1.0.4-beta.1...v1.0.5-beta.1) (2019-04-29)
-
-
-
-## [1.0.4](https://github.com/NineSwordsMonster/vuepress-theme-nine/compare/v1.0.4-beta.1...v1.0.4) (2019-04-28)
-
-
-
-## [1.0.4-beta.1](https://github.com/NineSwordsMonster/vuepress-theme-nine/compare/v1.0.3-beta.1...v1.0.4-beta.1) (2019-04-28)
-
+* iview 引入导致出现样式问题
 
 ### Bug Fixes
 

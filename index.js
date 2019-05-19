@@ -1,22 +1,23 @@
 module.exports = (themeConfig, ctx) => {
     return {
+        dist: 'dist',
         plugins: [
             '@vuepress/pwa',
             {
                 serviceWorker: true,
                 updatePopup: true
-            }
+            },
+            ''
         ],
         chainWebpack: config => {
             config.module
                 .rule('less')
-                .test(/\.less$/)
                 .use('less-loader')
-                .loader('less-loader')
+                .loader("less-loader")
                 .tap(options => {
-                    return {
-                        javascriptEnabled: true
-                    }
+                    options = options || {}
+                    Object.assign(options, { javascriptEnabled: true })
+                    return options
                 }).end()
         }
     }

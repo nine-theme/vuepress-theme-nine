@@ -5,13 +5,16 @@
 </template>
 
 <script>
-
+import Content from '@vuepress/core/lib/client/components/Content'
 export default {
-    name: 'NineLayout'
+    name: 'NineLayout',
+    components: {
+        Content
+    }
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .main {
     height: 100%;
 }

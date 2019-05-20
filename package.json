@@ -1,21 +1,24 @@
 {
-  "name": "vuepress-theme-nine",
-  "version": "2.0.0-beta.0",
-  "description": "vuepress theme",
-  "main": "index.js",
-  "repository": "git@github.com:NineSwordsMonster/vuepress-theme-nine.git",
-  "author": "王佳 <wangjia_1919@163.com>",
-  "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "@vuepress/plugin-pwa": "^1.0.2",
-    "@vuepress/plugin-register-components": "^1.0.2",
-    "element-ui": "^2.10.1",
-    "vuepress": "^1.0.2"
+  "name": "vuepress-theme-meteorlxy",
+  "version": "0.1.5",
+  "description": "Vuepress theme - Meteorlxy",
+  "main": "Layout.vue",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meteorlxy/vuepress-theme-meteorlxy.git"
   },
-  "devDependencies": {
-    "babel-plugin-component": "^1.1.1",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^7.1.0"
+  "keywords": [
+    "vuepress",
+    "theme"
+  ],
+  "author": "meteorlxy <meteor.lxy@foxmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meteorlxy/vuepress-theme-meteorlxy/issues"
+  },
+  "homepage": "https://github.com/meteorlxy/vuepress-theme-meteorlxy",
+  "dependencies": {
+    "geopattern": "^1.2.3",
+    "moment": "^2.22.1"
   }
 }

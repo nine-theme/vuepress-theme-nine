@@ -5,7 +5,7 @@
   "main": "Layout.vue",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NineSwordsMonster/vuepress-theme-meteorlxy.git"
+    "url": "git+https://github.com/NineSwordsMonster/vuepress-theme-nine.git"
   },
   "keywords": [
     "vuepress",

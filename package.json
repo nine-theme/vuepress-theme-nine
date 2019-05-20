@@ -1,24 +1,37 @@
 {
-  "name": "vuepress-theme-meteorlxy",
-  "version": "0.1.5",
-  "description": "Vuepress theme - Meteorlxy",
+  "name": "vuepress-theme-nine",
+  "version": "2.0.0-beta.1",
+  "description": "Vuepress theme - Nine",
   "main": "Layout.vue",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meteorlxy/vuepress-theme-meteorlxy.git"
+    "url": "git+https://github.com/NineSwordsMonster/vuepress-theme-meteorlxy.git"
   },
   "keywords": [
     "vuepress",
     "theme"
   ],
-  "author": "meteorlxy <meteor.lxy@foxmail.com>",
+  "author": "wangjia_1919@163.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/meteorlxy/vuepress-theme-meteorlxy/issues"
+    "url": "https://github.com/NineSwordsMonster/vuepress-theme-nine/issues"
   },
-  "homepage": "https://github.com/meteorlxy/vuepress-theme-meteorlxy",
+  "homepage": "https://github.com/NineSwordsMonster/vuepress-theme-nine",
+
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-brands": "^5.0.13",
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/vue-fontawesome": "^0.0.23",
+    "date-fns": "^1.29.0",
     "geopattern": "^1.2.3",
-    "moment": "^2.22.1"
+    "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-vue": "^4.5.0",
+    "husky": "^1.0.0-rc.8",
+    "lint-staged": "^7.2.0"
   }
 }

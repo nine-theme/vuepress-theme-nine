@@ -2,11 +2,13 @@
   <div class="info-card">
     <div
       class="info-card-header"
-      :style="headerStyle">
+      :style="headerStyle"
+    >
       <img
         class="info-avator"
         :src="avator"
-        :alt="nickname"/>
+        :alt="nickname"
+      >
     </div>
 
     <div class="info-card-body">
@@ -15,9 +17,9 @@
       <section
         v-if="description"
         class="info-desc"
-        v-html="description">
-      </section>
-      
+        v-html="description"
+      />
+
       <section class="info-contact">
         <section>
           <IconInfo
@@ -25,18 +27,20 @@
             class="info-location"
             type="location"
             :text="location"
-            fixed-width/>
+            fixed-width
+          />
         </section>
-        
+
         <section>
           <IconInfo
             v-if="organization"
             class="info-organization"
             type="organization"
             :text="organization"
-            fixed-width/>
+            fixed-width
+          />
         </section>
-        
+
         <section>
           <IconInfo
             v-if="email"
@@ -44,7 +48,8 @@
             type="email"
             :href="`mailto:${email}`"
             :text="email"
-            fixed-width/>
+            fixed-width
+          />
         </section>
       </section>
     </div>
@@ -56,11 +61,13 @@
           :key="name"
           :href="item.link"
           class="sns-link"
-          target="_blank">
-          <SnsIcon
+          target="_blank"
+        >
+          <IconSns
             :name="name"
             :account="item.account"
-            size="lg"/>
+            size="lg"
+          />
         </a>
       </section>
     </div>
@@ -69,51 +76,61 @@
 
 <script>
 import IconInfo from '@theme/components/widgets/IconInfo'
-import SnsIcon from '@theme/components/widgets/SnsIcon'
+import IconSns from '@theme/components/widgets/IconSns'
 import GeoPattern from 'geopattern'
 
 export default {
   name: 'InfoCard',
+
   components: {
     IconInfo,
-    SnsIcon
+    IconSns,
   },
+
   computed: {
     info () {
       return this.$site.themeConfig.personalInfo || {}
     },
+
     nickname () {
       return this.info.nickname || 'Unknown'
     },
+
     description () {
       return this.info.description || null
     },
+
     location () {
       return this.info.location || null
     },
+
     email () {
       return this.info.email || null
     },
+
     organization () {
       return this.info.organization || null
     },
+
     avator () {
       return this.info.avator || '/assets/img/avator_unknown.jpg'
     },
+
     sns () {
       return this.info.sns || {}
     },
+
     headerStyle () {
       return {
-        'background-image': !this.$ssrContext ? GeoPattern.generate(this.nickname, { color: '#eee' }).toDataUrl() : null
+        'background-image': !this.$ssrContext ? GeoPattern.generate(this.nickname, { color: '#eee' }).toDataUrl() : null,
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="stylus" scoped>
-@import '~@theme/styles/variables.styl'
+@require '~@theme/styles/variables'
 
 $headerBgHeight = 150px
 $avatorHeight = 120px
@@ -156,4 +173,3 @@ $avatorHeight = 120px
     padding 1rem
 
 </style>
-

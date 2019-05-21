@@ -16,12 +16,12 @@
 
 <script>
 export default {
-  name: 'TheHeaderBanner'
+  name: 'TheHeaderBanner',
 }
 </script>
 
 <style lang="stylus" scoped>
-@import '~@theme/styles/variables.styl'
+@require '~@theme/styles/variables'
 
 .banner
   cursor default
@@ -41,4 +41,3 @@ export default {
         transform scale(1.2)
 
 </style>
-

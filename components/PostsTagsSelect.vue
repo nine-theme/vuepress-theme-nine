@@ -1,7 +1,7 @@
 <template>
   <div class="tags-select">
     <label
-      v-for="tag in $tags"
+      v-for="tag in Object.keys($tags)"
       :key="tag"
       class="tag-checkbox"
     >

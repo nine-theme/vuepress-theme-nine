@@ -15,14 +15,10 @@
     "type": "git",
     "url": "git+https://github.com/NineSwordsMonster/vuepress-theme-nine.git"
   },
-  
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/NineSwordsMonster/vuepress-theme-nine/issues"
   },
   "main": "Layout.vue",
- 
-  
   
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.8",

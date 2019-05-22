@@ -1,5 +1,5 @@
 <template>
-  <component
+  <Component
     :is="is"
     class="info"
     :href="href"

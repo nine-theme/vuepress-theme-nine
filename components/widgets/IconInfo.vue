@@ -16,8 +16,10 @@
     <span
       class="info-text"
       :style="textStyle"
-    >{{ text }}</span>
-  </component>
+    >
+      {{ text }}
+    </span>
+  </Component>
 </template>
 
 <script>

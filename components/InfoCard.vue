@@ -5,8 +5,8 @@
       :style="headerStyle"
     >
       <img
-        class="info-avator"
-        :src="avator"
+        class="info-avatar"
+        :src="avatar"
         :alt="nickname"
       >
     </div>
@@ -23,35 +23,35 @@
       />
 
       <section class="info-contact">
-        <section>
+        <section v-if="location">
           <IconInfo
-            v-if="location"
             class="info-location"
             type="location"
-            :text="location"
-            fixed-width
-          />
+            :title="location"
+          >
+            {{ location }}
+          </IconInfo>
         </section>
 
-        <section>
+        <section v-if="organization">
           <IconInfo
-            v-if="organization"
             class="info-organization"
             type="organization"
-            :text="organization"
-            fixed-width
-          />
+            :title="organization"
+          >
+            {{ organization }}
+          </IconInfo>
         </section>
 
-        <section>
+        <section v-if="email">
           <IconInfo
-            v-if="email"
             class="info-email"
             type="email"
             :href="`mailto:${email}`"
-            :text="email"
-            fixed-width
-          />
+            :title="email"
+          >
+            {{ email }}
+          </IconInfo>
         </section>
       </section>
     </div>
@@ -68,7 +68,7 @@
           <IconSns
             :name="name"
             :account="item.account"
-            size="lg"
+            size="1.5em"
           />
         </a>
       </section>
@@ -77,8 +77,8 @@
 </template>
 
 <script>
-import IconInfo from '@theme/components/widgets/IconInfo'
-import IconSns from '@theme/components/widgets/IconSns'
+import IconInfo from './IconInfo.vue'
+import IconSns from './IconSns.vue'
 import GeoPattern from 'geopattern'
 
 export default {
@@ -114,8 +114,8 @@ export default {
       return this.info.organization || null
     },
 
-    avator () {
-      return this.info.avator || '/assets/img/avator_unknown.jpg'
+    avatar () {
+      return this.info.avatar || '/assets/img/avatar_unknown.jpg'
     },
 
     sns () {
@@ -135,7 +135,7 @@ export default {
 @require '~@theme/styles/variables'
 
 $headerBgHeight = 150px
-$avatorHeight = 120px
+$avatarHeight = 120px
 
 .info-card
   padding 0
@@ -144,16 +144,16 @@ $avatorHeight = 120px
     font-weight normal
   .info-card-header
     height $headerBgHeight
-    margin-bottom $avatorHeight * 0.5
-    .info-avator
+    margin-bottom $avatarHeight * 0.5
+    .info-avatar
       display block
-      width $avatorHeight
-      height $avatorHeight
+      width $avatarHeight
+      height $avatarHeight
       margin 0 auto
       border 3px solid #fff
       border-radius 50%
       box-shadow: 0 0 2px alpha(black, 0.2)
-      transform translateY($headerBgHeight - $avatorHeight * 0.5)
+      transform translateY($headerBgHeight - $avatarHeight * 0.5)
   .info-card-body
     cursor default
     padding 1rem
@@ -170,6 +170,8 @@ $avatorHeight = 120px
       color $grayTextColor
       word-break break-all
       line-height 160%
+      .icon
+        fill $grayTextColor
   .info-card-footer
     text-align center
     padding 1rem

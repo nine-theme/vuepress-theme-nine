@@ -6,6 +6,9 @@ module.exports = (opts, ctx) => {
   if (typeof opts.comments === 'undefined') opts.comments = {}
   if (typeof opts.personalInfo === 'undefined') opts.personalInfo = {}
   if (typeof opts.defaultPages === 'undefined') opts.defaultPages = {}
+  if (typeof opts.header === 'undefined') opts.header = {}
+  if (typeof opts.header.background === 'undefined') opts.header.background = {}
+  if (typeof opts.plugins === 'undefined') opts.plugins = {}
 
   const { comments, lang, defaultPages } = opts
 
@@ -14,13 +17,13 @@ module.exports = (opts, ctx) => {
 
     plugins: [
       [require('./plugins/blog'), { lang }],
-      '@vuepress/plugin-nprogress',
       '@vuepress/plugin-back-to-top',
-      '@vuepress/plugin-medium-zoom',
-      'vuepress-plugin-smooth-scroll',
-      ['@vuepress/plugin-container', { type: 'tip' }],
-      ['@vuepress/plugin-container', { type: 'warning' }],
-      ['@vuepress/plugin-container', { type: 'danger' }],
+      ['vuepress-plugin-container', { type: 'tip' }],
+      ['vuepress-plugin-container', { type: 'warning' }],
+      ['vuepress-plugin-container', { type: 'danger' }],
+      'vuepress-plugin-nprogress',
+      ['vuepress-plugin-smooth-scroll', opts.plugins['smooth-scroll'] || {}],
+      ['vuepress-plugin-zooming', opts.plugins['zooming'] || {}],
     ],
 
     globalUIComponents: 'Iconfont',

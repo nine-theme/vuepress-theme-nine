@@ -14,18 +14,12 @@ import TheMain from '../components/TheMain.vue'
 import TheFooter from '../components/TheFooter.vue'
 
 export default {
-  name: 'ThemeMeteorlxy',
+  name: 'ThemeNine',
 
   components: {
     TheHeader,
     TheMain,
     TheFooter,
-  },
-
-  watch: {
-    '$page.path' () {
-      this.updateZoom()
-    },
   },
 }
 </script>

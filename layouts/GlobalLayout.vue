@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="vuepress-theme-nine">
     <TheHeader />
 
     <TheMain />

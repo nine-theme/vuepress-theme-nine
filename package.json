@@ -1,0 +1,10 @@
+{
+  "name": "vuepress-theme-nine",
+  "version": "2.0.0",
+  "description": "vuepress theme",
+  "main": "inndex.js",
+  "repository": "git@github.com:NineSwordsMonster/vuepress-theme-nine.git",
+  "author": "王佳 <wangjia_1919@163.com>",
+  "license": "MIT",
+  "private": false
+}

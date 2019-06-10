@@ -6,5 +6,11 @@
   "repository": "git@github.com:NineSwordsMonster/vuepress-theme-nine.git",
   "author": "王佳 <wangjia_1919@163.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "scripts": {
+    "dev": "vuepress dev"
+  },
+  "dependencies": {
+    "vuepress": "^1.0.2"
+  }
 }

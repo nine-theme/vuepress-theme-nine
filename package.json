@@ -8,9 +8,13 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "vuepress dev"
+    "dev": "vuepress dev docs"
   },
   "dependencies": {
+    "iview": "^3.4.2",
     "vuepress": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.12.0"
   }
 }

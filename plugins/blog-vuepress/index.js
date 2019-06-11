@@ -52,7 +52,7 @@ module.exports = (options, ctx) => {
   ]
 
   return {
-    name: '@vuepress/plugin-blog (meteorlxy modified version)',
+    name: '@vuepress/plugin-blog (nine modified version)',
     /**
      * Modify page's metadata according to the habits of blog users.
      */

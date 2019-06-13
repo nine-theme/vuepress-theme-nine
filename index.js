@@ -1,7 +1,7 @@
 const path = require('path')
 
 // Theme API.
-module.exports = (options, ctx) => ({
+module.exports = (themeConfig, ctx) => ({
   alias () {
     const { themeConfig, siteConfig } = ctx
     // resolve algolia
@@ -17,8 +17,33 @@ module.exports = (options, ctx) => ({
     }
   },
 
+  css: {
+    extract: true,
+    loaderOptions: {
+      less: {
+        javascriptEnabled: true
+      }
+    }
+
+  },
+  configureWebpack: (config, isServer) => {
+    if (!isServer) {
+      // 修改客户端的 webpack 配置
+    }
+  },
+  chainWebpack: (config, isServer) => {
+    config
+        .module
+        .rule('less')
+        .use('less-loader')
+        .loader('less-loader')
+        .options({
+          javascriptEnabled: true
+        })
+  },
+
   plugins: [
-    ['@vuepress/active-header-links', options.activeHeaderLinks],
+    ['@vuepress/active-header-links', themeConfig.activeHeaderLinks],
     '@vuepress/search',
     '@vuepress/plugin-nprogress',
     ['container', {

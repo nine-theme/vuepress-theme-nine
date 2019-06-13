@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "iview": "^3.4.2",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
     "vuepress": "^1.0.2"
   },
   "devDependencies": {

@@ -7,16 +7,22 @@
   "author": "王佳 <wangjia_1919@163.com>",
   "license": "MIT",
   "private": false,
+  "keywords": [
+    "vuepress",
+    "theme",
+    "blog"
+  ],
   "scripts": {
     "dev": "vuepress dev docs"
   },
   "dependencies": {
     "iview": "^3.4.2",
-    "less": "^3.9.0",
-    "less-loader": "^5.0.0",
     "vuepress": "^1.0.2"
   },
   "devDependencies": {
-    "babel-plugin-import": "^1.12.0"
+    "babel-plugin-import": "^1.12.0",
+    "eslint": "^6.0.1",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0"
   }
 }

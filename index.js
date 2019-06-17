@@ -1,22 +1,19 @@
+/* eslint-disable */
 const path = require('path');
 
 // Theme API.
 module.exports = (themeConfig, ctx) => ({
+    layoutDir: 'layouts',
+
     enhanceAppFiles: [
         resolve(__dirname, 'enhanceApp.js')
     ],
-    alias() {
-        const {themeConfig, siteConfig} = ctx;
-        // resolve algolia
-        const isAlgoliaSearch = (
-            themeConfig.algolia
-            || Object.keys(siteConfig.locales && themeConfig.locales || {})
-                .some(base => themeConfig.locales[base].algolia)
-        );
-        return {
-            '@AlgoliaSearchBox': isAlgoliaSearch
-                ? path.resolve(__dirname, 'components/AlgoliaSearchBox.vue')
-                : path.resolve(__dirname, 'noopModule.js')
+
+    css: {
+        loaderOptions: {
+            less: {
+                javascriptEnabled: true
+            }
         }
     },
 
@@ -26,14 +23,7 @@ module.exports = (themeConfig, ctx) => ({
         }
     },
     chainWebpack: (config, isServer) => {
-        config.module
-            .rule('less')
-            .test(/\.less$/)
-            .use('less-loader')
-            .loader('less-loader')
-            .options({
-                javascriptEnabled: true
-            })
+
     },
 
     plugins: [

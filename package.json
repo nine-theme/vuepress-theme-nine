@@ -20,9 +20,32 @@
     "vuepress": "^1.0.2"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
     "babel-plugin-import": "^1.12.0",
     "eslint": "^6.0.1",
+    "eslint-plugin-vue": "^5.2.3",
     "less": "^3.9.0",
     "less-loader": "^5.0.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "vue/no-parsing-error": [
+        2,
+        {
+          "x-invalid-end-tag": false
+        }
+      ]
+    }
   }
 }

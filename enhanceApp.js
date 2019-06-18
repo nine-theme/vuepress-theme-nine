@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Button, Header, Footer } from 'iview';
 import './styles/index.less';
 

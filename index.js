@@ -1,8 +1,8 @@
 /* eslint-disable */
-const path = require('path');
+import path from 'path';
 
 // Theme API.
-module.exports = (themeConfig, ctx) => ({
+export default (themeConfig, ctx) => ({
     layoutDir: 'layouts',
 
     enhanceAppFiles: [

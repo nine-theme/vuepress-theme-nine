@@ -1,33 +1,19 @@
 <template>
- <div>
-   <Content/>
- </div>
+    <div class="main">
+        <Content/>
+    </div>
 </template>
 
 <script>
 
 export default {
-
-  data () {
-    return {
-      isSidebarOpen: false
-    }
-  },
-
-  computed: {
-
-  },
-
-  mounted () {
-
-  },
-
-  methods: {
-
-  }
+    name: 'NineLayout'
 }
 </script>
 
-<style lang="less">
-
+<style lang="less" scoped>
+.main {
+    height: 100%;
+}
 </style>
+

@@ -1,51 +1,10 @@
 {
   "name": "vuepress-theme-nine",
-  "version": "2.0.0",
+  "version": "2.0.0-beta.0",
   "description": "vuepress theme",
-  "main": "inndex.js",
+  "main": "index.js",
   "repository": "git@github.com:NineSwordsMonster/vuepress-theme-nine.git",
   "author": "王佳 <wangjia_1919@163.com>",
   "license": "MIT",
-  "private": false,
-  "keywords": [
-    "vuepress",
-    "theme",
-    "blog"
-  ],
-  "scripts": {
-    "dev": "vuepress dev docs"
-  },
-  "dependencies": {
-    "iview": "^3.4.2",
-    "vuepress": "^1.0.2"
-  },
-  "devDependencies": {
-    "babel-eslint": "^10.0.2",
-    "babel-plugin-import": "^1.12.0",
-    "eslint": "^6.0.1",
-    "eslint-plugin-vue": "^5.2.3",
-    "less": "^3.9.0",
-    "less-loader": "^5.0.0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {
-      "vue/no-parsing-error": [
-        2,
-        {
-          "x-invalid-end-tag": false
-        }
-      ]
-    }
-  }
+  "private": false
 }

@@ -1,3 +1,4 @@
+const { logger } = require('@vuepress/shared-utils')
 const path = require('path')
 
 module.exports = (opts, ctx) => {
@@ -19,7 +20,7 @@ module.exports = (opts, ctx) => {
       require.resolve(`./langs/${opts.lang}`)
     } catch (e) {
       opts.lang = 'en-US'
-      logger.warn(`[saber-theme-meteorlxy] lang '${opts.lang}' is not available, fallback to 'en-US'`)
+      logger.warn(`[vuepress-theme-nine] lang '${opts.lang}' is not available, fallback to 'en-US'`)
     }
     opts.lang = require(`./langs/${opts.lang}`)
   }

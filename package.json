@@ -6,5 +6,12 @@
   "repository": "git@github.com:NineSwordsMonster/vuepress-theme-nine.git",
   "author": "王佳 <wangjia_1919@163.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "iview": "^3.4.2"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-pwa": "^1.0.2",
+    "babel-plugin-import": "^1.12.0"
+  }
 }

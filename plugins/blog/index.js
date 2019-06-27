@@ -32,8 +32,8 @@ module.exports = ({
         $page.top = $page.frontmatter.top || false
         $page.tags = $page.frontmatter.tags || []
         $page.category = $page.frontmatter.category
-        $page.createdAt = $page.frontmatter.date ? moment().format($page.frontmatter.date, 'YYYY-MM-DD') : null
-        $page.updatedAt = $page.lastUpdated ? moment().format($page.lastUpdated, 'YYYY-MM-DD') : null
+        $page.createdAt = $page.frontmatter.date ? moment($page.frontmatter.date).format('YYYY-MM-DD') : null
+        $page.updatedAt = $page.lastUpdated ? moment($page.lastUpdated).format('YYYY-MM-DD') : null
       }
     },
 

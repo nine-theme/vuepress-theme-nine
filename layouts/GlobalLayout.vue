@@ -9,17 +9,17 @@
 </template>
 
 <script>
-import TheHeader from '../components/TheHeader.vue'
-import TheMain from '../components/TheMain.vue'
-import TheFooter from '../components/TheFooter.vue'
+import NineHeader from '../components/NineHeader.vue'
+import NineMain from '../components/NineMain.vue'
+import NineFooter from '../components/NineFooter.vue'
 
 export default {
   name: 'ThemeNine',
 
   components: {
-    TheHeader,
-    TheMain,
-    TheFooter,
+    NineHeader,
+    NineMain,
+    NineFooter,
   },
 }
 </script>

@@ -13,6 +13,7 @@ module.exports = (opts, ctx) => {
     pagination: {
       perPage: 5,
     },
+    pwa: {},
   }, opts))
 
   if (typeof opts.lang === 'string') {
@@ -25,7 +26,7 @@ module.exports = (opts, ctx) => {
     opts.lang = require(`./langs/${opts.lang}`)
   }
 
-  const { comments, lang, defaultPages } = opts
+  const { comments, lang, defaultPages, pwa } = opts
 
   const options = {
     name: 'vuepress-theme-nine',
@@ -33,6 +34,18 @@ module.exports = (opts, ctx) => {
     plugins: [
       [require('./plugins/blog'), { lang }],
       '@vuepress/plugin-back-to-top',
+      ['@vuepress/medium-zoom', {
+        selector: 'img.zoom-custom-imgs',
+        options: {
+          margin: 16,
+        },
+      }],
+      ['@vuepress/nprogress'],
+      ['@vuepress/pwa'],
+      // ['register-components'],
+      ['@vuepress/search', {
+        searchMaxSuggestions: 10,
+      }],
       ['vuepress-plugin-container', { type: 'tip' }],
       ['vuepress-plugin-container', { type: 'warning' }],
       ['vuepress-plugin-container', { type: 'danger' }],
@@ -115,5 +128,17 @@ module.exports = (opts, ctx) => {
     )
   }
 
+  if (pwa !== false) {
+    options.plugins.push(
+      ['@vuepress/pwa', Object.assign({
+        serviceWorker: true,
+        generateSWConfig: {},
+        updatePopup: {
+          message: '发现新版本',
+          buttonText: '更新',
+        },
+      }, pwa)],
+    )
+  }
   return options
 }

@@ -19,8 +19,8 @@
 
 <script>
 import TransitionFadeSlide from './TransitionFadeSlide.vue'
-import TheHeaderNavbar from './TheHeaderNavbar.vue'
-import TheHeaderBanner from './TheHeaderBanner.vue'
+import TheHeaderNavbar from './NineHeaderNavbar.vue'
+import TheHeaderBanner from './NineHeaderBanner.vue'
 import GeoPattern from 'geopattern'
 
 const generators = [

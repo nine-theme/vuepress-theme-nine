@@ -1,4 +1,5 @@
-import compareDesc from 'date-fns/compare_desc'
+const moment = require('moment')
+moment.locale('zh-cn')
 
 export default ({ Vue }) => {
   Vue.mixin({
@@ -8,7 +9,7 @@ export default ({ Vue }) => {
         const pageFilter = p => p.type === 'post'
         const pageSort = (p1, p2) => {
           if (p1.top === p2.top) {
-            return compareDesc(p1.createdAt, p2.createdAt)
+            return moment(p1.createdAt).isBefore(p2.createdAt)
           }
           if (p1.top && p2.top) {
             return p1.top - p2.top

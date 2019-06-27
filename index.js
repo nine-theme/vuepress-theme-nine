@@ -13,7 +13,7 @@ module.exports = (opts, ctx) => {
     pagination: {
       perPage: 5,
     },
-    pwa: {},
+    extentionConfig: {},
   }, opts))
 
   if (typeof opts.lang === 'string') {
@@ -26,13 +26,14 @@ module.exports = (opts, ctx) => {
     opts.lang = require(`./langs/${opts.lang}`)
   }
 
-  const { comments, lang, defaultPages, pwa } = opts
+  const { comments, lang, defaultPages, extentionConfig } = opts
 
   const options = {
     name: 'vuepress-theme-nine',
 
     plugins: [
       [require('./plugins/blog'), { lang }],
+      ['@vuepress/active-header-links'],
       '@vuepress/plugin-back-to-top',
       ['@vuepress/medium-zoom', {
         selector: 'img.zoom-custom-imgs',
@@ -41,15 +42,10 @@ module.exports = (opts, ctx) => {
         },
       }],
       ['@vuepress/nprogress'],
-      ['@vuepress/pwa'],
       // ['register-components'],
-      ['@vuepress/search', {
-        searchMaxSuggestions: 10,
-      }],
       ['vuepress-plugin-container', { type: 'tip' }],
       ['vuepress-plugin-container', { type: 'warning' }],
       ['vuepress-plugin-container', { type: 'danger' }],
-      'vuepress-plugin-nprogress',
       ['vuepress-plugin-smooth-scroll', opts.plugins['smooth-scroll'] || {}],
       'vuepress-plugin-table-of-contents',
       ['vuepress-plugin-zooming', opts.plugins['zooming'] || {}],
@@ -128,7 +124,7 @@ module.exports = (opts, ctx) => {
     )
   }
 
-  if (pwa !== false) {
+  if (extentionConfig.pwa !== false) {
     options.plugins.push(
       ['@vuepress/pwa', Object.assign({
         serviceWorker: true,
@@ -137,7 +133,23 @@ module.exports = (opts, ctx) => {
           message: '发现新版本',
           buttonText: '更新',
         },
-      }, pwa)],
+      }, extentionConfig.pwa)],
+    )
+  }
+
+  if (extentionConfig.ga !== false) {
+    options.plugins.push(
+      ['@vuepress/google-analytics', Object.assign({
+        ga: '',
+      }, extentionConfig.ga)],
+    )
+  }
+
+  if (extentionConfig.search !== false) {
+    options.plugins.push(
+      ['@vuepress/search', Object.assign({
+        searchMaxSuggestions: 10,
+      }, extentionConfig.search)],
     )
   }
   return options

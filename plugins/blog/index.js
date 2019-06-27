@@ -1,5 +1,6 @@
 const path = require('path')
-const format = require('date-fns/format')
+const moment = require('moment')
+moment.locale('zh-cn')
 
 module.exports = ({
   postsDir = '_posts',
@@ -31,8 +32,8 @@ module.exports = ({
         $page.top = $page.frontmatter.top || false
         $page.tags = $page.frontmatter.tags || []
         $page.category = $page.frontmatter.category
-        $page.createdAt = $page.frontmatter.date ? format($page.frontmatter.date, 'YYYY-MM-DD') : null
-        $page.updatedAt = $page.lastUpdated ? format($page.lastUpdated, 'YYYY-MM-DD') : null
+        $page.createdAt = $page.frontmatter.date ? moment().format($page.frontmatter.date, 'YYYY-MM-DD') : null
+        $page.updatedAt = $page.lastUpdated ? moment().format($page.lastUpdated, 'YYYY-MM-DD') : null
       }
     },
 

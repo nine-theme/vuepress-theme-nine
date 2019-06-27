@@ -1,10 +1,10 @@
 <template>
   <div id="vuepress-theme-nine">
-    <TheHeader />
+    <NineHeader />
 
-    <TheMain />
+    <NineMain />
 
-    <TheFooter />
+    <NineFooter />
   </div>
 </template>
 

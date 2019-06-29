@@ -139,9 +139,9 @@ module.exports = (opts, ctx) => {
 
   if (extentionConfig.ga !== false) {
     options.plugins.push(
-      ['@vuepress/google-analytics', Object.assign({
-        ga: '',
-      }, extentionConfig.ga)],
+      ['@vuepress/google-analytics', {
+        ga: extentionConfig.ga || '',
+      }],
     )
   }
 

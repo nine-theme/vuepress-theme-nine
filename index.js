@@ -16,6 +16,7 @@ module.exports = (opts, ctx) => {
     extentionConfig: {},
   }, opts))
 
+  // 设置语言
   if (typeof opts.lang === 'string') {
     try {
       require.resolve(`./langs/${opts.lang}`)
@@ -28,6 +29,7 @@ module.exports = (opts, ctx) => {
 
   const { comments, lang, defaultPages, extentionConfig } = opts
 
+  // 返回 opts
   const options = {
     name: 'vuepress-theme-nine',
 
@@ -53,6 +55,7 @@ module.exports = (opts, ctx) => {
 
     globalUIComponents: 'Iconfont',
 
+    // 引入 app文件
     enhanceAppFiles: [
       path.resolve(__dirname, 'enhanceApp.js'),
     ],

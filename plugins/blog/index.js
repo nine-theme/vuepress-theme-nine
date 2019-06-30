@@ -5,7 +5,7 @@ moment.locale('zh-cn')
 module.exports = ({
   postsDir = '_posts',
   postsLayout = 'Post',
-  permalink = '/posts/:year/:month/:day/:slug.html',
+  permalink = '/posts/:year/:month/:day/:slug',
   lang,
 }) => {
   const ensureBothSlash = str => str.replace(/^\/?(.*)\/?$/, '/$1/')

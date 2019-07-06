@@ -37,6 +37,7 @@
     "geopattern": "^1.2.3",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
+    "markdown-it-plantuml": "^1.4.1",
     "moment": "^2.24.0",
     "vuepress-plugin-container": "^2.0.2",
     "vuepress-plugin-smooth-scroll": "^0.0.3",

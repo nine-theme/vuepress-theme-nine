@@ -27,7 +27,7 @@ module.exports = (opts, ctx) => {
     opts.lang = require(`./langs/${opts.lang}`)
   }
 
-  const { comments, lang, defaultPages, extentionConfig } = opts
+  const { comments, lang, defaultPages, extentionConfig, markdown } = opts
 
   // 返回 opts
   const options = {
@@ -59,6 +59,14 @@ module.exports = (opts, ctx) => {
     enhanceAppFiles: [
       path.resolve(__dirname, 'enhanceApp.js'),
     ],
+
+    markdown: Object.assign({
+      lineNumbers: true,
+      extendMarkdown: md => {
+        // 使用更多的 markdown-it 插件!
+        md.use(require('markdown-it-plantuml'))
+      }
+    }, markdown),
 
     chainWebpack (config, isServer) {
       // to make geopattern work
@@ -142,9 +150,7 @@ module.exports = (opts, ctx) => {
 
   if (extentionConfig.ga !== false) {
     options.plugins.push(
-      ['@vuepress/google-analytics', {
-        ga: extentionConfig.ga || '',
-      }],
+      ['@vuepress/google-analytics',  {ga: extentionConfig.ga || ''}],
     )
   }
 

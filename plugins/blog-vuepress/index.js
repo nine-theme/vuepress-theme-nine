@@ -162,6 +162,6 @@ module.exports = (options, ctx) => {
       ]
     },
 
-    enhanceAppFiles: path.resolve(__dirname, 'enhanceAppFile.js'),
+    enhanceAppFiles: path.resolve(__dirname, 'enhanceApp.js'),
   }
 }

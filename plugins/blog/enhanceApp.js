@@ -6,7 +6,7 @@ export default ({ Vue }) => {
     computed: {
       $posts () {
         const pages = this.$site.pages
-        const pageFilter = p => p.type === 'post'
+        const pageFilter = p => p.type === 'post' && p.frontmatter.draft === false
         const pageSort = (p1, p2) => {
           if (p1.top === p2.top) {
             return moment(p1.createdAt).isBefore(p2.createdAt)

@@ -8,7 +8,7 @@ An other theme for [Vuepress](https://vuepress.vuejs.org)
 
 ## Documentation
 
-:book: [Live Demo and Docs](https://vuepress-theme-meteorlxy.meteorlxy.cn)
+:book: [Live Demo and Docs](https://hub.alili.fun)
 
 ## LICENSE
 

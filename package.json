@@ -17,6 +17,9 @@
     "url": "https://github.com/NineSwordsMonster/vuepress-theme-nine/issues"
   },
   "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .js,.vue ."
+  },
   "peerDependencies": {
     "vuepress": "^1.0.2"
   },
@@ -55,5 +58,18 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^5.2.2",
     "vuepress": "1.0.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "standard",
+      "plugin:vue/recommended"
+    ],
+    "rules": {
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ]
+    }
   }
 }

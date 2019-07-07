@@ -65,7 +65,7 @@ module.exports = (opts, ctx) => {
       extendMarkdown: md => {
         // 使用更多的 markdown-it 插件!
         md.use(require('markdown-it-plantuml'))
-      }
+      },
     }, markdown),
 
     chainWebpack (config, isServer) {
@@ -150,7 +150,7 @@ module.exports = (opts, ctx) => {
 
   if (extentionConfig.ga !== false) {
     options.plugins.push(
-      ['@vuepress/google-analytics',  {ga: extentionConfig.ga || ''}],
+      ['@vuepress/google-analytics', { ga: extentionConfig.ga || '' }],
     )
   }
 

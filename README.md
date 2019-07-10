@@ -22,11 +22,10 @@
 ## Installation
 ```sh
 yarn add vuepress@next
-yarn add vuepress-theme-nine
+yarn add vuepress-theme-nine@next
 
 yarn add -D less less-loader
 ```
 
-## Live Blog
-http://w.wzzx.xyz
+## 使用
 

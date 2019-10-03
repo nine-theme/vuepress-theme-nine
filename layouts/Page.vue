@@ -13,13 +13,13 @@
 </template>
 
 <script>
-  import Layout from '@theme/layouts/Layout'
+import Layout from '@theme/layouts/Layout'
 
-  export default {
-    name: 'Page',
+export default {
+  name: 'Page',
 
-    components: {
-      Layout,
-    },
-  }
+  components: {
+    Layout,
+  },
+}
 </script>

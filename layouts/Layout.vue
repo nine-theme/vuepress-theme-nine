@@ -13,32 +13,32 @@
 </template>
 
 <script>
-  import TheHeader from '@theme/components/TheHeader'
-  import TheMain from '@theme/components/TheMain'
-  import TheFooter from '@theme/components/TheFooter'
+import TheHeader from '@theme/components/TheHeader'
+import TheMain from '@theme/components/TheMain'
+import TheFooter from '@theme/components/TheFooter'
 
-  export default {
-    name: 'Layout',
+export default {
+  name: 'Layout',
 
-    components: {
-      TheHeader,
-      TheMain,
-      TheFooter,
+  components: {
+    TheHeader,
+    TheMain,
+    TheFooter,
+  },
+
+  computed: {
+    $layout () {
+      const defaultLayout = 'post'
+      const layout = this.$page.frontmatter.layout || defaultLayout
+      return layout.toLowerCase()
     },
 
-    computed: {
-      $layout () {
-        const defaultLayout = 'post'
-        const layout = this.$page.frontmatter.layout || defaultLayout
-        return layout.toLowerCase()
-      },
-
-      $title () {
-        const isHome = this.$layout === 'home'
-        return isHome ? this.$siteTitle : this.$page.frontmatter.title + ' | ' + this.$siteTitle
-      },
+    $title () {
+      const isHome = this.$layout === 'home'
+      return isHome ? this.$siteTitle : this.$page.frontmatter.title + ' | ' + this.$siteTitle
     },
-  }
+  },
+}
 </script>
 
 <style lang="stylus" src="@theme/styles"/>

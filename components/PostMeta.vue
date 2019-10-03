@@ -4,7 +4,9 @@
     class="post-meta main-div"
   >
     <section class="post-date clearfix">
-      <span class="create-date">发布时间：{{ $page.createdAt }}</span>
+      <span class="create-date">
+        发布时间：{{ $page.createdAt }}
+      </span>
 
       <span
         v-if="$page.updatedAt"
@@ -15,21 +17,21 @@
     </section>
 
     <section class="post-links">
-      <router-link
+      <RouterLink
         v-if="prevPost"
         :to="prevPost.path"
         class="post-link"
       >
         上一篇：{{ prevPost.title }}
-      </router-link>
+      </RouterLink>
 
-      <router-link
+      <RouterLink
         v-if="nextPost"
         :to="nextPost.path"
         class="post-link"
       >
         下一篇：{{ nextPost.title }}
-      </router-link>
+      </RouterLink>
     </section>
   </section>
 </template>
@@ -57,23 +59,23 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @require '~@theme/styles/variables'
+@require '~@theme/styles/variables'
 
-  .post-meta
-    .post-date
-      color lighten($grayTextColor, 50%)
-      margin-bottom 1rem
-      .create-date
-        float left
-      .update-date
-        float right
-    .post-links
-      .post-link
-        display block
-        line-height 1.7
-        color lighten($grayTextColor, 20%)
-        font-weight normal
-        transition all 0.2s
-        &:hover
-          color $accentColor
+.post-meta
+  .post-date
+    color lighten($grayTextColor, 50%)
+    margin-bottom 1rem
+    .create-date
+      float left
+    .update-date
+      float right
+  .post-links
+    .post-link
+      display block
+      line-height 1.7
+      color lighten($grayTextColor, 20%)
+      font-weight normal
+      transition all 0.2s
+      &:hover
+        color $accentColor
 </style>

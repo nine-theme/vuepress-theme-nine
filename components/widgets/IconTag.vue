@@ -11,7 +11,9 @@
       v-bind="$attrs"
     />
 
-    <span class="post-tag-name">{{ name }}</span>
+    <span class="post-tag-name">
+      {{ name }}
+    </span>
   </span>
 </template>
 
@@ -47,28 +49,28 @@ export default {
 </script>
 
 <style lang="stylus">
-  @require '~@theme/styles/variables'
+@require '~@theme/styles/variables'
 
-  $paddingUnit = 0.3rem
-  $fontSize = 1rem
+$paddingUnit = 0.3rem
+$fontSize = 1rem
 
-  .post-tag
+.post-tag
+  display inline-block
+  height $fontSize + $paddingUnit * 4
+  line-height $fontSize
+  padding $paddingUnit * 2 $paddingUnit * 3
+  color lighten($grayTextColor, 10%)
+  background-color #eee
+  transition color 0.2s ease-out
+  &:hover
+    cursor pointer
+    color $accentColor
+  .post-tag-name
     display inline-block
-    height $fontSize + $paddingUnit * 4
-    line-height $fontSize
-    padding $paddingUnit * 2 $paddingUnit * 3
-    color lighten($grayTextColor, 10%)
-    background-color #eee
-    transition color 0.2s ease-out
-    &:hover
-      cursor pointer
-      color $accentColor
-    .post-tag-name
-      display inline-block
-      height 100%
-      font-size $fontSize
-      margin-left $paddingUnit
-    &:not(:first-of-type)
-      margin-left $paddingUnit
+    height 100%
+    font-size $fontSize
+    margin-left $paddingUnit
+  &:not(:first-of-type)
+    margin-left $paddingUnit
 
 </style>

@@ -17,15 +17,15 @@
 </template>
 
 <script>
-  import Layout from '@theme/layouts/Layout'
-  import PostMeta from '@theme/components/PostMeta'
+import Layout from '@theme/layouts/Layout'
+import PostMeta from '@theme/components/PostMeta'
 
-  export default {
-    name: 'Post',
+export default {
+  name: 'Post',
 
-    components: {
-      Layout,
-      PostMeta,
-    },
-  }
+  components: {
+    Layout,
+    PostMeta,
+  },
+}
 </script>

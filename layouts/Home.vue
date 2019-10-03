@@ -10,15 +10,15 @@
 </template>
 
 <script>
-  import Layout from '@theme/layouts/Layout'
-  import PostsList from '@theme/components/PostsList'
+import Layout from '@theme/layouts/Layout'
+import PostsList from '@theme/components/PostsList'
 
-  export default {
-    name: 'Home',
+export default {
+  name: 'Home',
 
-    components: {
-      Layout,
-      PostsList,
-    },
-  }
+  components: {
+    Layout,
+    PostsList,
+  },
+}
 </script>

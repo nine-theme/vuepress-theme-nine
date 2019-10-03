@@ -1,5 +1,5 @@
 <template>
-  <component
+  <Component
     :is="is"
     class="info"
     :href="href"
@@ -16,8 +16,10 @@
     <span
       class="info-text"
       :style="textStyle"
-    >{{ text }}</span>
-  </component>
+    >
+      {{ text }}
+    </span>
+  </Component>
 </template>
 
 <script>
@@ -102,10 +104,10 @@ export default {
 </script>
 
 <style lang="stylus">
-  @require '~@theme/styles/variables'
+@require '~@theme/styles/variables'
 
-  .info
-    cursor default
-    &:not(:first-child)
-      margin-left 1rem
+.info
+  cursor default
+  &:not(:first-child)
+    margin-left 1rem
 </style>

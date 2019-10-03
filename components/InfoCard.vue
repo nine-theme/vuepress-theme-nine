@@ -132,46 +132,46 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @require '~@theme/styles/variables'
+@require '~@theme/styles/variables'
 
-  $headerBgHeight = 150px
-  $avatorHeight = 120px
+$headerBgHeight = 150px
+$avatorHeight = 120px
 
-  .info-card
-    padding 0
-    a
+.info-card
+  padding 0
+  a
+    color $grayTextColor
+    font-weight normal
+  .info-card-header
+    height $headerBgHeight
+    margin-bottom $avatorHeight * 0.5
+    .info-avator
+      display block
+      width $avatorHeight
+      height $avatorHeight
+      margin 0 auto
+      border 3px solid #fff
+      border-radius 50%
+      box-shadow: 0 0 2px alpha(black, 0.2)
+      transform translateY($headerBgHeight - $avatorHeight * 0.5)
+  .info-card-body
+    cursor default
+    padding 1rem
+    border-bottom 1px solid $borderColor
+    text-align center
+    .info-nickname
+      display block
+      font-size 1.5rem
+      font-weight bold
+      text-align center
+    .info-desc
+      margin 1rem 0
+    .info-contact
       color $grayTextColor
-      font-weight normal
-    .info-card-header
-      height $headerBgHeight
-      margin-bottom $avatorHeight * 0.5
-      .info-avator
-        display block
-        width $avatorHeight
-        height $avatorHeight
-        margin 0 auto
-        border 3px solid #fff
-        border-radius 50%
-        box-shadow: 0 0 2px alpha(black, 0.2)
-        transform translateY($headerBgHeight - $avatorHeight * 0.5)
-    .info-card-body
-      cursor default
-      padding 1rem
-      border-bottom 1px solid $borderColor
-      text-align center
-      .info-nickname
-        display block
-        font-size 1.5rem
-        font-weight bold
-        text-align center
-      .info-desc
-        margin 1rem 0
-      .info-contact
-        color $grayTextColor
-        word-break break-all
-        line-height 160%
-    .info-card-footer
-      text-align center
-      padding 1rem
+      word-break break-all
+      line-height 160%
+  .info-card-footer
+    text-align center
+    padding 1rem
 
 </style>

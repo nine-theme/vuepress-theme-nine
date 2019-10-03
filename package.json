@@ -22,16 +22,16 @@
     "url": "https://github.com/NineSwordsMonster/vuepress-theme-nine/issues"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.8",
-    "@fortawesome/free-brands-svg-icons": "^5.0.13",
-    "@fortawesome/free-regular-svg-icons": "^5.0.13",
-    "@fortawesome/free-solid-svg-icons": "^5.0.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.10",
+    "@fortawesome/free-brands-svg-icons": "^5.6.1",
+    "@fortawesome/free-regular-svg-icons": "^5.6.1",
+    "@fortawesome/free-solid-svg-icons": "^5.6.1",
     "@fortawesome/vue-fontawesome": "0.1.6",
-    "date-fns": "^1.29.0",
+    "date-fns": "^1.30.1",
     "geopattern": "^1.2.3",
     "iview": "^3.2.2",
     "moment": "^2.22.1",
-    "vue": "^2.5.17",
+    "vue": "^2.5.21",
     "vuepress-plugin-nprogress": "^0.1.0"
   },
   "devDependencies": {
@@ -47,7 +47,7 @@
     "@vuepress/plugin-pwa": "^1.0.0-alpha.40",
     "@vuepress/plugin-register-components": "^1.0.0-alpha.40",
     "@vuepress/plugin-search": "^1.0.0-alpha.40",
-    "eslint": "^5.5.0",
+    "eslint": "^5.10.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "8.0.1",

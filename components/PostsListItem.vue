@@ -1,13 +1,13 @@
 <template>
   <div class="posts-list-item">
-    <router-link
+    <RouterLink
       :to="post.path"
       class="post-link"
     >
       <h3 class="post-title">
         {{ post.title }}
       </h3>
-    </router-link>
+    </RouterLink>
 
     <p class="post-info-list">
       <IconInfo
@@ -56,23 +56,23 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @require '~@theme/styles/variables'
+@require '~@theme/styles/variables'
 
-  .posts-list-item
-    padding 0 0.5rem
-    &:not(:last-child)
-      border-bottom 1px solid $borderColor
-    .post-title
-      color $textColor
-      transition all 0.2s
-    .post-info-list
-      color $lightTextColor
-    .post-excerpt
-      color: $grayTextColor
-      text-align justify
-    .post-link
-      &:hover
-        text-decoration none
-        .post-title
-          color $accentColor
+.posts-list-item
+  padding 0 0.5rem
+  &:not(:last-child)
+    border-bottom 1px solid $borderColor
+  .post-title
+    color $textColor
+    transition all 0.2s
+  .post-info-list
+    color $lightTextColor
+  .post-excerpt
+    color: $grayTextColor
+    text-align justify
+  .post-link
+    &:hover
+      text-decoration none
+      .post-title
+        color $accentColor
 </style>

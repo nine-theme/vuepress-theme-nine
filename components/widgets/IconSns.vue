@@ -104,12 +104,12 @@ export default {
 </script>
 
 <style lang="stylus">
-  @require '~@theme/styles/variables'
+@require '~@theme/styles/variables'
 
-  .sns-link
-    .sns-icon
-      color $grayTextColor
-      transition all 0.5s ease-out
-      &:hover
-        color $accentColor
+.sns-link
+  .sns-icon
+    color $grayTextColor
+    transition all 0.5s ease-out
+    &:hover
+      color $accentColor
 </style>

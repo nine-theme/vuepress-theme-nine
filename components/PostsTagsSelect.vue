@@ -18,37 +18,37 @@
 </template>
 
 <script>
-  import IconTag from '@theme/components/widgets/IconTag'
+import IconTag from '@theme/components/widgets/IconTag'
 
-  export default {
-    name: 'PostsTagsSelect',
+export default {
+  name: 'PostsTagsSelect',
 
-    components: {
-      IconTag,
+  components: {
+    IconTag,
+  },
+
+  data () {
+    return {
+      selectedTags: [],
+    }
+  },
+
+  watch: {
+    selectedTags (val) {
+      this.$emit('input', val)
     },
-
-    data () {
-      return {
-        selectedTags: [],
-      }
-    },
-
-    watch: {
-      selectedTags (val) {
-        this.$emit('input', val)
-      },
-    },
-  }
+  },
+}
 </script>
 
 <style lang="stylus" scoped>
-  @require '~@theme/styles/variables'
+@require '~@theme/styles/variables'
 
-  .tag-checkbox
-    &:not(:first-child)
-      margin-left 0.3rem
-    input[type="checkbox"]:checked + .post-tag
-      color $accentColor
-      font-weight bold
+.tag-checkbox
+  &:not(:first-child)
+    margin-left 0.3rem
+  input[type="checkbox"]:checked + .post-tag
+    color $accentColor
+    font-weight bold
 
 </style>

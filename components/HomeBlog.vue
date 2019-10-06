@@ -7,19 +7,10 @@
       class="hero"
       :style="{background: `url(${$page.frontmatter.bgImage || require('../images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}"
     >
-      <h1>{{ data.heroText || $title || '午后南杂' }}</h1>
+      <h1>{{ data.heroText || $title || 'NineSwordsMonster' }}</h1>
 
       <p class="description">
         {{ data.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}
-      </p>
-      <p
-        v-if="$themeConfig.huawei !== false"
-        class="huawei"
-      >
-        <i
-          class="iconfont nine-huawei"
-          style="color: #fc2d38"
-        />&nbsp;&nbsp;&nbsp;华为，为中华而为之！
       </p>
     </div>
 
@@ -89,12 +80,12 @@
         <i class="iconfont nine-theme" />
         <a
           target="blank"
-          href="https://vuepress-theme-nine.nineluan.com"
+          href="https://vuepress-theme-nine.alili.fun"
         >VuePress-theme-nine</a>
       </span>
-      <span v-if="$themeConfig.ninerd">
+      <span v-if="$themeConfig.record">
         <i class="iconfont nine-beian" />
-        <a>{{ $themeConfig.ninerd }}</a>
+        <a>{{ $themeConfig.record }}</a>
       </span>
       <span>
         <i class="iconfont nine-copyright" />
@@ -235,7 +226,7 @@
       color #fff
     }
 
-    h1, .description, .action, .huawei {
+    h1, .description, {
       color #fff!important
     }
 
@@ -417,9 +408,6 @@
     .description {
       load-start()
     }
-    .huawei {
-      load-start()
-    }
     .action-button {
       load-start()
     }
@@ -446,9 +434,6 @@
     }
     .description {
       load-end(0.24s)
-    }
-    .huawei {
-      load-end(0.32s)
     }
     .action-button {
       load-end(0.4s)

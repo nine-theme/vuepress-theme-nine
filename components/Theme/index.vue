@@ -9,7 +9,7 @@
       href="#"
       @click.prevent="showMenu = !showMenu"
     >
-      <i class="iconfont reco-color" />
+      <i class="iconfont nine-color" />
     </a>
     <transition
       name="menu-transition"
@@ -28,7 +28,7 @@
 <script>
   import ClickOutside from 'vue-click-outside';
   import ThemeOptions from './ThemeOptions.vue';
-  import recoConfig from './recoConfig.js';
+  import settingConfig from './settingConfig.js';
 
   export default {
     name: 'UserSettings',
@@ -41,7 +41,7 @@
       ThemeOptions
     },
 
-    mixins: [recoConfig],
+    mixins: [settingConfig],
 
     data() {
       return {
@@ -51,8 +51,8 @@
 
     computed: {
       showSettings() {
-        const { reco } = this;
-        return reco.hasThemes || reco.disableDarkTheme !== true || reco.disableThemeIgnore !== true;
+        const { nine } = this;
+        return nine.hasThemes || nine.disableDarkTheme !== true || nine.disableThemeIgnore !== true;
       },
     },
 
@@ -127,7 +127,7 @@
 	}
 }
 
-.reco-theme-dark {
+.nine-theme-dark {
 	.color-picker-menu {
 		background-color: $darkPrimaryBg;
 		border-color: $darkBorderColor;

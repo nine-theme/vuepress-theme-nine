@@ -65,7 +65,8 @@
       }, 
       isComment: {
         type: Boolean,
-      }},
+      }
+    },
 
     data () {
       return {

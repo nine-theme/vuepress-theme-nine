@@ -12,7 +12,7 @@
       >
 
       <h1 v-if="data.isShowTitleInHome !== false">
-        {{ data.heroText || $title || '午后南杂' }}
+        {{ data.heroText || $title || 'NineSwordsMonster' }}
       </h1>
 
       <p class="description">
@@ -223,9 +223,6 @@
     .description {
       load-start()
     }
-    .huawei {
-      load-start()
-    }
     .action-button {
       load-start()
     }
@@ -252,9 +249,6 @@
     }
     .description {
       load-end(0.24s)
-    }
-    .huawei {
-      load-end(0.32s)
     }
     .action-button {
       load-end(0.4s)

@@ -101,7 +101,7 @@
   }
 </script>
 
-<style src="../styles/theme.styl" lang="stylus"></style>
+<style src="../assets/styles/theme.styl" lang="stylus"></style>
 
 <style lang="stylus" scoped>
 .tags-wrapper

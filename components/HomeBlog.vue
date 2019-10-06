@@ -5,7 +5,7 @@
   >
     <div
       class="hero"
-      :style="{background: `url(${$page.frontmatter.bgImage || require('../images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}"
+      :style="{background: `url(${$page.frontmatter.bgImage || require('../assets/images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}"
     >
       <h1>{{ data.heroText || $title || 'NineSwordsMonster' }}</h1>
 
@@ -208,7 +208,7 @@
 </script>
 
 <style lang="stylus">
-@require '../styles/loadMixin.styl'
+@require '../assets/styles/loadMixin.styl'
 
 .home-blog {
   padding: $navbarHeight 0 0;

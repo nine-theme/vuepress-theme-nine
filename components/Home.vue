@@ -121,7 +121,7 @@
 </script>
 
 <style lang="stylus">
-@require '../styles/loadMixin.styl'
+@require '../assets/styles/loadMixin.styl'
 
 .home {
   padding: $navbarHeight 2rem 0;

@@ -44,4 +44,4 @@
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
-<style src="../styles/theme.styl" lang="stylus"></style>
+<style src="../assets/styles/theme.styl" lang="stylus"></style>

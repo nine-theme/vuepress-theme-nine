@@ -107,7 +107,7 @@
 </script>
 
 <style lang="stylus" scoped>
-@require '../styles/wrapper.styl'
+@require '../assets/styles/wrapper.styl'
 
 .timeline-wrapper
   box-sizing border-box

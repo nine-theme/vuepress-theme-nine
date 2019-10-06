@@ -17,6 +17,7 @@
     <div class="home-blog-wrapper">
       <!-- 博客列表 -->
       <note-abstract 
+        v-if="showList"
         class="blog-list"
         :data="posts"
         :current-page="1"
@@ -113,7 +114,8 @@
     data () {
       return {
         nineShow: false,
-        tags: []
+        tags: [],
+        showList: false
       }
     },
     computed: {
@@ -178,6 +180,7 @@
     },
     mounted () {
       this.nineShow = true
+      this.showList = true
     },
     methods: {
       // 根据分类获取页面数据

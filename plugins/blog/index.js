@@ -27,6 +27,7 @@ module.exports = ({
       if ($page.path.startsWith(ensureBothSlash(postsDir))) {
         // Set the meta data of the page
         $page.frontmatter.layout = $page.frontmatter.layout || postsLayout
+        $page.frontmatter.draft = $page.frontmatter.draft || false
         $page.frontmatter.permalink = $page.frontmatter.permalink || permalink
         $page.type = 'post'
         $page.top = $page.frontmatter.top || false

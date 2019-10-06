@@ -30,6 +30,15 @@ export default {
       default: '',
     },
   },
+  computed: {
+    name () {
+      return `fade-slide-${this.direction}`
+    },
+
+    component () {
+      return this.group ? 'transition-group' : 'transition'
+    },
+  },
 
   render (h, { props, children }) {
     return h(
@@ -42,16 +51,6 @@ export default {
       },
       children,
     )
-  },
-
-  computed: {
-    name () {
-      return `fade-slide-${this.direction}`
-    },
-
-    component () {
-      return this.group ? 'transition-group' : 'transition'
-    },
   },
 }
 </script>

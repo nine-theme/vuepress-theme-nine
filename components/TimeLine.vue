@@ -30,80 +30,80 @@
 
 <script>
 
-    export default {
-        name: 'TimeLine',
-        props: {
-            tag: {
-                type: String,
-                default: ''
-            }
-        },
-        data () {
-            return {
-                pages: [],
-                tags: [],
-                currentTag: '',
-                currentPage: 1,
-                formatPages: {},
-                formatPagesArr: []
-            }
-        },
-        computed: {
-            trueCurrentTag () {
-                return this.currentTag
-            }
-        },
-        created () {
-            this.getPages()
-        },
-        methods: {
-            // 根据分类获取页面数据
-            getPages (tag) {
-                let pages = this.$site.pages
-                pages = pages.filter(item => {
-                    const { home, isTimeLine, date } = item.frontmatter
-                    return !(home == true || isTimeLine == true || date === undefined)
-                })
-                // reverse()是为了按时间最近排序排序
-                this.pages = pages.length == 0 ? [] : pages
-                for (let i = 0, length = pages.length; i < length; i++) {
-                    const page = pages[i]
-                    const pageDateYear =  this.dateFormat(page.frontmatter.date, 'year')
-                    if (this.formatPages[pageDateYear]) this.formatPages[pageDateYear].push(page)
-                    else {
-                        this.formatPages[pageDateYear] = [page]
-                    }
-                }
+  export default {
+    name: 'TimeLine',
+    props: {
+      tag: {
+        type: String,
+        default: ''
+      }
+    },
+    data () {
+      return {
+        pages: [],
+        tags: [],
+        currentTag: '',
+        currentPage: 1,
+        formatPages: {},
+        formatPagesArr: []
+      }
+    },
+    computed: {
+      trueCurrentTag () {
+        return this.currentTag
+      }
+    },
+    created () {
+      this.getPages()
+    },
+    methods: {
+      // 根据分类获取页面数据
+      getPages (tag) {
+        let pages = this.$site.pages
+        pages = pages.filter(item => {
+          const { home, isTimeLine, date } = item.frontmatter
+          return !(home == true || isTimeLine == true || date === undefined)
+        })
+        // reverse()是为了按时间最近排序排序
+        this.pages = pages.length == 0 ? [] : pages
+        for (let i = 0, length = pages.length; i < length; i++) {
+          const page = pages[i]
+          const pageDateYear =  this.dateFormat(page.frontmatter.date, 'year')
+          if (this.formatPages[pageDateYear]) this.formatPages[pageDateYear].push(page)
+          else {
+            this.formatPages[pageDateYear] = [page]
+          }
+        }
 
       
-                for(let key in this.formatPages) {
-                    this.formatPagesArr.unshift({
-                        year: key,
-                        data: this.formatPages[key].sort((a, b) => {
-                            return this._getTimeNum(b) - this._getTimeNum(a)
-                        })
-                    })
-                }
-            },
-            // 时间格式化
-            dateFormat (date, type) {
-                const dateObj = new Date(date)
-                const year = dateObj.getFullYear()
-                const mon = dateObj.getMonth() + 1
-                const day = dateObj.getDate()
-                if (type == 'year') return year
-                else return `${mon}-${day}`
-            },
-            // 跳转
-            go (url) {
-                this.$router.push({path: url})
-            },
-            // 获取时间的数字类型
-            _getTimeNum (date) {
-                return parseInt(new Date(date.frontmatter.date).getTime())
-            }
+        for(let key in this.formatPages) {
+          this.formatPagesArr.unshift({
+            year: key,
+            data: this.formatPages[key].sort((a, b) => {
+              return this._getTimeNum(b) - this._getTimeNum(a)
+            })
+          })
         }
+      },
+      // 时间格式化
+      dateFormat (date, type) {
+        const dateObj = new Date(date)
+        const year = dateObj.getFullYear()
+        const mon = dateObj.getMonth() + 1
+        const day = dateObj.getDate()
+        if (type == 'year') return year
+        else return `${mon}-${day}`
+      },
+      // 跳转
+      go (url) {
+        this.$router.push({path: url})
+      },
+      // 获取时间的数字类型
+      _getTimeNum (date) {
+        return parseInt(new Date(date.frontmatter.date).getTime())
+      }
     }
+  }
 </script>
 
 <style lang="stylus" scoped>

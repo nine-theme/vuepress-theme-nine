@@ -21,27 +21,27 @@
 </template>
 
 <script>
-import IconTag from './IconTag.vue'
+  import IconTag from './IconTag.vue'
 
-export default {
-  name: 'PostsFilterTags',
+  export default {
+    name: 'PostsFilterTags',
 
-  components: {
-    IconTag,
-  },
-
-  data () {
-    return {
-      selectedTags: [],
-    }
-  },
-
-  watch: {
-    selectedTags (val) {
-      this.$emit('input', val)
+    components: {
+      IconTag,
     },
-  },
-}
+
+    data () {
+      return {
+        selectedTags: [],
+      }
+    },
+
+    watch: {
+      selectedTags (val) {
+        this.$emit('input', val)
+      },
+    },
+  }
 </script>
 
 <style lang="stylus" scoped>

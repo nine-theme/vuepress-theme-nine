@@ -21,26 +21,26 @@
 </template>
 
 <script>
-    import Home from '@theme/components/Home.vue'
-    import HomeBlog from '@theme/components/HomeBlog.vue'
-    import Page from '@theme/components/Page.vue'
-    import Common from '@theme/components/Common.vue'
-    import { resolveSidebarItems } from '../util'
+  import Home from '@theme/components/Home.vue'
+  import HomeBlog from '@theme/components/HomeBlog.vue'
+  import Page from '@theme/components/Page.vue'
+  import Common from '@theme/components/Common.vue'
+  import { resolveSidebarItems } from '../util'
 
-    export default {
-        components: { HomeBlog, Home, Page, Common },
+  export default {
+    components: { HomeBlog, Home, Page, Common },
 
-        computed: {
-            sidebarItems () {
-                return resolveSidebarItems(
-                    this.$page,
-                    this.$page.regularPath,
-                    this.$site,
-                    this.$localePath
-                )
-            }
-        }
+    computed: {
+      sidebarItems () {
+        return resolveSidebarItems(
+          this.$page,
+          this.$page.regularPath,
+          this.$site,
+          this.$localePath
+        )
+      }
     }
+  }
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>

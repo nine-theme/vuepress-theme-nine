@@ -1,36 +1,36 @@
 <script>
-export default {
-  name: 'Icon',
+  export default {
+    name: 'Icon',
 
-  functional: true,
+    functional: true,
 
-  props: {
-    color: {
-      type: String,
-      required: false,
-      default: null,
+    props: {
+      color: {
+        type: String,
+        required: false,
+        default: null,
+      },
+
+      name: {
+        type: String,
+        required: true,
+      },
+
+      size: {
+        type: String,
+        required: false,
+        default: null,
+      },
+
+      title: {
+        type: String,
+        required: false,
+        default: null,
+      },
     },
 
-    name: {
-      type: String,
-      required: true,
-    },
-
-    size: {
-      type: String,
-      required: false,
-      default: null,
-    },
-
-    title: {
-      type: String,
-      required: false,
-      default: null,
-    },
-  },
-
-  render (h, { props: { color, name, size, title } }) {
-    return (
+    render (h, { props: { color, name, size, title } }) {
+      return (
       <svg
         class="icon"
         style={{
@@ -45,8 +45,8 @@ export default {
         <use xlinkHref={`#icon-${name}`} />
       </svg>
     )
-  },
-}
+    },
+  }
 </script>
 
 <style>

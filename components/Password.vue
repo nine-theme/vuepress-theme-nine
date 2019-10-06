@@ -52,65 +52,65 @@
 </template>
 
 <script>
-    import Background from '@theme/components/Background'
+  import Background from '@theme/components/Background'
 
-    export default {
-        name: 'Password',
-        components: {Background},
-        props: {
-            isPage: {
-                type: Boolean,
-                default: false
-            }
-        },
-        data() {
-            return {
-                warningText: 'Konck! Knock!',
-                key: ''
-            }
-        },
-        computed: {
-            year () {
-                return new Date().getFullYear()
-            }
-        },
-        methods: {
-            inter () {
-                const keyVal = this.key.trim()
-                const key = this.isPage ? 'pageKey' : 'key'
-                sessionStorage.setItem(key, keyVal)
-                const isHasKey = this.isPage ? this.isHasPageKey() : this.isHasKey()
-                if (!isHasKey) {
-                    this.warningText = 'Key Error'
-                    return
-                } 
-                const passwordBtn = this.$refs.passwordBtn
-                const width = document.getElementById('box').getClientRects()[0].width
+  export default {
+    name: 'Password',
+    components: {Background},
+    props: {
+      isPage: {
+        type: Boolean,
+        default: false
+      }
+    },
+    data() {
+      return {
+        warningText: 'Konck! Knock!',
+        key: ''
+      }
+    },
+    computed: {
+      year () {
+        return new Date().getFullYear()
+      }
+    },
+    methods: {
+      inter () {
+        const keyVal = this.key.trim()
+        const key = this.isPage ? 'pageKey' : 'key'
+        sessionStorage.setItem(key, keyVal)
+        const isHasKey = this.isPage ? this.isHasPageKey() : this.isHasKey()
+        if (!isHasKey) {
+          this.warningText = 'Key Error'
+          return
+        } 
+        const passwordBtn = this.$refs.passwordBtn
+        const width = document.getElementById('box').getClientRects()[0].width
 
-                passwordBtn.style.width = `${width - 2}px`
-                passwordBtn.style.opacity = 1
-                setTimeout(() => {
-                    window.location.reload();
-                }, 800)
-            },
-            isHasKey () {
-                const keyPage = this.$themeConfig.keyPage
-                const keys = keyPage.keys
-                return keys && keys.indexOf(sessionStorage.getItem('key')) > -1
-            },
-            isHasPageKey () {
-                const pageKeys = this.$frontmatter.keys
+        passwordBtn.style.width = `${width - 2}px`
+        passwordBtn.style.opacity = 1
+        setTimeout(() => {
+          window.location.reload();
+        }, 800)
+      },
+      isHasKey () {
+        const keyPage = this.$themeConfig.keyPage
+        const keys = keyPage.keys
+        return keys && keys.indexOf(sessionStorage.getItem('key')) > -1
+      },
+      isHasPageKey () {
+        const pageKeys = this.$frontmatter.keys
 
-                return pageKeys && pageKeys.indexOf(sessionStorage.getItem('pageKey')) > -1
-            },
-            inputFocus () {
-                this.warningText = 'Input Your Key'
-            },
-            inputBlur () {
-                this.warningText = 'Konck! Knock!'
-            }
-        }
+        return pageKeys && pageKeys.indexOf(sessionStorage.getItem('pageKey')) > -1
+      },
+      inputFocus () {
+        this.warningText = 'Input Your Key'
+      },
+      inputBlur () {
+        this.warningText = 'Konck! Knock!'
+      }
     }
+  }
 </script>
 
 <style lang="stylus" scoped>

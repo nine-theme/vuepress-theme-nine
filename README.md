@@ -13,3 +13,4 @@ An other theme for [Vuepress](https://vuepress.vuejs.org)
 ## LICENSE
 
 [MIT](https://github.com/NineSwordsMonster/vuepress-theme-nine/blob/master/LICENSE)
+

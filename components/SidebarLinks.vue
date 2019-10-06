@@ -25,80 +25,80 @@
 </template>
 
 <script>
-    import SidebarGroup from '@theme/components/SidebarGroup.vue'
-    import SidebarLink from '@theme/components/SidebarLink.vue'
-    import { isActive } from '../util'
+  import SidebarGroup from '@theme/components/SidebarGroup.vue'
+  import SidebarLink from '@theme/components/SidebarLink.vue'
+  import { isActive } from '../util'
 
-    export default {
-        name: 'SidebarLinks',
+  export default {
+    name: 'SidebarLinks',
 
-        components: { SidebarGroup, SidebarLink },
+    components: { SidebarGroup, SidebarLink },
 
-        props: {
-            items: {
-                type: Array,
-                default() {
-                    return []
-                }
-            },
-            depth: {
-                type: Number,
-                default() {
-                    return 0
-                }
-            },
-            sidebarDepth: {
-                type: Number,
-                default() {
-                    return 0
-                }
-            }
-        },
-
-        data () {
-            return {
-                openGroupIndex: 0
-            }
-        },
-
-        watch: {
-            '$route' () {
-                this.refreshIndex()
-            }
-        },
-
-        created () {
-            this.refreshIndex()
-        },
-
-        methods: {
-            refreshIndex () {
-                const index = resolveOpenGroupIndex(
-                    this.$route,
-                    this.items
-                )
-                if (index > -1) {
-                    this.openGroupIndex = index
-                }
-            },
-
-            toggleGroup (index) {
-                this.openGroupIndex = index === this.openGroupIndex ? -1 : index
-            },
-
-            isActive (page) {
-                return isActive(this.$route, page.regularPath)
-            }
+    props: {
+      items: {
+        type: Array,
+        default() {
+          return []
         }
-    }
-
-    function resolveOpenGroupIndex (route, items) {
-        for (let i = 0; i < items.length; i++) {
-            const item = items[i]
-            if (item.type === 'group' && item.children.some(c => c.type === 'page' && isActive(route, c.path))) {
-                return i
-            }
+      },
+      depth: {
+        type: Number,
+        default() {
+          return 0
         }
-        return -1
+      },
+      sidebarDepth: {
+        type: Number,
+        default() {
+          return 0
+        }
+      }
+    },
+
+    data () {
+      return {
+        openGroupIndex: 0
+      }
+    },
+
+    watch: {
+      '$route' () {
+        this.refreshIndex()
+      }
+    },
+
+    created () {
+      this.refreshIndex()
+    },
+
+    methods: {
+      refreshIndex () {
+        const index = resolveOpenGroupIndex(
+          this.$route,
+          this.items
+        )
+        if (index > -1) {
+          this.openGroupIndex = index
+        }
+      },
+
+      toggleGroup (index) {
+        this.openGroupIndex = index === this.openGroupIndex ? -1 : index
+      },
+
+      isActive (page) {
+        return isActive(this.$route, page.regularPath)
+      }
     }
+  }
+
+  function resolveOpenGroupIndex (route, items) {
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i]
+      if (item.type === 'group' && item.children.some(c => c.type === 'page' && isActive(route, c.path))) {
+        return i
+      }
+    }
+    return -1
+  }
 </script>

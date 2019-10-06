@@ -1,58 +1,58 @@
 <script>
-export default {
-  name: 'TransitionFadeSlide',
+  export default {
+    name: 'TransitionFadeSlide',
 
-  functional: true,
+    functional: true,
 
-  props: {
-    appear: {
-      type: Boolean,
-      default: true,
-    },
-
-    direction: {
-      type: String,
-      default: 'y',
-    },
-
-    group: {
-      type: Boolean,
-      default: false,
-    },
-
-    mode: {
-      type: String,
-      default: 'out-in',
-    },
-
-    tag: {
-      type: String,
-      default: '',
-    },
-  },
-  computed: {
-    name () {
-      return `fade-slide-${this.direction}`
-    },
-
-    component () {
-      return this.group ? 'transition-group' : 'transition'
-    },
-  },
-
-  render (h, { props, children }) {
-    return h(
-      props.group ? 'TransitionGroup' : 'Transition',
-      {
-        props: {
-          name: `fade-slide-${props.direction}`,
-          ...props,
-        },
+    props: {
+      appear: {
+        type: Boolean,
+        default: true,
       },
-      children,
-    )
-  },
-}
+
+      direction: {
+        type: String,
+        default: 'y',
+      },
+
+      group: {
+        type: Boolean,
+        default: false,
+      },
+
+      mode: {
+        type: String,
+        default: 'out-in',
+      },
+
+      tag: {
+        type: String,
+        default: '',
+      },
+    },
+    computed: {
+      name () {
+        return `fade-slide-${this.direction}`
+      },
+
+      component () {
+        return this.group ? 'transition-group' : 'transition'
+      },
+    },
+
+    render (h, { props, children }) {
+      return h(
+        props.group ? 'TransitionGroup' : 'Transition',
+        {
+          props: {
+            name: `fade-slide-${props.direction}`,
+            ...props,
+          },
+        },
+        children,
+      )
+    },
+  }
 </script>
 
 <style lang="stylus">

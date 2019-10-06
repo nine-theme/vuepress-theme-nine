@@ -113,107 +113,107 @@
 </template>
 
 <script>
-    import AccessNumber from '@theme/components/Valine/AccessNumber'
-    import NoteAbstract from '@theme/components/NoteAbstract.vue'
-    import { constants } from 'fs';
+  import AccessNumber from '@theme/components/Valine/AccessNumber'
+  import NoteAbstract from '@theme/components/NoteAbstract.vue'
+  import { constants } from 'fs';
 
-    export default {
-        components: { AccessNumber, NoteAbstract },
-        data () {
-            return {
-                nineShow: false,
-                tags: []
-            }
-        },
-        computed: {
-            // 时间降序后的博客列表
-            posts () {
-                let posts = this.$site.pages
-                posts = posts.filter(item => {
-                    const { home, isTimeLine, date } = item.frontmatter
-                    return !(home == true || isTimeLine == true || date === undefined)
-                })
-                posts.sort((a, b) => {
-                    return this._getTimeNum(b) - this._getTimeNum(a)
-                })
-                return posts
-            },
+  export default {
+    components: { AccessNumber, NoteAbstract },
+    data () {
+      return {
+        nineShow: false,
+        tags: []
+      }
+    },
+    computed: {
+      // 时间降序后的博客列表
+      posts () {
+        let posts = this.$site.pages
+        posts = posts.filter(item => {
+          const { home, isTimeLine, date } = item.frontmatter
+          return !(home == true || isTimeLine == true || date === undefined)
+        })
+        posts.sort((a, b) => {
+          return this._getTimeNum(b) - this._getTimeNum(a)
+        })
+        return posts
+      },
 
-            // 分类信息
-            categoryList () {
-                console.log(this)
-                return []
-            },
-            year () {
-                return new Date().getFullYear()
-            },
-            data() {
-                return this.$page.frontmatter;
-            },
+      // 分类信息
+      categoryList () {
+        console.log(this)
+        return []
+      },
+      year () {
+        return new Date().getFullYear()
+      },
+      data() {
+        return this.$page.frontmatter;
+      },
 
-            actionLink() {
-                return {
-                    link: this.data.actionLink,
-                    text: this.data.actionText
-                };
-            },
+      actionLink() {
+        return {
+          link: this.data.actionLink,
+          text: this.data.actionText
+        };
+      },
 
-            heroImageStyle () {
-                return this.data.heroImageStyle || {
-                    maxHeight: '200px',
-                    margin: '6rem auto 1.5rem'
-                }
-            },
-
-            bgImageStyle () {
-                const bgImageStyle = {
-                    height: '350px',
-                    textAlign: 'center',
-                    overflow: 'hidden'
-                }
-                return this.data.bgImageStyle ? { ...bgImageStyle, ...this.data.bgImageStyle } : bgImageStyle
-            }
-        },
-        created () {
-            if (this.$tags.list.length > 0) {
-                let tags = this.$tags.list
-                tags.map(item => {
-                    const color = this._tagColor()
-                    item.color = color
-                    return tags
-                })
-                this.tags = tags
-            }
-        },
-        mounted () {
-            this.nineShow = true
-        },
-        methods: {
-            // 根据分类获取页面数据
-            getPages () {
-                let pages = this.$site.pages
-                pages = pages.filter(item => {
-                    const { home, isTimeLine, date } = item.frontmatter
-                    return !(home == true || isTimeLine == true || date === undefined)
-                })
-                // reverse()是为了按时间最近排序排序
-                this.pages = pages.length == 0 ? [] : pages
-            },
-            getPagesByTags (currentTag) {
-                window.location.href = `/tag/#?tag=${currentTag}`
-            },
-            // 获取时间的数字类型
-            _getTimeNum (data) {
-                return parseInt(new Date(data.frontmatter.date).getTime())
-            },
-            _tagColor () {
-                // 红、蓝、绿、橙、灰
-                const tagColorArr = ['#f26d6d', '#3498db', '#67cc86', '#fb9b5f', '#838282']
-                const index = Math.floor(Math.random() * tagColorArr.length)
-                return tagColorArr[index]
-            },
+      heroImageStyle () {
+        return this.data.heroImageStyle || {
+          maxHeight: '200px',
+          margin: '6rem auto 1.5rem'
         }
-    };
+      },
+
+      bgImageStyle () {
+        const bgImageStyle = {
+          height: '350px',
+          textAlign: 'center',
+          overflow: 'hidden'
+        }
+        return this.data.bgImageStyle ? { ...bgImageStyle, ...this.data.bgImageStyle } : bgImageStyle
+      }
+    },
+    created () {
+      if (this.$tags.list.length > 0) {
+        let tags = this.$tags.list
+        tags.map(item => {
+          const color = this._tagColor()
+          item.color = color
+          return tags
+        })
+        this.tags = tags
+      }
+    },
+    mounted () {
+      this.nineShow = true
+    },
+    methods: {
+      // 根据分类获取页面数据
+      getPages () {
+        let pages = this.$site.pages
+        pages = pages.filter(item => {
+          const { home, isTimeLine, date } = item.frontmatter
+          return !(home == true || isTimeLine == true || date === undefined)
+        })
+        // reverse()是为了按时间最近排序排序
+        this.pages = pages.length == 0 ? [] : pages
+      },
+      getPagesByTags (currentTag) {
+        window.location.href = `/tag/#?tag=${currentTag}`
+      },
+      // 获取时间的数字类型
+      _getTimeNum (data) {
+        return parseInt(new Date(data.frontmatter.date).getTime())
+      },
+      _tagColor () {
+        // 红、蓝、绿、橙、灰
+        const tagColorArr = ['#f26d6d', '#3498db', '#67cc86', '#fb9b5f', '#838282']
+        const index = Math.floor(Math.random() * tagColorArr.length)
+        return tagColorArr[index]
+      },
+    }
+  };
 </script>
 
 <style lang="stylus">

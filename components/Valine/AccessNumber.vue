@@ -17,28 +17,28 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            idVal: {
-                type: String,
-                default () {
-                    return ''
-                }
-            }, 
-            numStyle: {
-                type: Object,
-                default () {
-                    return {}
-                }
-            }
-        },
-        methods: {
-            getIdVal (path) {
-                const base = this.$site.base
-                return base.slice(0, base.length - 1) + path
-            }
+  export default {
+    props: {
+      idVal: {
+        type: String,
+        default () {
+          return ''
         }
+      }, 
+      numStyle: {
+        type: Object,
+        default () {
+          return {}
+        }
+      }
+    },
+    methods: {
+      getIdVal (path) {
+        const base = this.$site.base
+        return base.slice(0, base.length - 1) + path
+      }
     }
+  }
 </script>
 
 <style lang="stylus" scoped>

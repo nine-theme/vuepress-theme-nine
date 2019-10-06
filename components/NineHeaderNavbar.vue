@@ -65,43 +65,43 @@
 </template>
 
 <script>
-import throttle from 'lodash.throttle'
-import Icon from './Icon.vue'
+  import throttle from 'lodash.throttle'
+  import Icon from './Icon.vue'
 
-export default {
-  name: 'NineHeaderNavbar',
+  export default {
+    name: 'NineHeaderNavbar',
 
-  components: {
-    Icon,
-  },
+    components: {
+      Icon,
+    },
 
-  data () {
-    return {
-      fixed: false,
-      showNavLinks: false,
-    }
-  },
-
-  computed: {
-    navbarClass () {
+    data () {
       return {
-        fixed: this.fixed,
+        fixed: false,
+        showNavLinks: false,
       }
     },
-  },
 
-  mounted () {
-    window.addEventListener('scroll', throttle(() => {
-      this.fixed = window.scrollY !== 0
-    }), 100)
-  },
-
-  methods: {
-    isExternal (link) {
-      return /^(https?:|mailto:|tel:)/.test(link)
+    computed: {
+      navbarClass () {
+        return {
+          fixed: this.fixed,
+        }
+      },
     },
-  },
-}
+
+    mounted () {
+      window.addEventListener('scroll', throttle(() => {
+        this.fixed = window.scrollY !== 0
+      }), 100)
+    },
+
+    methods: {
+      isExternal (link) {
+        return /^(https?:|mailto:|tel:)/.test(link)
+      },
+    },
+  }
 </script>
 
 <style lang="stylus" scoped>

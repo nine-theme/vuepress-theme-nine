@@ -37,53 +37,53 @@
 </template>
 
 <script>
-    import AlgoliaSearchBox from '@AlgoliaSearchBox'
-    import SearchBox from '@SearchBox'
-    import SidebarButton from '@theme/components/SidebarButton.vue'
-    import NavLinks from '@theme/components/NavLinks.vue'
-    import Theme from '@theme/components/Theme'
+  import AlgoliaSearchBox from '@AlgoliaSearchBox'
+  import SearchBox from '@SearchBox'
+  import SidebarButton from '@theme/components/SidebarButton.vue'
+  import NavLinks from '@theme/components/NavLinks.vue'
+  import Theme from '@theme/components/Theme'
 
-    export default {
-        components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox, Theme },
+  export default {
+    components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox, Theme },
 
-        data () {
-            return {
-                linksWrapMaxWidth: null
-            }
-        },
+    data () {
+      return {
+        linksWrapMaxWidth: null
+      }
+    },
 
-        computed: {
-            algolia () {
-                return this.$themeLocaleConfig.algolia || this.$themeConfig.algolia || {}
-            },
+    computed: {
+      algolia () {
+        return this.$themeLocaleConfig.algolia || this.$themeConfig.algolia || {}
+      },
 
-            isAlgoliaSearch () {
-                return this.algolia && this.algolia.apiKey && this.algolia.indexName
-            }
-        },
+      isAlgoliaSearch () {
+        return this.algolia && this.algolia.apiKey && this.algolia.indexName
+      }
+    },
 
-        mounted () {
-            const MOBILE_DESKTOP_BREAKPOINT = 719 // refer to config.styl
-            const NAVBAR_VERTICAL_PADDING = parseInt(css(this.$el, 'paddingLeft')) + parseInt(css(this.$el, 'paddingRight'))
-            const handleLinksWrapWidth = () => {
-                if (document.documentElement.clientWidth < MOBILE_DESKTOP_BREAKPOINT) {
-                    this.linksWrapMaxWidth = null
-                } else {
-                    this.linksWrapMaxWidth = this.$el.offsetWidth - NAVBAR_VERTICAL_PADDING
-                        - (this.$refs.siteName && this.$refs.siteName.offsetWidth || 0)
-                }
-            }
-            handleLinksWrapWidth()
-            window.addEventListener('resize', handleLinksWrapWidth, false)
+    mounted () {
+      const MOBILE_DESKTOP_BREAKPOINT = 719 // refer to config.styl
+      const NAVBAR_VERTICAL_PADDING = parseInt(css(this.$el, 'paddingLeft')) + parseInt(css(this.$el, 'paddingRight'))
+      const handleLinksWrapWidth = () => {
+        if (document.documentElement.clientWidth < MOBILE_DESKTOP_BREAKPOINT) {
+          this.linksWrapMaxWidth = null
+        } else {
+          this.linksWrapMaxWidth = this.$el.offsetWidth - NAVBAR_VERTICAL_PADDING
+            - (this.$refs.siteName && this.$refs.siteName.offsetWidth || 0)
         }
+      }
+      handleLinksWrapWidth()
+      window.addEventListener('resize', handleLinksWrapWidth, false)
     }
+  }
 
-    function css (el, property) {
-        // NOTE: Known bug, will return 'auto' if style value is 'auto'
-        const win = el.ownerDocument.defaultView
-        // null means not to return pseudo styles
-        return win.getComputedStyle(el, null)[property]
-    }
+  function css (el, property) {
+    // NOTE: Known bug, will return 'auto' if style value is 'auto'
+    const win = el.ownerDocument.defaultView
+    // null means not to return pseudo styles
+    return win.getComputedStyle(el, null)[property]
+  }
 </script>
 
 <style lang="stylus">

@@ -28,31 +28,31 @@
 </template>
 
 <script>
-    import PageInfo from './PageInfo'
+  import PageInfo from './PageInfo'
 
-    export default {
-        components: { PageInfo },
-        props: {
-            data: {
-                type: Object,
-                default() {
-                    return {}
-                }
-            }, 
-            currentPage: {
-                type: Object,
-                default() {
-                    return {}
-                }
-            }, 
-            currentTag: {
-                type: Object,
-                default() {
-                    return {}
-                }
-            }
+  export default {
+    components: { PageInfo },
+    props: {
+      data: {
+        type: Object,
+        default() {
+          return {}
         }
+      }, 
+      currentPage: {
+        type: Object,
+        default() {
+          return {}
+        }
+      }, 
+      currentTag: {
+        type: Object,
+        default() {
+          return {}
+        }
+      }
     }
+  }
 </script>
 
 <style lang="stylus" scoped>

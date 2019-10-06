@@ -27,47 +27,47 @@
 </template>
 
 <script>
-import TransitionFadeSlide from './TransitionFadeSlide.vue'
-import PostNavCard from './PostNavCard.vue'
-import InfoCard from './InfoCard.vue'
+  import TransitionFadeSlide from './TransitionFadeSlide.vue'
+  import PostNavCard from './PostNavCard.vue'
+  import InfoCard from './InfoCard.vue'
 
-export default {
-  name: 'NineMain',
+  export default {
+    name: 'NineMain',
 
-  components: {
-    TransitionFadeSlide,
-    InfoCard,
-    PostNavCard,
-  },
-
-  computed: {
-    layout () {
-      const layout = this.$page.frontmatter.layout
-      if (layout && (this.$vuepress.getLayoutAsyncComponent(layout) || this.$vuepress.getVueComponent(layout))) {
-        return layout
-      }
-
-      if (!this.$page.path) {
-        return 'NotFound'
-      }
-
-      return 'Home'
+    components: {
+      TransitionFadeSlide,
+      InfoCard,
+      PostNavCard,
     },
 
-    showAside () {
-      if ('aside' in this.$page.frontmatter) {
-        return this.$page.frontmatter.aside
-      }
-      return true
-    },
+    computed: {
+      layout () {
+        const layout = this.$page.frontmatter.layout
+        if (layout && (this.$vuepress.getLayoutAsyncComponent(layout) || this.$vuepress.getVueComponent(layout))) {
+          return layout
+        }
 
-    containerClass () {
-      return {
-        'show-aside': this.showAside,
-      }
+        if (!this.$page.path) {
+          return 'NotFound'
+        }
+
+        return 'Home'
+      },
+
+      showAside () {
+        if ('aside' in this.$page.frontmatter) {
+          return this.$page.frontmatter.aside
+        }
+        return true
+      },
+
+      containerClass () {
+        return {
+          'show-aside': this.showAside,
+        }
+      },
     },
-  },
-}
+  }
 </script>
 
 <style lang="stylus" scoped>

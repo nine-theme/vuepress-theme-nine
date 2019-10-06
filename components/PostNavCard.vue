@@ -29,76 +29,76 @@
 </template>
 
 <script>
-import throttle from 'lodash.throttle'
-import debounce from 'lodash.debounce'
-import Icon from './Icon.vue'
+  import throttle from 'lodash.throttle'
+  import debounce from 'lodash.debounce'
+  import Icon from './Icon.vue'
 
-export default {
-  name: 'PostNavCard',
+  export default {
+    name: 'PostNavCard',
 
-  components: {
-    Icon,
-  },
+    components: {
+      Icon,
+    },
 
-  data () {
-    return {
-      fixed: false,
-      width: 0,
-      scrollListener: throttle(() => {
-        this.fixed = this.infoCardDom.getBoundingClientRect().bottom < this.navbarHeight
-      }, 100),
-      resizeListener: debounce(() => {
-        this.width = this.getWidth()
-      }, 100),
-    }
-  },
-
-  computed: {
-    style () {
+    data () {
       return {
-        position: this.fixed ? 'fixed' : 'relative',
-        top: this.fixed ? `${this.navbarHeight}px` : 0,
-        width: `${this.width}px`,
+        fixed: false,
+        width: 0,
+        scrollListener: throttle(() => {
+          this.fixed = this.infoCardDom.getBoundingClientRect().bottom < this.navbarHeight
+        }, 100),
+        resizeListener: debounce(() => {
+          this.width = this.getWidth()
+        }, 100),
       }
     },
 
-    infoCardDom () {
-      return document.querySelector('#app .info-card')
+    computed: {
+      style () {
+        return {
+          position: this.fixed ? 'fixed' : 'relative',
+          top: this.fixed ? `${this.navbarHeight}px` : 0,
+          width: `${this.width}px`,
+        }
+      },
+
+      infoCardDom () {
+        return document.querySelector('#app .info-card')
+      },
+
+      navbarHeight () {
+        return document.querySelector('.navbar').clientHeight
+      },
+
+      showContents () {
+        return this.$page.headers && this.$page.headers.filter(h => h.level === 2).length > 0
+      },
+
+      showComments () {
+        return this.$themeConfig.comments !== false && this.$frontmatter['vssue'] !== false && (
+          this.$frontmatter['vssue-id'] || this.$frontmatter['vssue-title'] || this.$frontmatter['title']
+        )
+      },
     },
 
-    navbarHeight () {
-      return document.querySelector('.navbar').clientHeight
+    mounted () {
+      this.width = this.getWidth()
+
+      window.addEventListener('scroll', this.scrollListener)
+      window.addEventListener('resize', this.resizeListener)
     },
 
-    showContents () {
-      return this.$page.headers && this.$page.headers.filter(h => h.level === 2).length > 0
+    beforeDestroy () {
+      window.removeEventListener('scroll', this.scrollListener)
+      window.removeEventListener('resize', this.resizeListener)
     },
 
-    showComments () {
-      return this.$themeConfig.comments !== false && this.$frontmatter['vssue'] !== false && (
-        this.$frontmatter['vssue-id'] || this.$frontmatter['vssue-title'] || this.$frontmatter['title']
-      )
+    methods: {
+      getWidth () {
+        return this.infoCardDom.clientWidth
+      },
     },
-  },
-
-  mounted () {
-    this.width = this.getWidth()
-
-    window.addEventListener('scroll', this.scrollListener)
-    window.addEventListener('resize', this.resizeListener)
-  },
-
-  beforeDestroy () {
-    window.removeEventListener('scroll', this.scrollListener)
-    window.removeEventListener('resize', this.resizeListener)
-  },
-
-  methods: {
-    getWidth () {
-      return this.infoCardDom.clientWidth
-    },
-  },
-}
+  }
 </script>
 
 <style lang="stylus">

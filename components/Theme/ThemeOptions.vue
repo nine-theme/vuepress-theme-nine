@@ -39,69 +39,69 @@
 </template>
 
 <script>
-    import settingConfig from './settingConfig.js';
+  import settingConfig from './settingConfig.js';
 
-    export default {
-        name: 'ThemeOptions',
+  export default {
+    name: 'ThemeOptions',
 
-        mixins: [settingConfig],
+    mixins: [settingConfig],
 
-        data() {
-            return {
-                darkTheme: 'false'
-            };
-        },
+    data() {
+      return {
+        darkTheme: 'false'
+      };
+    },
 
-        mounted() {
-            const theme = localStorage.getItem('nine-theme')
-            const night = localStorage.getItem('nine-night')
-            const classes = document.body.classList;
+    mounted() {
+      const theme = localStorage.getItem('nine-theme')
+      const night = localStorage.getItem('nine-night')
+      const classes = document.body.classList;
 
-            this.darkTheme = night === 'true' ? true : false
-            if (night === 'true') classes.add(`nine-theme-night`)
-            if (theme) this.setTheme(theme)
-        },
+      this.darkTheme = night === 'true' ? true : false
+      if (night === 'true') classes.add(`nine-theme-night`)
+      if (theme) this.setTheme(theme)
+    },
 
-        methods: {
-            toggleDarkTheme() {
-                localStorage.setItem('nine-night', this.darkTheme)
-                const classes = document.body.classList;
-                if (this.darkTheme) {
-                    const oldColor = [...classes]
-                    classes.value = ''
-                    classes.add(`nine-theme-night`)
-                    oldColor.forEach(item => {
-                        classes.add(item)
-                    })
-                }	
-                else {
-                    classes.remove(`nine-theme-night`)
-                }	
-            },
-            setTheme(theme, moveClass = true) {
-                const colorThemes = this.nine.themes;
+    methods: {
+      toggleDarkTheme() {
+        localStorage.setItem('nine-night', this.darkTheme)
+        const classes = document.body.classList;
+        if (this.darkTheme) {
+          const oldColor = [...classes]
+          classes.value = ''
+          classes.add(`nine-theme-night`)
+          oldColor.forEach(item => {
+            classes.add(item)
+          })
+        }	
+        else {
+          classes.remove(`nine-theme-night`)
+        }	
+      },
+      setTheme(theme, moveClass = true) {
+        const colorThemes = this.nine.themes;
 
-                const classes = document.body.classList;
-                const themes = colorThemes.map(colorTheme => `nine-theme-${colorTheme}`);
+        const classes = document.body.classList;
+        const themes = colorThemes.map(colorTheme => `nine-theme-${colorTheme}`);
 
-                if (!theme) {
-                    if (moveClass) localStorage.removeItem('nine-theme');
-                    classes.remove(...themes);
-                    return 
-                }
+        if (!theme) {
+          if (moveClass) localStorage.removeItem('nine-theme');
+          classes.remove(...themes);
+          return 
+        }
 
-                classes.remove(...themes.filter(t => t !== `nine-theme-${theme}`));
+        classes.remove(...themes.filter(t => t !== `nine-theme-${theme}`));
 
-                if (moveClass) {
-                    classes.add(`nine-theme-${theme}`);
-                    localStorage.setItem('nine-theme', theme);
-                } else {
-                    localStorage.removeItem('nine-theme')
-                    classes.remove(`nine-theme-${theme}`);
-                }
-            }
-        },
-    };
+        if (moveClass) {
+          classes.add(`nine-theme-${theme}`);
+          localStorage.setItem('nine-theme', theme);
+        } else {
+          localStorage.removeItem('nine-theme')
+          classes.remove(`nine-theme-${theme}`);
+        }
+      }
+    },
+  };
 </script>
 
 <style lang="stylus">

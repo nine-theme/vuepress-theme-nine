@@ -82,42 +82,42 @@
 </template>
 
 <script>
-    import NavLink from "@theme/components/NavLink/";
-    import AccessNumber from '@theme/components/Valine/AccessNumber'
+  import NavLink from "@theme/components/NavLink/";
+  import AccessNumber from '@theme/components/Valine/AccessNumber'
 
-    export default {
-        components: { NavLink, AccessNumber },
-        data () {
-            return {
-                nineShow: false
-            }
-        },
-        computed: {
-            year () {
-                return new Date().getFullYear()
-            },
-            data() {
-                return this.$page.frontmatter;
-            },
+  export default {
+    components: { NavLink, AccessNumber },
+    data () {
+      return {
+        nineShow: false
+      }
+    },
+    computed: {
+      year () {
+        return new Date().getFullYear()
+      },
+      data() {
+        return this.$page.frontmatter;
+      },
 
-            actionLink() {
-                return {
-                    link: this.data.actionLink,
-                    text: this.data.actionText
-                };
-            },
+      actionLink() {
+        return {
+          link: this.data.actionLink,
+          text: this.data.actionText
+        };
+      },
 
-            heroImageStyle () {
-                return this.data.heroImageStyle || {
-                    maxHeight: '200px',
-                    margin: '6rem auto 1.5rem'
-                }
-            }
-        },
-        mounted () {
-            this.nineShow = true
+      heroImageStyle () {
+        return this.data.heroImageStyle || {
+          maxHeight: '200px',
+          margin: '6rem auto 1.5rem'
         }
-    };
+      }
+    },
+    mounted () {
+      this.nineShow = true
+    }
+  };
 </script>
 
 <style lang="stylus">

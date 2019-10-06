@@ -9,7 +9,7 @@
       href="#"
       @click.prevent="showMenu = !showMenu"
     >
-      <i class="iconfont nine-color" />
+      <i class="iconfont reco-color" />
     </a>
     <transition
       name="menu-transition"
@@ -26,42 +26,42 @@
 </template>
 
 <script>
-    import ClickOutside from 'vue-click-outside';
-    import ThemeOptions from './ThemeOptions.vue';
-    import settingConfig from './settingConfig.js';
+  import ClickOutside from 'vue-click-outside';
+  import ThemeOptions from './ThemeOptions.vue';
+  import recoConfig from './recoConfig.js';
 
-    export default {
-        name: 'UserSettings',
+  export default {
+    name: 'UserSettings',
 
-        directives: {
-            'click-outside': ClickOutside,
-        },
+    directives: {
+      'click-outside': ClickOutside,
+    },
 
-        components: {
-            ThemeOptions
-        },
+    components: {
+      ThemeOptions
+    },
 
-        mixins: [settingConfig],
+    mixins: [recoConfig],
 
-        data() {
-            return {
-                showMenu: false,
-            };
-        },
+    data() {
+      return {
+        showMenu: false,
+      };
+    },
 
-        computed: {
-            showSettings() {
-                const { nine } = this;
-                return nine.hasThemes || nine.disableDarkTheme !== true || nine.disableThemeIgnore !== true;
-            },
-        },
+    computed: {
+      showSettings() {
+        const { reco } = this;
+        return reco.hasThemes || reco.disableDarkTheme !== true || reco.disableThemeIgnore !== true;
+      },
+    },
 
-        methods: {
-            hideMenu() {
-                this.showMenu = false;
-            },
-        },
-    };
+    methods: {
+      hideMenu() {
+        this.showMenu = false;
+      },
+    },
+  };
 </script>
 
 <style lang="stylus">
@@ -127,7 +127,7 @@
 	}
 }
 
-.nine-theme-dark {
+.reco-theme-dark {
 	.color-picker-menu {
 		background-color: $darkPrimaryBg;
 		border-color: $darkBorderColor;

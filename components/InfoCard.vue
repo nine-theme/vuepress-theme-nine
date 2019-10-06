@@ -82,58 +82,58 @@
 </template>
 
 <script>
-import IconInfo from './IconInfo.vue'
-import IconSns from './IconSns.vue'
-import GeoPattern from 'geopattern'
+  import IconInfo from './IconInfo.vue'
+  import IconSns from './IconSns.vue'
+  import GeoPattern from 'geopattern'
 
-export default {
-  name: 'InfoCard',
+  export default {
+    name: 'InfoCard',
 
-  components: {
-    IconInfo,
-    IconSns,
-  },
-
-  computed: {
-    info () {
-      return this.$themeConfig.personalInfo || {}
+    components: {
+      IconInfo,
+      IconSns,
     },
 
-    nickname () {
-      return this.info.nickname || 'Unknown'
-    },
+    computed: {
+      info () {
+        return this.$themeConfig.personalInfo || {}
+      },
 
-    description () {
-      return this.info.description || null
-    },
+      nickname () {
+        return this.info.nickname || 'Unknown'
+      },
 
-    location () {
-      return this.info.location || null
-    },
+      description () {
+        return this.info.description || null
+      },
 
-    email () {
-      return this.info.email || null
-    },
+      location () {
+        return this.info.location || null
+      },
 
-    organization () {
-      return this.info.organization || null
-    },
+      email () {
+        return this.info.email || null
+      },
 
-    avatar () {
-      return this.info.avatar || '/assets/img/avatar_unknown.jpg'
-    },
+      organization () {
+        return this.info.organization || null
+      },
 
-    sns () {
-      return this.info.sns || null
-    },
+      avatar () {
+        return this.info.avatar || '/assets/img/avatar_unknown.jpg'
+      },
 
-    headerStyle () {
-      return {
-        'background-image': !this.$ssrContext ? GeoPattern.generate(this.nickname, { color: '#eee' }).toDataUrl() : null,
-      }
+      sns () {
+        return this.info.sns || null
+      },
+
+      headerStyle () {
+        return {
+          'background-image': !this.$ssrContext ? GeoPattern.generate(this.nickname, { color: '#eee' }).toDataUrl() : null,
+        }
+      },
     },
-  },
-}
+  }
 </script>
 
 <style lang="stylus" scoped>

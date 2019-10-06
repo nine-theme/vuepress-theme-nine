@@ -29,76 +29,76 @@
 </template>
 
 <script>
-    import Common from '@theme/components/Common.vue'
-    import NoteAbstract from '../components//NoteAbstract.vue'
-    import Pagation from '../components//Pagation.vue'
+  import Common from '@theme/components/Common.vue'
+  import NoteAbstract from '../components//NoteAbstract.vue'
+  import Pagation from '../components//Pagation.vue'
 
-    export default {
-        components: { Common, NoteAbstract, Pagation },
+  export default {
+    components: { Common, NoteAbstract, Pagation },
 
-        data () {
-            return {
-                posts: [],
-                tags: [],
-                currentTag: '',
-                currentPage: 1
-            }
-        },
+    data () {
+      return {
+        posts: [],
+        tags: [],
+        currentTag: '',
+        currentPage: 1
+      }
+    },
 
-        created () {
-            if (this.$tags.list.length > 0) {
-                const currentTag = this.$route.query.tag ? this.$route.query.tag : this.$tags.list[0].name
-                let tags = this.$tags.list
-                tags.map(item => {
-                    const color = this._tagColor()
-                    item.color = color
-                    return tags
-                })
-                this.tags = tags
+    created () {
+      if (this.$tags.list.length > 0) {
+        const currentTag = this.$route.query.tag ? this.$route.query.tag : this.$tags.list[0].name
+        let tags = this.$tags.list
+        tags.map(item => {
+          const color = this._tagColor()
+          item.color = color
+          return tags
+        })
+        this.tags = tags
 
-                this.getPagesByTags(currentTag)
-            }
-        },
+        this.getPagesByTags(currentTag)
+      }
+    },
 
-        methods: {
+    methods: {
 
-            // 根据分类获取页面数据
-            getPagesByTags (currentTag) {
+      // 根据分类获取页面数据
+      getPagesByTags (currentTag) {
 
-                this.currentTag = currentTag
+        this.currentTag = currentTag
 
-                let posts = this.$tags.map[currentTag].posts
-                posts.sort((a, b) => {
-                    return this._getTimeNum(b) - this._getTimeNum(a)
-                })
-                // reverse()是为了按时间最近排序排序
-                this.posts = posts.length == 0 ? [] : posts
+        let posts = this.$tags.map[currentTag].posts
+        posts.sort((a, b) => {
+          return this._getTimeNum(b) - this._getTimeNum(a)
+        })
+        // reverse()是为了按时间最近排序排序
+        this.posts = posts.length == 0 ? [] : posts
       
-                this.getCurrentPage(1);
-            },
+        this.getCurrentPage(1);
+      },
 
-            getCurrentTag (tag) {
-                this.$emit('currentTag', tag)
-            },
+      getCurrentTag (tag) {
+        this.$emit('currentTag', tag)
+      },
 
-            getCurrentPage (page) {
-                this.currentPage = page
-                this.$page.currentPage = page
-            },
+      getCurrentPage (page) {
+        this.currentPage = page
+        this.$page.currentPage = page
+      },
 
-            _tagColor () {
-                // 红、蓝、绿、橙、灰
-                const tagColorArr = ['#f26d6d', '#3498db', '#67cc86', '#fb9b5f', '#838282']
-                const index = Math.floor(Math.random() * tagColorArr.length)
-                return tagColorArr[index]
-            },
+      _tagColor () {
+        // 红、蓝、绿、橙、灰
+        const tagColorArr = ['#f26d6d', '#3498db', '#67cc86', '#fb9b5f', '#838282']
+        const index = Math.floor(Math.random() * tagColorArr.length)
+        return tagColorArr[index]
+      },
 
-            // 获取时间的数字类型
-            _getTimeNum (date) {
-                return parseInt(new Date(date.frontmatter.date).getTime())
-            }
-        }
+      // 获取时间的数字类型
+      _getTimeNum (date) {
+        return parseInt(new Date(date.frontmatter.date).getTime())
+      }
     }
+  }
 </script>
 
 <style src="../styles/theme.styl" lang="stylus"></style>

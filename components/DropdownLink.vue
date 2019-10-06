@@ -55,31 +55,31 @@
 </template>
 
 <script>
-    import NavLink from '@theme/components/NavLink.vue'
-    import DropdownTransition from '@theme/components/DropdownTransition.vue'
+  import NavLink from '@theme/components/NavLink.vue'
+  import DropdownTransition from '@theme/components/DropdownTransition.vue'
 
-    export default {
-        components: { NavLink, DropdownTransition },
+  export default {
+    components: { NavLink, DropdownTransition },
 
-        props: {
-            item: {
-                type: Object,
-                required: true
-            }
-        },
+    props: {
+      item: {
+        type: Object,
+        required: true
+      }
+    },
 
-        data () {
-            return {
-                open: false
-            }
-        },
+    data () {
+      return {
+        open: false
+      }
+    },
 
-        methods: {
-            toggle () {
-                this.open = !this.open
-            }
-        }
+    methods: {
+      toggle () {
+        this.open = !this.open
+      }
     }
+  }
 </script>
 
 <style lang="stylus">

@@ -54,44 +54,44 @@
 </template>
 
 <script>
-    import { isActive } from '../util'
-    import DropdownTransition from '@theme/components/DropdownTransition.vue'
+  import { isActive } from '../util'
+  import DropdownTransition from '@theme/components/DropdownTransition.vue'
 
-    export default {
-        name: 'SidebarGroup',
-        components: { DropdownTransition },
-        props: {
-            item: {
-                type: Object,
-                default () {
-                    return {}
-                }
-            }, 
-            open: {
-                type: Object,
-                default () {
-                    return {}
-                },
-            },
-            collapsable: { 
-                type:Boolean,
-                default () {
-                    return {}
-                }
-            },
-            depth: {
-                type: Number,
-                default () {
-                    return {}
-                }
-            }
+  export default {
+    name: 'SidebarGroup',
+    components: { DropdownTransition },
+    props: {
+      item: {
+        type: Object,
+        default () {
+          return {}
+        }
+      }, 
+      open: {
+        type: Object,
+        default () {
+          return {}
         },
-        // ref: https://vuejs.org/v2/guide/components-edge-cases.html#Circular-References-Between-Components
-        beforeCreate () {
-            this.$options.components.SidebarLinks = require('./SidebarLinks.vue').default
-        },
-        methods: { isActive }
-    }
+      },
+      collapsable: { 
+        type:Boolean,
+        default () {
+          return {}
+        }
+      },
+      depth: {
+        type: Number,
+        default () {
+          return {}
+        }
+      }
+    },
+    // ref: https://vuejs.org/v2/guide/components-edge-cases.html#Circular-References-Between-Components
+    beforeCreate () {
+      this.$options.components.SidebarLinks = require('./SidebarLinks.vue').default
+    },
+    methods: { isActive }
+  }
 </script>
 
 <style lang="stylus">

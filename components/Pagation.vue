@@ -54,94 +54,94 @@
 </template>
 
 <script>
-    export default { 
-        props: {
-            data: {
-                type: Array,
-                default () {
-                    return []
-                }
-            },
-            perPage: {
-                type: Number,
-                default: 10
-            },
-            currentPage: {
-                type: Number,
-                default: 1
-            }
-        },
-        data () {
-            return {
-                changePage:'', // 跳转页
-            } 
-        },
-        computed:{
-            pages () {
-                return Math.ceil(this.data.length / this.perPage)
-            },
-            show:function(){ 
-                return this.pages && this.pages !=1 
-            }, 
-            efont: function() { 
-                if (this.pages <= 7) return false; 
-                return this.currentPage > 5 
-            }, 
-            indexs: function() { 
-                var left = 1, 
-                    right = this.pages, 
-                    ar = []; 
-                if (this.pages >= 7) { 
-                    if (this.currentPage > 5 && this.currentPage < this.pages - 4) { 
-                        left = Number(this.currentPage) - 3; 
-                        right = Number(this.currentPage) + 3; 
-                    } else { 
-                        if (this.currentPage <= 5) { 
-                            left = 1; 
-                            right = 7; 
-                        } else { 
-                            right = this.pages; 
+  export default { 
+    props: {
+      data: {
+        type: Array,
+        default () {
+          return []
+        }
+      },
+      perPage: {
+        type: Number,
+        default: 10
+      },
+      currentPage: {
+        type: Number,
+        default: 1
+      }
+    },
+    data () {
+      return {
+        changePage:'', // 跳转页
+      } 
+    },
+    computed:{
+      pages () {
+        return Math.ceil(this.data.length / this.perPage)
+      },
+      show:function(){ 
+        return this.pages && this.pages !=1 
+      }, 
+      efont: function() { 
+        if (this.pages <= 7) return false; 
+        return this.currentPage > 5 
+      }, 
+      indexs: function() { 
+        var left = 1, 
+            right = this.pages, 
+            ar = []; 
+        if (this.pages >= 7) { 
+          if (this.currentPage > 5 && this.currentPage < this.pages - 4) { 
+            left = Number(this.currentPage) - 3; 
+            right = Number(this.currentPage) + 3; 
+          } else { 
+            if (this.currentPage <= 5) { 
+              left = 1; 
+              right = 7; 
+            } else { 
+              right = this.pages; 
 
-                            left = this.pages - 6; 
-                        } 
-                    } 
-                } 
-                while (left <= right) { 
-                    ar.push(left); 
-                    left++; 
-                } 
-                return ar; 
-            }, 
-        },
-        methods: {
-            goPrev () {
-                let currentPage = this.currentPage
-                if (this.currentPage > 1) {
-                    this.emit(--currentPage)
-                }
-            },
-            goNext () {
-                let currentPage = this.currentPage
-                if (currentPage < this.pages) {
-                    this.emit(++currentPage)
-                }
-            },
-            jumpPage: function(id) {
-                if(id == ''){
-                    alert(`请输入页码！`)
-                    return
-                }
-                if (id <= this.pages) {
-                    this.emit(id)
-                    return
-                }
-                alert(`请输入小于${this.pages}的页码！`)
-            },
-            emit (id) {
-                this.$emit('getCurrentPage', id)
-            }
-        }, 
-    };
+              left = this.pages - 6; 
+            } 
+          } 
+        } 
+        while (left <= right) { 
+          ar.push(left); 
+          left++; 
+        } 
+        return ar; 
+      }, 
+    },
+    methods: {
+      goPrev () {
+        let currentPage = this.currentPage
+        if (this.currentPage > 1) {
+          this.emit(--currentPage)
+        }
+      },
+      goNext () {
+        let currentPage = this.currentPage
+        if (currentPage < this.pages) {
+          this.emit(++currentPage)
+        }
+      },
+      jumpPage: function(id) {
+        if(id == ''){
+          alert(`请输入页码！`)
+          return
+        }
+        if (id <= this.pages) {
+          this.emit(id)
+          return
+        }
+        alert(`请输入小于${this.pages}的页码！`)
+      },
+      emit (id) {
+        this.$emit('getCurrentPage', id)
+      }
+    }, 
+  };
 </script>
 
 <style lang="stylus" scoped>

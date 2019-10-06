@@ -28,52 +28,52 @@
 </template>
 
 <script>
-    import Common from '@theme/components/Common.vue'
-    import NoteAbstract from '@theme/components/NoteAbstract.vue'
-    import Pagation from '@theme/components/Pagation.vue'
+  import Common from '@theme/components/Common.vue'
+  import NoteAbstract from '@theme/components/NoteAbstract.vue'
+  import Pagation from '@theme/components/Pagation.vue'
 
-    export default {
-        components: { Common, NoteAbstract, Pagation },
+  export default {
+    components: { Common, NoteAbstract, Pagation },
 
-        data () {
-            return {
-                // 当前页码
-                currentPage: 1
-            }
-        },
+    data () {
+      return {
+        // 当前页码
+        currentPage: 1
+      }
+    },
 
-        computed: {
-            // 时间降序后的博客列表
-            posts () {
-                let posts = this.$category.posts
-                posts.sort((a, b) => {
-                    return this._getTimeNum(b) - this._getTimeNum(a)
-                })
-                this.getCurrentPage(1)
-                return posts
-            },
-            // 标题只显示分类名称
-            title () {
-                return this.$page.frontmatter.title.split('|')[0]
-            }
-        },
+    computed: {
+      // 时间降序后的博客列表
+      posts () {
+        let posts = this.$category.posts
+        posts.sort((a, b) => {
+          return this._getTimeNum(b) - this._getTimeNum(a)
+        })
+        this.getCurrentPage(1)
+        return posts
+      },
+      // 标题只显示分类名称
+      title () {
+        return this.$page.frontmatter.title.split('|')[0]
+      }
+    },
 
-        methods: {
-            // 获取当前tag
-            getCurrentTag (tag) {
-                this.$emit('currentTag', tag)
-            },
-            // 获取当前页码
-            getCurrentPage (page) {
-                this.currentPage = page
-                this.$page.currentPage = page
-            },
-            // 获取时间的数字类型
-            _getTimeNum (date) {
-                return parseInt(new Date(date.frontmatter.date).getTime())
-            }
-        }
+    methods: {
+      // 获取当前tag
+      getCurrentTag (tag) {
+        this.$emit('currentTag', tag)
+      },
+      // 获取当前页码
+      getCurrentPage (page) {
+        this.currentPage = page
+        this.$page.currentPage = page
+      },
+      // 获取时间的数字类型
+      _getTimeNum (date) {
+        return parseInt(new Date(date.frontmatter.date).getTime())
+      }
     }
+  }
 </script>
 
 <style src="../styles/theme.styl" lang="stylus"></style>

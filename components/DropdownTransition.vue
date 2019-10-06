@@ -10,20 +10,20 @@
 </template>
 
 <script>
-    export default {
-        name: 'DropdownTransition',
+  export default {
+    name: 'DropdownTransition',
 
-        methods: {
-            setHeight (items) {
-                // explicitly set height so that it can be transitioned
-                items.style.height = items.scrollHeight + 'px'
-            },
+    methods: {
+      setHeight (items) {
+        // explicitly set height so that it can be transitioned
+        items.style.height = items.scrollHeight + 'px'
+      },
 
-            unsetHeight (items) {
-                items.style.height = ''
-            }
-        }
+      unsetHeight (items) {
+        items.style.height = ''
+      }
     }
+  }
 </script>
 
 <style lang="stylus">

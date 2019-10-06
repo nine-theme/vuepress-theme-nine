@@ -32,40 +32,40 @@
 </template>
 
 <script>
-    import AccessNumber from './Valine/AccessNumber'
+  import AccessNumber from './Valine/AccessNumber'
 
-    export default {
-        components: { AccessNumber },
-        props: {
-            pageInfo: {
-                type: Object,
-                default () {
-                    return {}
-                }
-            }, 
-            currentTag: {
-                type: Object,
-                default () {
-                    return {}
-                }
-            }
-        },
-        data () {
-            return {
-                numStyle: {
-                    fontSize: '.9rem',
-                    fontWeight: 'normal',
-                    color: '#999'
-                }
-            }
-        },
-  
-        methods: {
-            goTags (tag) {
-                window.location.href = `/tag/?tag=${tag}`
-            }
+  export default {
+    components: { AccessNumber },
+    props: {
+      pageInfo: {
+        type: Object,
+        default () {
+          return {}
         }
+      }, 
+      currentTag: {
+        type: Object,
+        default () {
+          return {}
+        }
+      }
+    },
+    data () {
+      return {
+        numStyle: {
+          fontSize: '.9rem',
+          fontWeight: 'normal',
+          color: '#999'
+        }
+      }
+    },
+  
+    methods: {
+      goTags (tag) {
+        window.location.href = `/tag/?tag=${tag}`
+      }
     }
+  }
 </script>
 
 <style lang="stylus" scoped>

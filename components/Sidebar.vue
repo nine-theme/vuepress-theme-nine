@@ -11,23 +11,23 @@
 </template>
 
 <script>
-    import SidebarLinks from '@theme/components/SidebarLinks.vue'
-    import NavLinks from '@theme/components/NavLinks.vue'
+  import SidebarLinks from '@theme/components/SidebarLinks.vue'
+  import NavLinks from '@theme/components/NavLinks.vue'
 
-    export default {
-        name: 'Sidebar',
+  export default {
+    name: 'Sidebar',
 
-        components: { SidebarLinks, NavLinks },
+    components: { SidebarLinks, NavLinks },
 
-        props: {
-            items: {
-                type: Array,
-                default () {
-                    return {}
-                }
-            }
+    props: {
+      items: {
+        type: Array,
+        default () {
+          return {}
         }
+      }
     }
+  }
 </script>
 
 <style lang="stylus">

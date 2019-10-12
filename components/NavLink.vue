@@ -1,11 +1,10 @@
 <template>
   <router-link
-    v-if="!isExternal(link)"
     class="nav-link"
     :to="link"
-    :exact="exact"
-  >
-    <i :class="`iconfont ${item.icon}`" />
+    v-if="!isExternal(link)"
+    :exact="exact">
+    <i :class="`iconfont ${item.icon}`"></i>
     {{ item.text }}
   </router-link>
   <a
@@ -15,40 +14,39 @@
     :target="isMailto(link) || isTel(link) ? null : '_blank'"
     :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'"
   >
-    <i :class="`iconfont ${item.icon}`" />
+    <i :class="`iconfont ${item.icon}`"></i>
     {{ item.text }}
-    <OutboundLink />
+    <OutboundLink/>
   </a>
 </template>
 
 <script>
-  import { isExternal, isMailto, isTel, ensureExt } from '../util'
+import { isExternal, isMailto, isTel, ensureExt } from '../util'
 
-  export default {
-    props: {
-      item: {
-        type: Object,
-        required: true
-      }
-    },
-
-    computed: {
-      link () {
-        return ensureExt(this.item.link)
-      },
-
-      exact () {
-        if (this.$site.locales) {
-          return Object.keys(this.$site.locales).some(rootLink => rootLink === this.link)
-        }
-        return this.link === '/'
-      }
-    },
-
-    methods: {
-      isExternal,
-      isMailto,
-      isTel
+export default {
+  props: {
+    item: {
+      required: true
     }
+  },
+
+  computed: {
+    link () {
+      return ensureExt(this.item.link)
+    },
+
+    exact () {
+      if (this.$site.locales) {
+        return Object.keys(this.$site.locales).some(rootLink => rootLink === this.link)
+      }
+      return this.link === '/'
+    }
+  },
+
+  methods: {
+    isExternal,
+    isMailto,
+    isTel
   }
+}
 </script>

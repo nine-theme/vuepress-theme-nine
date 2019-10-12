@@ -1,127 +1,97 @@
 <template>
-  <div
-    class="home"
-    :class="nineShow?'nine-show': 'nine-hide'"
-  >
+  <div class="home" :class="nineShow?'nine-show': 'nine-hide'">
     <div class="hero">
-      <img
-        v-if="data.heroImage"
-        :style="heroImageStyle"
-        :src="$withBase(data.heroImage)"
-        alt="hero"
-      >
+      <img v-if="data.heroImage" :style="heroImageStyle" :src="$withBase(data.heroImage)" alt="hero">
 
-      <h1 v-if="data.isShowTitleInHome !== false">
-        {{ data.heroText || $title || 'NineSwordsMonster' }}
-      </h1>
+      <h1 v-if="data.isShowTitleInHome !== false">{{ data.heroText || $title || '午后南杂' }}</h1>
 
-      <p class="description">
-        {{ data.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}
-      </p>
+      <p class="description">{{ data.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}</p>
+      <p class="huawei" v-if="$themeConfig.huawei === true"><i class="iconfont nine-huawei" style="color: #fc2d38"></i>&nbsp;&nbsp;&nbsp;华为，为中华而为之！</p>
 
-      <p
-        v-if="data.actionText && data.actionLink"
-        class="action"
-      >
-        <NavLink
-          class="action-button"
-          :item="actionLink"
-        />
+      <p class="action" v-if="data.actionText && data.actionLink">
+        <NavLink class="action-button" :item="actionLink"/>
       </p>
     </div>
 
-    <div
-      v-if="data.features && data.features.length"
-      class="features"
-    >
-      <div
-        v-for="(feature, index) in data.features"
-        :key="index"
-        class="feature"
-      >
+    <div class="features" v-if="data.features && data.features.length">
+      <div v-for="(feature, index) in data.features" :key="index" class="feature">
         <h2>{{ feature.title }}</h2>
         <p>{{ feature.details }}</p>
       </div>
     </div>
 
-    <Content
-      class="home-center"
-      custom
-    />
+    <Content class="home-center" custom/>
 
     <div class="footer">
       <span>
-        <i class="iconfont nine-theme" />
-        <a
-          target="blank"
-          href="https://vuepress-theme-nine.alili.fun"
-        >VuePress-theme-nine</a>
+        <i class="iconfont nine-theme"></i>
+        <a target="blank" href="https://vuepress-theme-reco.recoluan.com">VuePress-theme-nine</a>
       </span>
       <!-- <span>
         <i class="iconfont nine-other"></i>
         <a>{{ $themeConfig.author || $site.title }}</a>
       </span> -->
       <span v-if="$themeConfig.record">
-        <i class="iconfont nine-beian" />
+        <i class="iconfont nine-beian"></i>
         <a>{{ $themeConfig.record }}</a>
       </span>
       <span>
-        <i class="iconfont nine-copyright" />
+        <i class="iconfont nine-copyright"></i>
         <a>
           <span v-if="$themeConfig.startYear">{{ $themeConfig.startYear }} - </span>
           {{ year }}
           &nbsp;&nbsp;
           <span v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</span>
-        </a>
+          </a>
       </span>
       <span>
-        <AccessNumber id-val="/" />
+        <AccessNumber idVal="/"></AccessNumber>
       </span>
     </div>
   </div>
 </template>
 
 <script>
-  import NavLink from "@theme/components/NavLink/";
-  import AccessNumber from '@theme/components/Valine/AccessNumber'
+import NavLink from "@theme/components/NavLink/";
+import AccessNumber from '@theme/components/Valine/AccessNumber'
 
-  export default {
-    components: { NavLink, AccessNumber },
-    data () {
-      return {
-        nineShow: false
-      }
-    },
-    computed: {
-      year () {
-        return new Date().getFullYear()
-      },
-      data() {
-        return this.$page.frontmatter;
-      },
-
-      actionLink() {
-        return {
-          link: this.data.actionLink,
-          text: this.data.actionText
-        };
-      },
-
-      heroImageStyle () {
-        return this.data.heroImageStyle || {
-          maxHeight: '200px',
-          margin: '6rem auto 1.5rem'
-        }
-      }
-    },
-    mounted () {
-      this.nineShow = true
+export default {
+  components: { NavLink, AccessNumber },
+  data () {
+    return {
+      nineShow: false
     }
-  };
+  },
+  computed: {
+    year () {
+      return new Date().getFullYear()
+    },
+    data() {
+      return this.$frontmatter;
+    },
+
+    actionLink() {
+      return {
+        link: this.data.actionLink,
+        text: this.data.actionText
+      };
+    },
+
+    heroImageStyle () {
+      return this.data.heroImageStyle || {
+        maxHeight: '200px',
+        margin: '6rem auto 1.5rem'
+      }
+    }
+  },
+  mounted () {
+    this.nineShow = true
+  }
+};
 </script>
 
 <style lang="stylus">
-@require '../assets/styles/loadMixin.styl'
+@require '../styles/loadMixin.styl'
 
 .home {
   padding: $navbarHeight 2rem 0;
@@ -210,9 +180,8 @@
       } 
     }
   }
-}
 
-&.nine-hide {
+  &.nine-hide {
   .hero {
     img {
       load-start()
@@ -221,6 +190,9 @@
       load-start()
     }
     .description {
+      load-start()
+    }
+    .huawei {
       load-start()
     }
     .action-button {
@@ -239,29 +211,33 @@
   }
 }
 
-&.nine-show {
-  .hero {
-    img {
-      load-end(0.08s)
+  &.nine-show {
+    .hero {
+      img {
+        load-end(0.08s)
+      }
+      .h1 {
+        load-end(0.16s)
+      }
+      .description {
+        load-end(0.24s)
+      }
+      .huawei {
+        load-end(0.32s)
+      }
+      .action-button {
+        load-end(0.4s)
+      }
     }
-    .h1 {
-      load-end(0.16s)
+    .features {
+      load-end(0.40s)
     }
-    .description {
-      load-end(0.24s)
+    .home-center {
+      load-end(0.48s)
     }
-    .action-button {
-      load-end(0.4s)
+    .footer {
+      load-end(0.56s)
     }
-  }
-  .features {
-    load-end(0.40s)
-  }
-  .home-center {
-    load-end(0.48s)
-  }
-  .footer {
-    load-end(0.56s)
   }
 }
 

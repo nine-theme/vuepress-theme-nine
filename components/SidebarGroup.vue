@@ -21,10 +21,10 @@
     >
       <span>{{ item.title }}</span>
       <span
-        v-if="collapsable"
         class="arrow"
-        :class="open ? 'down' : 'right'"
-      />
+        v-if="collapsable"
+        :class="open ? 'down' : 'right'">
+      </span>
     </router-link>
 
     <p
@@ -35,18 +35,18 @@
     >
       <span>{{ item.title }}</span>
       <span
-        v-if="collapsable"
         class="arrow"
-        :class="open ? 'down' : 'right'"
-      />
+        v-if="collapsable"
+        :class="open ? 'down' : 'right'">
+      </span>
     </p>
 
     <DropdownTransition>
       <SidebarLinks
-        v-if="open || !collapsable"
         class="sidebar-group-items"
         :items="item.children"
-        :sidebar-depth="item.sidebarDepth"
+        v-if="open || !collapsable"
+        :sidebarDepth="item.sidebarDepth"
         :depth="depth + 1"
       />
     </DropdownTransition>
@@ -54,44 +54,19 @@
 </template>
 
 <script>
-  import { isActive } from '../util'
-  import DropdownTransition from '@theme/components/DropdownTransition.vue'
+import { isActive } from '../util'
+import DropdownTransition from '@theme/components/DropdownTransition.vue'
 
-  export default {
-    name: 'SidebarGroup',
-    components: { DropdownTransition },
-    props: {
-      item: {
-        type: Object,
-        default () {
-          return {}
-        }
-      }, 
-      open: {
-        type: Object,
-        default () {
-          return {}
-        },
-      },
-      collapsable: { 
-        type:Boolean,
-        default () {
-          return {}
-        }
-      },
-      depth: {
-        type: Number,
-        default () {
-          return {}
-        }
-      }
-    },
-    // ref: https://vuejs.org/v2/guide/components-edge-cases.html#Circular-References-Between-Components
-    beforeCreate () {
-      this.$options.components.SidebarLinks = require('./SidebarLinks.vue').default
-    },
-    methods: { isActive }
-  }
+export default {
+  name: 'SidebarGroup',
+  props: ['item', 'open', 'collapsable', 'depth'],
+  components: { DropdownTransition },
+  // ref: https://vuejs.org/v2/guide/components-edge-cases.html#Circular-References-Between-Components
+  beforeCreate () {
+    this.$options.components.SidebarLinks = require('./SidebarLinks.vue').default
+  },
+  methods: { isActive }
+}
 </script>
 
 <style lang="stylus">

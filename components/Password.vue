@@ -1,50 +1,30 @@
 <template>
-  <div
-    class="password-shadow"
-    :class="{'is-home': !isPage}"
-  >
-    <Background />
-    <h3 class="title">
-      {{ isPage ? $frontmatter.title : $site.title }}
-    </h3>
-    <p
-      v-if="!isPage"
-      class="description"
-    >
-      {{ $site.description }}
-    </p>
-    <label
-      id="box"
-      class="inputBox"
-    >
+  <div class="password-shadow" :class="{'is-home': !isPage}">
+    <Background></Background>
+    <h3 class="title">{{isPage ? $frontmatter.title : $site.title}}</h3>
+    <p class="description" v-if="!isPage">{{$site.description}}</p>
+    <label class="inputBox" id="box">
       <input
         v-model="key"
         type="password"
         @keyup.enter="inter"
         @focus="inputFocus"
-        @blur="inputBlur"
-      >
-      <span>{{ warningText }}</span>
-      <button
-        ref="passwordBtn"
-        @click="inter"
-      >OK</button>
+        @blur="inputBlur">
+      <span>{{warningText}}</span>
+      <button ref="passwordBtn" @click="inter">OK</button>
     </label>
 
     <div class="footer">
       <span>
-        <i class="iconfont nine-theme" />
-        <a
-          target="blank"
-          href="https://www.npmjs.com/package/vuepress-theme-nine"
-        >vuePress-theme-nine</a>
+        <i class="iconfont nine-theme"></i>
+        <a target="blank" href="https://www.npmjs.com/package/vuepress-theme-nine">vuePress-theme-nine</a>
       </span>
       <span>
-        <i class="iconfont nine-other" />
+        <i class="iconfont nine-other"></i>
         <a>{{ $themeConfig.author || $site.title }}</a>
       </span>
       <span>
-        <i class="iconfont nine-copyright" />
+        <i class="iconfont nine-copyright"></i>
         <a>{{ year }}</a>
       </span>
     </div>
@@ -52,65 +32,65 @@
 </template>
 
 <script>
-  import Background from '@theme/components/Background'
+import Background from '@theme/components/Background'
 
-  export default {
-    name: 'Password',
-    components: {Background},
-    props: {
-      isPage: {
-        type: Boolean,
-        default: false
-      }
-    },
-    data() {
-      return {
-        warningText: 'Konck! Knock!',
-        key: ''
-      }
-    },
-    computed: {
-      year () {
-        return new Date().getFullYear()
-      }
-    },
-    methods: {
-      inter () {
-        const keyVal = this.key.trim()
-        const key = this.isPage ? 'pageKey' : 'key'
-        sessionStorage.setItem(key, keyVal)
-        const isHasKey = this.isPage ? this.isHasPageKey() : this.isHasKey()
-        if (!isHasKey) {
-          this.warningText = 'Key Error'
-          return
-        } 
-        const passwordBtn = this.$refs.passwordBtn
-        const width = document.getElementById('box').getClientRects()[0].width
+export default {
+  components: {Background},
+  props: {
+    isPage: {
+      type: Boolean,
+      default: false
+    }
+  },
+  name: 'Password',
+  data() {
+    return {
+      warningText: 'Konck! Knock!',
+      key: ''
+    }
+  },
+  computed: {
+    year () {
+      return new Date().getFullYear()
+    }
+  },
+  methods: {
+    inter () {
+      const keyVal = this.key.trim()
+      const key = this.isPage ? 'pageKey' : 'key'
+      sessionStorage.setItem(key, keyVal)
+      const isHasKey = this.isPage ? this.isHasPageKey() : this.isHasKey()
+      if (!isHasKey) {
+        this.warningText = 'Key Error'
+        return
+      } 
+      const passwordBtn = this.$refs.passwordBtn
+      const width = document.getElementById('box').getClientRects()[0].width
 
-        passwordBtn.style.width = `${width - 2}px`
-        passwordBtn.style.opacity = 1
-        setTimeout(() => {
-          window.location.reload();
-        }, 800)
-      },
-      isHasKey () {
-        const keyPage = this.$themeConfig.keyPage
-        const keys = keyPage.keys
-        return keys && keys.indexOf(sessionStorage.getItem('key')) > -1
-      },
-      isHasPageKey () {
-        const pageKeys = this.$frontmatter.keys
+      passwordBtn.style.width = `${width - 2}px`
+      passwordBtn.style.opacity = 1
+      setTimeout(() => {
+        window.location.reload();
+      }, 800)
+    },
+    isHasKey () {
+      const keyPage = this.$themeConfig.keyPage
+      const keys = keyPage.keys
+      return keys && keys.indexOf(sessionStorage.getItem('key')) > -1
+    },
+    isHasPageKey () {
+      const pageKeys = this.$frontmatter.keys
 
-        return pageKeys && pageKeys.indexOf(sessionStorage.getItem('pageKey')) > -1
-      },
-      inputFocus () {
-        this.warningText = 'Input Your Key'
-      },
-      inputBlur () {
-        this.warningText = 'Konck! Knock!'
-      }
+      return pageKeys && pageKeys.indexOf(sessionStorage.getItem('pageKey')) > -1
+    },
+    inputFocus () {
+      this.warningText = 'Input Your Key'
+    },
+    inputBlur () {
+      this.warningText = 'Konck! Knock!'
     }
   }
+}
 </script>
 
 <style lang="stylus" scoped>

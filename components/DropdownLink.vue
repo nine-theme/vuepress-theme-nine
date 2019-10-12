@@ -8,39 +8,37 @@
       @click="toggle"
     >
       <span class="title">
-        <i :class="`iconfont ${item.icon}`" />
+        <i :class="`iconfont ${item.icon}`"></i>
         {{ item.text }}
       </span>
       <span
         class="arrow"
         :class="open ? 'down' : 'right'"
-      />
+      ></span>
     </a>
 
     <DropdownTransition>
       <ul
-        v-show="open"
         class="nav-dropdown"
+        v-show="open"
       >
         <li
-          v-for="(subItem, index) in item.items"
-          :key="subItem.link || index"
           class="dropdown-item"
+          :key="subItem.link || index"
+          v-for="(subItem, index) in item.items"
         >
-          <h4 v-if="subItem.type === 'links'">
-            {{ subItem.text }}
-          </h4>
+          <h4 v-if="subItem.type === 'links'">{{ subItem.text }}</h4>
 
           <ul
-            v-if="subItem.type === 'links'"
             class="dropdown-subitem-wrapper"
+            v-if="subItem.type === 'links'"
           >
             <li
-              v-for="childSubItem in subItem.items"
-              :key="childSubItem.link"
               class="dropdown-subitem"
+              :key="childSubItem.link"
+              v-for="childSubItem in subItem.items"
             >
-              <NavLink :item="childSubItem" />
+              <NavLink :item="childSubItem"/>
             </li>
           </ul>
 
@@ -55,31 +53,30 @@
 </template>
 
 <script>
-  import NavLink from '@theme/components/NavLink.vue'
-  import DropdownTransition from '@theme/components/DropdownTransition.vue'
+import NavLink from '@theme/components/NavLink.vue'
+import DropdownTransition from '@theme/components/DropdownTransition.vue'
 
-  export default {
-    components: { NavLink, DropdownTransition },
+export default {
+  components: { NavLink, DropdownTransition },
 
-    props: {
-      item: {
-        type: Object,
-        required: true
-      }
-    },
+  data () {
+    return {
+      open: false
+    }
+  },
 
-    data () {
-      return {
-        open: false
-      }
-    },
+  props: {
+    item: {
+      required: true
+    }
+  },
 
-    methods: {
-      toggle () {
-        this.open = !this.open
-      }
+  methods: {
+    toggle () {
+      this.open = !this.open
     }
   }
+}
 </script>
 
 <style lang="stylus">

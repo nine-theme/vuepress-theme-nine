@@ -1,57 +1,36 @@
 <template>
-  <div
-    class="home-blog"
-    :class="nineShow?'nine-show': 'nine-hide'"
-  >
-    <div
-      class="hero"
-      :style="{background: `url(${$page.frontmatter.bgImage || require('../assets/images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}"
-    >
-      <h1>{{ data.heroText || $title || 'NineSwordsMonster' }}</h1>
+  <div class="home-blog" :class="nineShow?'nine-show': 'nine-hide'">
+    <div class="hero" :style="{background: `url(${$frontmatter.bgImage || require('../images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}">
+      <h1>{{ data.heroText || $title || '午后南杂' }}</h1>
 
-      <p class="description">
-        {{ data.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}
-      </p>
+      <p class="description">{{ data.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}</p>
+      <p class="huawei" v-if="$themeConfig.huawei === true"><i class="iconfont nine-huawei" style="color: #fc2d38"></i>&nbsp;&nbsp;&nbsp;华为，为中华而为之！</p>
     </div>
 
     <div class="home-blog-wrapper">
       <!-- 博客列表 -->
       <note-abstract 
-        v-if="showList"
         class="blog-list"
         :data="posts"
-        :current-page="1"
-      />
+        :isHome="true"
+        :currentPage="1"></note-abstract>
       <div class="info-wrapper">
-        <img
-          class="personal-img"
-          :src="$page.frontmatter.faceImage || $themeConfig.logo"
-          alt="hero"
-        > 
-        <h3
-          v-if="$themeConfig.author || $site.title"
-          class="name"
-        >
-          {{ $themeConfig.author || $site.title }}
-        </h3>
-        <div class="num">
-          <div>
-            <h3>{{ $site.pages.length }}</h3>
-            <h6>文章</h6>
-          </div>
-          <div>
-            <h3>{{ $tags.length }}</h3>
-            <h6>标签</h6>
-          </div>
-        </div>
-        <hr>
-        <h4><i class="iconfont nine-category" /> 分类</h4>
-        <ul class="category-wrapper">
-          <li
-            v-for="(item, index) in this.$categories.list"
-            :key="index"
-            class="category-item"
-          >
+         <img class="personal-img" :src="$frontmatter.faceImage || $themeConfig.logo" alt="hero"> 
+         <h3 class="name" v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</h3>
+         <div class="num">
+           <div>
+             <h3>{{getPagesLength}}</h3>
+             <h6>文章</h6>
+           </div>
+           <div>
+             <h3>{{$tags.length}}</h3>
+             <h6>标签</h6>
+           </div>
+         </div>
+         <hr>
+         <h4><i class="iconfont nine-category"></i> 分类</h4>
+         <ul class="category-wrapper">
+          <li class="category-item" v-for="(item, index) in this.$categories.list" :key="index">
             <a :href="item.path">
               <span class="category-name">{{ item.name }}</span>
               <span class="post-num">{{ item.posts.length }}</span>
@@ -59,37 +38,30 @@
           </li>
         </ul>
         <hr>
-        <h4><i class="iconfont nine-tag" /> 标签</h4>
+        <h4><i class="iconfont nine-tag"></i> 标签</h4>
         <div class="tags">
           <span 
             v-for="(item, index) in tags" 
             :key="index"
             :style="{ 'backgroundColor': item.color }"
-            @click="getPagesByTags(item.name)"
-          >{{ item.name }}</span>
+            @click="getPagesByTags(item.name)">{{item.name}}</span>
         </div>
       </div>  
     </div>
 
-    <Content
-      class="home-center"
-      custom
-    />
+    <Content class="home-center" custom/>
 
     <div class="footer">
       <span>
-        <i class="iconfont nine-theme" />
-        <a
-          target="blank"
-          href="https://vuepress-theme-nine.alili.fun"
-        >VuePress-theme-nine</a>
+        <i class="iconfont nine-theme"></i>
+        <a target="blank" href="https://vuepress-theme-nine.alili.fun">VuePress-theme-nine</a>
       </span>
-      <span v-if="$themeConfig.record">
-        <i class="iconfont nine-beian" />
-        <a>{{ $themeConfig.record }}</a>
+      <span v-if="$themeConfig.ninerd">
+        <i class="iconfont nine-beian"></i>
+        <a>{{ $themeConfig.ninerd }}</a>
       </span>
       <span>
-        <i class="iconfont nine-copyright" />
+        <i class="iconfont nine-copyright"></i>
         <a>
           <span v-if="$themeConfig.startYear">{{ $themeConfig.startYear }} - </span>
           {{ year }}
@@ -98,120 +70,122 @@
         </a>
       </span>
       <span>
-        <AccessNumber id-val="/" />
+        <AccessNumber idVal="/"></AccessNumber>
       </span>
     </div>
   </div>
 </template>
 
 <script>
-  import AccessNumber from '@theme/components/Valine/AccessNumber'
-  import NoteAbstract from '@theme/components/NoteAbstract.vue'
-  import { constants } from 'fs';
+import NavLink from "@theme/components/NavLink/";
+import AccessNumber from '@theme/components/Valine/AccessNumber'
+import NoteAbstract from '@theme/components/NoteAbstract.vue'
+import { constants } from 'fs';
 
-  export default {
-    components: { AccessNumber, NoteAbstract },
-    data () {
-      return {
-        nineShow: false,
-        tags: [],
-        showList: false
-      }
-    },
-    computed: {
-      // 时间降序后的博客列表
-      posts () {
-        let posts = this.$site.pages
-        posts = posts.filter(item => {
-          const { home, isTimeLine, date } = item.frontmatter
-          return !(home == true || isTimeLine == true || date === undefined)
-        })
-        posts.sort((a, b) => {
-          return this._getTimeNum(b) - this._getTimeNum(a)
-        })
-        return posts
-      },
-
-      // 分类信息
-      categoryList () {
-        console.log(this)
-        return []
-      },
-      year () {
-        return new Date().getFullYear()
-      },
-      data() {
-        return this.$page.frontmatter;
-      },
-
-      actionLink() {
-        return {
-          link: this.data.actionLink,
-          text: this.data.actionText
-        };
-      },
-
-      heroImageStyle () {
-        return this.data.heroImageStyle || {
-          maxHeight: '200px',
-          margin: '6rem auto 1.5rem'
-        }
-      },
-
-      bgImageStyle () {
-        const bgImageStyle = {
-          height: '350px',
-          textAlign: 'center',
-          overflow: 'hidden'
-        }
-        return this.data.bgImageStyle ? { ...bgImageStyle, ...this.data.bgImageStyle } : bgImageStyle
-      }
-    },
-    created () {
-      if (this.$tags.list.length > 0) {
-        let tags = this.$tags.list
-        tags.map(item => {
-          const color = this._tagColor()
-          item.color = color
-          return tags
-        })
-        this.tags = tags
-      }
-    },
-    mounted () {
-      this.nineShow = true
-      this.showList = true
-    },
-    methods: {
-      // 根据分类获取页面数据
-      getPages () {
-        let pages = this.$site.pages
-        pages = pages.filter(item => {
-          const { home, isTimeLine, date } = item.frontmatter
-          return !(home == true || isTimeLine == true || date === undefined)
-        })
-        // reverse()是为了按时间最近排序排序
-        this.pages = pages.length == 0 ? [] : pages
-      },
-      getPagesByTags (currentTag) {
-        window.location.href = `/tag/#?tag=${currentTag}`
-      },
-      // 获取时间的数字类型
-      _getTimeNum (data) {
-        return parseInt(new Date(data.frontmatter.date).getTime())
-      },
-      _tagColor () {
-        // 红、蓝、绿、橙、灰
-        const tagColorArr = ['#f26d6d', '#3498db', '#67cc86', '#fb9b5f', '#838282']
-        const index = Math.floor(Math.random() * tagColorArr.length)
-        return tagColorArr[index]
-      },
+export default {
+  components: { NavLink, AccessNumber, NoteAbstract },
+  data () {
+    return {
+      nineShow: false,
+      tags: [],
     }
-  };
+  },
+  computed: {
+    // 时间降序后的博客列表
+    posts () {
+      let posts = this.$site.pages
+      posts = posts.filter(item => {
+        const { home, isTimeLine, date } = item.frontmatter
+        return !(home == true || isTimeLine == true || date === undefined)
+      })
+      posts.sort((a, b) => {
+        return this._getTimeNum(b) - this._getTimeNum(a)
+      })
+      return posts
+    },
+
+    // 分类信息
+    getPagesLength () {
+      let num = 0
+      this.$categories.list.map(v => {
+        num += v.posts.length
+      })
+      return num
+    },
+    year () {
+      return new Date().getFullYear()
+    },
+    data() {
+      return this.$frontmatter;
+    },
+
+    actionLink() {
+      return {
+        link: this.data.actionLink,
+        text: this.data.actionText
+      };
+    },
+
+    heroImageStyle () {
+      return this.data.heroImageStyle || {
+        maxHeight: '200px',
+        margin: '6rem auto 1.5rem'
+      }
+    },
+
+    bgImageStyle () {
+      const bgImageStyle = {
+        height: '350px',
+        textAlign: 'center',
+        overflow: 'hidden'
+      }
+      return this.data.bgImageStyle ? { ...bgImageStyle, ...this.data.bgImageStyle } : bgImageStyle
+    }
+  },
+  created () {
+    if (this.$tags.list.length > 0) {
+      let tags = this.$tags.list
+      tags.map(item => {
+        const color = this._tagColor()
+        item.color = color
+        return tags
+      })
+      this.tags = tags
+    }
+  },
+  mounted () {
+    this.nineShow = true
+  },
+  methods: {
+    // 根据分类获取页面数据
+    getPages () {
+      let pages = this.$site.pages
+      pages = pages.filter(item => {
+        const { home, isTimeLine, date } = item.frontmatter
+        return !(home == true || isTimeLine == true || date === undefined)
+      })
+      // reverse()是为了按时间最近排序排序
+      this.pages = pages.length == 0 ? [] : pages
+    },
+    getPagesByTags (currentTag) {
+      window.location.href = `/tag/#?tag=${currentTag}`
+    },
+    // 获取时间的数字类型
+    _getTimeNum (data) {
+      return parseInt(new Date(data.frontmatter.date).getTime())
+    },
+    _tagColor () {
+      // 红、蓝、绿、橙、灰
+      const tagColorArr = ['#f26d6d', '#3498db', '#67cc86', '#fb9b5f', '#838282']
+      const index = Math.floor(Math.random() * tagColorArr.length)
+      return tagColorArr[index]
+    },
+  }
+};
 </script>
 
 <style lang="stylus">
-@require '../assets/styles/loadMixin.styl'
+@require '../styles/loadMixin.styl'
 
 .home-blog {
   padding: $navbarHeight 0 0;
@@ -224,12 +198,12 @@
     }
 
     h1 {
-      margin: 4rem auto 1.8rem ;
+      margin:10% auto 1.8rem ;
       font-size: 2.5rem;
-      color #fff
+      color #fff;
     }
 
-    h1, .description, {
+    h1, .description, .action, .huawei {
       color #fff!important
     }
 
@@ -239,10 +213,6 @@
       line-height: 1.3;
       color: lighten($textColor, 20%);
     }
-  }
-  .home-blog-title {
-    margin 0 auto 10px
-    max-width 960px
   }
   .home-blog-wrapper {
     display flex
@@ -348,49 +318,11 @@
     }
   }
 
-  .features {
-    max-width 1126px
-    padding: 1.2rem 0;
-    margin: 2.5rem auto 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    align-content: stretch;
-    justify-content: space-between;
-  }
-
-  .feature {
-    flex-grow: 1;
-    flex-basis: 30%;
-    max-width: 32%;
-    transition: all .5s
-    box-sizing border-box
-    margin-bottom 10px
-    padding 0 15px
-    box-shadow 0 2px 10px rgba(0,0,0,0.2)
-    h2 {
-      font-size: 1.6rem;
-      font-weight: 500;
-      border-bottom: none;
-      padding-bottom: 0;
-      color: lighten($textColor, 10%);
-    }
-
-    p {
-      color: lighten($textColor, 20%);
-    }
-
-    &:hover {
-      transform scale(1.05)
-    }
-  }
-
   .footer {
     padding: 2.5rem;
     border-top: 1px solid $borderColor;
     text-align: center;
     color: lighten($textColor, 25%);
-    load-start()
     > span {
       margin-left 1rem
       > i {
@@ -400,22 +332,26 @@
   }
 }
 
-&.nine-hide {
+.nine-hide {
   .hero {
     img {
       load-start()
     }
-    .h1 {
+    h1 {
       load-start()
+      color red
     }
     .description {
+      load-start()
+    }
+    .huawei {
       load-start()
     }
     .action-button {
       load-start()
     }
   }
-  .features {
+  .home-blog-wrapper {
     load-start()
   }
   .home-center {
@@ -427,29 +363,32 @@
   }
 }
 
-&.nine-show {
+.nine-show {
   .hero {
     img {
       load-end(0.08s)
     }
-    .h1 {
+    h1 {
       load-end(0.16s)
     }
     .description {
       load-end(0.24s)
     }
+    .huawei {
+      load-end(0.32s)
+    }
     .action-button {
       load-end(0.4s)
     }
   }
-  .features {
-    load-end(0.40s)
-  }
-  .home-center {
+  .home-blog-wrapper {
     load-end(0.48s)
   }
-  .footer {
+  .home-center {
     load-end(0.56s)
+  }
+  .footer {
+    load-end(0.64s)
   }
 }
 
@@ -482,14 +421,6 @@
         font-size: 1rem;
         padding: 0.6rem 1.2rem;
       }
-    }
-    .features {
-      flex-direction: column;
-    }
-
-    .feature {
-      max-width: 100%;
-      padding: 0 2.5rem;
     }
     .home-blog-wrapper {
       .info-wrapper {
@@ -536,12 +467,6 @@
       .action-button {
         font-size: 1rem;
         padding: 0.6rem 1.2rem;
-      }
-    }
-
-    .feature {
-      h2 {
-        font-size: 1.25rem;
       }
     }
 

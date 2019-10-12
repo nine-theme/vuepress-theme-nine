@@ -1,58 +1,28 @@
-<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="abstract-wrapper">
     <div
       v-for="(item, index) in data"
-      v-show="index >= (currentPage * 10 - 10) && index < currentPage * 10"
       :key="item.path"
-      class="abstract-item"
-    >
+      v-show="index >= (currentPage * 10 - 10) && index < currentPage * 10"
+      class="abstract-item">
       <div class="title">
         <router-link
-          :to="item.path"
-        >
-          {{ item.title }}
-        </router-link>
+          :to="item.path">{{item.title}}</router-link>
       </div>
-      <div
-        class="abstract"
-        v-html="item.excerpt"
-      />
+      <div class="abstract" v-html="item.excerpt"></div>
       <hr>
-      <PageInfo
-        :page-info="item"
-        :current-tag="currentTag"
-      />
+      <PageInfo :pageInfo="item" :isHome="!(isHome !== true)" :currentTag="currentTag"></PageInfo>
     </div>
   </div>
 </template>
 
 <script>
-  import PageInfo from './PageInfo'
+import PageInfo from './PageInfo'
 
-  export default {
-    components: { PageInfo },
-    props: {
-      data: {
-        type: Object,
-        default() {
-          return {}
-        }
-      }, 
-      currentPage: {
-        type: Object,
-        default() {
-          return {}
-        }
-      }, 
-      currentTag: {
-        type: Object,
-        default() {
-          return {}
-        }
-      }
-    }
-  }
+export default {
+  components: { PageInfo },
+  props: ['data', 'currentPage', 'currentTag', 'isHome']
+}
 </script>
 
 <style lang="stylus" scoped>

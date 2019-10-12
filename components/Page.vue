@@ -1,49 +1,40 @@
 <template>
-  <main
-    class="page"
-    :class="nineShow?'nine-show': 'nine-hide'"
-  >
-    <slot name="top" />
+  <main class="page" :class="nineShow?'nine-show': 'nine-hide'">
+    <slot name="top"/>
 
-    <div
-      v-if="!(isTimeLine)"
-      class="page-title"
-    >
-      <h1>{{ $page.title }}</h1>
+    <div class="page-title" v-if="!(isTimeLine)">
+      <h1>{{$page.title}}</h1>
       <hr>
-      <PageInfo :page-info="$page" />
+      <PageInfo :pageInfo="$page"></PageInfo>
     </div>
 
-    <Content />
+    <Content/>
 
-    <TimeLine v-if="isTimeLine" />
+    <TimeLine v-if="isTimeLine"></TimeLine>
 
     <footer class="page-edit">
       <div
-        v-if="editLink"
         class="edit-link"
+        v-if="editLink"
       >
         <a
           :href="editLink"
           target="_blank"
           rel="noopener noreferrer"
         >{{ editLinkText }}</a>
-        <OutboundLink />
+        <OutboundLink/>
       </div>
 
       <div
-        v-if="lastUpdated"
         class="last-updated"
+        v-if="lastUpdated"
       >
         <span class="prefix">{{ lastUpdatedText }}: </span>
         <span class="time">{{ lastUpdated }}</span>
       </div>
     </footer>
 
-    <div
-      v-if="prev || next"
-      class="page-nav"
-    >
+    <div class="page-nav" v-if="prev || next">
       <p class="inner">
         <span
           v-if="prev"
@@ -74,206 +65,207 @@
       </p>
     </div>
 
-    <slot name="bottom" />
+    <slot name="bottom"/>
   </main>
 </template>
 
 <script>
-  import PageInfo from '@theme/components/PageInfo'
-  import { resolvePage, outboundRE, endingSlashRE } from '../util'
-  import TimeLine from '@theme/components/TimeLine'
+import PageInfo from '@theme/components/PageInfo'
+import { resolvePage, outboundRE, endingSlashRE } from '../util'
+import TimeLine from '@theme/components/TimeLine'
 
-  export default {
-    components: { PageInfo, TimeLine},
+export default {
+  components: { PageInfo, TimeLine},
 
-    props: {
-      sidebarItems: {
-        type: Object,
-        default() {
-          return {}
-        }
+  props: ['sidebarItems'],
+
+  data () {
+    return {
+      nineShow: false
+    }
+  },
+
+  computed: {
+    isTimeLine () {
+      return this.$frontmatter.isTimeLine
+    },
+    lastUpdated () {
+      return this.$page.lastUpdated
+    },
+
+    lastUpdatedText () {
+      if (typeof this.$themeLocaleConfig.lastUpdated === 'string') {
+        return this.$themeLocaleConfig.lastUpdated
+      }
+      if (typeof this.$themeConfig.lastUpdated === 'string') {
+        return this.$themeConfig.lastUpdated
+      }
+      return 'Last Updated'
+    },
+
+    prev () {
+      const prev = this.$frontmatter.prev
+      if (prev === false) {
+        return
+      } else if (prev) {
+        return resolvePage(this.$site.pages, prev, this.$route.path)
+      } else {
+        return resolvePrev(this.$page, this.sidebarItems)
       }
     },
 
-    data () {
-      return {
-        nineShow: false
+    next () {
+      const next = this.$frontmatter.next
+      if (next === false) {
+        return
+      } else if (next) {
+        return resolvePage(this.$site.pages, next, this.$route.path)
+      } else {
+        return resolveNext(this.$page, this.sidebarItems)
       }
     },
 
-    computed: {
-      isTimeLine () {
-        return this.$page.frontmatter.isTimeLine
-      },
-      lastUpdated () {
-        return this.$page.lastUpdated
-      },
-
-      lastUpdatedText () {
-        if (typeof this.$themeLocaleConfig.lastUpdated === 'string') {
-          return this.$themeLocaleConfig.lastUpdated
-        }
-        if (typeof this.$themeConfig.lastUpdated === 'string') {
-          return this.$themeConfig.lastUpdated
-        }
-        return 'Last Updated'
-      },
-
-      prev () {
-        const prev = this.$page.frontmatter.prev
-        if (prev === false) {
-          return
-        } else if (prev) {
-          return resolvePage(this.$site.pages, prev, this.$route.path)
-        } else {
-          return resolvePrev(this.$page, this.sidebarItems)
-        }
-      },
-
-      next () {
-        const next = this.$page.frontmatter.next
-        if (next === false) {
-          return
-        } else if (next) {
-          return resolvePage(this.$site.pages, next, this.$route.path)
-        } else {
-          return resolveNext(this.$page, this.sidebarItems)
-        }
-      },
-
-      editLink () {
-        if (this.$page.frontmatter.editLink === false) {
-          return ''
-        }
-        const {
-          repo,
-          editLinks,
-          docsDir = '',
-          docsBranch = 'master',
-          docsRepo = repo
-        } = this.$themeConfig
-
-        if (docsRepo && editLinks && this.$page.relativePath) {
-          return this.createEditLink(repo, docsRepo, docsDir, docsBranch, this.$page.relativePath)
-        }
-        return ''
-      },
-
-      editLinkText () {
-        return (
-          this.$themeLocaleConfig.editLinkText
-          || this.$themeConfig.editLinkText
-          || `Edit this page`
-        )
-      }
-    },
-
-    mounted () {
-      this.nineShow = true
-
-      const keys = this.$frontmatter.keys
-      if (!keys) {
-        this.isHasKey =  true
+    editLink () {
+      if (this.$frontmatter.editLink === false) {
         return
       }
+      const {
+        repo,
+        editLinks,
+        docsDir = '',
+        docsBranch = 'master',
+        docsRepo = repo
+      } = this.$themeConfig
 
-      this.isHasKey = keys && keys.indexOf(sessionStorage.getItem('key')) > -1
+      if (docsRepo && editLinks && this.$page.relativePath) {
+        return this.createEditLink(repo, docsRepo, docsDir, docsBranch, this.$page.relativePath)
+      }
     },
 
-    methods: {
-      createEditLink (repo, docsRepo, docsDir, docsBranch, path) {
-        const bitbucket = /bitbucket.org/
-        if (bitbucket.test(repo)) {
-          const base = outboundRE.test(docsRepo)
-            ? docsRepo
-            : repo
-          return (
-            base.replace(endingSlashRE, '')
-            + `/src`
-            + `/${docsBranch}/`
-            + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
-            + path
-            + `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
-          )
-        }
+    editLinkText () {
+      return (
+        this.$themeLocaleConfig.editLinkText
+        || this.$themeConfig.editLinkText
+        || `Edit this page`
+      )
+    }
+  },
 
+  mounted () {
+    this.nineShow = true
+
+    const keys = this.$frontmatter.keys
+    if (!keys) {
+      this.isHasKey =  true
+      return
+    }
+
+    this.isHasKey = keys && keys.indexOf(sessionStorage.getItem('key')) > -1
+  },
+
+  methods: {
+    createEditLink (repo, docsRepo, docsDir, docsBranch, path) {
+      const bitbucket = /bitbucket.org/
+      if (bitbucket.test(repo)) {
         const base = outboundRE.test(docsRepo)
           ? docsRepo
-          : `https://github.com/${docsRepo}`
+          : repo
         return (
           base.replace(endingSlashRE, '')
-          + `/edit`
-          + `/${docsBranch}/`
-          + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
-          + path
+           + `/src`
+           + `/${docsBranch}/`
+           + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
+           + path
+           + `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
         )
       }
+
+      const base = outboundRE.test(docsRepo)
+        ? docsRepo
+        : `https://github.com/${docsRepo}`
+      return (
+        base.replace(endingSlashRE, '')
+        + `/edit`
+        + `/${docsBranch}/`
+        + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
+        + path
+      )
     }
   }
+}
 
-  function resolvePrev (page, items) {
-    return find(page, items, -1)
-  }
+function resolvePrev (page, items) {
+  return find(page, items, -1)
+}
 
-  function resolveNext (page, items) {
-    return find(page, items, 1)
-  }
+function resolveNext (page, items) {
+  return find(page, items, 1)
+}
 
-  function find (page, items, offset) {
-    const res = []
-    flatten(items, res)
-    for (let i = 0; i < res.length; i++) {
-      const cur = res[i]
-      if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
-        return res[i + offset]
-      }
+function find (page, items, offset) {
+  const res = []
+  flatten(items, res)
+  for (let i = 0; i < res.length; i++) {
+    const cur = res[i]
+    if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
+      return res[i + offset]
     }
   }
+}
 
-  function flatten (items, res) {
-    for (let i = 0, l = items.length; i < l; i++) {
-      if (items[i].type === 'group') {
-        flatten(items[i].children || [], res)
-      } else {
-        res.push(items[i])
-      }
+function flatten (items, res) {
+  for (let i = 0, l = items.length; i < l; i++) {
+    if (items[i].type === 'group') {
+      flatten(items[i].children || [], res)
+    } else {
+      res.push(items[i])
     }
   }
+}
 
 </script>
 
 <style lang="stylus">
-@require '../assets/styles/wrapper.styl'
-@require '../assets/styles/loadMixin.styl'
+@require '../styles/wrapper.styl'
+@require '../styles/loadMixin.styl'
 
 .page
   padding-top 6rem
   padding-bottom 2rem
   display block
+  #time-line {
+    margin-top 0
+    padding-top 0
+  } 
   .page-title
     max-width: 740px;
     margin: 0 auto;
     padding: 0rem 2.5rem;
-
-.page-edit
-  @extend $wrapper
-  padding-top 1rem
-  padding-bottom 1rem
-  overflow auto
-  .edit-link
-    display inline-block
-    a
-      color lighten($textColor, 25%)
-      margin-right 0.25rem
-  .last-updated
-    float right
-    font-size 0.9em
-    .prefix
-      font-weight 500
-      color lighten($textColor, 25%)
-    .time
-      font-weight 400
-      color #aaa
+  .page-edit
+    @extend $wrapper
+    padding-top 1rem
+    padding-bottom 1rem
+    overflow auto
+    .edit-link
+      display inline-block
+      a
+        color lighten($textColor, 25%)
+        margin-right 0.25rem
+    .last-updated
+      float right
+      font-size 0.9em
+      .prefix
+        font-weight 500
+        color lighten($textColor, 25%)
+      .time
+        font-weight 400
+        color #aaa
+  &.nine-hide.page {
+    load-start()
+  }
+  &.nine-show.page {
+    load-end(0.08s)
+  }          
 
 .page-nav
   @extend $wrapper
@@ -288,12 +280,6 @@
   .next
     float right
 
-.nine-hide.page {
-  load-start()
-}
-.nine-show.page {
-  load-end(0.08s)
-}    
 
 @media (max-width: $MQMobile)
   .page-title

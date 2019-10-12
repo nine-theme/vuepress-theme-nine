@@ -1,14 +1,14 @@
 <template>
 	<div class="theme-options">
-		<ul v-if="nine.hasThemes" class="color-theme-options">
+		<ul class="color-theme-options">
 			<li>
 				<a href="#" class="default-theme" @click.prevent="setTheme()"></a>
 			</li>
-			<li v-for="color in nine.themes" :key="color">
-				<a href="#" :class="`${color}-theme`" :style="{background: colors[color]}" @click.prevent="setTheme(color)"></a>
+			<li v-for="(value, key) in themePicker" :key="key">
+				<a href="#" :class="`${key}-theme`" :style="{background: value}" @click.prevent="setTheme(key)"></a>
 			</li>
 		</ul>
-		<div v-if="!nine.disableDarkTheme" class="dark-theme-options toggle-option">
+		<div class="dark-theme-options toggle-option">
 			<label for="dark-theme-toggle">Enable Dark Theme?</label>
 			<input id="dark-theme-toggle" v-model="darkTheme" type="checkbox" @change="toggleDarkTheme" />
 		</div>
@@ -16,17 +16,26 @@
 </template>
 
 <script>
-import nineConfig from './nineConfig.js';
 
 export default {
 	name: 'ThemeOptions',
 
-	mixins: [nineConfig],
-
 	data() {
 		return {
-			darkTheme: 'false'
+			darkTheme: 'false',
+			reco: {}
 		};
+	},
+
+	computed: {
+		themePicker () {
+			return this.$themeConfig.themePicker || {
+				red: '#f26d6d',
+				blue: '#2196f3',
+				green: '#3eaf7c',
+				orange: '#fb9b5f'
+			}
+		}
 	},
 
 	mounted() {
@@ -59,7 +68,7 @@ export default {
 			const colorThemes = this.nine.themes;
 
 			const classes = document.body.classList;
-			const themes = colorThemes.map(colorTheme => `nine-theme-${colorTheme}`);
+			const themes = Object.keys(this.themePicker).map(colorTheme => `nine-theme-${colorTheme}`);
 
 			if (!theme) {
 				if (moveClass) localStorage.removeItem('nine-theme');
@@ -85,9 +94,9 @@ export default {
 
 .color-theme-options {
 	display: flex;
-	justify-content: space-around;
+	flex-wrap wrap
 	li {
-		width: 33%;
+		width: 20%;
 		text-align: center;
 
 		a {
@@ -99,13 +108,11 @@ export default {
 				background-color: $accentColor;
 			}
 
-			&.blue-theme {
-				background-color: $blueAccentColor;
-			}
-
-			&.red-theme {
-				background-color: $redAccentColor;
-			}
+			for key, value in $themePicker {
+				&.{key}-theme {
+					background-color: value;
+				}
+			}	
 		}
 	}
 }

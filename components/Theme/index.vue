@@ -1,6 +1,6 @@
 <template>
-	<div v-if="showSettings" v-click-outside="hideMenu" class="color-picker">
-		<a class="color-button" href="#" @click.prevent="showMenu = !showMenu">
+	<div v-click-outside="hideMenu" class="color-picker">
+		<a class="color-button" @click.prevent="showMenu = !showMenu">
 			<i class="iconfont nine-color"></i>
 		</a>
 		<transition name="menu-transition" mode="out-in">
@@ -14,7 +14,6 @@
 <script>
 import ClickOutside from 'vue-click-outside';
 import ThemeOptions from './ThemeOptions.vue';
-import nineConfig from './nineConfig.js';
 
 export default {
 	name: 'UserSettings',
@@ -27,19 +26,10 @@ export default {
 		ThemeOptions
 	},
 
-	mixins: [nineConfig],
-
 	data() {
 		return {
 			showMenu: false,
 		};
-	},
-
-	computed: {
-		showSettings() {
-			const { nine } = this;
-			return nine.hasThemes || nine.disableDarkTheme !== true || nine.disableThemeIgnore !== true;
-		},
 	},
 
 	methods: {
@@ -57,16 +47,11 @@ export default {
 	margin-right: 1em;
 
 	.color-button {
-		display: flex;
-		justify-content: center;
 		align-items: center;
 		height: 100%;
 		.iconfont {
 			font-size 1.4rem
 			color: $accentColor
-		}
-		.settings-icon {
-			width: 18px;
 		}
 	}
 
@@ -126,11 +111,9 @@ export default {
 
 @media (max-width: $MQMobile) {
 	.color-picker {
-		margin-right: 0;
-
+		margin-right: 1rem;
 		.color-picker-menu {
 			left: calc(50% - 35px);
-
 			&::before {
 				left: calc(50% + 35px);
 			}

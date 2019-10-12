@@ -1,9 +1,10 @@
 <template>
   <div class="home-blog" :class="nineShow?'nine-show': 'nine-hide'">
-    <div class="hero" :style="{background: `url(${$frontmatter.bgImage || require('../images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}">
-      <h1>{{ data.heroText || $title || '午后南杂' }}</h1>
+    <div class="hero" :style="{background: `url(${$withBase($frontmatter.bgImage) || require('../images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}">
+      <h1>{{ data.heroText || $title || 'NineSwordsMonster' }}</h1>
 
-      <p class="description">{{ data.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}</p>
+      <p class="description">{{ data.tagline || $description || 'Welcome to your vuePress-theme-reco site' }}</p>
+      <p class="huawei" v-if="$themeConfig.huawei === true"><i class="iconfont reco-huawei" style="color: #fc2d38"></i>&nbsp;&nbsp;&nbsp;华为，为中华而为之！</p>
     </div>
 
     <div class="home-blog-wrapper">
@@ -79,9 +80,10 @@
 import NavLink from "@theme/components/NavLink/";
 import AccessNumber from '@theme/components/Valine/AccessNumber'
 import NoteAbstract from '@theme/components/NoteAbstract.vue'
-import { constants } from 'fs';
+import mixin from '@theme/mixins/index.js'
 
 export default {
+  mixins: [mixin],
   components: { NavLink, AccessNumber, NoteAbstract },
   data () {
     return {
@@ -173,12 +175,6 @@ export default {
     // 获取时间的数字类型
     _getTimeNum (data) {
       return parseInt(new Date(data.frontmatter.date).getTime())
-    },
-    _tagColor () {
-      // 红、蓝、绿、橙、灰
-      const tagColorArr = ['#f26d6d', '#3498db', '#67cc86', '#fb9b5f', '#838282']
-      const index = Math.floor(Math.random() * tagColorArr.length)
-      return tagColorArr[index]
     },
   }
 };

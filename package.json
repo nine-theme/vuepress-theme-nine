@@ -22,10 +22,13 @@
     "lint": "eslint --ext .js,.vue . --fix"
   },
   "dependencies": {
+    "@vuepress-reco/vuepress-plugin-back-to-top": "^1.0.3",
+    "@vuepress-reco/vuepress-plugin-pagation": "^1.0.3",
+    "@vuepress-reco/vuepress-plugin-screenfull": "^1.0.0",
+    "@vuepress/plugin-blog": "1.0.0-alpha.49",
     "leancloud-storage": "4.2.0",
     "valine": "1.3.10",
-    "@vuepress/plugin-blog": "1.0.0-alpha.49",
-    "vue-click-outside": "1.0.7"
+    "vue-click-outside": "1.0.7",
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",

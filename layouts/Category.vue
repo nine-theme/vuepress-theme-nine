@@ -4,10 +4,10 @@
     <Common :sidebar="false" :isComment="false">
       <!-- 分类集合 -->
       <ul class="category-wrapper">
-        <li 
+        <li
           class="category-item"
           :class="title.trim() == item.name ? 'active': ''"
-          v-for="(item, index) in this.$categories.list" 
+          v-for="(item, index) in this.$categories.list"
           :key="index">
           <router-link :to="item.path">
             <span class="category-name">{{ item.name }}</span>
@@ -17,16 +17,16 @@
       </ul>
 
       <!-- 博客列表 -->
-      <note-abstract 
+      <note-abstract
         class="list"
         :data="posts"
         :currentPage="currentPage"
         @currentTag="getCurrentTag"></note-abstract>
-      
+
       <!-- 分页 -->
-      <pagation 
+      <pagation
         class="pagation"
-        :data="posts"
+        :total="posts.length"
         :currentPage="currentPage"
         @getCurrentPage="getCurrentPage"></pagation>
     </Common>
@@ -36,27 +36,26 @@
 <script>
 import Common from '@theme/components/Common.vue'
 import NoteAbstract from '@theme/components/NoteAbstract.vue'
-import Pagation from '@theme/components/Pagation.vue'
 
 export default {
-  components: { Common, NoteAbstract, Pagation },
+  components: { Common, NoteAbstract },
 
   data () {
     return {
       // 当前页码
       currentPage: 1,
-      nineShow: false
+      recoShow: false
     }
   },
 
   computed: {
     // 时间降序后的博客列表
     posts () {
-      let posts = this.$category.posts
+      const posts = this.$category.posts
       posts.sort((a, b) => {
         return this._getTimeNum(b) - this._getTimeNum(a)
       })
-      this.getCurrentPage(1)
+      this._setPage(1)
       return posts
     },
     // 标题只显示分类名称
@@ -66,7 +65,7 @@ export default {
   },
 
   mounted () {
-    this.nineShow = true
+    this.recoShow = true
   },
 
   methods: {
@@ -76,6 +75,12 @@ export default {
     },
     // 获取当前页码
     getCurrentPage (page) {
+      this._setPage(page)
+      setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 100)
+    },
+    _setPage (page) {
       this.currentPage = page
       this.$page.currentPage = page
     },
@@ -94,7 +99,7 @@ export default {
 .categories-wrapper
   max-width: 740px;
   margin: 0 auto;
-  padding: 4.6rem 2.5rem 0; 
+  padding: 4.6rem 2.5rem 0;
   .category-wrapper {
     list-style none
     padding-left 0
@@ -151,7 +156,7 @@ export default {
     .pagation {
       load-end(0.24s)
     }
-  }  
+  }
 
 @media (max-width: $MQMobile)
   .categories-wrapper

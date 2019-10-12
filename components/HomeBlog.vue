@@ -1,21 +1,20 @@
 <template>
   <div class="home-blog" :class="nineShow?'nine-show': 'nine-hide'">
-    <div class="hero" :style="{background: `url(${$withBase($frontmatter.bgImage) || require('../images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}">
+     <div class="hero" :style="{background: `url(${$frontmatter.bgImage ? $withBase($frontmatter.bgImage) : require('../images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}">
       <h1>{{ data.heroText || $title || 'NineSwordsMonster' }}</h1>
 
       <p class="description">{{ data.tagline || $description || 'Welcome to your vuePress-theme-reco site' }}</p>
-      <p class="huawei" v-if="$themeConfig.huawei === true"><i class="iconfont reco-huawei" style="color: #fc2d38"></i>&nbsp;&nbsp;&nbsp;华为，为中华而为之！</p>
     </div>
 
     <div class="home-blog-wrapper">
       <!-- 博客列表 -->
-      <note-abstract 
+      <note-abstract
         class="blog-list"
         :data="posts"
         :isHome="true"
         :currentPage="1"></note-abstract>
       <div class="info-wrapper">
-         <img class="personal-img" :src="$withBase($frontmatter.faceImage || $themeConfig.logo)" alt="hero"> 
+         <img class="personal-img" :src="$frontmatter.faceImage ? $withBase($frontmatter.faceImage) : require('../images/home-head.jpeg')" alt="hero"> 
          <h3 class="name" v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</h3>
          <div class="num">
            <div>
@@ -56,9 +55,9 @@
         <i class="iconfont nine-theme"></i>
         <a target="blank" href="https://vuepress-theme-nine.alili.fun">VuePress-theme-nine</a>
       </span>
-      <span v-if="$themeConfig.ninerd">
+      <span v-if="$themeConfig.record">
         <i class="iconfont nine-beian"></i>
-        <a>{{ $themeConfig.ninerd }}</a>
+        <a>{{ $themeConfig.record }}</a>
       </span>
       <span>
         <i class="iconfont nine-copyright"></i>
@@ -77,14 +76,13 @@
 </template>
 
 <script>
-import NavLink from "@theme/components/NavLink/";
 import AccessNumber from '@theme/components/Valine/AccessNumber'
 import NoteAbstract from '@theme/components/NoteAbstract.vue'
 import mixin from '@theme/mixins/index.js'
 
 export default {
   mixins: [mixin],
-  components: { NavLink, AccessNumber, NoteAbstract },
+  components: { AccessNumber, NoteAbstract },
   data () {
     return {
       nineShow: false,
@@ -116,15 +114,15 @@ export default {
     year () {
       return new Date().getFullYear()
     },
-    data() {
-      return this.$frontmatter;
+    data () {
+      return this.$frontmatter
     },
 
-    actionLink() {
+    actionLink () {
       return {
         link: this.data.actionLink,
         text: this.data.actionText
-      };
+      }
     },
 
     heroImageStyle () {
@@ -145,7 +143,7 @@ export default {
   },
   created () {
     if (this.$tags.list.length > 0) {
-      let tags = this.$tags.list
+      const tags = this.$tags.list
       tags.map(item => {
         const color = this._tagColor()
         item.color = color
@@ -170,14 +168,14 @@ export default {
     },
     getPagesByTags (currentTag) {
       const base = this.$site.base
-      window.location.href = `${base}tag/#?tag=${currentTag}`
+      window.location.href = `${base}tag/?tag=${currentTag}`
     },
     // 获取时间的数字类型
     _getTimeNum (data) {
       return parseInt(new Date(data.frontmatter.date).getTime())
-    },
+    }
   }
-};
+}
 </script>
 
 <style lang="stylus">
@@ -218,7 +216,7 @@ export default {
     .info-wrapper {
       transition all .3s
       margin-left 15px;
-      width 380px;  
+      width 380px;
       height auto;
       box-shadow 0 2px 10px rgba(0,0,0,0.2);
       box-sizing border-box
@@ -262,7 +260,7 @@ export default {
         .category-item {
           padding: .4rem .8rem;
           border: 1px solid #999;
-          transition: all .5s 
+          transition: all .5s
           &:first-child {
             border-top-right-radius: .25rem;
             border-top-left-radius: .25rem;
@@ -302,15 +300,15 @@ export default {
           color: #fff;
           font-size: 13px;
           box-shadow 0 1px 4px 0 rgba(0,0,0,0.2)
-          transition: all .5s  
+          transition: all .5s
           &:hover {
             transform scale(1.04)
-          }  
+          }
           &.active {
             transform scale(1.2)
-          }  
-        }  
-      }         
+          }
+        }
+      }
     }
   }
 
@@ -323,7 +321,7 @@ export default {
       margin-left 1rem
       > i {
         margin-right .5rem
-      } 
+      }
     }
   }
 }

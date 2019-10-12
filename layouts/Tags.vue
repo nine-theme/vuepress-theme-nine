@@ -2,23 +2,23 @@
   <div class="tags-wrapper" :class="nineShow?'nine-show': 'nine-hide'">
     <Common :sidebar="false" :isComment="false"></Common>
     <div class="tags">
-      <span 
-        v-for="(item, index) in tags" 
+      <span
+        v-for="(item, index) in tags"
         :key="index"
         :class="{'active': item.name == currentTag}"
         :style="{ 'backgroundColor': item.color }"
-        @click="getPagesByTags(item.name)">{{item.name}}</span>
+          @click="tagClick(item.name)">{{item.name}}</span>
     </div>
-    <note-abstract 
+    <note-abstract
       class="list"
       :data="posts"
       :currentPage="currentPage"
       :currentTag="currentTag"
       @currentTag="getCurrentTag"></note-abstract>
-    
-    <pagation 
+
+    <pagation
       class="pagation"
-      :data="posts"
+      :total="posts.length"
       :currentPage="currentPage"
       @getCurrentPage="getCurrentPage"></pagation>
   </div>
@@ -27,35 +27,49 @@
 <script>
 import Common from '@theme/components/Common.vue'
 import NoteAbstract from '@theme/components/NoteAbstract.vue'
-import Pagation from '@theme/components/Pagation.vue'
 import mixin from '@theme/mixins/index.js'
 
 export default {
   mixins: [mixin],
-  components: { Common, NoteAbstract, Pagation },
+  components: { Common, NoteAbstract },
 
   data () {
     return {
       posts: [],
       tags: [],
-      currentTag: '',
+      currentTag: '全部',
       currentPage: 1,
       nineShow: false
+      allTagName: '全部'
+    }
+  },
+
+  computed: {
+    // 时间降序后的博客列表
+    handlePosts () {
+      let posts = this.$site.pages
+      posts = posts.filter(item => {
+        const { home, isTimeLine, date } = item.frontmatter
+        return !(home == true || isTimeLine == true || date === undefined)
+      })
+      posts.sort((a, b) => {
+        return this._getTimeNum(b) - this._getTimeNum(a)
+      })
+      return posts
     }
   },
 
   created () {
     if (this.$tags.list.length > 0) {
-      const currentTag = this.$route.query.tag ? this.$route.query.tag : this.$tags.list[0].name
-      let tags = this.$tags.list
+      const tags = this.$tags.list
       tags.map(item => {
         const color = this._tagColor()
         item.color = color
         return tags
       })
-      this.tags = tags
+      this.tags = [{ name: '全部', color: this._tagColor() }, ...tags]
 
-      this.getPagesByTags(currentTag)
+      this.getPagesByTags(this.currentTag)
     }
   },
 
@@ -65,19 +79,33 @@ export default {
 
   methods: {
 
+    initData (currentTag) {
+      this.getPagesByTags(currentTag)
+    },
+
+    async tagClick (currentTag) {
+      await this.getPagesByTags(currentTag)
+      window.scrollTo(0, 0)
+    },
+
     // 根据分类获取页面数据
     getPagesByTags (currentTag) {
-
       this.currentTag = currentTag
 
-      let posts = this.$tags.map[currentTag].posts
-      posts.sort((a, b) => {
-        return this._getTimeNum(b) - this._getTimeNum(a)
-      })
+      let posts = []
+      if (currentTag !== '全部') {
+        posts = this.$tags.map[currentTag].posts
+        posts.sort((a, b) => {
+          return this._getTimeNum(b) - this._getTimeNum(a)
+        })
+      } else {
+        posts = this.handlePosts
+      }
+
       // reverse()是为了按时间最近排序排序
       this.posts = posts.length == 0 ? [] : posts
-      
-      this.getCurrentPage(1);
+
+      this._setPage(1)
     },
 
     getCurrentTag (tag) {
@@ -85,10 +113,15 @@ export default {
     },
 
     getCurrentPage (page) {
+      this._setPage(page)
+      setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 100)
+    },
+    _setPage (page) {
       this.currentPage = page
       this.$page.currentPage = page
     },
-
     // 获取时间的数字类型
     _getTimeNum (date) {
       return parseInt(new Date(date.frontmatter.date).getTime())
@@ -104,7 +137,7 @@ export default {
 .tags-wrapper
   max-width: 740px;
   margin: 0 auto;
-  padding: 4.6rem 2.5rem 0; 
+  padding: 4.6rem 2.5rem 0;
   .tags
     margin 30px 0
     span
@@ -138,7 +171,7 @@ export default {
     .pagation {
       load-end(0.24s)
     }
-  }      
+  }
 
 @media (max-width: $MQMobile)
   .tags-wrapper

@@ -14,25 +14,25 @@
 <script>
 
 export default {
-	name: 'ThemeOptions',
+  name: 'ThemeOptions',
 
-	data() {
-		return {
-			darkTheme: 'false',
-			reco: {}
-		};
-	},
+  data () {
+    return {
+      darkTheme: 'false',
+      nine: {}
+    }
+  },
 
-	computed: {
-		themePicker () {
-			return this.$themeConfig.themePicker || {
-				red: '#f26d6d',
-				blue: '#2196f3',
-				green: '#3eaf7c',
-				orange: '#fb9b5f'
-			}
-		}
-	},
+  computed: {
+    themePicker () {
+      return this.$themeConfig.themePicker || {
+        red: '#f26d6d',
+        blue: '#2196f3',
+        green: '#3eaf7c',
+        orange: '#fb9b5f'
+      }
+    }
+  },
 
 	mounted() {
 		const theme = localStorage.getItem('nine-theme')
@@ -87,7 +87,7 @@ export default {
 				&.{key}-theme {
 					background-color: value;
 				}
-			}	
+			}
 		}
 	}
 }

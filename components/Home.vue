@@ -1,7 +1,11 @@
 <template>
   <div class="home" :class="nineShow?'nine-show': 'nine-hide'">
     <div class="hero">
-      <img v-if="data.heroImage" :style="heroImageStyle" :src="$withBase(data.heroImage)" alt="hero">
+      <img 
+        v-if="data.isShowHeroImage !== false" 
+        :style="heroImageStyle" 
+        :src="data.heroImage ? $withBase(data.heroImage) : require('../images/icon_vuepress_nine.png')" 
+        alt="hero">
 
       <h1 v-if="data.isShowTitleInHome !== false">{{ data.heroText || $title || '午后南杂' }}</h1>
 
@@ -23,7 +27,7 @@
     <div class="footer">
       <span>
         <i class="iconfont nine-theme"></i>
-        <a target="blank" href="https://vuepress-theme-reco.recoluan.com">VuePress-theme-nine</a>
+        <a target="blank" href="https://vuepress-theme-reco.alili.fun">VuePress-theme-nine</a>
       </span>
       <!-- <span>
         <i class="iconfont nine-other"></i>
@@ -50,7 +54,7 @@
 </template>
 
 <script>
-import NavLink from "@theme/components/NavLink/";
+import NavLink from '@theme/components/NavLink/'
 import AccessNumber from '@theme/components/Valine/AccessNumber'
 
 export default {
@@ -64,15 +68,15 @@ export default {
     year () {
       return new Date().getFullYear()
     },
-    data() {
-      return this.$frontmatter;
+    data () {
+      return this.$frontmatter
     },
 
-    actionLink() {
+    actionLink () {
       return {
         link: this.data.actionLink,
         text: this.data.actionText
-      };
+      }
     },
 
     heroImageStyle () {
@@ -85,7 +89,7 @@ export default {
   mounted () {
     this.nineShow = true
   }
-};
+}
 </script>
 
 <style lang="stylus">
@@ -98,9 +102,6 @@ export default {
 
   .hero {
     text-align: center;
-    img {
-      background-color: $accentColor;
-    }
     h1 {
       font-size: 2.5rem;
     }
@@ -175,7 +176,7 @@ export default {
       margin-left 1rem
       > i {
         margin-right .5rem
-      } 
+      }
     }
   }
 

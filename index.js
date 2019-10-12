@@ -6,8 +6,8 @@ module.exports = (options, ctx) => ({
     const { themeConfig, siteConfig } = ctx
     // resolve algolia
     const isAlgoliaSearch = (
-      themeConfig.algolia
-      || Object.keys(siteConfig.locales && themeConfig.locales || {})
+      themeConfig.algolia ||
+      Object.keys(siteConfig.locales && themeConfig.locales || {})
         .some(base => themeConfig.locales[base].algolia)
     )
     return {
@@ -18,6 +18,9 @@ module.exports = (options, ctx) => ({
   },
 
   plugins: [
+    '@vuepress-reco/vuepress-plugin-back-to-top',
+    '@vuepress-reco/vuepress-plugin-pagation',
+    '@vuepress-reco/vuepress-plugin-screenfull',
     '@vuepress/active-header-links',
     ['@vuepress/plugin-blog', {
       permalink: '/:regular'

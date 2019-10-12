@@ -1,10 +1,9 @@
 <template>
   <div class="home-blog" :class="nineShow?'nine-show': 'nine-hide'">
-    <div class="hero" :style="{background: `url(${$withBase($frontmatter.bgImage) || require('../images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}">
+    <div class="hero" :style="{background: `url(${$frontmatter.bgImage ? $withBase($frontmatter.bgImage) : require('../images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}">
       <h1>{{ data.heroText || $title || 'NineSwordsMonster' }}</h1>
 
       <p class="description">{{ data.tagline || $description || 'Welcome to your vuePress-theme-reco site' }}</p>
-      <p class="huawei" v-if="$themeConfig.huawei === true"><i class="iconfont reco-huawei" style="color: #fc2d38"></i>&nbsp;&nbsp;&nbsp;华为，为中华而为之！</p>
     </div>
 
     <div class="home-blog-wrapper">
@@ -15,7 +14,7 @@
         :isHome="true"
         :currentPage="1"></note-abstract>
       <div class="info-wrapper">
-         <img class="personal-img" :src="$withBase($frontmatter.faceImage || $themeConfig.logo)" alt="hero"> 
+         <img class="personal-img" :src="$frontmatter.faceImage ? $withBase($frontmatter.faceImage) : require('../images/home-head.png')" alt="hero"> 
          <h3 class="name" v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</h3>
          <div class="num">
            <div>
@@ -56,9 +55,9 @@
         <i class="iconfont nine-theme"></i>
         <a target="blank" href="https://vuepress-theme-nine.alili.fun">VuePress-theme-nine</a>
       </span>
-      <span v-if="$themeConfig.ninerd">
+      <span v-if="$themeConfig.record">
         <i class="iconfont nine-beian"></i>
-        <a>{{ $themeConfig.ninerd }}</a>
+        <a>{{ $themeConfig.record }}</a>
       </span>
       <span>
         <i class="iconfont nine-copyright"></i>
@@ -170,7 +169,7 @@ export default {
     },
     getPagesByTags (currentTag) {
       const base = this.$site.base
-      window.location.href = `${base}tag/#?tag=${currentTag}`
+      window.location.href = `${base}tag/?tag=${currentTag}`
     },
     // 获取时间的数字类型
     _getTimeNum (data) {

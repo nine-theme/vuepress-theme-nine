@@ -1,7 +1,11 @@
 <template>
   <div class="home" :class="nineShow?'nine-show': 'nine-hide'">
     <div class="hero">
-      <img v-if="data.heroImage" :style="heroImageStyle" :src="$withBase(data.heroImage)" alt="hero">
+      <img 
+        v-if="data.isShowHeroImage !== false" 
+        :style="heroImageStyle" 
+        :src="data.heroImage ? $withBase(data.heroImage) : require('../images/icon_vuepress_nine.png')" 
+        alt="hero">
 
       <h1 v-if="data.isShowTitleInHome !== false">{{ data.heroText || $title || '午后南杂' }}</h1>
 
@@ -98,9 +102,6 @@ export default {
 
   .hero {
     text-align: center;
-    img {
-      background-color: $accentColor;
-    }
     h1 {
       font-size: 2.5rem;
     }

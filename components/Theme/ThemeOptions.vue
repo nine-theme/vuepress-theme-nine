@@ -8,10 +8,6 @@
 				<a href="#" :class="`${key}-theme`" :style="{background: value}" @click.prevent="setTheme(key)"></a>
 			</li>
 		</ul>
-		<div class="dark-theme-options toggle-option">
-			<label for="dark-theme-toggle">Enable Dark Theme?</label>
-			<input id="dark-theme-toggle" v-model="darkTheme" type="checkbox" @change="toggleDarkTheme" />
-		</div>
 	</div>
 </template>
 
@@ -40,32 +36,11 @@ export default {
 
 	mounted() {
 		const theme = localStorage.getItem('nine-theme')
-		const night = localStorage.getItem('nine-night')
-		const classes = document.body.classList;
-
-		this.darkTheme = night === 'true' ? true : false
-		if (night === 'true') classes.add(`nine-theme-night`)
 		if (theme) this.setTheme(theme)
 	},
 
 	methods: {
-		toggleDarkTheme() {
-			localStorage.setItem('nine-night', this.darkTheme)
-			const classes = document.body.classList;
-			if (this.darkTheme) {
-				const oldColor = [...classes]
-				classes.value = ''
-				classes.add(`nine-theme-night`)
-				oldColor.forEach(item => {
-					classes.add(item)
-				})
-			}	
-			else {
-				classes.remove(`nine-theme-night`)
-			}	
-		},
 		setTheme(theme, moveClass = true) {
-			const colorThemes = this.nine.themes;
 
 			const classes = document.body.classList;
 			const themes = Object.keys(this.themePicker).map(colorTheme => `nine-theme-${colorTheme}`);
@@ -114,16 +89,6 @@ export default {
 				}
 			}	
 		}
-	}
-}
-
-.toggle-option {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-
-	label {
-		padding-right: 0.25em;
 	}
 }
 </style>

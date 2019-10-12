@@ -4,7 +4,6 @@
       <h1>{{ data.heroText || $title || '午后南杂' }}</h1>
 
       <p class="description">{{ data.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}</p>
-      <p class="huawei" v-if="$themeConfig.huawei === true"><i class="iconfont nine-huawei" style="color: #fc2d38"></i>&nbsp;&nbsp;&nbsp;华为，为中华而为之！</p>
     </div>
 
     <div class="home-blog-wrapper">
@@ -15,7 +14,7 @@
         :isHome="true"
         :currentPage="1"></note-abstract>
       <div class="info-wrapper">
-         <img class="personal-img" :src="$frontmatter.faceImage || $themeConfig.logo" alt="hero"> 
+         <img class="personal-img" :src="$withBase($frontmatter.faceImage || $themeConfig.logo)" alt="hero"> 
          <h3 class="name" v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</h3>
          <div class="num">
            <div>
@@ -31,10 +30,10 @@
          <h4><i class="iconfont nine-category"></i> 分类</h4>
          <ul class="category-wrapper">
           <li class="category-item" v-for="(item, index) in this.$categories.list" :key="index">
-            <a :href="item.path">
+            <router-link :to="item.path">
               <span class="category-name">{{ item.name }}</span>
               <span class="post-num">{{ item.posts.length }}</span>
-            </a>
+            </router-link>
           </li>
         </ul>
         <hr>
@@ -168,7 +167,8 @@ export default {
       this.pages = pages.length == 0 ? [] : pages
     },
     getPagesByTags (currentTag) {
-      window.location.href = `/tag/#?tag=${currentTag}`
+      const base = this.$site.base
+      window.location.href = `${base}tag/#?tag=${currentTag}`
     },
     // 获取时间的数字类型
     _getTimeNum (data) {
@@ -198,7 +198,7 @@ export default {
     }
 
     h1 {
-      margin:10% auto 1.8rem ;
+      margin:7rem auto 1.8rem;
       font-size: 2.5rem;
       color #fff;
     }

@@ -7,12 +7,21 @@
     </div>
 
     <div class="home-blog-wrapper">
-      <!-- 博客列表 -->
-      <note-abstract
-        class="blog-list"
-        :data="posts"
-        :isHome="true"
-        :currentPage="1"></note-abstract>
+      <div>
+        <!-- 博客列表 -->
+        <note-abstract
+          class="blog-list"
+          :data="posts"
+          :isHome="true"
+          :currentPage="currentPage"></note-abstract>
+        <!-- 分页 -->
+        <pagation
+          class="pagation"
+          :total="posts.length"
+          :currentPage="currentPage"
+          @getCurrentPage="getCurrentPage" /> 
+      </div>
+      
       <div class="info-wrapper">
          <img class="personal-img" :src="$frontmatter.faceImage ? $withBase($frontmatter.faceImage) : require('../images/home-head.jpeg')" alt="hero"> 
          <h3 class="name" v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</h3>
@@ -22,7 +31,7 @@
              <h6>文章</h6>
            </div>
            <div>
-             <h3>{{$tags.length}}</h3>
+             <h3>{{$tags.list.length}}</h3>
              <h6>标签</h6>
            </div>
          </div>
@@ -32,20 +41,14 @@
           <li class="category-item" v-for="(item, index) in this.$categories.list" :key="index">
             <router-link :to="item.path">
               <span class="category-name">{{ item.name }}</span>
-              <span class="post-num">{{ item.posts.length }}</span>
+              <span class="post-num">{{ item.pages.length }}</span>
             </router-link>
           </li>
         </ul>
         <hr>
         <h4><i class="iconfont nine-tag"></i> 标签</h4>
-        <div class="tags">
-          <span 
-            v-for="(item, index) in tags" 
-            :key="index"
-            :style="{ 'backgroundColor': item.color }"
-            @click="getPagesByTags(item.name)">{{item.name}}</span>
-        </div>
-      </div>  
+        <TagList @getCurrentTag="getPagesByTags"></TagList>
+      </div>
     </div>
 
     <Content class="home-center" custom/>
@@ -77,16 +80,17 @@
 
 <script>
 import AccessNumber from '@theme/components/Valine/AccessNumber'
+import TagList from '@theme/components/TagList.vue'
 import NoteAbstract from '@theme/components/NoteAbstract.vue'
 import mixin from '@theme/mixins/index.js'
 
 export default {
-  mixins: [mixin],
-  components: { AccessNumber, NoteAbstract },
+  components: { AccessNumber, NoteAbstract, TagList },
   data () {
     return {
       nineShow: false,
-      tags: [],
+      currentPage: 1,
+      tags: []
     }
   },
   computed: {
@@ -107,7 +111,7 @@ export default {
     getPagesLength () {
       let num = 0
       this.$categories.list.map(v => {
-        num += v.posts.length
+        num += v.pages.length
       })
       return num
     },
@@ -139,23 +143,23 @@ export default {
         overflow: 'hidden'
       }
       return this.data.bgImageStyle ? { ...bgImageStyle, ...this.data.bgImageStyle } : bgImageStyle
-    }
-  },
-  created () {
-    if (this.$tags.list.length > 0) {
-      const tags = this.$tags.list
-      tags.map(item => {
-        const color = this._tagColor()
-        item.color = color
-        return tags
-      })
-      this.tags = tags
+    },
+
+    heroHeight () {
+      return document.querySelector('.hero').clientHeight
     }
   },
   mounted () {
     this.nineShow = true
   },
   methods: {
+    // 获取当前页码
+    getCurrentPage (page) {
+      this._setPage(page)
+      setTimeout(() => {
+        window.scrollTo(0, this.heroHeight)
+      }, 100)
+    },
     // 根据分类获取页面数据
     getPages () {
       let pages = this.$site.pages
@@ -173,7 +177,11 @@ export default {
     // 获取时间的数字类型
     _getTimeNum (data) {
       return parseInt(new Date(data.frontmatter.date).getTime())
-    }
+    },
+    _setPage (page) {
+      this.currentPage = page
+      this.$page.currentPage = page
+    },
   }
 }
 </script>
@@ -258,18 +266,23 @@ export default {
         list-style none
         padding-left 0
         .category-item {
+          margin-bottom .4rem
           padding: .4rem .8rem;
-          border: 1px solid #999;
           transition: all .5s
-          &:first-child {
-            border-top-right-radius: .25rem;
-            border-top-left-radius: .25rem;
-          }
+          border-radius 2px
+          box-shadow 0 1px 4px 0 rgba(0,0,0,0.2)
           &:not(:first-child) {
             border-top: none;
           }
           &:hover {
             background #d3d3d3
+            a {
+              color #fff
+              .post-num {
+                background #999
+                color #fff
+              }
+            }
           }
           a {
             display flex
@@ -279,33 +292,11 @@ export default {
               height 1.6rem
               text-align center
               line-height 1.6rem
-              border-radius 50%
+              border-radius 4px
               background #eee
               font-size .6rem
               color $textColor
             }
-          }
-        }
-      }
-      .tags {
-        margin-bottom 30px
-        span {
-          vertical-align: middle;
-          margin: 4px 4px 10px;
-          padding: 4px 8px;
-          display: inline-flex;
-          cursor: pointer;
-          border-radius: 2px;
-          background: #fff;
-          color: #fff;
-          font-size: 13px;
-          box-shadow 0 1px 4px 0 rgba(0,0,0,0.2)
-          transition: all .5s
-          &:hover {
-            transform scale(1.04)
-          }
-          &.active {
-            transform scale(1.2)
           }
         }
       }

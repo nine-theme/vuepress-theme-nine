@@ -1,14 +1,7 @@
 <template>
   <div class="tags-wrapper" :class="nineShow?'nine-show': 'nine-hide'">
     <Common :sidebar="false" :isComment="false"></Common>
-    <div class="tags">
-      <span
-        v-for="(item, index) in tags"
-        :key="index"
-        :class="{'active': item.name == currentTag}"
-        :style="{ 'backgroundColor': item.color }"
-          @click="tagClick(item.name)">{{item.name}}</span>
-    </div>
+    <TagList :currentTag="currentTag" @getCurrentTag="tagClick"></TagList>
     <note-abstract
       class="list"
       :data="posts"
@@ -26,13 +19,11 @@
 
 <script>
 import Common from '@theme/components/Common.vue'
+import TagList from '@theme/components/TagList.vue'
 import NoteAbstract from '@theme/components/NoteAbstract.vue'
-import mixin from '@theme/mixins/index.js'
 
 export default {
-  mixins: [mixin],
-  components: { Common, NoteAbstract },
-
+  components: { Common, NoteAbstract, TagList },
   data () {
     return {
       posts: [],
@@ -43,7 +34,6 @@ export default {
       allTagName: '全部'
     }
   },
-
   computed: {
     // 时间降序后的博客列表
     handlePosts () {
@@ -58,18 +48,11 @@ export default {
       return posts
     }
   },
-
   created () {
     if (this.$tags.list.length > 0) {
-      const tags = this.$tags.list
-      tags.map(item => {
-        const color = this._tagColor()
-        item.color = color
-        return tags
-      })
-      this.tags = [{ name: '全部', color: this._tagColor() }, ...tags]
+      const currentTag = this.$route.query.tag ? this.$route.query.tag : this.currentTag
 
-      this.getPagesByTags(this.currentTag)
+      this.getPagesByTags(currentTag)
     }
   },
 
@@ -78,10 +61,6 @@ export default {
   },
 
   methods: {
-
-    initData (currentTag) {
-      this.getPagesByTags(currentTag)
-    },
 
     async tagClick (currentTag) {
       await this.getPagesByTags(currentTag)
@@ -94,7 +73,7 @@ export default {
 
       let posts = []
       if (currentTag !== '全部') {
-        posts = this.$tags.map[currentTag].posts
+        posts = this.$tags.map[currentTag].pages
         posts.sort((a, b) => {
           return this._getTimeNum(b) - this._getTimeNum(a)
         })
@@ -138,25 +117,7 @@ export default {
   max-width: 740px;
   margin: 0 auto;
   padding: 4.6rem 2.5rem 0;
-  .tags
-    margin 30px 0
-    span
-      vertical-align: middle;
-      margin: 4px 4px 10px;
-      padding: 4px 8px;
-      display: inline-block;
-      cursor: pointer;
-      border-radius: 2px;
-      background: #fff;
-      color: #fff;
-      font-size: 13px;
-      box-shadow 0 1px 4px 0 rgba(0,0,0,0.2)
-      transition: all .5s
-      &:hover
-        transform scale(1.04)
-      &.active
-        transform scale(1.2)
-  &.nine-hide {
+  &.reco-hide {
     .tags, .list, .pagation {
       load-start()
     }

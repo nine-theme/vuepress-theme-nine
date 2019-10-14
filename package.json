@@ -6,6 +6,7 @@
   "license": "MIT",
   "keywords": [
     "vuepress",
+    "vue",
     "theme"
   ],
   "homepage": "https://github.com/NineSwordsMonster/vuepress-theme-nine",
@@ -19,13 +20,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ext .js,.vue . --fix"
+    "eslint-ext": "eslint --ext .js,.vue ./",
+    "eslint-fix": "eslint --fix --ext .js,.vue ./"
   },
   "dependencies": {
     "@vuepress-reco/vuepress-plugin-back-to-top": "^1.0.3",
+"@vuepress-reco/vuepress-plugin-loading-page": "^1.0.0",
     "@vuepress-reco/vuepress-plugin-pagation": "^1.0.3",
     "@vuepress-reco/vuepress-plugin-screenfull": "^1.0.0",
-    "@vuepress/plugin-blog": "1.0.0-alpha.49",
+    "@vuepress/plugin-blog": "1.3.0",
     "leancloud-storage": "4.2.0",
     "valine": "1.3.10",
     "vue-click-outside": "1.0.7"

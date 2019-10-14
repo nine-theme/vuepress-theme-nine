@@ -18,12 +18,29 @@ module.exports = (options, ctx) => ({
   },
 
   plugins: [
-    '@vuepress-reco/vuepress-plugin-back-to-top',
-    '@vuepress-reco/vuepress-plugin-pagation',
-    '@vuepress-reco/vuepress-plugin-screenfull',
+    '@vuepress-reco/back-to-top',
+    '@vuepress-reco/loading-page',
+    '@vuepress-reco/pagation',
+    '@vuepress-reco/screenfull',
     '@vuepress/active-header-links',
     ['@vuepress/plugin-blog', {
-      permalink: '/:regular'
+      permalink: '/:regular',
+      frontmatters: [
+        {
+          id: 'tags',
+          keys: ['tags'],
+          path: '/tag/',
+          layout: 'Tags',
+          scopeLayout: 'Tag'
+        },
+        {
+          id: 'categories',
+          keys: ['categories'],
+          path: '/categories/',
+          layout: 'Categories',
+          scopeLayout: 'Category'
+        },
+      ],
     }],
     '@vuepress/search',
     '@vuepress/plugin-nprogress',

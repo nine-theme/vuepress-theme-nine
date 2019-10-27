@@ -26,7 +26,7 @@
   "dependencies": {
     "@nines/vuepress-plugin-back-to-top": "0.0.2",
     "@nines/vuepress-plugin-loading-page": "^0.0.2",
-    "@vnines/vuepress-plugin-pagation": "^1.0.3",
+    "@vnines/vuepress-plugin-pagation": "^0.0.1",
     "@vuepress-reco/vuepress-plugin-screenfull": "^1.0.0",
     "@vuepress/plugin-blog": "1.3.0",
     "leancloud-storage": "4.2.0",

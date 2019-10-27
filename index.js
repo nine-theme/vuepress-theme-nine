@@ -19,7 +19,7 @@ module.exports = (options, ctx) => ({
 
   plugins: [
     '@nines/back-to-top',
-    '@vuepress-reco/loading-page',
+    '@nines/loading-page',
     '@vuepress-reco/pagation',
     '@vuepress-reco/screenfull',
     '@vuepress-reco/ga',

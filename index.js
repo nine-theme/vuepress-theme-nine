@@ -21,8 +21,8 @@ module.exports = (options, ctx) => ({
     '@nines/back-to-top',
     '@nines/loading-page',
     '@nines/pagation',
-    '@vuepress-reco/screenfull',
-    '@vuepress-reco/ga',
+    '@nines/screenfull',
+    '@nines/ga',
     '@vuepress/active-header-links',
     ['@vuepress/plugin-blog', {
       permalink: '/:regular',

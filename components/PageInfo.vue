@@ -5,7 +5,7 @@
       v-if="pageInfo.frontmatter.author || $themeConfig.author || $site.title">
       <span>{{ pageInfo.frontmatter.author || $themeConfig.author || $site.title }}</span>
     </i>
-    <i class="iconfont reco-date" v-if="pageInfo.frontmatter.date"><span>{{ pageInfo.frontmatter.date | formatDate }}</span></i>
+    <i class="iconfont nine-date" v-if="pageInfo.frontmatter.date"><span>{{ pageInfo.frontmatter.date | formatDate }}</span></i>
     <AccessNumber v-if="isHome !== true" :idVal="pageInfo.path" :numStyle="numStyle"></AccessNumber>
     <i class="iconfont nine-tag tags" v-if="pageInfo.frontmatter.tags">
       <span

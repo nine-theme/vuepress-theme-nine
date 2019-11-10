@@ -1,13 +1,13 @@
 <template>
   <div class="home" :class="nineShow?'nine-show': 'nine-hide'">
     <div class="hero">
-      <img 
-        v-if="data.isShowHeroImage !== false" 
-        :style="heroImageStyle" 
-        :src="data.heroImage ? $withBase(data.heroImage) : require('../images/icon_vuepress_nine.png')" 
+      <img
+        v-if="data.isShowHeroImage !== false"
+        :style="heroImageStyle"
+        :src="data.heroImage ? $withBase(data.heroImage) : require('../images/icon_vuepress_nine.png')"
         alt="hero">
 
-      <h1 v-if="data.isShowTitleInHome !== false">{{ data.heroText || $title || '午后南杂' }}</h1>
+      <h1 v-if="data.isShowTitleInHome !== false">{{ data.heroText || $title || 'NineSwordsMonster' }}</h1>
 
       <p class="description">{{ data.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}</p>
       <p class="action" v-if="data.actionText && data.actionLink">
@@ -27,7 +27,7 @@
     <div class="footer">
       <span>
         <i class="iconfont nine-theme"></i>
-        <a target="blank" href="https://vuepress-theme-reco.alili.fun">VuePress-theme-nine</a>
+        <a target="blank" href="https://vuepress-theme-nine.alili.fun">VuePress-theme-nine</a>
       </span>
       <!-- <span>
         <i class="iconfont nine-other"></i>

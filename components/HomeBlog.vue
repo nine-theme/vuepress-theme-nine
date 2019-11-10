@@ -3,7 +3,7 @@
      <div class="hero" :style="{background: `url(${$frontmatter.bgImage ? $withBase($frontmatter.bgImage) : require('../images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}">
       <h1>{{ data.heroText || $title || 'NineSwordsMonster' }}</h1>
 
-      <p class="description">{{ data.tagline || $description || 'Welcome to your vuePress-theme-reco site' }}</p>
+      <p class="description">{{ data.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}</p>
     </div>
 
     <div class="home-blog-wrapper">
@@ -21,7 +21,7 @@
           @getCurrentPage="getCurrentPage" />
       </div>
       <div class="info-wrapper">
-         <img class="personal-img" :src="$frontmatter.faceImage ? $withBase($frontmatter.faceImage) : require('../images/home-head.jpeg')" alt="hero"> 
+         <img class="personal-img" :src="$frontmatter.faceImage ? $withBase($frontmatter.faceImage) : require('../images/home-head.jpeg')" alt="hero">
          <h3 class="name" v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</h3>
          <div class="num">
            <div>

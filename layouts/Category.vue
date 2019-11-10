@@ -44,7 +44,7 @@ export default {
     return {
       // 当前页码
       currentPage: 1,
-      recoShow: false
+      nineShow: false
     }
   },
 
@@ -65,7 +65,7 @@ export default {
   },
 
   mounted () {
-    this.recoShow = true
+    this.nineShow = true
   },
 
   methods: {

@@ -30,7 +30,7 @@ export default {
       tags: [],
       currentTag: '全部',
       currentPage: 1,
-      nineShow: false
+      nineShow: false,
       allTagName: '全部'
     }
   },
@@ -117,7 +117,7 @@ export default {
   max-width: 740px;
   margin: 0 auto;
   padding: 4.6rem 2.5rem 0;
-  &.reco-hide {
+  &.nine-hide {
     .tags, .list, .pagation {
       load-start()
     }

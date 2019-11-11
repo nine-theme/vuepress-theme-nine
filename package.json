@@ -29,7 +29,7 @@
     "@nines/vuepress-plugin-pagation": "^0.0.3",
     "@nines/vuepress-plugin-screenfull": "^0.0.3",
     "@nines/vuepress-plugin-ga": "^0.0.3",
-    "@vuepress/plugin-blog": "1.3.0",
+    "@vuepress/plugin-blog": "1.8.1",
     "leancloud-storage": "4.2.0",
     "valine": "1.3.10",
     "vue-click-outside": "1.0.7"

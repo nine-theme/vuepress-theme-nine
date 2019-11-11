@@ -40,7 +40,6 @@
           v-if="prev"
           class="prev"
         >
-          ←
           <router-link
             v-if="prev"
             class="prev"
@@ -60,7 +59,6 @@
           >
             {{ next.title || next.path }}
           </router-link>
-          →
         </span>
       </p>
     </div>
@@ -83,7 +81,7 @@ export default {
 
   data () {
     return {
-      nineShow: false
+      nineShow: false,
       isHasKey: true
     }
   },

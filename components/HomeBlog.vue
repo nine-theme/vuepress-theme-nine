@@ -70,19 +70,18 @@
         </a>
       </span>
       <span>
-        <AccessNumber idVal="/"></AccessNumber>
+        <AccessNumber idVal="/" />
       </span>
     </div>
   </div>
 </template>
 
 <script>
-import AccessNumber from '@theme/components/Valine/AccessNumber'
 import TagList from '@theme/components/TagList.vue'
 import NoteAbstract from '@theme/components/NoteAbstract.vue'
 
 export default {
-  components: { AccessNumber, NoteAbstract, TagList },
+  components: { NoteAbstract, TagList },
   data () {
     return {
       nineShow: false,
@@ -218,6 +217,11 @@ export default {
     align-items: flex-start;
     margin 20px auto 0
     max-width 1126px
+    .abstract-wrapper {
+      .abstract-item:last-child {
+        margin-bottom: 0px;
+      }
+    }
     .blog-list {
       flex auto
     }
@@ -332,9 +336,6 @@ export default {
     .description {
       load-start()
     }
-    .huawei {
-      load-start()
-    }
     .action-button {
       load-start()
     }
@@ -361,9 +362,6 @@ export default {
     }
     .description {
       load-end(0.24s)
-    }
-    .huawei {
-      load-end(0.32s)
     }
     .action-button {
       load-end(0.4s)

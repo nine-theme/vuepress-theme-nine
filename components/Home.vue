@@ -47,7 +47,7 @@
           </a>
       </span>
       <span>
-        <AccessNumber idVal="/"></AccessNumber>
+        <AccessNumber idVal="/" />
       </span>
     </div>
   </div>
@@ -55,10 +55,9 @@
 
 <script>
 import NavLink from '@theme/components/NavLink/'
-import AccessNumber from '@theme/components/Valine/AccessNumber'
 
 export default {
-  components: { NavLink, AccessNumber },
+  components: { NavLink },
   data () {
     return {
       nineShow: false

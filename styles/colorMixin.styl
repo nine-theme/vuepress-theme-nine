@@ -83,16 +83,22 @@ color-mode(accountColor , colorName)
         button
           border 1px solid accountColor!important
           color accountColor!important;
-
-
+    .showBanNiang
+      background-color lighten(accountColor, 50%)!important
+    .banniang-container
+      .messageBox
+        background-color lighten(accountColor, 50%)!important
+      .operation
+        i:hover
+          color lighten(accountColor, 50%)!important
 
     @media (min-width: 765px)
-      .nav-item > a:not(.external):hover, 
+      .nav-item > a:not(.external):hover,
       .nav-item > a:not(.external).router-link-active
-        border-color: accountColor!important; 
+        border-color: accountColor!important;
     @media (max-width: 959px)
       .search-box input
-        border-color: transparent!important; 
+        border-color: transparent!important;
 
 for key, value in $themePicker
   color-mode(value, key)

@@ -23,6 +23,16 @@ module.exports = (options, ctx) => ({
     '@nines/pagation',
     '@nines/screenfull',
     '@nines/ga',
+    ['@nines/comments', {
+      solution: 'valine',
+      options: {
+        appId: '',
+        appKey: '',
+        placeholder: '填写邮箱可以收到回复提醒哦！',
+        notify: true,
+        recordIP: true
+      }
+    }],
     '@vuepress/active-header-links',
     ['@vuepress/plugin-blog', {
       permalink: '/:regular',

@@ -19,10 +19,21 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint-ext": "eslint --ext .js,.vue ./",
-    "eslint-fix": "eslint --fix --ext .js,.vue ./"
+    "doc": "vuepress dev ./doc",
+    "lint": "eslint --ext .js,.vue ./",
+    "lint:fix": "eslint --fix --ext .js,.vue ./"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@babel/polyfill": "^7.10.4",
+    "element-ui": "^2.13.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-component": "^1.1.1",
+    "eslint": "^7.3.1",
+    "eslint-plugin-vue": "^7.0.0-alpha.8"
+  }
 }

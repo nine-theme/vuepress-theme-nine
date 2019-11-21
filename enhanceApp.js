@@ -1,4 +1,5 @@
 import ElementUI from './plugins/element-ui'
+import FontAwesome from './plugins/fontawesome'
 import './styles/index.scss'
 
 export default ({
@@ -8,4 +9,5 @@ export default ({
                   siteData // 站点元数据
                 }) => {
   ElementUI.install(Vue)
+  FontAwesome.install(Vue)
 }

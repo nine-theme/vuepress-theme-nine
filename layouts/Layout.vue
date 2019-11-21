@@ -5,6 +5,7 @@
       el-main
         el-container
           el-aside
+          Content
       el-footer(class="footer")
         Footer
 </template>

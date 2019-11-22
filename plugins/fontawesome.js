@@ -1,5 +1,5 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret, faCodeBranch, faHeartbeat, faYinYang } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret, faCodeBranch, faHeartbeat, faYinYang, faTshirt } from '@fortawesome/free-solid-svg-icons'
 import { faCopyright, faEye } from '@fortawesome/free-regular-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 import {  FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '@fortawesome/vue-fontawesome'
@@ -8,6 +8,7 @@ library.add(faUserSecret)
 library.add(faCodeBranch)
 library.add(faHeartbeat)
 library.add(faYinYang)
+library.add(faTshirt)
 
 library.add(faCopyright)
 library.add(faEye)

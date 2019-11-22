@@ -2,10 +2,10 @@
   div(class="footer-wrapper")
     span
       font-awesome-icon(id="myheart" :icon="['fas', 'heartbeat']", style="margin-right: 4px") &nbsp;
-      a(target="blank" href="https://vuepress-theme-reco.recoluan.com") {{`${name}@${version}`}}
+      el-link(href="https://github.com/nine-theme/vuepress-theme-nine" target="_blank" :underline="false") {{`${name}@${version}`}}
     span(v-if="$themeConfig.icp")
       font-awesome-icon(:icon="['fas', 'yin-yang']", style="margin-right: 4px", spin) &nbsp;
-      a(:href="$themeConfig.recordLink || '#'") {{ $themeConfig.record }}
+      el-link(:href="$themeConfig.recordLink || '#'" target="_blank" :underline="false") {{ $themeConfig.record }}
     span
       font-awesome-icon(:icon="['far', 'copyright']", style="margin-right: 4px") &nbsp;
       a

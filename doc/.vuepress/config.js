@@ -13,7 +13,9 @@ module.exports = {
 
     valineConfig: {
       visitor: true
-    }
+    },
+
+    logo: '111'
   }
 
 }

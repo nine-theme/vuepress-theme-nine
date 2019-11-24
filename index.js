@@ -23,6 +23,9 @@ module.exports = (options, ctx) => ({
     ['@vuepress/medium-zoom', {
       selector: '.theme-reco-content :not(a) > img'
     }],
+    ['@vuepress/search', {
+      searchMaxSuggestions: 10
+    }],
     '@vuepress/plugin-nprogress',
     ['@vuepress/plugin-blog', {
       permalink: '/:regular',

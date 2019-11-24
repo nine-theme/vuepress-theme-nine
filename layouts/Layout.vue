@@ -2,6 +2,7 @@
   div(class='main')
     el-container
       el-header
+        Header
       el-main
         el-container
           el-aside
@@ -11,9 +12,13 @@
 </template>
 
 <script lang="js">
-  import Footer from "./Footer";
+  import Header from "@theme/components/header/Header"
+  import Footer from "@theme/components/Footer"
   export default {
-    components: {Footer}
+    components: {
+      Footer,
+      Header
+    }
   }
 </script>
 

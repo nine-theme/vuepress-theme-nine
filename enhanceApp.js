@@ -1,6 +1,5 @@
 import ElementUI from './plugins/element-ui'
 import FontAwesome from './plugins/fontawesome'
-import './styles/index.scss'
 
 export default ({
                   Vue, // VuePress 正在使用的 Vue 构造函数

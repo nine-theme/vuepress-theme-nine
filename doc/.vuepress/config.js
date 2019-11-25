@@ -3,8 +3,11 @@ module.exports = {
   theme: require.resolve('../..'),
 
   themeConfig: {
+    type: 'blog',
+
     author: 'nine',
     startYear: 2014,
+    lastUpdated: '2019',
 
     // icp 备案信息
     icp: '111',
@@ -15,7 +18,24 @@ module.exports = {
       visitor: true
     },
 
-    logo: '111'
+    logo: '111',
+    repo: '222',
+    huawei: false,
+    search: true,
+    algolia: {},
+
+    nav: [],
+    locales: {},
+    blogConfig: {},
+    sidebarDepth: 4,
+    displayAllHeaders: false,
+
+    themePicker: false,
+    // keyPage: {
+    //   keys: ['123456'],
+    //   color: '#42b983',
+    //   lineColor: '#42b983'
+    // }
   }
 
 }

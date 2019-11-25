@@ -1,34 +1,35 @@
 <template lang="pug">
-  div(class='main')
-    el-container
-      el-header
-        Header
-      el-main
-        el-container
-          el-aside
-          Content
-      el-footer(class="footer")
-        Footer
+  div
+    Common
+      Home(v-if="$page.frontmatter.home && $themeConfig.type !== 'blog'")
+      HomeBlog(v-else-if="$page.frontmatter.home && $themeConfig.type === 'blog'")
+      Page(v-else :sidebar-items="sidebarItems")
+        slot(name="page-top" slot="top")
+        slot(name="page-bottom" slot="bottom")
 </template>
 
-<script lang="js">
-  import Header from "@theme/components/header/Header"
-  import Footer from "@theme/components/Footer"
+<script>
+  import Home from '@theme/components/Home.vue'
+  import HomeBlog from '@theme/components/HomeBlog.vue'
+  import Page from '@theme/components/Page.vue'
+  import Common from '@theme/components/Common.vue'
+  import { resolveSidebarItems } from '../util'
+
   export default {
-    components: {
-      Footer,
-      Header
+    components: { HomeBlog, Home, Page, Common },
+
+    computed: {
+      sidebarItems () {
+        return resolveSidebarItems(
+          this.$page,
+          this.$page.regularPath,
+          this.$site,
+          this.$localePath
+        )
+      }
     }
   }
 </script>
 
-<style lang="scss">
-
-  .main {
-    .footer{
-      position: fixed;
-      bottom: 0;
-      width:inherit;
-    }
-  }
-</style>
+<style src="prismjs/themes/prism-tomorrow.css"></style>
+<style src="../styles/theme.styl" lang="stylus"></style>

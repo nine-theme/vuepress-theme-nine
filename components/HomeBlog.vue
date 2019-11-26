@@ -6,6 +6,7 @@
     div(class="home-blog-wrapper")
       note-abstract(
         class="blog-list"
+        v-if="showList"
         :data="posts"
         :currentPage="1")
       div(class="info-wrapper")

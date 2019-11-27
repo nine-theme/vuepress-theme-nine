@@ -64,7 +64,8 @@ export default {
   data () {
     return {
       nineShow: false,
-      tags: []
+      tags: [],
+      showList: false
     }
   },
   computed: {
@@ -128,6 +129,7 @@ export default {
   },
   mounted () {
     this.nineShow = true
+    this.showList = true
   },
   methods: {
     // 根据分类获取页面数据

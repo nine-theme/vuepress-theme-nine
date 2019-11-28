@@ -14,7 +14,7 @@
         h3(class="name" v-if="$themeConfig.author || $site.title") {{ $themeConfig.author || $site.title }}
         div(class="num")
           div
-            h3 {{$site.pages.length}}
+            h3 {{getPagesLength}}
             h6 文章
           div
             h3 {{$tags.length}}
@@ -83,8 +83,12 @@ export default {
     },
 
     // 分类信息
-    categoryList () {
-      console.log(this)
+    getPagesLength () {
+      let num = 0
+      this.$categories.list.map(v => {
+        num += v.posts.length
+      })
+      return num
     },
     year () {
       return new Date().getFullYear()

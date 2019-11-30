@@ -12,10 +12,10 @@ export default {
   computed: {
     // 是否显示评论
     isShowComment () {
-      const frontmatter = this.$page.frontmatter
+      const frontmatter = this.$frontmatter
       return this.isComment == false || frontmatter.isComment == false || frontmatter.home == true ? false : true
     }
-  }, 
+  },
   mounted: function(){
     this.createValine()
   },
@@ -29,7 +29,7 @@ export default {
           this.window = window
           window.AV = AV
         }
-        
+
         new Valine({
           el: '#valine' ,
           appId: valineConfig.appId,// your appId
@@ -53,7 +53,7 @@ export default {
         setTimeout(() => {
           this.createValine()
         }, 300)
-        
+
       }
     }
   },
@@ -81,5 +81,5 @@ export default {
     padding-left: 16.4rem;
 @media (max-width: $MQMobile)
   .valine-wrapper
-    padding-left: 0;    
+    padding-left: 0;
 </style>

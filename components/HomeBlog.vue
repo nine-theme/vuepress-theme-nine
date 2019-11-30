@@ -8,6 +8,7 @@
         class="blog-list"
         v-if="showList"
         :data="posts"
+        :isHome="true"
         :currentPage="1")
       div(class="info-wrapper")
         img(class="personal-img" :src="$frontmatter.faceImage || $themeConfig.logo" alt="hero")

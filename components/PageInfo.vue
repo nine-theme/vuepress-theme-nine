@@ -4,7 +4,7 @@
       v-if="pageInfo.frontmatter.author || $themeConfig.author || $site.title")
       span {{ pageInfo.frontmatter.author || $themeConfig.author || $site.title }}
     i(class="iconfont nine-date" v-if="pageInfo.frontmatter.date") {{ new Date(pageInfo.frontmatter.date).toLocaleDateString() }}
-    AccessNumber :idVal="pageInfo.path" :numStyle="numStyle")
+    AccessNumber(v-if="isHome !== true" :idVal="pageInfo.path" :numStyle="numStyle")
     i(class="iconfont nine-tag tags" v-if="pageInfo.frontmatter.tags")
       span(v-for="(subItem, subIndex) in pageInfo.frontmatter.tags"
         :key="subIndex"
@@ -18,7 +18,20 @@ import AccessNumber from '@theme/components/Valine/AccessNumber'
 
 export default {
   components: { AccessNumber },
-  props: ['pageInfo', 'currentTag'],
+  props: {
+    pageInfo: {
+      type: Object,
+      default: {}
+    },
+    currentTag: {
+      type: String,
+      default: ''
+    },
+    isHome: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
       numStyle: {
@@ -31,7 +44,7 @@ export default {
 
   methods: {
     goTags (tag) {
-      window.location.href = `/tag/?tag=${tag}`
+      window.location.href = `/tag/#?tag=${tag}`
     }
   }
 }

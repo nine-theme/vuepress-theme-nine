@@ -8,7 +8,7 @@
         router-link(:to="item.path") {{item.title}}
       div(class="abstract" v-html="item.excerpt")
       hr
-      PageInfo( :pageInfo="item" :currentTag="currentTag")
+      PageInfo( :pageInfo="item" :isHome="!(isHome !== true)" :currentTag="currentTag")
 </template>
 
 <script>
@@ -16,7 +16,12 @@ import PageInfo from '@theme/components/PageInfo'
 
 export default {
   components: { PageInfo },
-  props: ['data', 'currentPage', 'currentTag']
+  props: [
+    'data',
+    'currentPage',
+    'currentTag',
+    'isHome'
+  ]
 }
 </script>
 

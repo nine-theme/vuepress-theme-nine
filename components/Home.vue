@@ -46,7 +46,7 @@ export default {
       return new Date().getFullYear()
     },
     data() {
-      return this.$page.frontmatter;
+      return this.$frontmatter;
     },
 
     actionLink() {

@@ -6,7 +6,6 @@
     div(class="home-blog-wrapper")
       note-abstract(
         class="blog-list"
-        v-if="showList"
         :data="posts"
         :isHome="true"
         :currentPage="1")
@@ -65,8 +64,7 @@ export default {
   data () {
     return {
       nineShow: false,
-      tags: [],
-      showList: false
+      tags: []
     }
   },
   computed: {
@@ -134,7 +132,6 @@ export default {
   },
   mounted () {
     this.nineShow = true
-    this.showList = true
   },
   methods: {
     // 根据分类获取页面数据
@@ -183,7 +180,7 @@ export default {
       color #fff;
     }
 
-    h1, .description, .action, .huawei {
+    h1, .description, .action {
       color #fff!important
     }
 
@@ -193,10 +190,6 @@ export default {
       line-height: 1.3;
       color: lighten($textColor, 20%);
     }
-  }
-  .home-blog-title {
-    margin 0 auto 10px
-    max-width 960px
   }
   .home-blog-wrapper {
     display flex
@@ -302,49 +295,11 @@ export default {
     }
   }
 
-  .features {
-    max-width 1126px
-    padding: 1.2rem 0;
-    margin: 2.5rem auto 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    align-content: stretch;
-    justify-content: space-between;
-  }
-
-  .feature {
-    flex-grow: 1;
-    flex-basis: 30%;
-    max-width: 32%;
-    transition: all .5s
-    box-sizing border-box
-    margin-bottom 10px
-    padding 0 15px
-    box-shadow 0 2px 10px rgba(0,0,0,0.2)
-    h2 {
-      font-size: 1.6rem;
-      font-weight: 500;
-      border-bottom: none;
-      padding-bottom: 0;
-      color: lighten($textColor, 10%);
-    }
-
-    p {
-      color: lighten($textColor, 20%);
-    }
-
-    &:hover {
-      transform scale(1.05)
-    }
-  }
-
   .footer {
     padding: 2.5rem;
     border-top: 1px solid $borderColor;
     text-align: center;
     color: lighten($textColor, 25%);
-    load-start()
     > span {
       margin-left 1rem
       > i {
@@ -354,25 +309,23 @@ export default {
   }
 }
 
-&.nine-hide {
+.nine-hide {
   .hero {
     img {
       load-start()
     }
-    .h1 {
+    h1 {
       load-start()
+      color red
     }
     .description {
-      load-start()
-    }
-    .huawei {
       load-start()
     }
     .action-button {
       load-start()
     }
   }
-  .features {
+  .home-blog-wrapper {
     load-start()
   }
   .home-center {
@@ -384,32 +337,29 @@ export default {
   }
 }
 
-&.nine-show {
+.nine-show {
   .hero {
     img {
       load-end(0.08s)
     }
-    .h1 {
+    h1 {
       load-end(0.16s)
     }
     .description {
       load-end(0.24s)
     }
-    .huawei {
-      load-end(0.32s)
-    }
     .action-button {
       load-end(0.4s)
     }
   }
-  .features {
-    load-end(0.40s)
-  }
-  .home-center {
+  .home-blog-wrapper {
     load-end(0.48s)
   }
-  .footer {
+  .home-center {
     load-end(0.56s)
+  }
+  .footer {
+    load-end(0.64s)
   }
 }
 
@@ -442,14 +392,6 @@ export default {
         font-size: 1rem;
         padding: 0.6rem 1.2rem;
       }
-    }
-    .features {
-      flex-direction: column;
-    }
-
-    .feature {
-      max-width: 100%;
-      padding: 0 2.5rem;
     }
     .home-blog-wrapper {
       .info-wrapper {
@@ -496,12 +438,6 @@ export default {
       .action-button {
         font-size: 1rem;
         padding: 0.6rem 1.2rem;
-      }
-    }
-
-    .feature {
-      h2 {
-        font-size: 1.25rem;
       }
     }
 

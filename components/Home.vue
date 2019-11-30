@@ -79,9 +79,11 @@ export default {
 
   .hero {
     text-align: center;
+
     img {
       background-color: $accentColor;
     }
+
     h1 {
       font-size: 2.5rem;
     }
@@ -159,64 +161,57 @@ export default {
       }
     }
   }
-}
 
-&.nine-hide {
-  .hero {
-    img {
+  &.nine-hide {
+    .hero {
+      img {
+        load-start()
+      }
+      .h1 {
+        load-start()
+      }
+      .description {
+        load-start()
+      }
+      .action-button {
+        load-start()
+      }
+    }
+    .features {
       load-start()
     }
-    .h1 {
+    .home-center {
       load-start()
+      padding 0
     }
-    .description {
-      load-start()
-    }
-    .huawei {
-      load-start()
-    }
-    .action-button {
+    .footer {
       load-start()
     }
   }
-  .features {
-    load-start()
-  }
-  .home-center {
-    load-start()
-    padding 0
-  }
-  .footer {
-    load-start()
-  }
-}
-
-&.nine-show {
-  .hero {
-    img {
-      load-end(0.08s)
+  &.nine-show {
+    .hero {
+      img {
+        load-end(0.08s)
+      }
+      .h1 {
+        load-end(0.16s)
+      }
+      .description {
+        load-end(0.24s)
+      }
+      .action-button {
+        load-end(0.4s)
+      }
     }
-    .h1 {
-      load-end(0.16s)
+    .features {
+      load-end(0.40s)
     }
-    .description {
-      load-end(0.24s)
+    .home-center {
+      load-end(0.48s)
     }
-    .huawei {
-      load-end(0.32s)
+    .footer {
+      load-end(0.56s)
     }
-    .action-button {
-      load-end(0.4s)
-    }
-  }
-  .features {
-    load-end(0.40s)
-  }
-  .home-center {
-    load-end(0.48s)
-  }
-  .footer {
-    load-end(0.56s)
   }
 }
 

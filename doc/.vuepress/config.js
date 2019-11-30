@@ -20,7 +20,6 @@ module.exports = {
 
     logo: '111',
     repo: '222',
-    huawei: false,
     search: true,
     algolia: {},
 

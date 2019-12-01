@@ -187,31 +187,40 @@ function flatten (items, res) {
   padding-top 6rem
   padding-bottom 2rem
   display block
+  #time-line {
+    margin-top 0
+    padding-top 0
+  }
   .page-title
     max-width: 740px;
     margin: 0 auto;
     padding: 0rem 2.5rem;
 
-.page-edit
-  @extend $wrapper
-  padding-top 1rem
-  padding-bottom 1rem
-  overflow auto
-  .edit-link
-    display inline-block
-    a
-      color lighten($textColor, 25%)
-      margin-right 0.25rem
-  .last-updated
-    float right
-    font-size 0.9em
-    .prefix
-      font-weight 500
-      color lighten($textColor, 25%)
-    .time
-      font-weight 400
-      color #aaa
-
+  .page-edit
+    @extend $wrapper
+    padding-top 1rem
+    padding-bottom 1rem
+    overflow auto
+    .edit-link
+      display inline-block
+      a
+        color lighten($textColor, 25%)
+        margin-right 0.25rem
+    .last-updated
+      float right
+      font-size 0.9em
+      .prefix
+        font-weight 500
+        color lighten($textColor, 25%)
+      .time
+        font-weight 400
+        color #aaa
+  &.nine-hide.page {
+    load-start()
+  }
+  &.nine-show.page {
+    load-end(0.08s)
+  }
 .page-nav
   @extend $wrapper
   padding-top 1rem
@@ -224,13 +233,6 @@ function flatten (items, res) {
     overflow auto // clear float
   .next
     float right
-
-.nine-hide.page {
-  load-start()
-}
-.nine-show.page {
-  load-end(0.08s)
-}
 
 @media (max-width: $MQMobile)
   .page-title

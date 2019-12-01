@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="tags-wrapper")
+  div(class="tags-wrapper" :class="nineShow?'nine-show': 'nine-hide'")
     Common(:sidebar="false" :isComment="false")
     div(class="tags")
       span(v-for="(item, index) in tags"
@@ -8,12 +8,14 @@
         :style="{ 'backgroundColor': item.color }"
         @click="getPagesByTags(item.name)") {{item.name}}
     note-abstract(
+      class="list"
       :data="posts"
       :currentPage="currentPage"
       :currentTag="currentTag"
       @currentTag="getCurrentTag")
 
     pagation(
+      class="pagation"
       :data="posts"
       :currentPage="currentPage"
       @getCurrentPage="getCurrentPage")
@@ -32,7 +34,8 @@ export default {
       posts: [],
       tags: [],
       currentTag: '',
-      currentPage: 1
+      currentPage: 1,
+      nineShow: false
     }
   },
 
@@ -50,7 +53,9 @@ export default {
       this.getPagesByTags(currentTag)
     }
   },
-
+  mounted () {
+    this.recoShow = true
+  },
   methods: {
 
     // 根据分类获取页面数据
@@ -95,12 +100,13 @@ export default {
 <style src="../styles/theme.styl" lang="stylus"></style>
 
 <style lang="stylus" scoped>
+@require '../styles/loadMixin.styl'
 .tags-wrapper
   max-width: 740px;
   margin: 0 auto;
   padding: 4.6rem 2.5rem 0;
   .tags
-    margin-bottom 30px
+    margin 30px 0
     span
       vertical-align: middle;
       margin: 4px 4px 10px;
@@ -117,7 +123,22 @@ export default {
         transform scale(1.04)
       &.active
         transform scale(1.2)
-
+  &.nine-hide {
+    .tags, .list, .pagation {
+      load-start()
+    }
+  }
+  &.nine-show {
+    .tags {
+      load-end(0.08s)
+    }
+    .list {
+      load-end(0.16s)
+    }
+    .pagation {
+      load-end(0.24s)
+    }
+  }
 @media (max-width: $MQMobile)
   .tags-wrapper
     padding: 5rem 0.6rem 0;

@@ -1,12 +1,14 @@
 <template lang="pug">
-  div(class="categories-wrapper")
+  div(class="categories-wrapper" :class="nineShow ?'nine-show' : 'nine-hide'")
     Common(:sidebar="false" :isComment="false")
       h2(class="title") {{ title }}
       note-abstract(
+        class="list"
         :data="posts"
         :currentPage="currentPage"
         @currentTag="getCurrentTag")
       pagation(
+        class="pagation"
         :data="posts"
         :currentPage="currentPage"
         @getCurrentPage="getCurrentPage")
@@ -22,8 +24,8 @@ export default {
 
   data () {
     return {
-      // 当前页码
-      currentPage: 1
+      currentPage: 1,
+      nineShow: false
     }
   },
 
@@ -42,7 +44,9 @@ export default {
       return this.$frontmatter.title.split('|')[0]
     }
   },
-
+  mounted () {
+    this.nineShow = true
+  },
   methods: {
     // 获取当前tag
     getCurrentTag (tag) {
@@ -64,12 +68,27 @@ export default {
 <style src="../styles/theme.styl" lang="stylus"></style>
 
 <style lang="stylus" scoped>
+@require '../styles/loadMixin.styl'
 .categories-wrapper
   max-width: 740px;
   margin: 0 auto;
   padding: 4.6rem 2.5rem 0;
   .title
     margin-bottom 3rem
+  &.nine-hide
+  .title, .list, .pagation
+    load-start()
+  &.nine-show {
+    .title {
+      load-end(0.08s)
+    }
+    .list {
+      load-end(0.16s)
+    }
+    .pagation {
+      load-end(0.24s)
+    }
+  }
 
 @media (max-width: $MQMobile)
   .categories-wrapper

@@ -50,6 +50,14 @@ color-mode(accountColor , colorName)
         background: accountColor!important;
       .date
         color accountColor!important;
+    .categories-wrapper
+      .category-wrapper
+        .category-item
+          &:hover, &.active
+            background accountColor!important
+            a
+              span.post-num
+                color accountColor!important
     @media (min-width: 765px)
       .nav-item > a:not(.external):hover,
       .nav-item > a:not(.external).router-link-active

@@ -99,12 +99,16 @@ export default {
         background $accentColor
         a span.category-name {
           color #fff
+          .post-num {
+            color $accentColor
+          }
         }
       }
       a {
         display flex
         justify-content: space-between
         align-items center
+        color: #666
         .post-num {
           margin-left 4px
           width 1.2rem;
@@ -114,7 +118,6 @@ export default {
           border-radius 50%
           background #eee
           font-size .4rem
-          color $textColor
         }
       }
     }

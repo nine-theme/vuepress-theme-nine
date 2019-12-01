@@ -2,7 +2,7 @@
   div(class="home" :class="nineShow?'nine-show': 'nine-hide'")
     div(class="hero")
       img(v-if="data.heroImage" :style="heroImageStyle" :src="$withBase(data.heroImage)" alt="hero")
-      h1(v-if="data.isShowTitleInHome !== false") {{ data.heroText || $title || '午后南杂' }}
+      h1(v-if="data.isShowTitleInHome !== false") {{ data.heroText || $title || 'Nine' }}
       p(class="description") {{ data.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}
       p(class="action" v-if="data.actionText && data.actionLink")
         NavLink(class="action-button" :item="actionLink")

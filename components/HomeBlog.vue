@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="home-blog" :class="nineShow?'nine-show': 'nine-hide'")
-    div(class="hero" :style="{background: `url(${$frontmatter.bgImage || require('../images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}")
-      h1 {{ data.heroText || $title || '午后南杂' }}
+    div(class="hero" :style="{background: `url(${$withBase($frontmatter.bgImage) || require('../images/home-bg.jpg')}) center/cover no-repeat`, ...bgImageStyle}")
+      h1 {{ data.heroText || $title || 'Nine' }}
       p(class="description") {{ data.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}
     div(class="home-blog-wrapper")
       note-abstract(

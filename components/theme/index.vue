@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="color-picker" v-click-outside="hideMenu" v-if="showSettings")
-    a(@click.prevent="showMenu = !showMenu" class="color-button" href="#")
+    a(class="color-button" @click.prevent="showMenu = !showMenu")
       i(class="iconfont nine-color")
     transition(mode="out-in" name="menu-transition")
       div(class="color-picker-menu" v-show="showMenu")

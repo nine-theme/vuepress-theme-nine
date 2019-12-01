@@ -8,9 +8,9 @@
         :class="title.trim() == item.name ? 'active': ''"
         v-for="(item, index) in this.$categories.list"
         :key="index")
-        a(:href="item.path")
-        span(class="category-name") {{ item.name }}
-        span(class="post-num") {{ item.posts.length }}
+        router-link (:to="item.path")
+          span(class="category-name") {{ item.name }}
+          span(class="post-num") {{ item.posts.length }}
       note-abstract(
         class="list"
         :data="posts"

@@ -45,7 +45,7 @@ export default {
   methods: {
     goTags (tag) {
       const base = this.$site.base
-      window.location.href = `${base}tag/#?tag=${tag}`
+      window.location.href = `${base}tag/?tag=${tag}`
     }
   }
 }

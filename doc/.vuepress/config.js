@@ -3,7 +3,7 @@ module.exports = {
   theme: require.resolve('../..'),
 
   themeConfig: {
-    type: 'blog',
+    // type: 'blog',
 
     author: 'nine',
     startYear: 2014,
@@ -19,11 +19,13 @@ module.exports = {
     },
 
     logo: '111',
-    repo: '222',
+    repo: 'NineSwordsMonster',
     search: true,
     algolia: {},
 
-    nav: [],
+    nav: [
+      { text: 'TimeLine', link: '/timeline/', icon: 'nine-date' }
+    ],
     locales: {},
     blogConfig: {},
     sidebarDepth: 4,

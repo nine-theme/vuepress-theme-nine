@@ -1,21 +1,21 @@
 {
-  "name": "@nine/vuepress-theme-nine",
-  "version": "0.0.1-alpha.1",
+  "name": "@nines/vuepress-theme-nine",
+  "version": "4.0.0-alpha.1",
   "description": "Vuepress theme - Nine",
   "author": "wangjia_1919@163.com",
   "license": "MIT",
   "keywords": [
     "vuepress",
-    "vue",
-    "theme"
+    "theme",
+    "nine"
   ],
-  "homepage": "https://github.com/NineSwordsMonster/vuepress-theme-nine",
+  "homepage": "https://github.com/nine-theme/vuepress-theme-nine",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NineSwordsMonster/vuepress-theme-nine.git"
+    "url": "git+https://github.com/nine-theme/vuepress-theme-nine.git"
   },
   "bugs": {
-    "url": "https://github.com/NineSwordsMonster/vuepress-theme-nine/issues"
+    "url": "https://github.com/nine-theme/vuepress-theme-nine/issues"
   },
   "main": "index.js",
   "scripts": {

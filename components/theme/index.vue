@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="color-picker" v-click-outside="hideMenu" v-if="showSettings")
+  div(v-click-outside="hideMenu" class="color-picker")
     a(class="color-button" @click.prevent="showMenu = !showMenu")
       i(class="iconfont nine-color")
     transition(mode="out-in" name="menu-transition")
@@ -10,40 +10,26 @@
 <script lang="js">
   import ClickOutside from 'vue-click-outside';
   import ThemeOptions from '@theme/components/theme/ThemeOptions.vue';
-  import nineConfig from './nineConfig.js';
 
   export default {
     name: 'ThemeSettings',
-
     directives: {
       'click-outside': ClickOutside,
     },
-
     components: {
       ThemeOptions
     },
-
-    mixins: [nineConfig],
-
     data() {
       return {
         showMenu: false,
-      };
+      }
     },
-
-    computed: {
-      showSettings() {
-        const {nine} = this;
-        return nine.hasThemes || nine.disableDarkTheme !== true || nine.disableThemeIgnore !== true;
-      },
-    },
-
     methods: {
       hideMenu() {
         this.showMenu = false;
-      },
-    },
-  };
+      }
+    }
+  }
 </script>
 
 <style lang="stylus">

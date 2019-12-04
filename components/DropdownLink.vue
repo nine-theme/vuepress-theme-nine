@@ -1,37 +1,77 @@
-<template lang="pug">
-  div(
+<template>
+  <div
     class="dropdown-wrapper"
-    :class="{ open }")
-    a(
+    :class="{ open }"
+  >
+    <button
       class="dropdown-title"
-      @click="toggle")
-      span class="title">
-        i(:class="`iconfont ${item.icon}`")
-        | {{ item.text }}
-      span(
+      type="button"
+      :aria-label="dropdownAriaLabel"
+      @click="setOpen(!open)"
+    >
+      <span class="title">{{ item.text }}</span>
+      <span
         class="arrow"
-        :class="open ? 'down' : 'right'")
-    DropdownTransition
-      ul(class="nav-dropdown" v-show="open")
-        li(class="dropdown-item" :key="subItem.link || index" v-for="(subItem, index) in item.items")
-          h4(v-if="subItem.type === 'links'") {{ subItem.text }}
-          ul(class="dropdown-subitem-wrapper" v-if="subItem.type === 'links'")
-            li(class="dropdown-subitem" :key="childSubItem.link" v-for="childSubItem in subItem.items")
-              NavLink(:item="childSubItem")
-          NavLink(v-else :item="subItem")
+        :class="open ? 'down' : 'right'"
+      />
+    </button>
+
+    <DropdownTransition>
+      <ul
+        v-show="open"
+        class="nav-dropdown"
+      >
+        <li
+          v-for="(subItem, index) in item.items"
+          :key="subItem.link || index"
+          class="dropdown-item"
+        >
+          <h4 v-if="subItem.type === 'links'">
+            {{ subItem.text }}
+          </h4>
+
+          <ul
+            v-if="subItem.type === 'links'"
+            class="dropdown-subitem-wrapper"
+          >
+            <li
+              v-for="childSubItem in subItem.items"
+              :key="childSubItem.link"
+              class="dropdown-subitem"
+            >
+              <NavLink
+                :item="childSubItem"
+                @focusout="
+                  isLastItemOfArray(childSubItem, subItem.items) &&
+                    isLastItemOfArray(subItem, item.items) &&
+                    setOpen(false)
+                "
+              />
+            </li>
+          </ul>
+
+          <NavLink
+            v-else
+            :item="subItem"
+            @focusout="isLastItemOfArray(subItem, item.items) && setOpen(false)"
+          />
+        </li>
+      </ul>
+    </DropdownTransition>
+  </div>
 </template>
 
 <script>
 import NavLink from '@theme/components/NavLink.vue'
 import DropdownTransition from '@theme/components/DropdownTransition.vue'
+import last from 'lodash/last'
 
 export default {
-  components: { NavLink, DropdownTransition },
+  name: 'DropdownLink',
 
-  data () {
-    return {
-      open: false
-    }
+  components: {
+    NavLink,
+    DropdownTransition
   },
 
   props: {
@@ -40,9 +80,31 @@ export default {
     }
   },
 
+  data () {
+    return {
+      open: false
+    }
+  },
+
+  computed: {
+    dropdownAriaLabel () {
+      return this.item.ariaLabel || this.item.text
+    }
+  },
+
+  watch: {
+    $route () {
+      this.open = false
+    }
+  },
+
   methods: {
-    toggle () {
-      this.open = !this.open
+    setOpen (value) {
+      this.open = value
+    },
+
+    isLastItemOfArray (item, array) {
+      return last(array) === item
     }
   }
 }
@@ -53,6 +115,15 @@ export default {
   cursor pointer
   .dropdown-title
     display block
+    font-size 0.9rem
+    font-family inherit
+    cursor inherit
+    padding inherit
+    line-height 1.4rem
+    background transparent
+    border none
+    font-weight 500
+    color $textColor
     &:hover
       border-color transparent
     .arrow
@@ -66,7 +137,7 @@ export default {
       h4
         margin 0.45rem 0 0
         border-top 1px solid #eee
-        padding 0.45rem 1.5rem 0 1.25rem
+        padding 1rem 1.5rem 0.45rem 1.25rem
       .dropdown-subitem-wrapper
         padding 0
         list-style none
@@ -103,6 +174,11 @@ export default {
   .dropdown-wrapper
     &.open .dropdown-title
       margin-bottom 0.5rem
+    .dropdown-title
+      font-weight 600
+      font-size inherit
+      &:hover
+        color $accentColor
     .nav-dropdown
       transition height .1s ease-out
       overflow hidden
@@ -121,9 +197,12 @@ export default {
 @media (min-width: $MQMobile)
   .dropdown-wrapper
     height 1.8rem
-    &:hover .nav-dropdown
+    &:hover .nav-dropdown,
+    &.open .nav-dropdown
       // override the inline style.
       display block !important
+    &.open:blur
+      display none
     .dropdown-title .arrow
       // make the arrow always down at desktop
       border-left 4px solid transparent
@@ -142,7 +221,8 @@ export default {
       right 0
       background-color #fff
       padding 0.6rem 0
-      box-shadow: 0 4px 20px 0 rgba(0,0,0,.2);
+      border 1px solid #ddd
+      border-bottom-color #ccc
       text-align left
       border-radius 0.25rem
       white-space nowrap

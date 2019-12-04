@@ -1,22 +1,21 @@
-@require './nine-config'
+@require './config'
 @require './code'
 @require './custom-blocks'
 @require './arrow'
 @require './wrapper'
 @require './toc'
-@require './colorMode/index'
-@require './iconfont.css'
 
 html, body
   padding 0
   margin 0
+  background-color #fff
+
 body
-  font-family Ubuntu, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+  font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   font-size 16px
   color $textColor
-  background-color #fff
 
 .page
   padding-left $sidebarWidth
@@ -30,6 +29,7 @@ body
   height $navbarHeight
   background-color #fff
   box-sizing border-box
+  border-bottom 1px solid $borderColor
 
 .sidebar-mask
   position fixed
@@ -39,7 +39,6 @@ body
   width 100vw
   height 100vh
   display none
-  background-color: rgba(0,0,0,.65);
 
 .sidebar
   font-size 16px
@@ -55,22 +54,26 @@ body
   border-right 1px solid $borderColor
   overflow-y auto
 
-.content__default:not(.custom)
+{$contentClass}:not(.custom)
   @extend $wrapper
-  // > *:first-child
-  //   margin-top 1.6rem
+  > *:first-child
+    margin-top $navbarHeight
+
   a:hover
     text-decoration underline
+
   p.demo
     padding 1rem 1.5rem
     border 1px solid #ddd
     border-radius 4px
+
   img
     max-width 100%
 
-.content__default.custom
+{$contentClass}.custom
   padding 0
   margin 0
+
   img
     max-width 100%
 
@@ -91,11 +94,12 @@ kbd
   padding 0 0.15em
 
 blockquote
-  font-size .9rem
-  color #999
-  border-left .25rem solid $accentColor
-  margin 0.5rem 0
+  font-size 1rem
+  color #999;
+  border-left .2rem solid #dfe2e5
+  margin 1rem 0
   padding .25rem 0 .25rem 1rem
+
   & > p
     margin 0
 
@@ -106,17 +110,21 @@ strong
   font-weight 600
 
 h1, h2, h3, h4, h5, h6
-  font-weight 500
+  font-weight 600
   line-height 1.25
-  .content__default:not(.custom) > &
+
+  {$contentClass}:not(.custom) > &
     margin-top (0.5rem - $navbarHeight)
     padding-top ($navbarHeight + 1rem)
     margin-bottom 0
+
     &:first-child
       margin-top -1.5rem
       margin-bottom 1rem
+
       + p, + pre, + .custom-block
         margin-top 2rem
+
   &:hover .header-anchor
     opacity: 1
 
@@ -138,6 +146,7 @@ a.header-anchor
   padding-right 0.23em
   margin-top 0.125em
   opacity 0
+
   &:hover
     text-decoration none
 
@@ -159,6 +168,7 @@ table
 
 tr
   border-top 1px solid #dfe2e5
+
   &:nth-child(2n)
     background-color #f6f8fa
 
@@ -170,50 +180,22 @@ th, td
   &.sidebar-open
     .sidebar-mask
       display: block
+
   &.no-navbar
-    .content__default:not(.custom) > h1, h2, h3, h4, h5, h6
-        margin-top 1.5rem
-        padding-top 0
+    {$contentClass}:not(.custom) > h1, h2, h3, h4, h5, h6
+      margin-top 1.5rem
+      padding-top 0
+
     .sidebar
       top 0
+
 
 @media (min-width: ($MQMobile + 1px))
   .theme-container.no-sidebar
     .sidebar
       display none
+
     .page
       padding-left 0
 
 @require 'mobile.styl'
-
-.iconfont
-  font-size: 0.9rem;
-  color: #888;
-  // &:not(:first-child)
-  //   margin-left: 1rem
-  // span
-  //   margin-left: .5rem
-
-/************** 滚动条 **************/
-::-webkit-scrollbar
-  width: 5px;
-  height: 5px;
-
-::-webkit-scrollbar-track-piece
-  background-color: rgba(0, 0, 0, 0.2);
-  -webkit-border-radius: 6px;
-
-::-webkit-scrollbar-thumb:vertical
-  height: 5px;
-  background-color: rgba(125, 125, 125, 0.7);
-  -webkit-border-radius: 6px;
-
-::-webkit-scrollbar-thumb:horizontal
-  width: 5px;
-  background-color: rgba(125, 125, 125, 0.7);
-  -webkit-border-radius: 6px;
-
-/************** 流程图的滚动条 **************/
-.vuepress-flowchart
-  overflow: auto
-

@@ -1,10 +1,12 @@
-<template lang="pug">
-  transition(
+<template>
+  <transition
     name="dropdown"
     @enter="setHeight"
     @after-enter="unsetHeight"
-    @before-leave="setHeight")
-    slot
+    @before-leave="setHeight"
+  >
+    <slot />
+  </transition>
 </template>
 
 <script>

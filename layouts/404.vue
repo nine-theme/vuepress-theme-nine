@@ -1,9 +1,15 @@
-<template lang="pug">
-  div(class="theme-container")
-    div(class="content")
-      h1 404
-      blockquote {{ getMsg() }}
-      router-link(to="/") Take me home.
+<template>
+  <div class="theme-container">
+    <div class="theme-default-content">
+      <h1>404</h1>
+
+      <blockquote>{{ getMsg() }}</blockquote>
+
+      <RouterLink to="/">
+        Take me home.
+      </RouterLink>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -22,14 +28,3 @@ export default {
   }
 }
 </script>
-
-<style src="../styles/theme.styl" lang="stylus"></style>
-
-<style lang="stylus" scoped>
-.content {
-  margin 4rem auto 0
-  max-width 800px
-  padding 0 2rem
-}
-</style>
-

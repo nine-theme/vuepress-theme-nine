@@ -1,25 +1,15 @@
 module.exports = {
   extends: [
-    // add more generic rulesets here, such as:
-    // 'eslint:recommended',
-    'plugin:vue/vue3-recommended',
-    'plugin:vue/essential',
-    '@vue/standard'
+    "plugin:vue/vue3-recommended",
+    "plugin:vue/base"
   ],
   rules: {
-    // override/add rules settings here, such as:
-    // 'vue/no-unused-vars': 'error'
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    "parser": "@babel/eslint-parser",
+    "ecmaVersion": 2020,
+    "sourceType": "module"
   },
   plugins: [
-    [
-      'component',
-      {
-        'libraryName': 'element-ui',
-        'styleLibraryName': 'theme-chalk'
-      }
-    ]
   ]
 }

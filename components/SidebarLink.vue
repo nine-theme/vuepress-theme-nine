@@ -4,7 +4,20 @@ import { isActive, hashRE, groupHeaders } from '../util'
 export default {
   functional: true,
 
-  props: ['item', 'sidebarDepth'],
+  props: {
+    item: {
+      type: Object,
+      default () {
+        return {}
+      }
+    },
+    sidebarDepth: {
+      type: Number,
+      default () {
+        return undefined;
+      }
+    }
+  },
 
   render (h,
     {

@@ -65,7 +65,14 @@ import isNil from 'lodash/isNil'
 export default {
   name: 'PageNav',
 
-  props: ['sidebarItems'],
+  props: {
+    'sidebarItems': {
+      type: Array,
+      default() {
+        return []
+      }
+    }
+  },
 
   computed: {
     prev () {

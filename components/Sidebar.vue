@@ -21,7 +21,14 @@ export default {
 
   components: { SidebarLinks, NavLinks },
 
-  props: ['items']
+  props: {
+    'items': {
+      type: Array,
+      default() {
+        return []
+      }
+    }
+  }
 }
 </script>
 

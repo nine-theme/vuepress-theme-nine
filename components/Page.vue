@@ -17,7 +17,14 @@ import PageNav from '@theme/components/PageNav.vue'
 
 export default {
   components: { PageEdit, PageNav },
-  props: ['sidebarItems']
+  props: {
+    'sidebarItems': {
+      type: Array,
+      default() {
+        return []
+      }
+    }
+  }
 }
 </script>
 

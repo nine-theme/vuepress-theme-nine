@@ -16,7 +16,14 @@
 export default {
   name: 'AlgoliaSearchBox',
 
-  props: ['options'],
+  props: {
+    options: {
+      type: Object,
+      default() {
+        return{}
+      }
+    }
+  },
 
   data () {
     return {

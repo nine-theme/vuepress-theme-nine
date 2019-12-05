@@ -51,6 +51,7 @@ export default {
     SearchBox,
     AlgoliaSearchBox
   },
+  emits: ['toggle-sidebar'],
 
   data () {
     return {

@@ -1,5 +1,5 @@
 {
-  "name": "vuepress-theme-nine",
+  "name": "@nines/vuepress-theme-nine",
   "version": "4.0.0-alpha.0",
   "description": "nine theme for vuepress",
   "main": "index.js",

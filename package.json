@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "doc": "vuepress dev ./doc --no-clear-screen",
+    "dev": "npx vuepress dev -t temp --debug --no-clear-screen doc",
     "lint": "eslint --fix --ext .js,.vue ."
   },
   "repository": {
@@ -26,11 +26,21 @@
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.1",
     "@babel/eslint-parser": "^7.11.3",
+    "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "eslint": "^7.6.0",
-    "eslint-plugin-vue": "^7.0.0-beta.1"
+    "eslint-plugin-vue": "^7.0.0-beta.1",
+    "vuepress": "^1.5.3"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.10.4"
+    "@nines/vuepress-plugin-back-to-top": "^0.0.5",
+    "@nines/vuepress-plugin-comments": "^0.0.2",
+    "@nines/vuepress-plugin-loading-page": "^0.0.5",
+    "@nines/vuepress-plugin-pagation": "^0.0.5",
+    "@vuepress/plugin-blog": "1.9.2",
+    "@vuepress/plugin-medium-zoom": "1.5.0",
+    "docsearch.js": "2.6.3",
+    "md5": "2.2.1",
+    "vue-click-outside": "1.1.0"
   }
 }

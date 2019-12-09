@@ -1,7 +1,5 @@
 ---
 home: true
-heroText: vuepress-theme-nine
-tagline: A simple and beautiful vuepress blog theme.
 # heroImage: /10054584.jpeg
 # heroImageStyle: {
 #   maxWidth: '600px',

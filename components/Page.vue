@@ -1,9 +1,8 @@
 <template>
-  <main class="page" :style="{ paddingRight: (this.$page.headers || []).length > 0 ? '14rem' : '0' }">
+  <main class="page" :style="pageStyle">
     <ModuleTransition>
       <div v-show="recoShowModule && $page.title" class="page-title">
         <h1>{{$page.title}}</h1>
-        <hr>
         <PageInfo :pageInfo="$page" :showAccessNumber="showAccessNumber"></PageInfo>
       </div>
     </ModuleTransition>
@@ -73,8 +72,8 @@
       <Comments v-if="recoShowModule" :isShowComments="shouldShowComments"/>
     </ModuleTransition>
 
-    <ModuleTransition delay="0.4">
-      <SubSidebar class="side-bar" />
+    <ModuleTransition delay="0.08">
+      <SubSidebar v-if="recoShowModule" class="side-bar" />
     </ModuleTransition>
   </main>
 </template>
@@ -170,6 +169,9 @@ export default {
       return (
         this.$themeLocaleConfig.editLinkText || this.$themeConfig.editLinkText || `Edit this page`
       )
+    },
+    pageStyle () {
+      return this.$showSubSideBar ? {} : { paddingRight: '0' }
     }
   },
 
@@ -242,6 +244,7 @@ function flatten (items, res) {
   position relative
   padding-top 5rem
   padding-bottom 2rem
+  padding-right 14rem
   display block
   .side-bar
     position fixed

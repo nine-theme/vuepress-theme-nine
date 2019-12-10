@@ -71,6 +71,7 @@ export default {
 
 <style lang="stylus">
 .sidebar-group
+  background var(--background-color)
   .sidebar-group
     padding-left 0.5em
   &:not(.collapsable)
@@ -113,7 +114,7 @@ export default {
     position absolute
     top 0
     bottom 0
-    right 0.5em
+    right 1em
     margin auto
   &.clickable
     &.active

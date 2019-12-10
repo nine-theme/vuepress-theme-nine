@@ -4,21 +4,26 @@ import { isActive } from '@theme/helpers/utils'
 export default {
   computed: {
     headers () {
-      const headers = (this.$page.headers || []).filter(header => header.level === 2)
-      return headers
+      return this.showSubSidebar ? this.$page.headers || [] : []
     }
   },
   methods: {
     isLinkActive (header) {
-      return isActive(this.$route, this.$page.path + '#' + header.slug)
+      const active = isActive(this.$route, this.$page.path + '#' + header.slug)
+      if (active) {
+        setTimeout(() => {
+          document.querySelector(`.nine-${header.slug}`).scrollIntoView()
+        }, 300)
+      }
+      return active
     }
   },
   render (h) {
     return h('ul', {
       class: { 'sub-sidebar-wrapper': true },
-      style: { width: (this.$page.headers || []).length > 0 ? '12rem' : '0' }
+      style: { width: this.headers.length > 0 ? '12rem' : '0' }
     }, [
-      ...(this.$page.headers || []).map(header => {
+      ...this.headers.map(header => {
         return h('li', {
           class: {
             active: this.isLinkActive(header),
@@ -27,7 +32,7 @@ export default {
           attr: { key: header.title }
         }, [
           h('router-link', {
-            class: { 'sidebar-link': true },
+            class: { 'sidebar-link': true, [`nine-${header.slug}`]: true },
             props: { to: `${this.$page.path}#${header.slug}` }
           }, header.title)
         ])

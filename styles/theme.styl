@@ -4,7 +4,7 @@
 @require './arrow'
 @require './wrapper'
 @require './toc'
-@require './iconfont.css'
+// @require './iconfont.css'
 
 html, body
   padding 0
@@ -56,8 +56,6 @@ body
 
 .content__default:not(.custom)
   @extend $wrapper
-  // > *:first-child
-  //   margin-top 1.6rem
   a:hover
     text-decoration underline
   p.demo
@@ -121,16 +119,22 @@ h1, h2, h3, h4, h5, h6
       margin-bottom 1rem
       + p, + pre, + .custom-block
         margin-top 2rem
-  &:hover .header-anchor
-    opacity: 1
 
 h1
   font-size 1.6rem
 
 h2
+  position relative
+  padding-left 0.8rem
   font-size 1.4rem
-  padding-bottom .3rem
-  border-bottom 1px solid var(--border-color)
+  &::before
+    position: absolute
+    left 0
+    bottom 0
+    display: block
+    height 1.8rem
+    content: ''
+    border-left 5px solid $accentColor
 
 h3
   font-size 1.2rem
@@ -149,7 +153,7 @@ code, kbd, .line-number
   font-family source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
 
 p, ul, ol
-  line-height 1.7
+  line-height 2.2
 
 hr
   border 0
@@ -191,7 +195,7 @@ th, td
 @require 'mobile.styl'
 
 .iconfont
-  font-size: 0.9rem;
+  font-size: 12px;
   color: var(--text-color-sub);
 
 /************** 滚动条 **************/

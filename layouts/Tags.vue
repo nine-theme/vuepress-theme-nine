@@ -44,13 +44,15 @@ export default {
   data () {
     return {
       tags: [],
-      currentTag: '全部',
+      currentTag: '',
       currentPage: 1,
-      allTagName: '全部'
+      allTagName: ''
     }
   },
 
   created () {
+    this.currentTag = this.$recoLocales.tag.all
+    this.allTagName = this.$recoLocales.tag.all
     if (this.$tags.list.length > 0) {
       this.currentTag = this.$route.query.tag ? this.$route.query.tag : this.currentTag
     }

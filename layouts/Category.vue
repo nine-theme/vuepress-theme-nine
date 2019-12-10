@@ -2,7 +2,7 @@
   <Common class="categories-wrapper" :sidebar="false">
     <!-- 分类集合 -->
     <ModuleTransition>
-      <ul v-show="recoShowModule" class="category-wrapper">
+      <ul v-show="nineShowModule" class="category-wrapper">
         <li
           class="category-item"
           :class="title == item.name ? 'active': ''"
@@ -19,7 +19,7 @@
     <!-- 博客列表 -->
     <ModuleTransition delay="0.08">
       <note-abstract
-        v-show="recoShowModule"
+        v-show="nineShowModule"
         class="list"
         :data="posts"
         :currentPage="currentPage"

@@ -2,13 +2,13 @@
   <Common class="timeline-wrapper" :sidebar="false">
     <ul class="timeline-content">
       <ModuleTransition >
-        <li v-show="recoShowModule" class="desc">Yesterday Once More!</li>
+        <li v-show="nineShowModule" class="desc">Yesterday Once More!</li>
       </ModuleTransition>
       <ModuleTransition
         :delay="String(0.08 * (index + 1))"
-        v-for="(item, index) in $recoPostsForTimeline"
+        v-for="(item, index) in $ninePostsForTimeline"
         :key="index">
-        <li v-show="recoShowModule">
+        <li v-show="nineShowModule">
           <h3 class="year">{{item.year}}</h3>
           <ul class="year-wrapper">
             <li v-for="(subItem, subIndex) in item.data" :key="subIndex">

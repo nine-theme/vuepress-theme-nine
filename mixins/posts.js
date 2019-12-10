@@ -2,7 +2,7 @@ import { filterPosts, sortPostsByStickyAndDate, sortPostsByDate } from '../helpe
 
 export default {
   computed: {
-    $recoPosts () {
+    $ninePosts () {
       const {
         $categories: { list: articles }
       } = this
@@ -16,8 +16,8 @@ export default {
 
       return posts
     },
-    $recoPostsForTimeline () {
-      let pages = this.$recoPosts
+    $ninePostsForTimeline () {
+      let pages = this.$ninePosts
       const formatPages = {}
       const formatPagesArr = []
       pages = filterPosts(pages, true)

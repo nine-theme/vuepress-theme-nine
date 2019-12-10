@@ -2,10 +2,10 @@ import { zhHans, zhHant, en, ja, ko } from '../locales/index'
 
 export default {
   computed: {
-    $recoLocales () {
-      const recoLocales = this.$themeLocaleConfig.recoLocales
-      if (recoLocales && recoLocales.homeBlog) {
-        return { homeBlog: recoLocales.homeBlog }
+    $nineLocales () {
+      const nineLocales = this.$themeLocaleConfig.nineLocales
+      if (nineLocales && nineLocales.homeBlog) {
+        return { homeBlog: nineLocales.homeBlog }
       }
       if (/^zh\-(CN|SG)$/.test(this.$lang)) {
         return zhHans

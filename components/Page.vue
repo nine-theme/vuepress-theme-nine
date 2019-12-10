@@ -1,18 +1,18 @@
 <template>
   <main class="page" :style="pageStyle">
     <ModuleTransition>
-      <div v-show="recoShowModule && $page.title" class="page-title">
+      <div v-show="nineShowModule && $page.title" class="page-title">
         <h1>{{$page.title}}</h1>
         <PageInfo :pageInfo="$page" :showAccessNumber="showAccessNumber"></PageInfo>
       </div>
     </ModuleTransition>
 
     <ModuleTransition delay="0.08">
-      <Content v-show="recoShowModule" class="theme-nine-content" />
+      <Content v-show="nineShowModule" class="theme-nine-content" />
     </ModuleTransition>
 
     <ModuleTransition delay="0.16">
-      <footer v-show="recoShowModule" class="page-edit">
+      <footer v-show="nineShowModule" class="page-edit">
         <div
           class="edit-link"
           v-if="editLink"
@@ -36,7 +36,7 @@
     </ModuleTransition>
 
     <ModuleTransition delay="0.24">
-      <div class="page-nav" v-if="recoShowModule && (prev || next)">
+      <div class="page-nav" v-if="nineShowModule && (prev || next)">
         <p class="inner">
           <span
             v-if="prev"
@@ -69,11 +69,11 @@
     </ModuleTransition>
 
     <ModuleTransition delay="0.32">
-      <Comments v-if="recoShowModule" :isShowComments="shouldShowComments"/>
+      <Comments v-if="nineShowModule" :isShowComments="shouldShowComments"/>
     </ModuleTransition>
 
     <ModuleTransition delay="0.08">
-      <SubSidebar v-if="recoShowModule" class="side-bar" />
+      <SubSidebar v-if="nineShowModule" class="side-bar" />
     </ModuleTransition>
   </main>
 </template>

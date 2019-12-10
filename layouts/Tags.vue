@@ -3,7 +3,7 @@
     <!-- 标签集合 -->
     <ModuleTransition>
       <TagList
-        v-show="recoShowModule"
+        v-show="nineShowModule"
         :currentTag="currentTag"
         @getCurrentTag="tagClick"></TagList>
     </ModuleTransition>
@@ -11,9 +11,9 @@
     <!-- 博客列表 -->
     <ModuleTransition delay="0.08">
       <note-abstract
-        v-show="recoShowModule"
+        v-show="nineShowModule"
         class="list"
-        :data="$recoPosts"
+        :data="$ninePosts"
         :currentPage="currentPage"
         :currentTag="currentTag"
         @currentTag="getCurrentTag"></note-abstract>
@@ -23,7 +23,7 @@
     <ModuleTransition delay="0.16">
       <pagation
         class="pagation"
-        :total="$recoPosts.length"
+        :total="$ninePosts.length"
         :currentPage="currentPage"
         @getCurrentPage="getCurrentPage"></pagation>
     </ModuleTransition>
@@ -51,8 +51,8 @@ export default {
   },
 
   created () {
-    this.currentTag = this.$recoLocales.tag.all
-    this.allTagName = this.$recoLocales.tag.all
+    this.currentTag = this.$nineLocales.tag.all
+    this.allTagName = this.$nineLocales.tag.all
     if (this.$tags.list.length > 0) {
       this.currentTag = this.$route.query.tag ? this.$route.query.tag : this.currentTag
     }

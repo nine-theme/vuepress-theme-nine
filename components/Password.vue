@@ -1,15 +1,15 @@
 <template>
   <div class="password-shadow">
     <ModuleTransition>
-      <h3 v-show="recoShowModule" class="title">{{isPage ? $frontmatter.title : $site.title || $localeConfig.title}}</h3>
+      <h3 v-show="nineShowModule" class="title">{{isPage ? $frontmatter.title : $site.title || $localeConfig.title}}</h3>
     </ModuleTransition>
 
     <ModuleTransition delay="0.08">
-      <p class="description" v-if="recoShowModule && !isPage">{{$site.description || $localeConfig.description}}</p>
+      <p class="description" v-if="nineShowModule && !isPage">{{$site.description || $localeConfig.description}}</p>
     </ModuleTransition>
 
     <ModuleTransition delay="0.16">
-      <label v-show="recoShowModule" class="inputBox" id="box">
+      <label v-show="nineShowModule" class="inputBox" id="box">
         <input
           v-model="key"
           type="password"
@@ -22,7 +22,7 @@
     </ModuleTransition>
 
     <ModuleTransition delay="0.24">
-      <div v-show="recoShowModule" class="footer">
+      <div v-show="nineShowModule" class="footer">
         <span>
           <i class="iconfont nine-theme"></i>
           <a target="blank" href="https://hub.alili.fun">vuePress-theme-nine</a>

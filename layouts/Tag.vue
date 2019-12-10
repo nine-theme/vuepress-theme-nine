@@ -4,7 +4,7 @@
     <!-- 标签集合 -->
     <ModuleTransition>
       <TagList
-        v-show="recoShowModule"
+        v-show="nineShowModule"
         class="tags"
         :currentTag="$currentTags.key"
         @getCurrentTag="tagClick"></TagList>
@@ -13,7 +13,7 @@
     <!-- 博客列表 -->
     <ModuleTransition delay="0.08">
       <note-abstract
-        v-show="recoShowModule"
+        v-show="nineShowModule"
         class="list"
         :data="posts"
         :currentPage="currentPage"

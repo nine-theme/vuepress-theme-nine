@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     tags () {
-      return [{ name: this.$recoLocales.tag.all, path: '/tag/' }, ...this.$tags.list]
+      return [{ name: this.$nineLocales.tag.all, path: '/tag/' }, ...this.$tags.list]
     }
   },
   methods: {

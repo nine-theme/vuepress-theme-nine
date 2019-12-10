@@ -14,7 +14,7 @@
   </h3>
   <div class="num">
     <div>
-      <h3>{{$recoPosts.length}}</h3>
+      <h3>{{$ninePosts.length}}</h3>
       <h6>{{homeBlogCfg.article}}</h6>
     </div>
     <div>
@@ -30,7 +30,7 @@
 export default {
   computed: {
     homeBlogCfg () {
-      return this.$recoLocales.homeBlog
+      return this.$nineLocales.homeBlog
     }
   }
 }

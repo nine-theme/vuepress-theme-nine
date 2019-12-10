@@ -5,7 +5,7 @@
         <ModuleTransition>
           <img
             class="hero-img"
-            v-if="recoShowModule && $frontmatter.heroImage"
+            v-if="nineShowModule && $frontmatter.heroImage"
             :style="heroImageStyle || {}"
             :src="$withBase($frontmatter.heroImage)"
             alt="hero"
@@ -13,13 +13,13 @@
         </ModuleTransition>
 
         <ModuleTransition delay="0.04">
-          <h1 v-if="recoShowModule && $frontmatter.heroText !== null">
+          <h1 v-if="nineShowModule && $frontmatter.heroText !== null">
             {{ $frontmatter.heroText || $title || 'vuePress-theme-nine' }}
           </h1>
         </ModuleTransition>
 
         <ModuleTransition delay="0.08">
-          <p v-if="recoShowModule && $frontmatter.tagline !== null" class="description">
+          <p v-if="nineShowModule && $frontmatter.tagline !== null" class="description">
             {{ $frontmatter.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}
           </p>
         </ModuleTransition>
@@ -27,16 +27,16 @@
     </div>
 
     <ModuleTransition delay="0.16">
-      <div v-show="recoShowModule" class="home-blog-wrapper">
+      <div v-show="nineShowModule" class="home-blog-wrapper">
         <div class="blog-list">
           <!-- 博客列表 -->
           <note-abstract
-            :data="$recoPosts"
+            :data="$ninePosts"
             :currentPage="currentPage"></note-abstract>
           <!-- 分页 -->
           <pagation
             class="pagation"
-            :total="$recoPosts.length"
+            :total="$ninePosts.length"
             :currentPage="currentPage"
             @getCurrentPage="getCurrentPage" />
         </div>
@@ -61,7 +61,7 @@
     </ModuleTransition>
 
     <ModuleTransition delay="0.24">
-      <Content v-show="recoShowModule" class="home-center" custom/>
+      <Content v-show="nineShowModule" class="home-center" custom/>
     </ModuleTransition>
   </div>
 </template>
@@ -81,14 +81,14 @@ export default {
   components: { NoteAbstract, TagList, FriendLink, ModuleTransition, PersonalInfo },
   data () {
     return {
-      recoShow: false,
+      nineShow: false,
       currentPage: 1,
       tags: []
     }
   },
   computed: {
     homeBlogCfg () {
-      return this.$recoLocales.homeBlog
+      return this.$nineLocales.homeBlog
     },
     actionLink () {
       const {
@@ -125,7 +125,7 @@ export default {
     }
   },
   mounted () {
-    this.recoShow = true
+    this.nineShow = true
     this._setPage(this._getStoragePage())
   },
   methods: {

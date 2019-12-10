@@ -3,28 +3,28 @@
     <div class="hero">
       <ModuleTransition>
         <img
-          v-if="recoShowModule && $frontmatter.heroImage"
+          v-if="nineShowModule && $frontmatter.heroImage"
           :style="heroImageStyle || {}"
           :src="$withBase($frontmatter.heroImage)"
           alt="hero">
       </ModuleTransition>
       <ModuleTransition delay="0.04">
-        <h1 v-if="recoShowModule && $frontmatter.heroText !== null">{{ $frontmatter.heroText || $title || 'vuePress-theme-nine' }}</h1>
+        <h1 v-if="nineShowModule && $frontmatter.heroText !== null">{{ $frontmatter.heroText || $title || 'vuePress-theme-nine' }}</h1>
       </ModuleTransition>
       <ModuleTransition delay="0.08">
-        <p v-if="recoShowModule && $frontmatter.tagline !== null" class="description">
+        <p v-if="nineShowModule && $frontmatter.tagline !== null" class="description">
           {{ $frontmatter.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}
         </p>
       </ModuleTransition>
       <ModuleTransition delay="0.16">
-        <p class="action" v-if="recoShowModule && $frontmatter.actionText && $frontmatter.actionLink">
+        <p class="action" v-if="nineShowModule && $frontmatter.actionText && $frontmatter.actionLink">
           <NavLink class="action-button" :item="actionLink"/>
         </p>
       </ModuleTransition>
     </div>
 
     <ModuleTransition delay="0.24">
-      <div class="features" v-if="recoShowModule && $frontmatter.features && $frontmatter.features.length">
+      <div class="features" v-if="nineShowModule && $frontmatter.features && $frontmatter.features.length">
         <div v-for="(feature, index) in $frontmatter.features" :key="index" class="feature">
           <h2>{{ feature.title }}</h2>
           <p>{{ feature.details }}</p>
@@ -32,7 +32,7 @@
       </div>
     </ModuleTransition>
     <ModuleTransition delay="0.32">
-      <Content class="home-center" v-show="recoShowModule" custom/>
+      <Content class="home-center" v-show="nineShowModule" custom/>
     </ModuleTransition>
   </div>
 </template>

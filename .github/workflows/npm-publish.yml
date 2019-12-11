@@ -15,7 +15,7 @@ jobs:
       with:
         node-version: 10.0.0
     - name: Publish if version has been updated
-      uses: NineSwordsMonster/github-actions/publish-to-npm@master 
+      uses: NineSwords/github-actions/publish-to-npm@master
       with: # All of theses inputs are optional
         tag_name: "v%s"
         tag_message: "v%s"

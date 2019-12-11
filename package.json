@@ -1,5 +1,5 @@
 {
-  "name": "@nines/vuepress-theme-nine",
+  "name": "@nine-theme/vuepress-theme-nine",
   "version": "4.0.0-alpha.0",
   "description": "nine theme for vuepress",
   "main": "index.js",
@@ -11,6 +11,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nine-theme/vuepress-theme-nine.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/nine-theme"
   },
   "keywords": [
     "nine",

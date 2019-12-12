@@ -1,14 +1,27 @@
 <template>
-	<div v-click-outside="hideMenu" class="color-picker" v-if="$themeConfig.modePicker !== false" >
-		<a class="color-button" @click.prevent="showMenu = !showMenu">
-			<i class="iconfont nine-color"></i>
-		</a>
-		<transition name="menu-transition" mode="out-in">
-			<div v-show="showMenu" class="color-picker-menu">
-				<ModePicker />
-			</div>
-		</transition>
-	</div>
+  <div
+    v-if="$themeConfig.modePicker !== false"
+    v-click-outside="hideMenu"
+    class="color-picker"
+  >
+    <a
+      class="color-button"
+      @click.prevent="showMenu = !showMenu"
+    >
+      <i class="iconfont nine-color" />
+    </a>
+    <transition
+      name="menu-transition"
+      mode="out-in"
+    >
+      <div
+        v-show="showMenu"
+        class="color-picker-menu"
+      >
+        <ModePicker />
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>

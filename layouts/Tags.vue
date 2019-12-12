@@ -1,11 +1,15 @@
 <template>
-  <Common  class="tags-wrapper" :sidebar="false">
+  <Common
+    class="tags-wrapper"
+    :sidebar="false"
+  >
     <!-- 标签集合 -->
     <ModuleTransition>
       <TagList
         v-show="nineShowModule"
-        :currentTag="currentTag"
-        @getCurrentTag="tagClick"></TagList>
+        :current-tag="currentTag"
+        @getCurrentTag="tagClick"
+      />
     </ModuleTransition>
 
     <!-- 博客列表 -->
@@ -14,9 +18,10 @@
         v-show="nineShowModule"
         class="list"
         :data="$ninePosts"
-        :currentPage="currentPage"
-        :currentTag="currentTag"
-        @currentTag="getCurrentTag"></note-abstract>
+        :current-page="currentPage"
+        :current-tag="currentTag"
+        @currentTag="getCurrentTag"
+      />
     </ModuleTransition>
 
     <!-- 分页 -->
@@ -24,8 +29,9 @@
       <pagation
         class="pagation"
         :total="$ninePosts.length"
-        :currentPage="currentPage"
-        @getCurrentPage="getCurrentPage"></pagation>
+        :current-page="currentPage"
+        @getCurrentPage="getCurrentPage"
+      />
     </ModuleTransition>
   </Common>
 </template>
@@ -39,8 +45,8 @@ import ModuleTransition from '@theme/components/ModuleTransition'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
 export default {
-  mixins: [pagination, moduleTransitonMixin],
   components: { Common, NoteAbstract, TagList, ModuleTransition },
+  mixins: [pagination, moduleTransitonMixin],
   data () {
     return {
       tags: [],

@@ -1,16 +1,26 @@
 <template>
-  <Common class="categories-wrapper" :sidebar="false">
+  <Common
+    class="categories-wrapper"
+    :sidebar="false"
+  >
     <!-- 分类集合 -->
     <ModuleTransition>
-      <ul v-show="nineShowModule" class="category-wrapper">
+      <ul
+        v-show="nineShowModule"
+        class="category-wrapper"
+      >
         <li
+          v-for="(item, index) in this.$categories.list"
+          :key="index"
           class="category-item"
           :class="title == item.name ? 'active': ''"
-          v-for="(item, index) in this.$categories.list"
-          :key="index">
+        >
           <router-link :to="item.path">
             <span class="category-name">{{ item.name }}</span>
-            <span class="post-num" :style="{ 'backgroundColor': getOneColor() }">{{ item.pages.length }}</span>
+            <span
+              class="post-num"
+              :style="{ 'backgroundColor': getOneColor() }"
+            >{{ item.pages.length }}</span>
           </router-link>
         </li>
       </ul>
@@ -22,8 +32,9 @@
         v-show="nineShowModule"
         class="list"
         :data="posts"
-        :currentPage="currentPage"
-        @currentTag="getCurrentTag"></note-abstract>
+        :current-page="currentPage"
+        @currentTag="getCurrentTag"
+      />
     </ModuleTransition>
 
     <!-- 分页 -->
@@ -31,8 +42,9 @@
       <pagation
         class="pagation"
         :total="posts.length"
-        :currentPage="currentPage"
-        @getCurrentPage="getCurrentPage"></pagation>
+        :current-page="currentPage"
+        @getCurrentPage="getCurrentPage"
+      />
     </ModuleTransition>
   </Common>
 </template>
@@ -47,8 +59,8 @@ import { getOneColor } from '@theme/helpers/other'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
 export default {
-  mixins: [pagination, moduleTransitonMixin],
   components: { Common, NoteAbstract, ModuleTransition },
+  mixins: [pagination, moduleTransitonMixin],
 
   data () {
     return {
@@ -67,6 +79,12 @@ export default {
     // 标题只显示分类名称
     title () {
       return this.$currentCategories.key
+    }
+  },
+
+  watch: {
+    $route () {
+      this._setPage(this._getStoragePage())
     }
   },
 
@@ -92,12 +110,6 @@ export default {
       this._setStoragePage(page)
     },
     getOneColor
-  },
-
-  watch: {
-    $route () {
-      this._setPage(this._getStoragePage())
-    }
   }
 }
 </script>

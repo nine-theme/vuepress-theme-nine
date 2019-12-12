@@ -1,17 +1,29 @@
 <template>
   <div
     class="abstract-item"
-    @click="$router.push(item.path)">
-    <i v-if="item.frontmatter.sticky" class="iconfont nine-sticky"></i>
+    @click="$router.push(item.path)"
+  >
+    <i
+      v-if="item.frontmatter.sticky"
+      class="iconfont nine-sticky"
+    />
     <div class="title">
-      <i v-if="item.frontmatter.keys" class="iconfont nine-lock"></i>
-      <router-link :to="item.path">{{item.title}}</router-link>
+      <i
+        v-if="item.frontmatter.keys"
+        class="iconfont nine-lock"
+      />
+      <router-link :to="item.path">
+        {{ item.title }}
+      </router-link>
     </div>
-    <div class="abstract" v-html="item.excerpt"></div>
+    <div
+      class="abstract"
+      v-html="item.excerpt"
+    />
     <PageInfo
-      :pageInfo="item"
-      :currentTag="currentTag">
-    </PageInfo>
+      :page-info="item"
+      :current-tag="currentTag"
+    />
   </div>
 </template>
 

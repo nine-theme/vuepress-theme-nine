@@ -3,37 +3,54 @@
     class="theme-container"
     :class="pageClasses"
     @touchstart="onTouchStart"
-    @touchend="onTouchEnd">
+    @touchend="onTouchEnd"
+  >
     <div v-if="!absoluteEncryption">
       <transition name="fade">
-        <LoadingPage v-show="firstLoad" class="loading-wrapper" />
+        <LoadingPage
+          v-show="firstLoad"
+          class="loading-wrapper"
+        />
       </transition>
       <transition name="fade">
-        <Password v-show="!isHasKey" class="password-wrapper-out" key="out" />
+        <Password
+          v-show="!isHasKey"
+          key="out"
+          class="password-wrapper-out"
+        />
       </transition>
       <div :class="{ 'hide': firstLoad || !isHasKey }">
         <Navbar
-        v-if="shouldShowNavbar"
-        @toggle-sidebar="toggleSidebar"/>
+          v-if="shouldShowNavbar"
+          @toggle-sidebar="toggleSidebar"
+        />
 
         <div
           class="sidebar-mask"
-          @click="toggleSidebar(false)"></div>
+          @click="toggleSidebar(false)"
+        />
 
         <Sidebar
           :items="sidebarItems"
-          @toggle-sidebar="toggleSidebar">
+          @toggle-sidebar="toggleSidebar"
+        >
           <template slot="top">
             <PersonalInfo />
           </template>
           <slot
+            slot="bottom"
             name="sidebar-bottom"
-            slot="bottom"/>
+          />
         </Sidebar>
 
-        <Password v-show="!isHasPageKey" :isPage="true" class="password-wrapper-in" key="in"></Password>
+        <Password
+          v-show="!isHasPageKey"
+          key="in"
+          :is-page="true"
+          class="password-wrapper-in"
+        />
         <div :class="{ 'hide': !isHasPageKey }">
-          <slot></slot>
+          <slot />
         </div>
       </div>
     </div>
@@ -43,27 +60,34 @@
         <Password v-else-if="!isHasKey" />
         <div v-else>
           <Navbar
-          v-if="shouldShowNavbar"
-          @toggle-sidebar="toggleSidebar"/>
+            v-if="shouldShowNavbar"
+            @toggle-sidebar="toggleSidebar"
+          />
 
           <div
             class="sidebar-mask"
-            @click="toggleSidebar(false)"></div>
+            @click="toggleSidebar(false)"
+          />
 
           <Sidebar
             :items="sidebarItems"
-            @toggle-sidebar="toggleSidebar">
+            @toggle-sidebar="toggleSidebar"
+          >
             <template slot="top">
               <PersonalInfo />
             </template>
             <slot
+              slot="bottom"
               name="sidebar-bottom"
-              slot="bottom"/>
+            />
           </Sidebar>
 
-          <Password v-if="!isHasPageKey" :isPage="true"></Password>
+          <Password
+            v-if="!isHasPageKey"
+            :is-page="true"
+          />
           <div v-else>
-            <slot></slot>
+            <slot />
           </div>
         </div>
       </transition>
@@ -80,9 +104,9 @@ import { setTimeout } from 'timers'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
 export default {
-  mixins: [moduleTransitonMixin],
 
   components: { Sidebar, Navbar, Password, PersonalInfo },
+  mixins: [moduleTransitonMixin],
 
   props: {
     sidebar: {
@@ -151,6 +175,13 @@ export default {
     }
   },
 
+  watch: {
+    $frontmatter (newVal, oldVal) {
+      this.hasKey()
+      this.hasPageKey()
+    }
+  },
+
   mounted () {
     this.$router.afterEach(() => {
       this.isSidebarOpen = false
@@ -214,13 +245,6 @@ export default {
         this.firstLoad = false
         if (sessionStorage.getItem('firstLoad') == undefined) sessionStorage.setItem('firstLoad', false)
       }, time)
-    }
-  },
-
-  watch: {
-    $frontmatter (newVal, oldVal) {
-      this.hasKey()
-      this.hasPageKey()
     }
   }
 }

@@ -1,15 +1,18 @@
 <template>
   <div class="home-blog">
-    <div class="hero" :style="{ ...bgImageStyle }">
+    <div
+      class="hero"
+      :style="{ ...bgImageStyle }"
+    >
       <div>
         <ModuleTransition>
           <img
-            class="hero-img"
             v-if="nineShowModule && $frontmatter.heroImage"
+            class="hero-img"
             :style="heroImageStyle || {}"
             :src="$withBase($frontmatter.heroImage)"
             alt="hero"
-          />
+          >
         </ModuleTransition>
 
         <ModuleTransition delay="0.04">
@@ -19,7 +22,10 @@
         </ModuleTransition>
 
         <ModuleTransition delay="0.08">
-          <p v-if="nineShowModule && $frontmatter.tagline !== null" class="description">
+          <p
+            v-if="nineShowModule && $frontmatter.tagline !== null"
+            class="description"
+          >
             {{ $frontmatter.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}
           </p>
         </ModuleTransition>
@@ -27,41 +33,61 @@
     </div>
 
     <ModuleTransition delay="0.16">
-      <div v-show="nineShowModule" class="home-blog-wrapper">
+      <div
+        v-show="nineShowModule"
+        class="home-blog-wrapper"
+      >
         <div class="blog-list">
           <!-- 博客列表 -->
           <note-abstract
             :data="$ninePosts"
-            :currentPage="currentPage"></note-abstract>
+            :current-page="currentPage"
+          />
           <!-- 分页 -->
           <pagation
             class="pagation"
             :total="$ninePosts.length"
-            :currentPage="currentPage"
-            @getCurrentPage="getCurrentPage" />
+            :current-page="currentPage"
+            @getCurrentPage="getCurrentPage"
+          />
         </div>
         <div class="info-wrapper">
-          <PersonalInfo/>
-          <h4><i class="iconfont nine-category"></i> {{homeBlogCfg.category}}</h4>
+          <PersonalInfo />
+          <h4><i class="iconfont nine-category" /> {{ homeBlogCfg.category }}</h4>
           <ul class="category-wrapper">
-            <li class="category-item" v-for="(item, index) in this.$categories.list" :key="index">
+            <li
+              v-for="(item, index) in this.$categories.list"
+              :key="index"
+              class="category-item"
+            >
               <router-link :to="item.path">
                 <span class="category-name">{{ item.name }}</span>
-                <span class="post-num" :style="{ 'backgroundColor': getOneColor() }">{{ item.pages.length }}</span>
+                <span
+                  class="post-num"
+                  :style="{ 'backgroundColor': getOneColor() }"
+                >{{ item.pages.length }}</span>
               </router-link>
             </li>
           </ul>
           <hr>
-          <h4 v-if="$tags.list.length !== 0"><i class="iconfont nine-tag"></i> {{homeBlogCfg.tag}}</h4>
+          <h4 v-if="$tags.list.length !== 0">
+            <i class="iconfont nine-tag" /> {{ homeBlogCfg.tag }}
+          </h4>
           <TagList @getCurrentTag="getPagesByTags" />
-          <h4 v-if="$themeConfig.friendLink && $themeConfig.friendLink.length !== 0"><i class="iconfont nine-friend"></i> {{homeBlogCfg.friendLink}}</h4>
+          <h4 v-if="$themeConfig.friendLink && $themeConfig.friendLink.length !== 0">
+            <i class="iconfont nine-friend" /> {{ homeBlogCfg.friendLink }}
+          </h4>
           <FriendLink />
         </div>
       </div>
     </ModuleTransition>
 
     <ModuleTransition delay="0.24">
-      <Content v-show="nineShowModule" class="home-center" custom/>
+      <Content
+        v-show="nineShowModule"
+        class="home-center"
+        custom
+      />
     </ModuleTransition>
   </div>
 </template>
@@ -77,8 +103,8 @@ import { getOneColor } from '@theme/helpers/other'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
 export default {
-  mixins: [pagination, moduleTransitonMixin],
   components: { NoteAbstract, TagList, FriendLink, ModuleTransition, PersonalInfo },
+  mixins: [pagination, moduleTransitonMixin],
   data () {
     return {
       nineShow: false,

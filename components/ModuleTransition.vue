@@ -3,7 +3,8 @@
     name="module"
     @enter="setStyle"
     @after-enter="unsetStyle"
-    @before-leave="setStyle">
+    @before-leave="setStyle"
+  >
     <slot />
   </transition>
 </template>

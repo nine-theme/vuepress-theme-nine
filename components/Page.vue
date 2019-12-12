@@ -1,33 +1,48 @@
 <template>
-  <main class="page" :style="pageStyle">
+  <main
+    class="page"
+    :style="pageStyle"
+  >
     <ModuleTransition>
-      <div v-show="nineShowModule && $page.title" class="page-title">
-        <h1>{{$page.title}}</h1>
-        <PageInfo :pageInfo="$page" :showAccessNumber="showAccessNumber"></PageInfo>
+      <div
+        v-show="nineShowModule && $page.title"
+        class="page-title"
+      >
+        <h1>{{ $page.title }}</h1>
+        <PageInfo
+          :page-info="$page"
+          :show-access-number="showAccessNumber"
+        />
       </div>
     </ModuleTransition>
 
     <ModuleTransition delay="0.08">
-      <Content v-show="nineShowModule" class="theme-nine-content" />
+      <Content
+        v-show="nineShowModule"
+        class="theme-nine-content"
+      />
     </ModuleTransition>
 
     <ModuleTransition delay="0.16">
-      <footer v-show="nineShowModule" class="page-edit">
+      <footer
+        v-show="nineShowModule"
+        class="page-edit"
+      >
         <div
-          class="edit-link"
           v-if="editLink"
+          class="edit-link"
         >
           <a
             :href="editLink"
             target="_blank"
             rel="noopener noreferrer"
           >{{ editLinkText }}</a>
-          <OutboundLink/>
+          <OutboundLink />
         </div>
 
         <div
-          class="last-updated"
           v-if="lastUpdated"
+          class="last-updated"
         >
           <span class="prefix">{{ lastUpdatedText }}: </span>
           <span class="time">{{ lastUpdated }}</span>
@@ -36,7 +51,10 @@
     </ModuleTransition>
 
     <ModuleTransition delay="0.24">
-      <div class="page-nav" v-if="nineShowModule && (prev || next)">
+      <div
+        v-if="nineShowModule && (prev || next)"
+        class="page-nav"
+      >
         <p class="inner">
           <span
             v-if="prev"
@@ -69,11 +87,17 @@
     </ModuleTransition>
 
     <ModuleTransition delay="0.32">
-      <Comments v-if="nineShowModule" :isShowComments="shouldShowComments"/>
+      <Comments
+        v-if="nineShowModule"
+        :is-show-comments="shouldShowComments"
+      />
     </ModuleTransition>
 
     <ModuleTransition delay="0.08">
-      <SubSidebar v-if="nineShowModule" class="side-bar" />
+      <SubSidebar
+        v-if="nineShowModule"
+        class="side-bar"
+      />
     </ModuleTransition>
   </main>
 </template>
@@ -86,8 +110,8 @@ import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 import SubSidebar from '@theme/components/SubSidebar'
 
 export default {
-  mixins: [moduleTransitonMixin],
   components: { PageInfo, ModuleTransition, SubSidebar },
+  mixins: [moduleTransitonMixin],
 
   props: ['sidebarItems'],
 

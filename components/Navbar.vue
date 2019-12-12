@@ -1,33 +1,37 @@
 <template>
   <header class="navbar">
-    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
+    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
 
     <router-link
       :to="$localePath"
-      class="home-link">
+      class="home-link"
+    >
       <img
-        class="logo"
         v-if="$themeConfig.logo"
+        class="logo"
         :src="$withBase($themeConfig.logo)"
-        :alt="$siteTitle">
+        :alt="$siteTitle"
+      >
       <span
+        v-if="$siteTitle"
         ref="siteName"
         class="site-name"
-        v-if="$siteTitle">{{ $siteTitle }}</span>
+      >{{ $siteTitle }}</span>
     </router-link>
 
     <div
       class="links"
       :style="linksWrapMaxWidth ? {
         'max-width': linksWrapMaxWidth + 'px'
-      } : {}">
-
+      } : {}"
+    >
       <Mode />
       <AlgoliaSearchBox
         v-if="isAlgoliaSearch"
-        :options="algolia"/>
-      <SearchBox v-else-if="$themeConfig.search !== false && $frontmatter.search !== false"/>
-      <NavLinks class="can-hide"/>
+        :options="algolia"
+      />
+      <SearchBox v-else-if="$themeConfig.search !== false && $frontmatter.search !== false" />
+      <NavLinks class="can-hide" />
     </div>
   </header>
 </template>
@@ -48,6 +52,16 @@ export default {
     }
   },
 
+  computed: {
+    algolia () {
+      return this.$themeLocaleConfig.algolia || this.$themeConfig.algolia || {}
+    },
+
+    isAlgoliaSearch () {
+      return this.algolia && this.algolia.apiKey && this.algolia.indexName
+    }
+  },
+
   mounted () {
     const MOBILE_DESKTOP_BREAKPOINT = 719 // refer to config.styl
     const NAVBAR_VERTICAL_PADDING = parseInt(css(this.$el, 'paddingLeft')) + parseInt(css(this.$el, 'paddingRight'))
@@ -61,16 +75,6 @@ export default {
     }
     handleLinksWrapWidth()
     window.addEventListener('resize', handleLinksWrapWidth, false)
-  },
-
-  computed: {
-    algolia () {
-      return this.$themeLocaleConfig.algolia || this.$themeConfig.algolia || {}
-    },
-
-    isAlgoliaSearch () {
-      return this.algolia && this.algolia.apiKey && this.algolia.indexName
-    }
   },
 
   methods: {

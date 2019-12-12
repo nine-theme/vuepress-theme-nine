@@ -4,8 +4,9 @@
       v-for="(item) in currentPageData"
       :key="item.path"
       :item="item"
-      :currentPage="currentPage"
-      :currentTag="currentTag" />
+      :current-page="currentPage"
+      :current-tag="currentTag"
+    />
   </div>
 </template>
 

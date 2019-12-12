@@ -1,25 +1,27 @@
 <template>
   <div class="friend-link-wrapper">
     <div
-      class="friend-link-item"
       v-for="(item, index) in dataAddColor"
       :key="index"
+      class="friend-link-item"
+      target="_blank"
       @mouseenter="showDetail($event)"
       @mouseleave="hideDetail($event)"
-      target="_blank">
+    >
       <span
         class="list-style"
-        :style="{ 'backgroundColor': item.color }">
-      </span>
-      {{item.title}}
+        :style="{ 'backgroundColor': item.color }"
+      />
+      {{ item.title }}
       <transition name="fade">
         <div class="popup-window-wrapper">
           <div
+            ref="popupWindow"
             class="popup-window"
             :style="popupWindowStyle"
-            ref="popupWindow">
+          >
             <div class="logo">
-              <img :src="getImgUrl(item)" />
+              <img :src="getImgUrl(item)">
             </div>
             <div class="info">
               <div class="title">
@@ -28,13 +30,15 @@
                   class="btn-go"
                   :style="{ 'backgroundColor': item.color }"
                   :href="item.link"
-                  target="_blank">GO</a>
+                  target="_blank"
+                >GO</a>
               </div>
-              <p v-if="item.desc">{{ item.desc }}</p>
+              <p v-if="item.desc">
+                {{ item.desc }}
+              </p>
             </div>
           </div>
         </div>
-
       </transition>
     </div>
   </div>
@@ -51,13 +55,6 @@ export default {
       isPC: true
     }
   },
-  mounted () {
-    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-      this.isPC = false
-    } else {
-      this.isPC = true
-    }
-  },
   computed: {
     dataAddColor () {
       let { friendLink } = this.$themeConfig
@@ -69,6 +66,13 @@ export default {
         return friendLink
       }
       return []
+    }
+  },
+  mounted () {
+    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      this.isPC = false
+    } else {
+      this.isPC = true
     }
   },
   methods: {

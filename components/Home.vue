@@ -6,33 +6,56 @@
           v-if="nineShowModule && $frontmatter.heroImage"
           :style="heroImageStyle || {}"
           :src="$withBase($frontmatter.heroImage)"
-          alt="hero">
+          alt="hero"
+        >
       </ModuleTransition>
       <ModuleTransition delay="0.04">
-        <h1 v-if="nineShowModule && $frontmatter.heroText !== null">{{ $frontmatter.heroText || $title || 'vuePress-theme-nine' }}</h1>
+        <h1 v-if="nineShowModule && $frontmatter.heroText !== null">
+          {{ $frontmatter.heroText || $title || 'vuePress-theme-nine' }}
+        </h1>
       </ModuleTransition>
       <ModuleTransition delay="0.08">
-        <p v-if="nineShowModule && $frontmatter.tagline !== null" class="description">
+        <p
+          v-if="nineShowModule && $frontmatter.tagline !== null"
+          class="description"
+        >
           {{ $frontmatter.tagline || $description || 'Welcome to your vuePress-theme-nine site' }}
         </p>
       </ModuleTransition>
       <ModuleTransition delay="0.16">
-        <p class="action" v-if="nineShowModule && $frontmatter.actionText && $frontmatter.actionLink">
-          <NavLink class="action-button" :item="actionLink"/>
+        <p
+          v-if="nineShowModule && $frontmatter.actionText && $frontmatter.actionLink"
+          class="action"
+        >
+          <NavLink
+            class="action-button"
+            :item="actionLink"
+          />
         </p>
       </ModuleTransition>
     </div>
 
     <ModuleTransition delay="0.24">
-      <div class="features" v-if="nineShowModule && $frontmatter.features && $frontmatter.features.length">
-        <div v-for="(feature, index) in $frontmatter.features" :key="index" class="feature">
+      <div
+        v-if="nineShowModule && $frontmatter.features && $frontmatter.features.length"
+        class="features"
+      >
+        <div
+          v-for="(feature, index) in $frontmatter.features"
+          :key="index"
+          class="feature"
+        >
           <h2>{{ feature.title }}</h2>
           <p>{{ feature.details }}</p>
         </div>
       </div>
     </ModuleTransition>
     <ModuleTransition delay="0.32">
-      <Content class="home-center" v-show="nineShowModule" custom/>
+      <Content
+        v-show="nineShowModule"
+        class="home-center"
+        custom
+      />
     </ModuleTransition>
   </div>
 </template>
@@ -43,8 +66,8 @@ import ModuleTransition from '@theme/components/ModuleTransition'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
 export default {
-  mixins: [moduleTransitonMixin],
   components: { NavLink, ModuleTransition },
+  mixins: [moduleTransitonMixin],
   computed: {
 
     actionLink () {

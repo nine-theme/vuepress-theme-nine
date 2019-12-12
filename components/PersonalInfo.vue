@@ -1,29 +1,29 @@
 <template>
-<div class="personal-info-wrapper">
-  <img
-    class="personal-img"
-    v-if="$themeConfig.authorAvatar"
-    :src="$withBase($themeConfig.authorAvatar)"
-    alt="author-avatar"
-  >
-  <h3
-    class="name"
-    v-if="$themeConfig.author || $site.title"
-  >
-    {{ $themeConfig.author || $site.title }}
-  </h3>
-  <div class="num">
-    <div>
-      <h3>{{$ninePosts.length}}</h3>
-      <h6>{{homeBlogCfg.article}}</h6>
+  <div class="personal-info-wrapper">
+    <img
+      v-if="$themeConfig.authorAvatar"
+      class="personal-img"
+      :src="$withBase($themeConfig.authorAvatar)"
+      alt="author-avatar"
+    >
+    <h3
+      v-if="$themeConfig.author || $site.title"
+      class="name"
+    >
+      {{ $themeConfig.author || $site.title }}
+    </h3>
+    <div class="num">
+      <div>
+        <h3>{{ $ninePosts.length }}</h3>
+        <h6>{{ homeBlogCfg.article }}</h6>
+      </div>
+      <div>
+        <h3>{{ $tags.list.length }}</h3>
+        <h6>{{ homeBlogCfg.tag }}</h6>
+      </div>
     </div>
-    <div>
-      <h3>{{$tags.list.length}}</h3>
-      <h6>{{homeBlogCfg.tag}}</h6>
-    </div>
+    <hr>
   </div>
-  <hr>
-</div>
 </template>
 
 <script>

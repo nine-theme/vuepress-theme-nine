@@ -1,31 +1,37 @@
 <template>
   <div>
     <i
+      v-if="pageInfo.frontmatter.author || $themeConfig.author || $site.title"
       class="iconfont nine-account"
-      v-if="pageInfo.frontmatter.author || $themeConfig.author || $site.title">
+    >
       <span>{{ pageInfo.frontmatter.author || $themeConfig.author || $site.title }}</span>
     </i>
     <i
       v-if="pageInfo.frontmatter.date"
-      class="iconfont nine-date">
+      class="iconfont nine-date"
+    >
       <span>{{ pageInfo.frontmatter.date | formatDateValue }}</span>
     </i>
     <i
       v-if="showAccessNumber === true"
-      class="iconfont nine-eye">
+      class="iconfont nine-eye"
+    >
       <AccessNumber
-        :idVal="pageInfo.path"
-        :numStyle="numStyle" />
+        :id-val="pageInfo.path"
+        :num-style="numStyle"
+      />
     </i>
     <i
       v-if="pageInfo.frontmatter.tags"
-      class="iconfont nine-tag tags">
+      class="iconfont nine-tag tags"
+    >
       <span
         v-for="(subItem, subIndex) in pageInfo.frontmatter.tags"
         :key="subIndex"
         class="tag-item"
         :class="{ 'active': currentTag == subItem }"
-        @click.stop="goTags(subItem)">{{subItem}}</span>
+        @click.stop="goTags(subItem)"
+      >{{ subItem }}</span>
     </i>
   </div>
 </template>
@@ -35,6 +41,27 @@
 import { formatDate } from '@theme/helpers/utils'
 
 export default {
+  filters: {
+    formatDateValue (value) {
+      if (!value) return ''
+      // 返回的value的值都是这个样子2019-09-20T18:22:30.000Z
+      // 对value进行处理
+      value = value.replace('T', ' ').slice(0, value.lastIndexOf('.'))
+      // 转化后的value 2019-09-20 18:22:30
+      // 获取到时分秒
+      const h = Number(value.substr(11, 2))
+      const m = Number(value.substr(14, 2))
+      const s = Number(value.substr(17, 2))
+      // 判断时分秒是不是 00:00:00 (如果是用户手动输入的00:00:00也会不显示)
+      if (h > 0 || m > 0 || s > 0) {
+        // 时分秒有一个> 0 就说明用户输入一个非 00:00:00 的时分秒
+        return formatDate(value)
+      } else {
+        // 用户没有输入或者输入了 00:00:00
+        return formatDate(value, 'yyyy-MM-dd')
+      }
+    }
+  },
   props: {
     pageInfo: {
       type: Object,
@@ -57,27 +84,6 @@ export default {
         fontSize: '.9rem',
         fontWeight: 'normal',
         color: '#999'
-      }
-    }
-  },
-  filters: {
-    formatDateValue (value) {
-      if (!value) return ''
-      // 返回的value的值都是这个样子2019-09-20T18:22:30.000Z
-      // 对value进行处理
-      value = value.replace('T', ' ').slice(0, value.lastIndexOf('.'))
-      // 转化后的value 2019-09-20 18:22:30
-      // 获取到时分秒
-      const h = Number(value.substr(11, 2))
-      const m = Number(value.substr(14, 2))
-      const s = Number(value.substr(17, 2))
-      // 判断时分秒是不是 00:00:00 (如果是用户手动输入的00:00:00也会不显示)
-      if (h > 0 || m > 0 || s > 0) {
-        // 时分秒有一个> 0 就说明用户输入一个非 00:00:00 的时分秒
-        return formatDate(value)
-      } else {
-        // 用户没有输入或者输入了 00:00:00
-        return formatDate(value, 'yyyy-MM-dd')
       }
     }
   },

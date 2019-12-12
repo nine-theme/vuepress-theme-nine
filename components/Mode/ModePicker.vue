@@ -1,13 +1,17 @@
 <template>
   <div class="mode-options">
-    <h4 class="title">Choose mode</h4>
+    <h4 class="title">
+      Choose mode
+    </h4>
     <ul class="color-mode-options">
       <li
         v-for="(mode, index) in modeOptions"
         :key="index"
         :class="getClass(mode.mode)"
         @click="selectMode(mode.mode)"
-      >{{ mode.title }}</li>
+      >
+        {{ mode.title }}
+      </li>
     </ul>
   </div>
 </template>

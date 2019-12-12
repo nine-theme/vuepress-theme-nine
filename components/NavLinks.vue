@@ -1,19 +1,22 @@
 <template>
   <nav
-    class="nav-links"
     v-if="userLinks.length || repoLink"
+    class="nav-links"
   >
     <!-- user links -->
     <div
-      class="nav-item"
       v-for="item in userLinks"
-      :key="item.link">
+      :key="item.link"
+      class="nav-item"
+    >
       <DropdownLink
         v-if="item.type === 'links'"
-        :item="item"/>
+        :item="item"
+      />
       <NavLink
         v-else
-        :item="item"/>
+        :item="item"
+      />
     </div>
 
     <!-- repo link -->
@@ -22,10 +25,11 @@
       :href="repoLink"
       class="repo-link"
       target="_blank"
-      rel="noopener noreferrer">
-      <i :class="`iconfont nine-${repoLabel.toLowerCase()}`"></i>
+      rel="noopener noreferrer"
+    >
+      <i :class="`iconfont nine-${repoLabel.toLowerCase()}`" />
       {{ repoLabel }}
-      <OutboundLink/>
+      <OutboundLink />
     </a>
   </nav>
 </template>

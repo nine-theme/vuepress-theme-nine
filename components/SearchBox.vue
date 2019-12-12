@@ -1,38 +1,44 @@
 <template>
   <div class="search-box">
-    <i class="iconfont nine-search"></i>
+    <i class="iconfont nine-search" />
     <input
-      @input="query = $event.target.value"
       aria-label="Search"
       :value="query"
       :class="{ 'focused': focused }"
+      ref="input"
       :placeholder="placeholder"
       autocomplete="off"
       spellcheck="false"
+      @input="query = $event.target.value"
       @focus="focused = true"
       @blur="focused = false"
       @keyup.enter="go(focusIndex)"
       @keyup.up="onUp"
       @keyup.down="onDown"
-      ref="input"
     >
     <ul
-      class="suggestions"
       v-if="showSuggestions"
+      class="suggestions"
       :class="{ 'align-right': alignRight }"
       @mouseleave="unfocus"
     >
       <li
-        class="suggestion"
         v-for="(s, i) in suggestions"
         :key="i"
+        class="suggestion"
         :class="{ focused: i === focusIndex }"
         @mousedown="go(i)"
         @mouseenter="focus(i)"
       >
-        <a :href="s.path" @click.prevent>
+        <a
+          :href="s.path"
+          @click.prevent
+        >
           <span class="page-title">{{ s.title || s.path }}</span>
-          <span v-if="s.header" class="header">&gt; {{ s.header.title }}</span>
+          <span
+            v-if="s.header"
+            class="header"
+          >&gt; {{ s.header.title }}</span>
         </a>
       </li>
     </ul>
@@ -48,9 +54,6 @@ export default {
       focusIndex: 0,
       placeholder: undefined
     }
-  },
-  mounted () {
-    this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
   },
   computed: {
     showSuggestions () {
@@ -100,6 +103,9 @@ export default {
       const repo = this.$site.repo ? 1 : 0
       return navCount + repo <= 2
     }
+  },
+  mounted () {
+    this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
   },
   methods: {
     getPageLocalePath (page) {

@@ -1,34 +1,58 @@
 <template>
   <div class="password-shadow">
     <ModuleTransition>
-      <h3 v-show="nineShowModule" class="title">{{isPage ? $frontmatter.title : $site.title || $localeConfig.title}}</h3>
+      <h3
+        v-show="nineShowModule"
+        class="title"
+      >
+        {{ isPage ? $frontmatter.title : $site.title || $localeConfig.title }}
+      </h3>
     </ModuleTransition>
 
     <ModuleTransition delay="0.08">
-      <p class="description" v-if="nineShowModule && !isPage">{{$site.description || $localeConfig.description}}</p>
+      <p
+        v-if="nineShowModule && !isPage"
+        class="description"
+      >
+        {{ $site.description || $localeConfig.description }}
+      </p>
     </ModuleTransition>
 
     <ModuleTransition delay="0.16">
-      <label v-show="nineShowModule" class="inputBox" id="box">
+      <label
+        v-show="nineShowModule"
+        id="box"
+        class="inputBox"
+      >
         <input
           v-model="key"
           type="password"
           @keyup.enter="inter"
           @focus="inputFocus"
-          @blur="inputBlur">
-        <span>{{warningText}}</span>
-        <button ref="passwordBtn" @click="inter">OK</button>
+          @blur="inputBlur"
+        >
+        <span>{{ warningText }}</span>
+        <button
+          ref="passwordBtn"
+          @click="inter"
+        >OK</button>
       </label>
     </ModuleTransition>
 
     <ModuleTransition delay="0.24">
-      <div v-show="nineShowModule" class="footer">
+      <div
+        v-show="nineShowModule"
+        class="footer"
+      >
         <span>
-          <i class="iconfont nine-theme"></i>
-          <a target="blank" href="https://hub.alili.fun">vuePress-theme-nine</a>
+          <i class="iconfont nine-theme" />
+          <a
+            target="blank"
+            href="https://hub.alili.fun"
+          >vuePress-theme-nine</a>
         </span>
         <span>
-          <i class="iconfont nine-copyright"></i>
+          <i class="iconfont nine-copyright" />
           <a>
             <span v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</span>
             &nbsp;&nbsp;
@@ -47,15 +71,15 @@ import ModuleTransition from '@theme/components/ModuleTransition'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
 export default {
-  mixins: [moduleTransitonMixin],
+  name: 'Password',
   components: { ModuleTransition },
+  mixins: [moduleTransitonMixin],
   props: {
     isPage: {
       type: Boolean,
       default: false
     }
   },
-  name: 'Password',
   data () {
     return {
       warningText: 'Konck! Knock!',

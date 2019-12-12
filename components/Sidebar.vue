@@ -1,9 +1,12 @@
 <template>
   <aside class="sidebar">
-    <slot name="top"/>
-    <NavLinks/>
-    <SidebarLinks :depth="0" :items="items"/>
-    <slot name="bottom"/>
+    <slot name="top" />
+    <NavLinks />
+    <SidebarLinks
+      :depth="0"
+      :items="items"
+    />
+    <slot name="bottom" />
   </aside>
 </template>
 

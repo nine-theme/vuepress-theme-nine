@@ -1,13 +1,17 @@
 <template>
   <!-- 公共布局 -->
-  <Common class="tag-wrapper" :sidebar="false">
+  <Common
+    class="tag-wrapper"
+    :sidebar="false"
+  >
     <!-- 标签集合 -->
     <ModuleTransition>
       <TagList
         v-show="nineShowModule"
         class="tags"
-        :currentTag="$currentTags.key"
-        @getCurrentTag="tagClick"></TagList>
+        :current-tag="$currentTags.key"
+        @getCurrentTag="tagClick"
+      />
     </ModuleTransition>
 
     <!-- 博客列表 -->
@@ -16,8 +20,9 @@
         v-show="nineShowModule"
         class="list"
         :data="posts"
-        :currentPage="currentPage"
-        @currentTag="$currentTags.key"></note-abstract>
+        :current-page="currentPage"
+        @currentTag="$currentTags.key"
+      />
     </ModuleTransition>
 
     <!-- 分页 -->
@@ -25,8 +30,9 @@
       <pagation
         class="pagation"
         :total="posts.length"
-        :currentPage="currentPage"
-        @getCurrentPage="getCurrentPage"></pagation>
+        :current-page="currentPage"
+        @getCurrentPage="getCurrentPage"
+      />
     </ModuleTransition>
   </Common>
 </template>
@@ -41,8 +47,8 @@ import { sortPostsByStickyAndDate, filterPosts } from '@theme/helpers/postData'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
 export default {
-  mixins: [pagination, moduleTransitonMixin],
   components: { Common, NoteAbstract, TagList, ModuleTransition },
+  mixins: [pagination, moduleTransitonMixin],
 
   data () {
     return {
@@ -58,6 +64,12 @@ export default {
       posts = filterPosts(posts)
       sortPostsByStickyAndDate(posts)
       return posts
+    }
+  },
+
+  watch: {
+    $route () {
+      this._setPage(this._getStoragePage())
     }
   },
 
@@ -86,12 +98,6 @@ export default {
       this.currentPage = page
       this.$page.currentPage = page
       this._setStoragePage(page)
-    }
-  },
-
-  watch: {
-    $route () {
-      this._setPage(this._getStoragePage())
     }
   }
 }

@@ -1,19 +1,36 @@
 <template>
-  <Common class="timeline-wrapper" :sidebar="false">
+  <Common
+    class="timeline-wrapper"
+    :sidebar="false"
+  >
     <ul class="timeline-content">
-      <ModuleTransition >
-        <li v-show="nineShowModule" class="desc">Yesterday Once More!</li>
+      <ModuleTransition>
+        <li
+          v-show="nineShowModule"
+          class="desc"
+        >
+          Yesterday Once More!
+        </li>
       </ModuleTransition>
       <ModuleTransition
-        :delay="String(0.08 * (index + 1))"
         v-for="(item, index) in $ninePostsForTimeline"
-        :key="index">
+        :key="index"
+        :delay="String(0.08 * (index + 1))"
+      >
         <li v-show="nineShowModule">
-          <h3 class="year">{{item.year}}</h3>
+          <h3 class="year">
+            {{ item.year }}
+          </h3>
           <ul class="year-wrapper">
-            <li v-for="(subItem, subIndex) in item.data" :key="subIndex">
-              <span class="date">{{subItem.frontmatter.date | dateFormat}}</span>
-              <span class="title" @click="go(subItem.path)">{{subItem.title}}</span>
+            <li
+              v-for="(subItem, subIndex) in item.data"
+              :key="subIndex"
+            >
+              <span class="date">{{ subItem.frontmatter.date | dateFormat }}</span>
+              <span
+                class="title"
+                @click="go(subItem.path)"
+              >{{ subItem.title }}</span>
             </li>
           </ul>
         </li>
@@ -28,7 +45,6 @@ import ModuleTransition from '@theme/components/ModuleTransition'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
 export default {
-  mixins: [moduleTransitonMixin],
   name: 'TimeLine',
   components: { Common, ModuleTransition },
   filters: {
@@ -44,6 +60,7 @@ export default {
       return `${mon}-${day}`
     }
   },
+  mixins: [moduleTransitonMixin],
   methods: {
     go (url) {
       this.$router.push({ path: url })

@@ -5,7 +5,8 @@
       :key="index"
       :class="{'active': item.name == currentTag}"
       :style="{ 'backgroundColor': getOneColor() }"
-      @click="tagClick(item)">{{item.name}}</span>
+      @click="tagClick(item)"
+    >{{ item.name }}</span>
   </div>
 </template>
 

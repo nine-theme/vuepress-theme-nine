@@ -4,7 +4,7 @@
     class="algolia-search-wrapper search-box"
     role="search"
   >
-    <i class="iconfont nine-search"></i>
+    <i class="iconfont nine-search" />
     <input
       id="algolia-search-input"
       class="search-query"
@@ -19,6 +19,16 @@ export default {
   data () {
     return {
       placeholder: undefined
+    }
+  },
+
+  watch: {
+    $lang (newValue) {
+      this.update(this.options, newValue)
+    },
+
+    options (newValue) {
+      this.update(newValue, this.$lang)
     }
   },
   mounted () {
@@ -55,16 +65,6 @@ export default {
     update (options, lang) {
       this.$el.innerHTML = '<input id="algolia-search-input" class="search-query">'
       this.initialize(options, lang)
-    }
-  },
-
-  watch: {
-    $lang (newValue) {
-      this.update(this.options, newValue)
-    },
-
-    options (newValue) {
-      this.update(newValue, this.$lang)
     }
   }
 }

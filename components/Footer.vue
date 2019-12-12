@@ -1,15 +1,18 @@
 <template>
   <div class="footer-wrapper">
     <span>
-      <i class="iconfont nine-theme"></i>
-      <a target="blank" href="https://hub.alili.fun">{{`vuepress-theme-nine@${version}`}}</a>
+      <i class="iconfont nine-theme" />
+      <a
+        target="blank"
+        href="https://hub.alili.fun"
+      >{{ `vuepress-theme-nine@${version}` }}</a>
     </span>
     <span v-if="$themeConfig.record">
-      <i class="iconfont nine-beian"></i>
+      <i class="iconfont nine-beian" />
       <a :href="$themeConfig.recordLink || '#'">{{ $themeConfig.record }}</a>
     </span>
     <span>
-      <i class="iconfont nine-copyright"></i>
+      <i class="iconfont nine-copyright" />
       <a>
         <span v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</span>
         &nbsp;&nbsp;
@@ -18,14 +21,20 @@
       </a>
     </span>
     <span v-show="showAccessNumber">
-      <i class="iconfont nine-eye"></i>
-      <AccessNumber idVal="/" />
+      <i class="iconfont nine-eye" />
+      <AccessNumber id-val="/" />
     </span>
-    <p class="cyber-security" v-if="$themeConfig.cyberSecurityRecord">
-      <img src="https://img.alicdn.com/tfs/TB1..50QpXXXXX7XpXXXXXXXXXX-40-40.png" alt="">
+    <p
+      v-if="$themeConfig.cyberSecurityRecord"
+      class="cyber-security"
+    >
+      <img
+        src="https://img.alicdn.com/tfs/TB1..50QpXXXXX7XpXXXXXXXXXX-40-40.png"
+        alt=""
+      >
       <a :href="$themeConfig.cyberSecurityLink || '#'">{{ $themeConfig.cyberSecurityRecord }}</a>
     </p>
-    <Comments :isShowComments="false"/>
+    <Comments :is-show-comments="false" />
   </div>
 </template>
 

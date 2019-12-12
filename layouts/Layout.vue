@@ -1,8 +1,17 @@
 <template>
-  <Common :sidebarItems="sidebarItems">
-    <component v-if="$frontmatter.home" :is="homeCom"/>
-    <Page v-else :sidebar-items="sidebarItems"/>
-    <Footer v-if="$frontmatter.home" class="footer" />
+  <Common :sidebar-items="sidebarItems">
+    <component
+      :is="homeCom"
+      v-if="$frontmatter.home"
+    />
+    <Page
+      v-else
+      :sidebar-items="sidebarItems"
+    />
+    <Footer
+      v-if="$frontmatter.home"
+      class="footer"
+    />
   </Common>
 </template>
 

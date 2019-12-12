@@ -1,9 +1,13 @@
 <template>
-  <section class="theme-container" v-if="!noFoundPageByTencent">
+  <section
+    class="theme-container"
+  >
     <article class="content">
       <h1>404</h1>
       <blockquote>{{ getMsg() }}</blockquote>
-      <router-link to="/">Take me home.</router-link>
+      <router-link to="/">
+        Take me home.
+      </router-link>
     </article>
   </section>
 </template>
@@ -17,21 +21,6 @@ const msgs = [
 ]
 
 export default {
-  computed: {
-    noFoundPageByTencent () {
-      return this.$themeConfig.noFoundPageByTencent !== false
-    }
-  },
-  mounted () {
-    if (this.noFoundPageByTencent) {
-      const dom = document.createElement('script')
-      dom.setAttribute('homePageName', '回到首页')
-      dom.setAttribute('homePageUrl', '/')
-      dom.setAttribute('src', '//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js')
-
-      document.body.append(dom)
-    }
-  },
   methods: {
     getMsg () {
       return msgs[Math.floor(Math.random() * msgs.length)]

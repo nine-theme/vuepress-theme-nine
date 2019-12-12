@@ -4,7 +4,6 @@
   "description": "nine theme for vuepress",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx vuepress dev --debug --no-clear-screen doc",
     "lint": "eslint --fix --ext .js,.vue ."
   },
@@ -19,7 +18,10 @@
     "nine",
     "vuepress"
   ],
-  "author": "wangjia_1919@163.com",
+  "author": {
+    "name": "NineSwordsMonster",
+    "email": "wangjia_1919@163.com"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nine-theme/vuepress-theme-nine/issues"

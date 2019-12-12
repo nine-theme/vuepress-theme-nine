@@ -2,10 +2,10 @@
   <div class="search-box">
     <i class="iconfont nine-search" />
     <input
+      ref="input"
       aria-label="Search"
       :value="query"
       :class="{ 'focused': focused }"
-      ref="input"
       :placeholder="placeholder"
       autocomplete="off"
       spellcheck="false"

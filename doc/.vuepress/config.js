@@ -95,6 +95,7 @@ module.exports = {
      * 'tomorrow'
      * 'twilight'
      */
-    codeTheme: 'tomorrow'
+    codeTheme: 'tomorrow',
+    user3DTag: false
   }
 }

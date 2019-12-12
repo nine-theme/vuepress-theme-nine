@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { getOneColor } from '@theme/helpers/other'
+import {getOneColor} from '@theme/helpers/other'
 
 export default {
   props: {

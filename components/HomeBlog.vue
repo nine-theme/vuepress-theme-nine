@@ -37,20 +37,6 @@
         v-show="nineShowModule"
         class="home-blog-wrapper"
       >
-        <div class="blog-list">
-          <!-- 博客列表 -->
-          <note-abstract
-            :data="$ninePosts"
-            :current-page="currentPage"
-          />
-          <!-- 分页 -->
-          <pagation
-            class="pagation"
-            :total="$ninePosts.length"
-            :current-page="currentPage"
-            @getCurrentPage="getCurrentPage"
-          />
-        </div>
         <div class="info-wrapper">
           <PersonalInfo />
           <h4><i class="iconfont nine-category" /> {{ homeBlogCfg.category }}</h4>
@@ -73,11 +59,26 @@
           <h4 v-if="$tags.list.length !== 0">
             <i class="iconfont nine-tag" /> {{ homeBlogCfg.tag }}
           </h4>
-          <TagList @getCurrentTag="getPagesByTags" />
+          <TagCloud @getCurrentTag="getPagesByTags" v-if="$themeConfig.user3DTag"/>
+          <TagList @getCurrentTag="getPagesByTags" v-else/>
           <h4 v-if="$themeConfig.friendLink && $themeConfig.friendLink.length !== 0">
             <i class="iconfont nine-friend" /> {{ homeBlogCfg.friendLink }}
           </h4>
           <FriendLink />
+        </div>
+        <div class="blog-list">
+          <!-- 博客列表 -->
+          <note-abstract
+            :data="$ninePosts"
+            :current-page="currentPage"
+          />
+          <!-- 分页 -->
+          <pagation
+            class="pagation"
+            :total="$ninePosts.length"
+            :current-page="currentPage"
+            @getCurrentPage="getCurrentPage"
+          />
         </div>
       </div>
     </ModuleTransition>
@@ -94,6 +95,7 @@
 
 <script>
 import TagList from '@theme/components/TagList'
+import TagCloud from '@theme/components/TagCloud'
 import FriendLink from '@theme/components/FriendLink'
 import NoteAbstract from '@theme/components/NoteAbstract'
 import pagination from '@theme/mixins/pagination'
@@ -103,7 +105,7 @@ import { getOneColor } from '@theme/helpers/other'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
 export default {
-  components: { NoteAbstract, TagList, FriendLink, ModuleTransition, PersonalInfo },
+  components: { NoteAbstract, TagList, TagCloud, FriendLink, ModuleTransition, PersonalInfo },
   mixins: [pagination, moduleTransitonMixin],
   data () {
     return {
@@ -235,7 +237,7 @@ export default {
       top 70px
       overflow hidden
       transition all .3s
-      margin-left 15px
+      margin-right 15px
       flex 0 0 300px
       height auto
       box-shadow var(--box-shadow)

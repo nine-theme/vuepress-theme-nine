@@ -1,6 +1,6 @@
 {
   "name": "@nine-theme/vuepress-theme-nine",
-  "version": "4.0.0-alpha.0",
+  "version": "4.0.0-alpha.1",
   "description": "nine theme for vuepress",
   "main": "index.js",
   "scripts": {

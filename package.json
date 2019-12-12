@@ -38,10 +38,10 @@
     "vuepress": "^1.5.3"
   },
   "dependencies": {
-    "@nines/vuepress-plugin-back-to-top": "^0.0.5",
-    "@nines/vuepress-plugin-comments": "^0.0.2",
-    "@nines/vuepress-plugin-loading-page": "^0.0.5",
-    "@nines/vuepress-plugin-pagation": "^0.0.5",
+    "@nine-theme/vuepress-plugin-back-to-top": "^0.0.5",
+    "@nine-theme/vuepress-plugin-comments": "^0.0.2",
+    "@nine-theme/vuepress-plugin-loading-page": "^0.0.5",
+    "@nine-theme/vuepress-plugin-pagation": "^0.0.5",
     "@vuepress/plugin-blog": "1.9.2",
     "@vuepress/plugin-medium-zoom": "1.5.0",
     "docsearch.js": "2.6.3",

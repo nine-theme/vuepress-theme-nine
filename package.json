@@ -11,9 +11,6 @@
     "type": "git",
     "url": "git+https://github.com/nine-theme/vuepress-theme-nine.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/nine-theme"
-  },
   "keywords": [
     "nine",
     "vuepress"

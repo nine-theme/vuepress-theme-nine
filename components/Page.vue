@@ -8,7 +8,9 @@
         v-show="nineShowModule && $page.title"
         class="page-title"
       >
-        <h1 class="title">{{ $page.title }}</h1>
+        <h1 class="title">
+          {{ $page.title }}
+        </h1>
         <PageInfo
           :page-info="$page"
           :show-access-number="showAccessNumber"

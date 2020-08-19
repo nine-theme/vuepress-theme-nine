@@ -7,10 +7,6 @@
     "dev": "npx vuepress dev --debug --no-clear-screen doc",
     "lint": "eslint --fix --ext .js,.vue ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nine-theme/vuepress-theme-nine.git"
-  },
   "keywords": [
     "nine",
     "vuepress"

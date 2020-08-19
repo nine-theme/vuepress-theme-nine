@@ -45,8 +45,8 @@ import ModuleTransition from '@theme/components/ModuleTransition'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
 export default {
-  components: { Common, NoteAbstract, TagList, ModuleTransition },
   mixins: [pagination, moduleTransitonMixin],
+  components: { Common, NoteAbstract, TagList, ModuleTransition },
   data () {
     return {
       tags: [],

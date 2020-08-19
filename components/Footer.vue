@@ -4,8 +4,8 @@
       <i class="iconfont nine-theme" />
       <a
         target="blank"
-        href="https://hub.alili.fun"
-      >{{ `vuepress-theme-nine@${version}` }}</a>
+        href="https://github.com/nine-theme/vuepress-theme-nine"
+      >{{ `@nine-theme/vuepress-theme-nine@${version}` }}</a>
     </span>
     <span v-if="$themeConfig.record">
       <i class="iconfont nine-beian" />

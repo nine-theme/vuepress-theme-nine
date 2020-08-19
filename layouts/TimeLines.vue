@@ -45,6 +45,7 @@ import ModuleTransition from '@theme/components/ModuleTransition'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
 export default {
+  mixins: [moduleTransitonMixin],
   name: 'TimeLine',
   components: { Common, ModuleTransition },
   filters: {
@@ -60,7 +61,6 @@ export default {
       return `${mon}-${day}`
     }
   },
-  mixins: [moduleTransitonMixin],
   methods: {
     go (url) {
       this.$router.push({ path: url })

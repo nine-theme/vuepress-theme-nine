@@ -19,10 +19,10 @@ module.exports = (options, ctx) => ({
   },
 
   plugins: [
-    '@nines/back-to-top',
-    '@nines/loading-page',
-    '@nines/pagation',
-    '@nines/comments',
+    '@nine-theme/back-to-top',
+    '@nine-theme/loading-page',
+    '@nine-theme/pagation',
+    '@nine-theme/comments',
     '@vuepress/active-header-links',
     ['@vuepress/medium-zoom', {
       selector: '.theme-nine-content :not(a) > img'

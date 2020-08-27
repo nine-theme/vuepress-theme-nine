@@ -27,6 +27,7 @@ import { isExternal, isMailto, isTel, ensureExt } from '@theme/helpers/utils'
 export default {
   props: {
     item: {
+      type: Object,
       required: true
     }
   },

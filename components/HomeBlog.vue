@@ -59,8 +59,14 @@
           <h4 v-if="$tags.list.length !== 0">
             <i class="iconfont nine-tag" /> {{ homeBlogCfg.tag }}
           </h4>
-          <TagCloud @getCurrentTag="getPagesByTags" v-if="$themeConfig.user3DTag"/>
-          <TagList @getCurrentTag="getPagesByTags" v-else/>
+          <TagCloud
+            v-if="$themeConfig.user3DTag"
+            @getCurrentTag="getPagesByTags"
+          />
+          <TagList
+            v-else
+            @getCurrentTag="getPagesByTags"
+          />
           <h4 v-if="$themeConfig.friendLink && $themeConfig.friendLink.length !== 0">
             <i class="iconfont nine-friend" /> {{ homeBlogCfg.friendLink }}
           </h4>
@@ -139,7 +145,7 @@ export default {
         background: `
           url(${this.$frontmatter.bgImage
     ? this.$withBase(this.$frontmatter.bgImage)
-    : require('../images/bg.svg')}) center/cover no-repeat
+    : require('../images/home-bg.jpg')}) center/cover no-repeat
         `
       }
       const {
@@ -211,6 +217,7 @@ export default {
     }
 
     .description {
+      color #fff
       margin: 1.8rem auto;
       font-size: 1.6rem;
       line-height: 1.3;

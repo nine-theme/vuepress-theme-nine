@@ -11,5 +11,10 @@ module.exports = {
     "sourceType": "module"
   },
   plugins: [
-  ]
+  ],
+  env: {
+    "browser": true,
+    "amd": true,
+    "node": true
+  }
 }

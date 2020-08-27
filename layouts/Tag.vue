@@ -47,8 +47,8 @@ import { sortPostsByStickyAndDate, filterPosts } from '@theme/helpers/postData'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
 export default {
-  mixins: [pagination, moduleTransitonMixin],
   components: { Common, NoteAbstract, TagList, ModuleTransition },
+  mixins: [pagination, moduleTransitonMixin],
 
   data () {
     return {
@@ -64,6 +64,12 @@ export default {
       posts = filterPosts(posts)
       sortPostsByStickyAndDate(posts)
       return posts
+    }
+  },
+
+  watch: {
+    $route () {
+      this._setPage(this._getStoragePage())
     }
   },
 
@@ -92,12 +98,6 @@ export default {
       this.currentPage = page
       this.$page.currentPage = page
       this._setStoragePage(page)
-    }
-  },
-
-  watch: {
-    $route () {
-      this._setPage(this._getStoragePage())
     }
   }
 }

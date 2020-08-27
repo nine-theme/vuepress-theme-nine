@@ -1,63 +1,43 @@
 module.exports = {
-  title: "vuepress-theme-nine",
-  description: 'A simple and beautiful vuepress blog theme.',
-  dest: 'doc/public',
+  title: "九剑",
+  description: '独孤九剑，破尽天下武功',
+  // dest: 'public',
   head: [
     ['link', { rel: 'icon', href: '/10054584.jpeg' }],
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
   ],
-  // theme: 'nine',
+  locales: {
+    '/': {
+      lang: 'zh-CN'
+    }
+  },
   theme: require.resolve('../..'),
   themeConfig: {
-    nav: [
-      { text: 'Home', link: '/', icon: 'nine-home' },
-      { text: 'TimeLine', link: '/timeline/', icon: 'nine-date' },
-      { text: 'sidebar', link: '/views/sidebar/' },
-      { text: 'sidebar', link: '/views/sidebargroup/' }
-    ],
-    sidebar: {
-      '/views/sidebar/': [
-        '',
-        'bar1',
-        'bar2'
-      ],
-      '/views/sidebargroup/': [
-        {
-          title: '基础',
-          collapsable: true,
-          children: [
-            '',
-            'bar1'
-          ]
-        },
-        {
-          title: '进阶',
-          collapsable: true,
-          children: [
-            'bar2'
-          ]
-        },
-      ]
-    },
     type: 'blog',
+    mode: 'auto',// 默认 auto，auto 跟随系统，dark 暗色模式，light 亮色模式
+    nav: [
+      { text: '主页', link: '/', icon: 'nine-home' },
+      { text: '时间轴', link: '/timeline/', icon: 'nine-date' }
+    ],
+    sidebar: 'auto',
     // 博客设置
     blogConfig: {
       category: {
-        location: 2, // 在导航栏菜单中所占的位置，默认2
-        text: 'Category' // 默认 “分类”
+        location: 2,
+        text: '分类'
       },
       tag: {
-        location: 3, // 在导航栏菜单中所占的位置，默认3
-        text: 'Tag' // 默认 “标签”
+        location: 3,
+        text: '标签'
       }
     },
-    logo: '/10054584.jpeg',
-    authorAvatar: '/10054584.jpeg',
+    logo: '/img/default_avatar.jpeg',
+    authorAvatar: '/img/default_avatar.jpeg',
     // 搜索设置
     search: true,
     searchMaxSuggestions: 10,
     // 自动形成侧边导航
-    // sidebar: 'auto',
+    // sidebarDepth: 'auto',
     sidebarDepth: 4,
     // 最后更新时间
     lastUpdated: 'Last Updated',
@@ -79,7 +59,7 @@ module.exports = {
       },
       {
         title: 'vuepress-theme-nine',
-        desc: 'A simple and beautiful vuepress Blog & Doc theme.',
+        desc: '简单可用的vueoress 主题',
         avatar: "https://hub.alili.fun",
         link: 'https://hub.alili.fun'
       },
@@ -96,6 +76,9 @@ module.exports = {
      * 'twilight'
      */
     codeTheme: 'tomorrow',
-    user3DTag: false
+    /**
+     * 使用3D tag 标签
+     */
+    user3DTag: true
   }
 }

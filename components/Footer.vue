@@ -1,18 +1,21 @@
 <template>
   <div class="footer-wrapper">
     <span>
-      <i class="iconfont nine-theme" />
+      <font-awesome-icon
+        :icon="['fas', 'yin-yang']"
+        spin
+      />
       <a
         target="blank"
         href="https://github.com/nine-theme/vuepress-theme-nine"
-      >{{ `@nine-theme/vuepress-theme-nine@${version}` }}</a>
+      >{{ `@nine-theme/nine@${version}` }}</a>
     </span>
     <span v-if="$themeConfig.record">
-      <i class="iconfont nine-beian" />
+      <font-awesome-icon :icon="['fas', 'award']" />
       <a :href="$themeConfig.recordLink || '#'">{{ $themeConfig.record }}</a>
     </span>
     <span>
-      <i class="iconfont nine-copyright" />
+      <font-awesome-icon :icon="['far', 'copyright']" />
       <a>
         <span v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</span>
         &nbsp;&nbsp;
@@ -21,7 +24,7 @@
       </a>
     </span>
     <span v-show="showAccessNumber">
-      <i class="iconfont nine-eye" />
+      <font-awesome-icon :icon="['far', 'eye']" />
       <AccessNumber id-val="/" />
     </span>
     <p

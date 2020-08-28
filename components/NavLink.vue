@@ -5,7 +5,10 @@
     :to="link"
     :exact="exact"
   >
-    <i :class="`iconfont ${item.icon}`" />
+    <font-awesome-icon
+      v-if="item.icon"
+      :icon="['fas', `${item.icon}`]"
+    />
     {{ item.text }}
   </router-link>
   <a
@@ -15,7 +18,9 @@
     :target="isMailto(link) || isTel(link) ? null : '_blank'"
     :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'"
   >
-    <i :class="`iconfont ${item.icon}`" />
+    <font-awesome-icon
+      :icon="['fas', `${item.icon}`]"
+    />
     {{ item.text }}
     <OutboundLink />
   </a>

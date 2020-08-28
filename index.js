@@ -23,6 +23,7 @@ module.exports = (options, ctx) => ({
     '@nine-theme/loading-page',
     '@nine-theme/pagation',
     '@nine-theme/comments',
+    '@nine-theme/fontawesome',
     '@vuepress/active-header-links',
     ['@vuepress/medium-zoom', {
       selector: '.theme-nine-content :not(a) > img'

@@ -1,6 +1,6 @@
 <template>
   <div class="search-box">
-    <i class="iconfont nine-search" />
+    <font-awesome-icon :icon="['fas', 'search']" />
     <input
       ref="input"
       aria-label="Search"

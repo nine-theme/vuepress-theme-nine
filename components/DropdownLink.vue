@@ -8,7 +8,7 @@
       @click="toggle"
     >
       <span class="title">
-        <i :class="`iconfont ${item.icon}`" />
+        <font-awesome-icon :icon="['fas', `${item.icon}`]" />
         {{ item.text }}
       </span>
       <span
@@ -63,6 +63,7 @@ export default {
 
   props: {
     item: {
+      type: Object,
       required: true
     }
   },

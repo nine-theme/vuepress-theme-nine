@@ -39,7 +39,7 @@
       >
         <div class="info-wrapper">
           <PersonalInfo />
-          <h4><i class="iconfont nine-category" /> {{ homeBlogCfg.category }}</h4>
+          <h4><font-awesome-icon :icon="['fas', 'hashtag']" />{{ homeBlogCfg.category }}</h4>
           <ul class="category-wrapper">
             <li
               v-for="(item, index) in this.$categories.list"
@@ -57,7 +57,7 @@
           </ul>
           <hr>
           <h4 v-if="$tags.list.length !== 0">
-            <i class="iconfont nine-tag" /> {{ homeBlogCfg.tag }}
+            <font-awesome-icon :icon="['fas', 'tag']" /> {{ homeBlogCfg.tag }}
           </h4>
           <TagCloud
             v-if="$themeConfig.user3DTag"
@@ -68,7 +68,7 @@
             @getCurrentTag="getPagesByTags"
           />
           <h4 v-if="$themeConfig.friendLink && $themeConfig.friendLink.length !== 0">
-            <i class="iconfont nine-friend" /> {{ homeBlogCfg.friendLink }}
+            <font-awesome-icon :icon="['fas', 'user-friends']" /> {{ homeBlogCfg.friendLink }}
           </h4>
           <FriendLink />
         </div>

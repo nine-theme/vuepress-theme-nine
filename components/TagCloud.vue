@@ -7,6 +7,7 @@
     >
       <a
         v-for="tag in tags3D"
+        :key="tag.name"
         :href="tag.path"
         rel="external nofollow"
       >

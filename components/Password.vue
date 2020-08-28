@@ -45,14 +45,14 @@
         class="footer"
       >
         <span>
-          <i class="iconfont nine-theme" />
+          <font-awesome-icon :icon="['fas', 'yin-yang']" />
           <a
             target="blank"
             href="https://hub.alili.fun"
           >vuePress-theme-nine</a>
         </span>
         <span>
-          <i class="iconfont nine-copyright" />
+          <font-awesome-icon :icon="['fas', 'copyright']" />
           <a>
             <span v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</span>
             &nbsp;&nbsp;

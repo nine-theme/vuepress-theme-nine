@@ -3,14 +3,16 @@
     class="abstract-item"
     @click="$router.push(item.path)"
   >
-    <i
+    <font-awesome-icon 
       v-if="item.frontmatter.sticky"
-      class="iconfont nine-sticky"
+      class="bookmark" 
+      :icon="['fas', 'bookmark']" 
     />
     <div class="title">
-      <i
+      <font-awesome-icon 
         v-if="item.frontmatter.keys"
-        class="iconfont nine-lock"
+        class="nine-lock"
+        :icon="['fas', 'lock']" 
       />
       <router-link :to="item.path">
         {{ item.title }}
@@ -52,13 +54,13 @@ export default {
   > * {
     pointer-events: auto;
   }
-  .nine-sticky
+  .bookmark
     position absolute
     top 0
-    left 0
+    right 1rem
     display inline-block
     color $accentColor
-    font-size 2.4rem
+    font-size 1.4rem
   &:hover
     box-shadow: var(--box-shadow-hover)
   .title

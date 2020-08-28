@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     tagClick (tag) {
-      this.$emit('getCurrentTag', tag)
+      this.$emit('get-current-tag', tag)
     },
     getOneColor
   }

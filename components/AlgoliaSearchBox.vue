@@ -4,18 +4,29 @@
     class="algolia-search-wrapper search-box"
     role="search"
   >
-    <i class="iconfont nine-search" />
     <input
       id="algolia-search-input"
       class="search-query"
       :placeholder="placeholder"
     >
+    <button>
+      <font-awesome-icon 
+        :icon="['fas', 'search']"
+      />
+    </button>
   </form>
 </template>
 
 <script>
 export default {
-  props: ['options'],
+  props: {
+    options: {
+      type: Array,
+      default() {
+        return []
+      }
+    }
+  },
   data () {
     return {
       placeholder: undefined

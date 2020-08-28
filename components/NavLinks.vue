@@ -27,7 +27,10 @@
       target="_blank"
       rel="noopener noreferrer"
     >
-      <i :class="`iconfont nine-${repoLabel.toLowerCase()}`" />
+      <font-awesome-icon
+        :icon="['fab', `${repoLabel.toLowerCase()}`]"
+        size="lg"
+      />
       {{ repoLabel }}
       <OutboundLink />
     </a>
@@ -104,7 +107,7 @@ export default {
           }),
           text: category.text || '分类',
           type: 'links',
-          icon: 'nine-category'
+          icon: 'hashtag'
         })
       }
       if (!isHasTag && Object.hasOwnProperty.call(blogConfig, 'tag')) {
@@ -113,7 +116,7 @@ export default {
           link: '/tag/',
           text: tag.text || '标签',
           type: 'links',
-          icon: 'nine-tag'
+          icon: 'tag'
         })
       }
 

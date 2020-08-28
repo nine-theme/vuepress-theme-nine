@@ -1,38 +1,39 @@
 <template>
   <div>
-    <i
+    <font-awesome-icon
       v-if="pageInfo.frontmatter.author || $themeConfig.author || $site.title"
-      class="iconfont nine-account"
-    >
-      <span>{{ pageInfo.frontmatter.author || $themeConfig.author || $site.title }}</span>
-    </i>
-    <i
+      class="fa"
+      :icon="['fas', 'user']"
+    />
+    <span class="info">{{ pageInfo.frontmatter.author || $themeConfig.author || $site.title }}</span>
+    <font-awesome-icon
       v-if="pageInfo.frontmatter.date"
-      class="iconfont nine-date"
-    >
-      <span>{{ pageInfo.frontmatter.date | formatDateValue }}</span>
-    </i>
-    <i
+      class="fa"
+      :icon="['fas', 'calendar']"
+    />
+    <span class="info">{{ pageInfo.frontmatter.date | formatDateValue }}</span>
+
+    <font-awesome-icon
       v-if="showAccessNumber === true"
-      class="iconfont nine-eye"
-    >
-      <AccessNumber
-        :id-val="pageInfo.path"
-        :num-style="numStyle"
-      />
-    </i>
-    <i
+      class="fa"
+      :icon="['fas', 'eye']"
+    />
+    <AccessNumber
+      :id-val="pageInfo.path"
+      :num-style="numStyle"
+    />
+    <font-awesome-icon
       v-if="pageInfo.frontmatter.tags"
-      class="iconfont nine-tag tags"
-    >
-      <span
-        v-for="(subItem, subIndex) in pageInfo.frontmatter.tags"
-        :key="subIndex"
-        class="tag-item"
-        :class="{ 'active': currentTag == subItem }"
-        @click.stop="goTags(subItem)"
-      >{{ subItem }}</span>
-    </i>
+      class="fa"
+      :icon="['fas', 'tag']"
+    />
+    <span
+      v-for="(subItem, subIndex) in pageInfo.frontmatter.tags"
+      :key="subIndex"
+      class="tag-item info"
+      :class="{ 'active': currentTag == subItem }"
+      @click.stop="goTags(subItem)"
+    >{{ subItem }}</span>
   </div>
 </template>
 
@@ -98,21 +99,22 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.iconfont
+.fa
   display inline-block
   line-height 1.5rem
+  color $accentColor
   &:not(:last-child)
-    margin-right 1rem
-  span
-    margin-left 0.5rem
-.tags
-  .tag-item
-    font-family Ubuntu, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
-    cursor pointer
-    &.active
-      color $accentColor
-    &:hover
-      color $accentColor
+    margin-right 0.4rem
+.info
+  margin-right 1rem
+
+.tag-item
+  font-family Ubuntu, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
+  cursor pointer
+  &.active
+    color $accentColor
+  &:hover
+    color $accentColor
 @media (max-width: $MQMobile)
   .tags
     display block

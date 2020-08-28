@@ -8,7 +8,7 @@
       class="color-button"
       @click.prevent="showMenu = !showMenu"
     >
-      <i class="iconfont nine-color" />
+      <font-awesome-icon :icon="['fas', 'palette']" />
     </a>
     <transition
       name="menu-transition"

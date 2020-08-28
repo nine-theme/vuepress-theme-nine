@@ -33,6 +33,7 @@
   "dependencies": {
     "@nine-theme/vuepress-plugin-back-to-top": "^0.0.6",
     "@nine-theme/vuepress-plugin-comments": "^0.0.2",
+    "@nine-theme/vuepress-plugin-fontawesome": "0.0.2",
     "@nine-theme/vuepress-plugin-loading-page": "^0.0.8",
     "@nine-theme/vuepress-plugin-pagation": "^0.0.5",
     "@vuepress/plugin-blog": "1.9.2",

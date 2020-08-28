@@ -105,7 +105,7 @@ export default {
           : Math.max(-this.RADIUS * 0.00002, y * 0.0001);
     },
     tagClick(tag) {
-      this.$emit('getCurrentTag', tag)
+      this.$emit('get-current-tag', tag)
     },
     getOneColor,
   }

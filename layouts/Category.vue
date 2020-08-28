@@ -33,7 +33,7 @@
         class="list"
         :data="posts"
         :current-page="currentPage"
-        @currentTag="getCurrentTag"
+        @current-tag="getCurrentTag"
       />
     </ModuleTransition>
 
@@ -95,7 +95,7 @@ export default {
   methods: {
     // 获取当前tag
     getCurrentTag (tag) {
-      this.$emit('currentTag', tag)
+      this.$emit('current-tag', tag)
     },
     // 获取当前页码
     getCurrentPage (page) {

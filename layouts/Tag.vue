@@ -10,7 +10,7 @@
         v-show="nineShowModule"
         class="tags"
         :current-tag="$currentTags.key"
-        @getCurrentTag="tagClick"
+        @get-current-tag="tagClick"
       />
     </ModuleTransition>
 
@@ -21,7 +21,7 @@
         class="list"
         :data="posts"
         :current-page="currentPage"
-        @currentTag="$currentTags.key"
+        @current-tag="$currentTags.key"
       />
     </ModuleTransition>
 
@@ -31,7 +31,7 @@
         class="pagation"
         :total="posts.length"
         :current-page="currentPage"
-        @getCurrentPage="getCurrentPage"
+        @get-current-page="getCurrentPage"
       />
     </ModuleTransition>
   </Common>
@@ -80,7 +80,7 @@ export default {
   methods: {
     // 获取当前tag
     getCurrentTag (tag) {
-      this.$emit('currentTag', tag)
+      this.$emit('current-tag', tag)
     },
     tagClick (tagInfo) {
       if (this.$route.path !== tagInfo.path) {

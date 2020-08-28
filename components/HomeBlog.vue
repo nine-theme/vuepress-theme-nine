@@ -61,11 +61,11 @@
           </h4>
           <TagCloud
             v-if="$themeConfig.user3DTag"
-            @getCurrentTag="getPagesByTags"
+            @get-current-tag="getPagesByTags"
           />
           <TagList
             v-else
-            @getCurrentTag="getPagesByTags"
+            @get-current-tag="getPagesByTags"
           />
           <h4 v-if="$themeConfig.friendLink && $themeConfig.friendLink.length !== 0">
             <font-awesome-icon :icon="['fas', 'user-friends']" /> {{ homeBlogCfg.friendLink }}

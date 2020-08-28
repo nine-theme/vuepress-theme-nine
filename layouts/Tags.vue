@@ -8,7 +8,7 @@
       <TagList
         v-show="nineShowModule"
         :current-tag="currentTag"
-        @getCurrentTag="tagClick"
+        @get-current-tag="tagClick"
       />
     </ModuleTransition>
 
@@ -20,7 +20,7 @@
         :data="$ninePosts"
         :current-page="currentPage"
         :current-tag="currentTag"
-        @currentTag="getCurrentTag"
+        @current-tag="getCurrentTag"
       />
     </ModuleTransition>
 
@@ -77,7 +77,7 @@ export default {
     },
 
     getCurrentTag (tag) {
-      this.$emit('currentTag', tag)
+      this.$emit('current-tag', tag)
     },
 
     getCurrentPage (page) {

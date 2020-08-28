@@ -1,6 +1,6 @@
 <template>
   <div class="search-box">
-    <font-awesome-icon :icon="['fas', 'search']" />
+    <font-awesome-icon class="fa" :icon="['fas', 'search']" swap-opacity />
     <input
       ref="input"
       aria-label="Search"
@@ -157,13 +157,14 @@ export default {
   display inline-block
   position relative
   margin-right 1rem
-  .iconfont
+  .fa
     position absolute
     top 0
     bottom 0
     z-index 0
     left .6rem
     margin auto
+    color lighten($textColor, 25%)
   input
     cursor text
     width 10rem

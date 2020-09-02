@@ -15,7 +15,7 @@
     "name": "NineSwordsMonster",
     "email": "wangjia_1919@163.com"
   },
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nine-theme/vuepress-theme-nine/issues"
   },

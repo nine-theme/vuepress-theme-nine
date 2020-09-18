@@ -48,13 +48,12 @@ export default {
         $frontmatter: { subSidebar: pageSidebar }
       } = this
       const headers = this.$page.headers || []
-
       if ((themeSidebar === 'auto' || pageSidebar === 'auto') && headers.length > 0) {
         return true
       }
       return false
     }
-  }
+  } 
 }
 
 function renderTime (date) {

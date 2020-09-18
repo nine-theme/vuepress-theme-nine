@@ -83,10 +83,6 @@ export default {
 	.color-button {
 		align-items: center;
 		height: 100%;
-		.iconfont {
-			font-size 1.4rem
-			color: $accentColor
-		}
 	}
 
 	.color-picker-menu {

@@ -15,7 +15,17 @@ import NoteAbstractItem from './NoteAbstractItem'
 
 export default {
   components: { NoteAbstractItem },
-  props: ['data', 'currentPage', 'currentTag'],
+  props: {
+    data: {
+      type: Array
+    },
+    currentPage: {
+      type: Number,
+    },
+    currentTag: {
+      type: String
+    }
+    },
   computed: {
     currentPageData () {
       const start = this.currentPage * 10 - 10

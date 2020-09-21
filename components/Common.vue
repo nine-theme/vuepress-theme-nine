@@ -34,11 +34,11 @@
           :items="sidebarItems"
           @toggle-sidebar="toggleSidebar"
         >
-          <template slot="top">
+          <template #top>
             <PersonalInfo />
           </template>
           <slot
-            slot="bottom"
+            #bottom
             name="sidebar-bottom"
           />
         </Sidebar>
@@ -73,11 +73,11 @@
             :items="sidebarItems"
             @toggle-sidebar="toggleSidebar"
           >
-            <template slot="top">
+            <template #top>
               <PersonalInfo />
             </template>
             <slot
-              slot="bottom"
+              #bottom
               name="sidebar-bottom"
             />
           </Sidebar>
@@ -176,7 +176,7 @@ export default {
   },
 
   watch: {
-    $frontmatter (newVal, oldVal) {
+    $frontmatter () {
       this.hasKey()
       this.hasPageKey()
     }

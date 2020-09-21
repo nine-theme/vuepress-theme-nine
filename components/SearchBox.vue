@@ -1,6 +1,10 @@
 <template>
   <div class="search-box">
-    <font-awesome-icon class="fa" :icon="['fas', 'search']" swap-opacity />
+    <font-awesome-icon
+      class="fa"
+      :icon="['fas', 'search']"
+      swap-opacity
+    />
     <input
       ref="input"
       aria-label="Search"

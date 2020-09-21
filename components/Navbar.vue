@@ -45,6 +45,7 @@ import Mode from '@theme/components/Mode'
 
 export default {
   components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox, Mode },
+  emits: ['toggle-sidebar'],
 
   data () {
     return {

@@ -26,7 +26,7 @@
               v-for="(subItem, subIndex) in item.data"
               :key="subIndex"
             >
-              <span class="date">{{ subItem.frontmatter.date | dateFormat }}</span>
+              <span class="date">{{ dateFormat(subItem.frontmatter.date) }}</span>
               <span
                 class="title"
                 @click="go(subItem.path)"
@@ -47,8 +47,12 @@ import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 export default {
   name: 'TimeLine',
   components: { Common, ModuleTransition },
-  filters: {
-    dateFormat (date, type) {
+  mixins: [moduleTransitonMixin],
+  methods: {
+    go (url) {
+      this.$router.push({ path: url })
+    },
+    dateFormat (date) {
       function renderTime (date) {
         const dateee = new Date(date).toJSON()
         return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '').replace(/-/g, '/')
@@ -58,12 +62,6 @@ export default {
       const mon = dateObj.getMonth() + 1
       const day = dateObj.getDate()
       return `${mon}-${day}`
-    }
-  },
-  mixins: [moduleTransitonMixin],
-  methods: {
-    go (url) {
-      this.$router.push({ path: url })
     }
   }
 }

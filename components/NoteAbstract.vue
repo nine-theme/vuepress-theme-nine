@@ -17,13 +17,18 @@ export default {
   components: { NoteAbstractItem },
   props: {
     data: {
-      type: Array
+      type: Array,
+      default() {
+        return []
+      }
     },
     currentPage: {
       type: Number,
+      default: 1
     },
     currentTag: {
-      type: String
+      type: String,
+      default: ''
     }
     },
   computed: {

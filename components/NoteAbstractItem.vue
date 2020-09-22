@@ -3,21 +3,22 @@
     class="abstract-item"
     @click="$router.push(item.path)"
   >
-    <font-awesome-icon 
+    <font-awesome-icon
       v-if="item.frontmatter.sticky"
-      class="bookmark" 
-      :icon="['fas', 'bookmark']" 
+      class="bookmark"
+      :icon="['fas', 'bookmark']"
     />
     <div class="title">
-      <font-awesome-icon 
+      <font-awesome-icon
         v-if="item.frontmatter.keys"
         class="nine-lock"
-        :icon="['fas', 'lock']" 
+        :icon="['fas', 'lock']"
       />
       <router-link :to="item.path">
         {{ item.title }}
       </router-link>
     </div>
+    <!-- eslint-disable vue/no-v-html -->
     <div
       class="abstract"
       v-html="item.excerpt"
@@ -33,7 +34,22 @@
 import PageInfo from './PageInfo'
 export default {
   components: { PageInfo },
-  props: ['item', 'currentPage', 'currentTag']
+  props: {
+    item: {
+      type: Object,
+      default() {
+        return {}
+      }
+    },
+    currentPage: {
+      type: Number,
+      default: 1
+    },
+    currentTag: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 

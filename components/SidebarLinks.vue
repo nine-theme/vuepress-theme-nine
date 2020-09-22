@@ -34,11 +34,22 @@ export default {
 
   components: { SidebarGroup, SidebarLink },
 
-  props: [
-    'items',
-    'depth', // depth of current sidebar links
-    'sidebarDepth' // depth of headers to be extracted
-  ],
+  props: {
+    items: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+    depth: {
+      type: Number,
+      default: null
+    }, // depth of current sidebar links
+    sidebarDepth: {
+      type: Number,
+      default: null
+    } // depth of headers to be extracted
+},
 
   data () {
     return {

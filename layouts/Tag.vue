@@ -49,7 +49,7 @@ import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 export default {
   components: { Common, NoteAbstract, TagList, ModuleTransition },
   mixins: [pagination, moduleTransitonMixin],
-
+  emits: ['current-tag'],
   data () {
     return {
       currentPage: 1,

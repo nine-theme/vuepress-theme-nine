@@ -34,11 +34,11 @@
           :items="sidebarItems"
           @toggle-sidebar="toggleSidebar"
         >
-          <template #top>
+          <template slot="top">
             <PersonalInfo />
           </template>
           <slot
-            #bottom
+            slot="bottom"
             name="sidebar-bottom"
           />
         </Sidebar>
@@ -73,11 +73,11 @@
             :items="sidebarItems"
             @toggle-sidebar="toggleSidebar"
           >
-            <template #top>
+            <template slot="top">
               <PersonalInfo />
             </template>
             <slot
-              #bottom
+              slot="bottom"
               name="sidebar-bottom"
             />
           </Sidebar>

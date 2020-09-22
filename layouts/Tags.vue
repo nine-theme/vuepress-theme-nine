@@ -47,6 +47,7 @@ import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 export default {
   components: { Common, NoteAbstract, TagList, ModuleTransition },
   mixins: [pagination, moduleTransitonMixin],
+  emits: ['current-tag'],
   data () {
     return {
       tags: [],
@@ -55,7 +56,6 @@ export default {
       allTagName: ''
     }
   },
-
   created () {
     this.currentTag = this.$nineLocales.tag.all
     this.allTagName = this.$nineLocales.tag.all

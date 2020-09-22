@@ -61,6 +61,7 @@ import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 export default {
   components: { Common, NoteAbstract, ModuleTransition },
   mixins: [pagination, moduleTransitonMixin],
+  emits: ['current-tag'],
 
   data () {
     return {

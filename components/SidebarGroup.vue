@@ -17,7 +17,7 @@
         'active': isActive($route, item.path)
       }"
       :to="item.path"
-      @click.native="$emit('toggle')"
+      @click="$emit('toggle')"
     >
       <span>{{ item.title }}</span>
       <span
@@ -60,7 +60,27 @@ import DropdownTransition from '@theme/components/DropdownTransition'
 export default {
   name: 'SidebarGroup',
   components: { DropdownTransition },
-  props: ['item', 'open', 'collapsable', 'depth'],
+  props: {
+    item: {
+      type: Object,
+      default() {
+        return {}
+      }
+    },
+    open: {
+      type: Boolean,
+      default: true
+    },
+    collapsable: {
+      type: Boolean,
+      default: true
+    },
+    depth: {
+      type: Number,
+      default: 0
+    },
+  },
+  emits: ['toggle'],
   // ref: https://vuejs.org/v2/guide/components-edge-cases.html#Circular-References-Between-Components
   beforeCreate () {
     this.$options.components.SidebarLinks = require('./SidebarLinks.vue').default

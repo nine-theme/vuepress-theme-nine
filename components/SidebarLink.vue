@@ -1,23 +1,29 @@
 <script>
-import { isActive } from '@theme/helpers/utils'
+import {isActive} from '@theme/helpers/utils'
 
 export default {
   functional: true,
 
-  props: ['item', 'sidebarDepth'],
+  props: {
+    item: {
+      type: Object,
+      default() {
+        return {}
+      }
+    },
+    sidebarDepth: {
+      type: Number,
+      default: null
+    },
+  },
 
   render (h,
     {
       parent: {
-        $page,
-        $site,
         $route,
-        $themeConfig,
-        $themeLocaleConfig
       },
       props: {
         item,
-        sidebarDepth
       }
     }) {
     // use custom active class matching logic
@@ -28,8 +34,7 @@ export default {
     const active = item.type === 'auto'
       ? selfActive || item.children.some(c => isActive($route, item.basePath + '#' + c.slug))
       : selfActive
-    const link = renderLink(h, item.path, item.title || item.path, active)
-    return link
+    return renderLink(h, item.path, item.title || item.path, active)
 
     // const configDepth = $page.frontmatter.sidebarDepth ||
     //   sidebarDepth ||

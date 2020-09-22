@@ -34,6 +34,7 @@ export default {
       default: ''
     }
   },
+  emits: ['get-current-tag'],
   data() {
     return {
       width: 270,//svg宽度

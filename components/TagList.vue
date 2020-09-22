@@ -20,6 +20,7 @@ export default {
       default: ''
     }
   },
+  emits: ['get-current-tag'],
   computed: {
     tags () {
       return [{ name: this.$nineLocales.tag.all, path: '/tag/' }, ...this.$tags.list]

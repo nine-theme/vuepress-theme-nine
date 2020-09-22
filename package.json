@@ -1,6 +1,6 @@
 {
   "name": "@nine-theme/vuepress-theme-nine",
-  "version": "4.0.0-alpha.3",
+  "version": "4.0.1-alpha.0",
   "description": "nine theme for vuepress",
   "main": "index.js",
   "scripts": {
@@ -24,11 +24,11 @@
     "vuepress": "^1.5.3"
   },
   "dependencies": {
-    "@nine-theme/vuepress-plugin-back-to-top": "^0.0.6",
-    "@nine-theme/vuepress-plugin-comments": "^0.0.2",
-    "@nine-theme/vuepress-plugin-fontawesome": "0.0.2",
-    "@nine-theme/vuepress-plugin-loading-page": "^0.0.8",
-    "@nine-theme/vuepress-plugin-pagation": "^0.0.5",
+    "@nine-theme/vuepress-plugin-back-to-top": "^0.0.7-alpha.0",
+    "@nine-theme/vuepress-plugin-comments": "^0.0.3-alpha.0",
+    "@nine-theme/vuepress-plugin-fontawesome": "^0.0.3-alpha.0",
+    "@nine-theme/vuepress-plugin-loading-page": "^0.0.9-alpha.0",
+    "@nine-theme/vuepress-plugin-pagation": "^0.0.6-alpha.0",
     "@vuepress/plugin-blog": "1.9.2",
     "@vuepress/plugin-medium-zoom": "1.5.0",
     "docsearch.js": "2.6.3",

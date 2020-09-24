@@ -8,7 +8,7 @@
       @click="toggle"
     >
       <span class="title">
-        <font-awesome-icon :icon="['fas', `${item.icon}`]" />
+        <font-awesome-icon :icon="getRealIcon(item.icon)" />
         {{ item.text }}
       </span>
       <span
@@ -57,7 +57,7 @@
 <script>
 import NavLink from '@theme/components/NavLink'
 import DropdownTransition from '@theme/components/DropdownTransition'
-
+import { getRealIcon } from '@theme/helpers/other'
 export default {
   components: { NavLink, DropdownTransition },
 
@@ -77,7 +77,8 @@ export default {
   methods: {
     toggle () {
       this.open = !this.open
-    }
+    },
+    getRealIcon
   }
 }
 </script>

@@ -24,3 +24,8 @@ export function registerCodeThemeCss (theme = 'tomorrow') {
 
   addLinkToHead(href)
 }
+
+export function getRealIcon (icon) {
+  const type = icon && icon.split(' ') || ['fas', 'question']
+  return [type[0], type[1]]
+}

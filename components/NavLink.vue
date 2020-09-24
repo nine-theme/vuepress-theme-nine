@@ -7,7 +7,7 @@
   >
     <font-awesome-icon
       v-if="item.icon"
-      :icon="['fas', `${item.icon}`]"
+      :icon="getRealIcon(item.icon)"
     />
     {{ item.text }}
   </router-link>
@@ -19,7 +19,7 @@
     :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'"
   >
     <font-awesome-icon
-      :icon="['fas', `${item.icon}`]"
+      :icon="getRealIcon(item.icon)"
     />
     {{ item.text }}
     <OutboundLink />
@@ -28,7 +28,7 @@
 
 <script>
 import { isExternal, isMailto, isTel, ensureExt } from '@theme/helpers/utils'
-
+import { getRealIcon } from '@theme/helpers/other'
 export default {
   props: {
     item: {
@@ -53,7 +53,8 @@ export default {
   methods: {
     isExternal,
     isMailto,
-    isTel
+    isTel,
+    getRealIcon
   }
 }
 </script>

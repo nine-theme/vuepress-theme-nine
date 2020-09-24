@@ -28,7 +28,7 @@
       rel="noopener noreferrer"
     >
       <font-awesome-icon
-        :icon="['fab', `${repoLabel.toLowerCase()}`]"
+        :icon="getRealIcon('fab github')"
         size="lg"
       />
       {{ repoLabel }}
@@ -41,7 +41,7 @@
 import DropdownLink from '@theme/components/DropdownLink'
 import { resolveNavLinkItem } from '@theme/helpers/utils'
 import NavLink from '@theme/components/NavLink'
-
+import { getRealIcon } from '@theme/helpers/other'
 export default {
   components: { NavLink, DropdownLink },
 
@@ -57,6 +57,7 @@ export default {
         const routes = this.$router.options.routes
         const themeLocales = this.$themeConfig.locales || {}
         const languageDropdown = {
+          icon: 'fas globe',
           text: this.$themeLocaleConfig.selectText || 'Languages',
           items: Object.keys(locales).map(path => {
             const locale = locales[path]
@@ -158,6 +159,9 @@ export default {
 
       return 'Source'
     }
+  },
+  methods: {
+    getRealIcon
   }
 }
 </script>

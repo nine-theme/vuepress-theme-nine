@@ -35,25 +35,6 @@ export default {
       ? selfActive || item.children.some(c => isActive($route, item.basePath + '#' + c.slug))
       : selfActive
     return renderLink(h, item.path, item.title || item.path, active)
-
-    // const configDepth = $page.frontmatter.sidebarDepth ||
-    //   sidebarDepth ||
-    //   $themeLocaleConfig.sidebarDepth ||
-    //   $themeConfig.sidebarDepth
-
-    // const maxDepth = configDepth == null ? 1 : configDepth
-
-    // const displayAllHeaders = $themeLocaleConfig.displayAllHeaders ||
-    //   $themeConfig.displayAllHeaders
-
-    // if (item.type === 'auto') {
-    //   return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
-    // } else if ((active || displayAllHeaders) && item.headers && !hashRE.test(item.path)) {
-    //   const children = groupHeaders(item.headers)
-    //   return [link, renderChildren(h, children, item.path, $route, maxDepth)]
-    // } else {
-    //   return link
-    // }
   }
 }
 

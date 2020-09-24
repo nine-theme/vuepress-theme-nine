@@ -98,6 +98,7 @@ export default {
   .hero {
     text-align: center;
     h1 {
+      display block;
       font-size: 2.5rem;
       color: var(--text-color);
     }

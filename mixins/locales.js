@@ -3,21 +3,21 @@ import { zhHans, zhHant, en, ja, ko } from '../locales/index'
 export default {
   computed: {
     $nineLocales () {
-      const recoLocales = this.$themeLocaleConfig.nineLocales || {}
+      const nineLocales = this.$themeLocaleConfig.nineLocales || {}
 
       if (/^zh-(CN|SG)$/.test(this.$lang)) {
-        return { ...zhHans, ...recoLocales }
+        return { ...zhHans, ...nineLocales }
       }
       if (/^zh-(HK|MO|TW)$/.test(this.$lang)) {
-        return { ...zhHant, ...recoLocales }
+        return { ...zhHant, ...nineLocales }
       }
       if (/^ja-JP$/.test(this.$lang)) {
-        return { ...ja, ...recoLocales }
+        return { ...ja, ...nineLocales }
       }
       if (/^ko-KR$/.test(this.$lang)) {
-        return { ...ko, ...recoLocales }
+        return { ...ko, ...nineLocales }
       }
-      return { ...en, ...recoLocales }
+      return { ...en, ...nineLocales }
     }
   }
 }

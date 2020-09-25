@@ -72,6 +72,9 @@ export default {
     border-top: 1px solid var(--border-color);
     text-align: center;
     color: lighten($textColor, 25%);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     a {
       font-size 14px
     }

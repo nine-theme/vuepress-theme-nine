@@ -37,7 +37,7 @@ export default {
     homeCom () {
       const { type } = this.$themeConfig
       if (type !== undefined) {
-        return type == 'blog' ? 'HomeBlog' : type
+        return type === 'blog' ? 'HomeBlog' : type
       }
       return 'Home'
     }
